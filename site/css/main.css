@@ -20,8 +20,17 @@ body {
 }
 
 
-h1, h2, h3, h4, h5, h6 {
-  font-size: 100%; }
+h1, h2, h3 {
+  font-size: 100%; 
+}
+
+h4, h5, h6 {
+  font-size: 90%;
+}
+
+hr {
+  margin-bottom:  20px;
+}
 
 h1 { margin-bottom: 1em; }
 p { margin: 1em 0; }
@@ -45,6 +54,10 @@ body > header h1, body > header nav {
 
 body > header h1 span {
   display: none;
+}
+
+pre {
+  color: #87ceeb;
 }
 
 a:hover {
@@ -73,7 +86,29 @@ h1 {
 }
 
 aside {
+  text-align: left;
   padding-top: 30px;
+}
+
+aside li {
+  list-style-type: none;
+}
+
+aside li a {
+  font-size: 16px;
+  position: relative;
+}
+
+aside li.current a:before {
+  content: "";
+  border-color: transparent transparent transparent #444;
+  border-style: solid;
+  border-width: 10px;
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 0;
+  left: -30px;
 }
 
 
@@ -114,6 +149,27 @@ nav li {
   display: inline-block;
 }
 
+.section-nav > div {
+  width: 49.5%;
+}
+
+.section-nav {
+  margin: 40px -20px 10px;
+  padding-top: 10px;
+}
+
+.section-nav a, .section-nav span {
+  color: #fff;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 8px 12px 10px;
+  border-radius: 5px;
+  border: 1px solid #333;
+  box-shadow: 0 1px 3px rgba(0,0,0,.3), inset 0 1px 1px rgba(255,255,255,.5);
+  background: #777;
+}
+
 
 .first {
   font-size: 2.3em;
@@ -122,7 +178,8 @@ nav li {
 .highlight {
   overflow: auto;
   text-align: left;
-  padding: 20px;
+  padding: 10px;
+  margin-bottom: 20px;
 }
 
 
