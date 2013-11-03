@@ -2,7 +2,7 @@
 layout: docs
 title: Quick Start
 prev_section: install
-next_section: quickstart
+next_section: engine
 permalink: docs/quickstart/
 ---
 

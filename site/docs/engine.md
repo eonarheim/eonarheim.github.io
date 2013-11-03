@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Engine
-next_section: 
+next_section: actor
 permalink: /docs/engine/
 ---
 
@@ -42,6 +42,11 @@ Reference to the current html canvas element the game is drawing to.
 
 Reference to the current html canvas rendering context. This may be used to 
 implement custom drawing methods for extended actors.
+
+<pre>engine.isDebug</pre>
+---------------------
+Gets or sets the current debug mode. If 'isDebug' is set to true, debug information
+will be drawn to the screen.
 
 <pre>engine.width</pre>
 -----------------------

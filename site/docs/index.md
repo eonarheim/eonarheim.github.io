@@ -5,7 +5,7 @@ next_section: install
 permalink: docs/home/
 ---
 
-Welcome to the Excalibur documentation website. The comprehensive documentation for Excalibur is stored here.
+Welcome to the Excalibur documentation website. 
 
 ## What is Excalibur?
 

@@ -1,6 +1,7 @@
 ---
 layout: docs
-title: Installation
-next_section: quickstart
+title: Gallery
 permalink: /gallery/home/
 ---
+
+## Comming Soon!
