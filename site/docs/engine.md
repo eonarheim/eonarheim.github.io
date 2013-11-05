@@ -21,7 +21,7 @@ game.start();
 
 
 ## Constructor 
-<pre>new (width? : number, height? : number, canvasElementId? : string)</pre>
+<pre>new(width? : number, height? : number, canvasElementId? : string)</pre>
 --------------
 
 The Engine constructor takes 3 optional parameters, a game width, height, and 
