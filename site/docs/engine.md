@@ -131,6 +131,19 @@ calling engine.currentScene.removeChild(actor : Actor).
 
 Actors that are removed from a scene will no longer be drawn or updated.
 
+<pre>engine.pushScene(scene : SceneNode)</pre>
+--------------------------
+
+Pushes a new scene onto Excalibur's internal scene stack, and begins updating 
+and drawing the top scene. This is useful if you need to change levels or screens.
+
+<pre>engine.popScene()</pre>
+--------------------------
+
+This pops the current scene off of Excalibur's internal scene stack, returning
+the game to the previous level or screen. The root scene can never be popped,
+there will always be at least one scene in the game.
+
 <pre>engine.isKeyUp(key : Keys) : boolean</pre>
 ---------------------------
 

@@ -2,7 +2,7 @@
 layout: docs
 title: Actor
 prev_section: engine
-next_section: color
+next_section: log
 permalink: /docs/actor/
 ---
 
@@ -109,7 +109,20 @@ set this property. Use the 'setDrawing' method below.
 The current color for an actor, this is only used if no drawings have been
 specified for an actor.
 
+<pre>actor.parent</pre>
+-------------------
+
+The parent property represents the SceneNode that is this actors parent.
+This property is null by default and is set when the actor is added to the
+scene graph.
+
 ## Methods
+
+<pre>actor.kill()</pre>
+-------------------
+
+This is a convenience method to remove the current actor from the scene. Actors
+that are removed from the scene will no longer be drawn or updated. 
 
 <pre>actor.addChild(actor : Actor)</pre>
 -------------------

@@ -57,7 +57,8 @@ body > header h1 span {
 }
 
 pre {
-  color: #87ceeb;
+  color: #ffb62a;
+  white-space: pre-wrap;
 }
 
 a:hover {
@@ -78,7 +79,7 @@ article {
   padding: 20px;
   margin: 0 10px;
   box-shadow: 0 3px 10px rgba(0,0,0,.1);
-  font-size: 16px;
+  font-size: 20px;
 }
 
 h1 {
@@ -95,7 +96,7 @@ aside li {
 }
 
 aside li a {
-  font-size: 16px;
+  font-size: 20px;
   position: relative;
 }
 
@@ -156,6 +157,7 @@ nav li {
 .section-nav {
   margin: 40px -20px 10px;
   padding-top: 10px;
+  padding-bottom: 25px;
 }
 
 .section-nav a, .section-nav span {
@@ -193,6 +195,11 @@ nav li {
 
 .left { float: left; }
 .right { float: right; }
+
+.jekyll {
+  width: 100px;
+  vertical-align: middle;
+}
 
 
 

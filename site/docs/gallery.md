@@ -4,4 +4,4 @@ title: Gallery
 permalink: /gallery/home/
 ---
 
-## Comming Soon!
+## Coming Soon!
