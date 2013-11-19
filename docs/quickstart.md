@@ -8,7 +8,7 @@ permalink: docs/quickstart/
 
 Building a game is pretty simple, lets look at the "Hello World" example.
 
-First include the Excalibur script:
+First include the Excalibur script at the bottom of the body tag:
 
 {% highlight html %}
 <script type="text/javascript" src="Excalibur.js"></script>

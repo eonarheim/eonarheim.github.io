@@ -98,6 +98,7 @@ aside li {
 aside li a {
   font-size: 20px;
   position: relative;
+  padding-left: 10px;
 }
 
 aside li.current a:before {
@@ -199,6 +200,12 @@ nav li {
 .jekyll {
   width: 100px;
   vertical-align: middle;
+}
+
+.border {
+  border: solid;
+  border-width: thin;
+  border-color: #aaa;
 }
 
 

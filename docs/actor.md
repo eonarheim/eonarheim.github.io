@@ -272,11 +272,13 @@ This method will scale an actor to the specified size by a certain time
 This method is part of the actor 'Action' fluent api allowing action chaining. 
 
 
-<pre>actor.blink(frequency : number, duration : number)</pre>
+<pre>actor.blink(frequency : number, duration : number, blinkTime? number)</pre>
 -------------------
 
 This method will cause an actor to blink (become visible and and invisible) at
-a frequency (blinks per second) for a duration (in milliseconds).
+a frequency (blinks per second) for a duration (in milliseconds). Optionally you
+may specify blinkTime which indicates the amount of time the actor is invisible
+during each blink.
 
 To have the actor blink 3 times in 1 second, call actor.blink(3, 1000).
 

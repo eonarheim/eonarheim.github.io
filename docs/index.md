@@ -5,8 +5,6 @@ next_section: install
 permalink: docs/home/
 ---
 
-Welcome to the Excalibur documentation website. 
-
 ## What is Excalibur?
 
 Excalibur is a 2D game engine that is designed to build games in the html canvas

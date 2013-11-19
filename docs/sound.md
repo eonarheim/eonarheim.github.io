@@ -1,8 +1,8 @@
 ---
 layout: docs
 title: Sound
-prev_section: animation
-next_section: none
+prev_section: image
+next_section: promises
 permalink: /docs/sound/
 ---
 
