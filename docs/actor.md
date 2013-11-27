@@ -36,6 +36,29 @@ The Actor constructor takes 5 optional parameters, x position, y position,
 width, height, and color. If no parameters are specified x, y, width, and 
 height will all default to 0. Color will default to black.
 
+## Static Methods
+<pre>actor.extend(methods : any)</pre>
+---------------
+You may wish to extend native actor functionality. Any method on actor may be
+extended to support additional functionaliy, in the example below we create 
+a new type called "MyActor"
+
+{% highlight javascript %}
+var MyActor = Actor.extend({
+   update : function(engine, delta){
+      // Implement custom update 
+
+      // Call super constructor update
+      this.super.update.call(this, engine, delta);
+      console.log("Something cool!");
+   }
+});
+
+var myActor = new MyActor(100, 100, 100, 100, Color.Azure);
+{% endhighlight %}
+
+**Note** - Please use the built in inheritance mechanic if you are using TypeScript. This method is meant as a convenience for games built in JavaScript.
+
 ## Properties
 <pre>actor.x</pre>
 ------------------
