@@ -84,11 +84,11 @@ Get or set the current visibility of an actor. If invisible is set to
 true then the actor will no longer be drawn, but will still receive 
 updates.
 
-<pre>actor.solid</pre>
+<pre>actor.fixed</pre>
 -------------------
 
-If 'solid' is set to true the actor will not be pushed by other actors
-on collision. If 'solid' is set to false then other actors will influence
+If 'fixed' is set to true the actor will not be pushed by other actors
+on collision. If 'fixed' is set to false then other actors will influence
 the current actors position on collision.
 
 <pre>actor.frames</pre>
