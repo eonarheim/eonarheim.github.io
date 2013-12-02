@@ -2,7 +2,7 @@
 layout: docs
 title: Actor
 prev_section: engine
-next_section: log
+next_section: label
 permalink: /docs/actor/
 ---
 
