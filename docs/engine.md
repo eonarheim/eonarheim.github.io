@@ -21,14 +21,14 @@ game.start();
 
 
 ## Constructor 
-<pre>new(width? : number, height? : number, canvasElementId? : string)</pre>
+<pre>new(width? : number, height? : number, canvasElementId? : string,  displayMode? : DisplayMode)</pre>
 --------------
 
-The Engine constructor takes 3 optional parameters, a game width, height, and 
-and target canvas element to draw to. If height and width are not specified
-the engine will render the game in fullscreen mode. If the 'canvasElementId'
+The Engine constructor takes 4 optional parameters, a game width, height, 
+a target canvas element to draw to, and a display mode. If the 'canvasElementId'
 is not specified a new canvas will be appended to the body of the page and
-the game will be drawn to that.
+the game will be drawn to that. If the 'displayMode' is not specified then the
+default displayMode will be FullScreen.
 
 ## Properties
 
@@ -42,6 +42,33 @@ Reference to the current html canvas element the game is drawing to.
 
 Reference to the current html canvas rendering context. This may be used to 
 implement custom drawing methods for extended actors.
+
+<pre>engine.backgroundColor</pre>
+---------------------
+
+Gets or sets the background color of the game.
+
+<pre>engine.displayMode</pre>
+---------------------
+
+Gets the current display mode of the game. By default the displayMode 
+defaults to FullScreen.
+
+The Engine has 3 possible display modes:
+{% highlight javascript%}
+enum DisplayMode {
+   FullScreen,
+   Container,
+   Fixed
+}
+{% endhighlight %}
+
+**FullScreen** will force the engine to take up the entire screen.
+
+**Container** will force the engine's canvas to fill up the size of its parent container.
+
+**Fixed** will force the engine's canvas to take up a fixed height and width.
+
 
 <pre>engine.isDebug</pre>
 ---------------------
@@ -104,6 +131,18 @@ Scene documentation.
 
 Add an event listener to the engine, you can listen for a variety of events 
 off of the engine, see the events section below for a complete list.
+
+<pre>engine.setAntialiasing(isSmooth : boolean)</pre>
+--------------------------
+
+If supported by the browser, this will set the antialiasing flag on the canvas. 
+Set this to false if you want a 'jaggy' pixel art look to your image resources.
+
+<pre>engine.getAntialiasing() : boolean</pre>
+--------------------------
+
+If supported by the browser, this will return the current state of the 
+antialiasing flag.
 
 <pre>engine.playAnimation(animation : Drawing.Animation, 
    x : number, y : number)</pre>
@@ -174,11 +213,12 @@ useful when building pause game functionality.
 *Note* game events will no longer be sent, because the game is now paused.
 The will be added to the queue and fired when the game is started again.
 
-<pre>engine.load(loader : ILoadable)</pre>
+<pre>engine.load(loader : ILoadable) : Promise<any></pre>
 ----------------------------
 
 Call load to prepare and image or sound assets in your game. This *must* be 
-called before attempting to use images or sounds *anywhere*.
+called before attempting to use images or sounds *anywhere*. Returns a [promise](/docs/promises)
+that will be resolved when loading is complete.
 
 <pre>engine.setLoadingDrawFunction (fcn : (ctx : CanvasRenderingContext2D,
  loaded : number, 

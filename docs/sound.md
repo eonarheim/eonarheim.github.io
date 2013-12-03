@@ -8,7 +8,7 @@ permalink: /docs/sound/
 
 The Sound object allows games built in Excalibur to have basic audio components,
 from sound tracks to sound effects. It is generally recommended to preload 
-sound using the "PreloadedSound" object.
+sound using the "Sound" object.
 
 ## Usage
 --------
@@ -16,14 +16,12 @@ sound using the "PreloadedSound" object.
 // Load sound into Excalibur
 var game = new Engine();
 var loader = new Loader();
-var sound = new PreloadedSound("awesometrack.mp3");
+var sound = new Sound("awesometrack.mp3");
 loader.addResource(sound);
-game.load(loader);
-
-
-// Play the sound
-sound.play();
-
+game.load(loader).then(()=>{
+   // Play the sound after it has
+   sound.play();   
+});
 {% endhighlight %}
 
 
