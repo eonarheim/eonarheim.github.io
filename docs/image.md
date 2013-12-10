@@ -1,6 +1,6 @@
 ---
 layout: docs
-title: Textures
+title: Texture
 prev_section: animation
 next_section: sound
 permalink: /docs/texture/

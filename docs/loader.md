@@ -16,8 +16,8 @@ bar.
 // Load resources into Excalibur
 var game = new Engine();
 var loader = new Loader();
-var sound = new PreloadedSound("awesometrack.mp3");
-var image = new PreloadedImage("awesomeimage.png");
+var sound = new Sound("awesometrack.mp3");
+var image = new Texture("awesomeimage.png");
 loader.addResources([sound, image]);
 
 // Initiate load
