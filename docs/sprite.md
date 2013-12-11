@@ -16,16 +16,18 @@ a game.
 // Load image into Excalibur
 var game = new Engine();
 var loader = new Loader();
-var image = new PreloadedImage("image.png");
+var image = new Texture("image.png");
 loader.addResource(image);
-game.load(loader);
+game.load(loader).then(function(){
+   var sprite = new Sprite(image, 0, 0, 32, 32);
+});
 
-var sprite = new Sprite(image, 0, 0, 32, 32);
+
 {% endhighlight %}
 
 
 ## Constructor 
-<pre>new(image: PreloadedImage, public sx: number, public sy:number, public swidth: number, public sheight : number)</pre>
+<pre>new(image: Texture, public sx: number, public sy:number, public swidth: number, public sheight : number)</pre>
 --------------
 
 The Actor constructor takes 5 optional parameters, x position, y position,
@@ -54,6 +56,18 @@ Sets or gets the width of the sprite in source image pixels.
 Sets or gets the height of the sprite in source image pixels.
 
 ## Methods
+
+<pre>transformAboutPoint(point : Point)</pre>
+-------------
+
+Sets the origin for any translations relative to the parent coordinates. For example, if this sprite is
+added to an actor then rotation and scaling will be done relative to that actor.
+
+To transform about the center of an actor use the following code:
+{% highlight javascript%}
+sprite.transformAboutPoint(new Point(actor.width/2, actor.height/2));
+{% endhighlight %}
+
 <pre>sprite.draw(ctx: CanvasRenderingContext2D, x: number, y: number)</pre>
 -------------
 

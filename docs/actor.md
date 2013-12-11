@@ -170,6 +170,11 @@ Adds a drawing to the collection of available drawings for an actor.
 
 Set the current drawing for the actor from the available drawing collection.
 
+<pre>actor.setCenterDrawing(isDrawingCentered : boolean)</pre>
+-------------------
+
+Centers the current drawing around the actors bounding box.
+
 <pre>actor.addEventListener(eventName : string,  
    handler: (event?: ActorEvent) => void)</pre>
 ---------------------------

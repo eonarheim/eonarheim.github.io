@@ -25,17 +25,23 @@ game.start();
 
 
 ## Constructor 
-<pre>new(text? : string, x? : number, y? : number, spriteFont? : Drawing.SpriteFont)</pre>
+<pre>new(text? : string, x? : number, y? : number, font? : string, spriteFont? : Drawing.SpriteFont)</pre>
 --------------
 
 The Label constructor takes 4 optional arguments, the text to display, x 
-coordinate, y coordinate, and an optional SpriteFont.
+coordinate, y coordinate, a font, and an optional SpriteFont. If a SpriteFont is specified, 
+it will take precidence over the built in font.
 
 ## Properties
-<pre>lable.text</pre>
+<pre>label.text</pre>
 ------------------
 
 The text to be drawn when the label is drawn. Defaults to empty string.
+
+<pre>label.font</pre>
+------------------
+
+The built in font to use when drawing the label.
 
 <pre>label.spriteFont</pre>
 ------------------

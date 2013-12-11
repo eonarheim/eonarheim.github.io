@@ -6,9 +6,8 @@ next_section: animation
 permalink: /docs/Spritefont/
 ---
 
-A Sprite is just an image that represents a smaller piece of a bigger image, 
-known as a sprite sheet. Sprites are useful for providing static images to
-a game.
+A SpriteFont is just an image that represents a some font as an image. SpriteFonts
+can be used to add more variety to the fonts in your game.
 
 ## Usage
 --------
@@ -16,16 +15,18 @@ a game.
 // Load image into Excalibur
 var game = new Engine();
 var loader = new Loader();
-var image = new PreloadedImage("spriteFont.png");
+var image = new Texture("spriteFont.png");
 loader.addResource(image);
 game.load(loader);
 
 var spriteFont = new new Drawing.SpriteFont(spriteFontImage, '0123456789abcdefghijklmnopqrstuvwxyz,!\'&."?- ', true, 16, 3, 16, 16);
+
+var label = Label("Some Text", spriteFont);
 {% endhighlight %}
 
 
 ## Constructor 
-<pre>new(public image : PreloadedImage, 
+<pre>new(public image : Texture, 
    private alphabet : string, 
    private caseInsensitive : boolean, 
    columns : number, 
@@ -34,9 +35,10 @@ var spriteFont = new new Drawing.SpriteFont(spriteFontImage, '0123456789abcdefgh
    spHeight : number)</pre>
 --------------
 
-The Actor constructor takes 5 optional parameters, x position, y position,
-width, height, and color. If no parameters are specified x, y, width, and 
-height will all default to 0. Color will default to black.
+The SpriteFont constructor takes 6 arguments. The first being the loaded 
+"Texture" resourse that contains the font. The next argument specifies the 
+alphabet of the font in row major order. Additionally the number of columns,
+rows, and the height and width of each individual sprite are required.
 
 ## Properties
 <pre>sprite.sx</pre>
