@@ -2,7 +2,7 @@
 layout: docs
 title: SpriteSheet
 prev_section: color
-next_section: none
+next_section: sprite
 permalink: /docs/spritesheet/
 ---
 
@@ -72,4 +72,4 @@ animation.
 <pre>getSprite(index : number)</pre>
 --------------
 
-Returns a "Srite" at a specific index in the sprite sheet (in row major order).
+Returns a "Sprite" at a specific index in the sprite sheet (in row major order).
