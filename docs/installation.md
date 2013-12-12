@@ -44,7 +44,7 @@ var game : Engine = new Engine();
 We are currently in the Nuget.org package library as an alpha package. You can run
 the command here
 {% highlight rconsole %}
-PM> Install-Package Excalibur Prerelease
+PM> Install-Package Excalibur -Pre
 {% endhighlight %}
 
 Or find us in the VS Nuget Package Manager with "Include Prelease" turned on.
