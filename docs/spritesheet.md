@@ -31,7 +31,7 @@ var sprites = new Drawing.SpriteSheet(image, 10, 10, 32, 32);
 --------------
 
 The SpriteSheet constructor takes a preloaded image argument, the number of 
-columns of images in your sprite sheet, the number of rows in your sprite
+columns of images in your sprite sheet, the number of rows of images in your sprite
 sheet, the width in pixels of each individual sprite, and the height in pixels
 of each individual sprite.
 
@@ -51,9 +51,9 @@ Gets or sets the list of individul sprites.
 --------------
 
 Returns an "Animation" by specifying the engine, the indices of each sprite in 
-the animation, and speed (in milliseconds) that each frame should take in the 
-animation. Sprites in the sprite sheet are index in row major order, meaning 
-that each sprite is numbered starting at zero beginning at the first row, then 
+the animation, and the speed (in milliseconds) that each frame should take in the 
+animation. Sprites in the sprite sheet are indexed in row-major order, meaning 
+that each sprite is numbered starting at zero beginning at the first row, then at zero at 
 the second row, etc.
 
 <pre>spriteSheet.getAnimationBetween(engine: Engine, beginIndex : number, endIndex : number, speed : number)</pre>
@@ -61,15 +61,15 @@ the second row, etc.
 
 Returns an "Animation" by specifying a beginning sprite index (inclusive) and 
 an end sprite index (exclusive), and a speed for each frame. Indices are 
-specified in row major order.
+specified in row-major order.
 
 <pre>getAnimationForAll(engine: Engine, speed : number)</pre>
 ---------------
 
-Returns an "Animation" treating all of the sprite sheet as members of the 
+Returns an "Animation", treating every sprite in the sprite sheet as members of the 
 animation.
 
 <pre>getSprite(index : number)</pre>
 --------------
 
-Returns a "Sprite" at a specific index in the sprite sheet (in row major order).
+Returns a "Sprite" at a specific index in the sprite sheet (in row-major order).
