@@ -6,8 +6,8 @@ next_section: home
 permalink: /docs/vector/
 ---
 
-Vectors are very similar to points, the difference is that a vector represents 
-a direction and magnitude. Examples of vectors mightbe gravity, the force of a
+Vectors are very similar to points. A vector represents 
+a direction and magnitude. Examples of vectors might be gravity, the force of 
 friction, or the velocity and direction of a bullet.
 
 
@@ -67,7 +67,7 @@ The y component of the vector.
 <pre>vector.distance(v? : Vector) : number</pre>
 --------------
 
-Calculate the distance from this vector to another. If no other vector is specified
+Calculate the distance from this vector to another vector. If no other vector is specified,
 the distance from the origin will be returned.
 
 <pre>vector.normalize() : Vector</pre>
@@ -79,18 +79,18 @@ magnitude of 1.
 <pre>vector.scale(size : number) : Vector</pre>
 --------------
 
-Return a new vector who's magnitude is "size" times bigger.
+Return a new vector whose magnitude is "size" times bigger.
 
 <pre>vector.add(v : Vector) : Vector</pre>
 --------------
 
-Return a new vector who's x and y components are the
+Return a new vector whose x and y components are the
 sum of both vectors.
 
 <pre>vector.minus(v : Vector) : Vector</pre>
 --------------
 
-Return a new vector who's x and y components are the
+Return a new vector whose x and y components are the
 difference of the original vector and the "v" vector.
 
 <pre>vector.dot(v : Vector) : number</pre>
