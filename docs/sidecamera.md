@@ -6,8 +6,8 @@ next_section: topcamera
 permalink: /docs/sidecamera/
 ---
 
-The Side Camera is a side locked camera that follow the player horizontally. This
-is useful for many side scrolling games.
+The Side Camera is a side-locked camera that follow the player horizontally. This
+is useful for many side-scrolling games.
 
 ## Usage
 --------
