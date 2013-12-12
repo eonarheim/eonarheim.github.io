@@ -30,8 +30,8 @@ game.load(loader).then(function(){
 <pre>new(image: Texture, public sx: number, public sy:number, public swidth: number, public sheight : number)</pre>
 --------------
 
-The Actor constructor takes 5 optional parameters, x position, y position,
-width, height, and color. If no parameters are specified x, y, width, and 
+The Actor constructor takes 5 optional parameters: x position, y position,
+width, height, and color. If no parameters are specified, then x, y, width, and 
 height will all default to 0. Color will default to black.
 
 ## Properties
@@ -61,7 +61,7 @@ Sets or gets the height of the sprite in source image pixels.
 -------------
 
 Sets the origin for any translations relative to the parent coordinates. For example, if this sprite is
-added to an actor then rotation and scaling will be done relative to that actor.
+added to an actor, then rotation and scaling will be done relative to that actor.
 
 To transform about the center of an actor use the following code:
 {% highlight javascript%}
