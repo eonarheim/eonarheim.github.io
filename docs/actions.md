@@ -8,7 +8,7 @@ permalink: /docs/actions/
 
 Actions are a special type of method on actors that allow motions to be scripted. 
 Actions operate in a "fluent" style allowing you to chain actions together.
-These are incredibly useful when creating NPCs (non player characters), scripted
+They are incredibly useful when creating NPCs (non player characters), scripted
 cinematics, and AIs.
 
 A platformer with moving platforms is a good example of how you might use the moveTo 
