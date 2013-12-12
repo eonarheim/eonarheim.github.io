@@ -18,7 +18,7 @@ First [download](https://github.com/eonarheim/Excalibur/releases/), and include 
 
 Then create the game container with the "Engine" constructor. The game container 
 is responsible for running the mainloop that drives the game, maintaining the 
-scene graph, and keep track of all of the basic state related to the game.
+scene graph, and keeping track of all of the basic state related to the game.
 
 It is important to call "game.start()" after you are finished building the game
 to start the game.
@@ -30,11 +30,11 @@ game.start();
 {% endhighlight %}
 
 The most important primitive in Excalibur is an "Actor." Anything that can move on the
-screen, collide with another Actor, respond to events, or interact with the current scene, 
+screen, collide with another actor, respond to events, or interact with the current scene, 
 must be an actor.
 
-In order for actors to take part in the game the must be added to the game's current 
-scene, like so
+In order for actors to take part in the game, they must be added to the game's current 
+scene.
 
 {% highlight javascript %}
 var game = new Engine();
@@ -50,8 +50,8 @@ game.start();
 {% endhighlight %}
 
 
-Right now our game is pretty boring, we would like to have actors respond to user key
-presses. We can accomplish this by adding event listeners to actor for specific keys.
+Right now our example game is pretty boring; we would like to have actors respond to user key
+presses. We can accomplish this by adding event listeners to the actor for specific keys.
 In Excalibur, you can listen for the "keypressed" event; however, there is a shorthand
 for specific keys by just specifying the key in the "addEventListener" call.
 
@@ -84,7 +84,7 @@ game.addChild(actor);
 game.start();
 {% endhighlight %}
 
-And there you have it a very simple game with rectangles responding to user
+Now we have a very simple game with rectangles responding to user
 input.
 
 **Note:** Generally it is a good idea to break each component of your game into 
