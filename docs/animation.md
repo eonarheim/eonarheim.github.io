@@ -6,8 +6,8 @@ next_section: texture
 permalink: /docs/animation/
 ---
 
-Animations allow you to display a series of images on after another creating
-the illusion of animation. Generally these images will come from a sprite 
+Animations allow you to display a series of images one after another, creating
+the illusion of change. Generally these images will come from a sprite 
 sheet source.
 
 ## Usage
@@ -52,7 +52,7 @@ Sets the rotation of the animation by a certain angle (in radians).
 <pre>animation.setScale(scale: number)</pre>
 -----------
 
-Set the scale fo teh animation by an amount (setting this to 2, would double 
+Set the scale of the animation by an amount (for example, setting this to 2 would double 
 the size of the animation).
 
 <pre>animation.reset()</pre>
@@ -75,7 +75,7 @@ Excalibur. You **should not** call tick.
 <pre>animation.draw(ctx: CanvasRenderingContext2D, x: number, y: number)</pre>
 -----------
 
-Draw draws the current frame of the animtaion of animation onto the graphics 
+Draw will draw the current frame of the animtaion onto the graphics 
 context at a certain x and y.
 
 <pre>animation.play (x : number, y : number)</pre>
