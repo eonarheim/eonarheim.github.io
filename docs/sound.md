@@ -7,7 +7,7 @@ permalink: /docs/sound/
 ---
 
 The Sound object allows games built in Excalibur to have basic audio components,
-from sound tracks to sound effects. It is generally recommended to preload 
+from soundtracks to sound effects. It is generally recommended to preload 
 sound using the "Sound" object.
 
 ## Usage
@@ -29,7 +29,7 @@ game.load(loader).then(()=>{
 <pre>new(path : string, volume? : number)</pre>
 --------------
 
-The Sound constructor takes a path to an audio file, and optionally a value 
+The Sound constructor takes a path to an audio file, and optionally a volume 
 between 0-1. If no volume is specified the default volume is 1.
 
 ## Methods
@@ -43,7 +43,7 @@ Sets the volume that the sound will play at between 0-1. 0 begin silent, and
 <pre>sound.setLoop(loop : boolean)</pre>
 --------------
 
-Sets the looping property, if set to true the sound will loop forever.
+Sets the looping property. If set to true, the sound will loop forever.
 
 <pre>sound.load()</pre>
 --------------
