@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Point
-prev_section: scenestack
+prev_section: topcamera
 next_section: vector
 permalink: /docs/point/
 ---

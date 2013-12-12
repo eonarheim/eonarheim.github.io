@@ -2,7 +2,7 @@
 layout: docs
 title: Vector
 prev_section: point
-next_section: none
+next_section: home
 permalink: /docs/vector/
 ---
 

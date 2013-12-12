@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Sound
-prev_section: image
+prev_section: texture
 next_section: promises
 permalink: /docs/sound/
 ---

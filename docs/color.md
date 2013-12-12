@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Color
-prev_section: actor
+prev_section: logger
 next_section: spritesheet
 permalink: /docs/color/
 ---

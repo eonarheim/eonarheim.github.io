@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Side Camera
-prev_section: loader
+prev_section: actions
 next_section: topcamera
 permalink: /docs/sidecamera/
 ---

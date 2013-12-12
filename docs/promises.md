@@ -1,8 +1,8 @@
 ---
 layout: docs
 title: Promises
-prev_section: color
-next_section: Scene Stack
+prev_section: sound
+next_section: loader
 permalink: /docs/promises/
 ---
 

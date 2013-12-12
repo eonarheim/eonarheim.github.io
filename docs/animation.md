@@ -1,8 +1,8 @@
 ---
 layout: docs
 title: Animation
-prev_section: none
-next_section: none
+prev_section: sprite
+next_section: texture
 permalink: /docs/animation/
 ---
 

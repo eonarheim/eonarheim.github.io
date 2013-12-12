@@ -1,8 +1,8 @@
 ---
 layout: docs
 title: Top Camera
-prev_section: promises
-next_section: sidecamera
+prev_section: sidecamera
+next_section: point
 permalink: /docs/topcamera/
 ---
 

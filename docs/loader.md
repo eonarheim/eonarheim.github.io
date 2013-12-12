@@ -1,8 +1,8 @@
 ---
 layout: docs
 title: Loader
-prev_section: actor
-next_section: none
+prev_section: promises
+next_section: actions
 permalink: /docs/loader/
 ---
 

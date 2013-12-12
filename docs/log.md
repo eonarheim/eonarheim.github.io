@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Logger
-prev_section: actor
+prev_section: label
 next_section: color
 permalink: /docs/log/
 ---
