@@ -36,12 +36,12 @@ Returns the current singleton instance of the logger.
 <pre>logger.log(message: string, level?: Log)</pre>
 -------------
 
-Log a message to the logger, if now level is specified the message will be 
+Log a message to the logger. If no level is specified the message will be 
 logged at the default level.
 
 <pre>logger.addAppender(appender : IAppender)</pre>
 ------------
 
-Add a specific appender to the logger, by default Excalibur comes with a 
+Add a specific appender to the logger. By default, Excalibur comes with a 
 "ConsoleAppender" and a "ScreenAppender". The "ConsoleAppender" writes logs
 to the browser console and the "ScreenAppender" writes logs to the screen.
