@@ -25,7 +25,7 @@ the body tag.
       // TODO: Build an awesome game in JavaScript here
    </script>
 </body>
-</html
+</html>
 
 {% endhighlight %}
 
