@@ -32,7 +32,7 @@ game.load(loader);
 --------------
 
 The Loader constructor takes an optional list of loadables. The loader can
-be initialize with other methods as well.
+be initialized with other methods as well.
 
 ## Methods
 <pre>loader.addResource(loadable : ILoadable)</pre>
