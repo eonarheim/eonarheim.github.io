@@ -7,7 +7,7 @@ permalink: /docs/color/
 ---
 
 Excalibur provides a simple abstraction over colors for the canvas that allows
-rgb, rgba, or hex input.
+RGB, RGBA, or HEX input.
 
 ## Usage
 --------
@@ -32,9 +32,9 @@ game.ctx.fillStyle = color.toString();
     public a? : number)</pre>
 ----------
 
-The Color constructor takes 3 required paramenters each numbers between 0-255
+The Color constructor takes 3 required paramenters, each a number between 0-255
 representing red, green, and blue. The 4th optional parameter specifies the 
-alpha value betwen 0-1. An alpha of 1 means the color is completely opaque and
+alpha value betwen 0 and 1. An alpha of 1 means the color is completely opaque and
 a value of 0 means the color is completely transparent.
 
 ## Static Constants
@@ -57,8 +57,7 @@ a value of 0 means the color is completely transparent.
 <pre>Color.Transparent</pre>
 ----------
 
-Excalibur comes with a number of pre defined static color constants accessible 
-like off of the Color type.
+Excalibur comes with a number of predefined static color constants accessible off of the Color type.
 
 
 ## Static Methods
@@ -95,7 +94,7 @@ completely transparent.
 <pre>color.toString()</pre>
 -----------
 
-Returns a color string that the dom or native draw code can understand. Important
+Returns a color string that the DOM or native draw code can understand. This is important
 to use when directly operating on the canvas context or setting styles in the DOM.
 
 
