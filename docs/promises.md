@@ -7,8 +7,8 @@ permalink: /docs/promises/
 ---
 
 Excalibur implements promises following the Promises/A+ specification. Promises
-are incredibly useful tool for managing asynchronous behaviour in you game. A 
-promise is a one time use object meant to capture asychronous behavior like 
+are an incredibly useful tool for managing asynchronous behaviour in you game. A 
+promise is a single-use object meant to capture asychronous behavior, like 
 callbacks. Promises **should not** be used as an eventing system.
 
 ## Usage
@@ -46,9 +46,9 @@ pending state.
 ------------------
 
 Registers the success callback and the reject callback with the promise. If 
-the promise is resolved then the success callback will be fired with the 
-resolved value as an argument. If the promise is rejected then the reject
-callback with the rejected value as an argument.
+the promise is resolved, then the success callback will be fired with the 
+resolved value as an argument. If the promise is rejected, then the reject
+callback will be fired with the rejected value as an argument.
 
 <pre>promise.error(errorCallback? : (value? : any) => any) : IPromise</pre>
 ------------------
@@ -59,7 +59,7 @@ execution the error callback will be fired.
 <pre>promise.resolve(value? : any) : IPromise</pre>
 ------------------
 
-When a promise is resolved with a value, all success callback will be fired
+When a promise is resolved with a value, all success callbacks will be fired
 in the order they were added.
 
 <pre>promise.reject(value? : any) : IPromise</pre>
@@ -87,5 +87,5 @@ enum PromiseState {
 <pre>Promise.wrap(value? : any) : IPromise</pre>
 ------------------
 
-Sometimes when working with promises you want to wrap a value type inside of a
+Sometimes when working with promises, you want to wrap a value type inside of a
 resolved promise. 
