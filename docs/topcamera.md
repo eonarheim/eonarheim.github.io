@@ -6,7 +6,7 @@ next_section: point
 permalink: /docs/topcamera/
 ---
 
-The Top Camera is a top down type camera that follow the player horizontally
+The Top Camera is a top-down camera that follow the player horizontally
 and vertically. This may be useful in games where the camera needs to be locked
 to the center of the screen.
 
