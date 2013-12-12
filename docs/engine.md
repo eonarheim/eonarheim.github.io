@@ -24,10 +24,10 @@ game.start();
 <pre>new(width? : number, height? : number, canvasElementId? : string,  displayMode? : DisplayMode)</pre>
 --------------
 
-The Engine constructor takes 4 optional parameters, a game width, height, 
+The Engine constructor takes 4 optional parameters: a game width, game height, 
 a target canvas element to draw to, and a display mode. If the 'canvasElementId'
-is not specified a new canvas will be appended to the body of the page and
-the game will be drawn to that. If the 'displayMode' is not specified then the
+is not specified, a new canvas will be appended to the body of the page and
+the game will be drawn to that canvas. If the 'displayMode' is not specified, the
 default displayMode will be FullScreen.
 
 ## Properties
@@ -35,12 +35,12 @@ default displayMode will be FullScreen.
 <pre>engine.canvas</pre>
 ------------------------
 
-Reference to the current html canvas element the game is drawing to.
+Reference to the current HTML canvas element the game is drawing to.
 
 <pre>engine.ctx</pre>
----------------------
+---------------------o
 
-Reference to the current html canvas rendering context. This may be used to 
+Reference to the current HTML canvas rendering context. This may be used to 
 implement custom drawing methods for extended actors.
 
 <pre>engine.backgroundColor</pre>
@@ -107,20 +107,20 @@ instead use the 'engine.isKeyDown' method to detect specific key downs.
 <pre>engine.camera</pre>
 ------------------------
 
-With the 'camera' property you can either get or set the current camera for the
+With the 'camera' property, you can either get or set the current camera for the
 game. By default there is no camera set and the property is 'null'. If you wish
 to create a camera see the Camera documentation.
 
 <pre>engine.currentScene</pre>
 ------------------------------
 
-Access the current scene that is being drawn in the scene graph. To learn more
-about scenes visit the Scene documentation.
+Accesses the current scene that is being drawn in the scene graph. To learn more
+about scenes, visit the Scene documentation.
 
 <pre>engine.rootScene</pre>
 ---------------------------
 
-Access the root scene in the scene graph. To learn more about scenes visit the
+Access the root scene in the scene graph. To learn more about scenes, visit the
 Scene documentation.
 
 ## Methods
@@ -129,14 +129,14 @@ Scene documentation.
    handler: (event?: ActorEvent) => void)</pre>
 ---------------------------
 
-Add an event listener to the engine, you can listen for a variety of events 
-off of the engine, see the events section below for a complete list.
+Add an event listener to the engine. You can listen for a variety of events 
+off of the engine; see the events section below for a complete list.
 
 <pre>engine.setAntialiasing(isSmooth : boolean)</pre>
 --------------------------
 
 If supported by the browser, this will set the antialiasing flag on the canvas. 
-Set this to false if you want a 'jaggy' pixel art look to your image resources.
+Set this to false if you want a 'jagged' pixel art look to your image resources.
 
 <pre>engine.getAntialiasing() : boolean</pre>
 --------------------------
@@ -148,7 +148,7 @@ antialiasing flag.
    x : number, y : number)</pre>
 --------------------------
 
-Plays a sprite animation on the screen a specified x and y (in game 
+Plays a sprite animation on the screen at the specified x and y (in game 
 coordinates, not screen pixels). These animations play independent of actors,
 and will be cleaned up internally as soon as they are complete. *Note* animations
 that loop will never be cleaned up.
@@ -159,7 +159,7 @@ that loop will never be cleaned up.
 Adds an actor to the current scene of the game. This is synonymous to calling
 engine.currentScene.addChild(actor : Actor). 
 
-Actors can only be draw if they are a member of a scene, and only the 
+Actors can only be drawn if they are a member of a scene, and only the 
 'currentScene' may be drawn or updated.
 
 <pre>engine.removeChild(actor : Actor)</pre>
@@ -180,18 +180,18 @@ and drawing the top scene. This is useful if you need to change levels or screen
 --------------------------
 
 This pops the current scene off of Excalibur's internal scene stack, returning
-the game to the previous level or screen. The root scene can never be popped,
+the game to the previous level or screen. The root scene can never be popped;
 there will always be at least one scene in the game.
 
 <pre>engine.isKeyUp(key : Keys) : boolean</pre>
 ---------------------------
 
-Returns true if the 'key' parameter has received the 'keyup' event this frame.
+Returns true if the 'key' parameter has received the 'keyup' event during this frame.
 
 <pre>engine.isKeyDown(key : Keys) : boolean</pre>
 ---------------------------
 
-Returns true if the 'key' parameter has received the 'keydown' event this frame.
+Returns true if the 'key' parameter has received the 'keydown' event during this frame.
 
 <pre>engine.isKeyPressed(key : Keys) : boolean</pre>
 ---------------------------
