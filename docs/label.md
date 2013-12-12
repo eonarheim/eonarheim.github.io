@@ -6,9 +6,9 @@ next_section: log
 permalink: /docs/label/
 ---
 
-Labels are a special type of actor meant to be convenient way to display text
+Labels are a special type of actor meant to be a convenient way to display text
 on the screen. As a consequence of being an actor, all of the capabilities of
-actors come with.
+actors can be applied to a label.
 
 ## Usage
 --------
@@ -28,9 +28,9 @@ game.start();
 <pre>new(text? : string, x? : number, y? : number, font? : string, spriteFont? : Drawing.SpriteFont)</pre>
 --------------
 
-The Label constructor takes 4 optional arguments, the text to display, x 
+The Label constructor takes 4 optional arguments: the text to display, x 
 coordinate, y coordinate, a font, and an optional SpriteFont. If a SpriteFont is specified, 
-it will take precidence over the built in font.
+it will take precedence over the built-in font.
 
 ## Properties
 <pre>label.text</pre>
@@ -41,12 +41,12 @@ The text to be drawn when the label is drawn. Defaults to empty string.
 <pre>label.font</pre>
 ------------------
 
-The built in font to use when drawing the label.
+The built-in font to use when drawing the label.
 
 <pre>label.spriteFont</pre>
 ------------------
 
-The spriteFont associated with the text if one has been set. Defaults to null.
+The spriteFont associated with the text, if one has been set. Defaults to null.
 
 ## Methods
 
