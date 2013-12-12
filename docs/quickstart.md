@@ -10,7 +10,7 @@ Building a game is pretty simple, lets look at the "Hello World" example.
 
 
 
-First [download](https://github.com/eonarheim/Excalibur/releases/), and include the Excalibur script at the bottom of the body tag:
+First [download](https://github.com/eonarheim/Excalibur/releases/) and include the Excalibur script at the bottom of the body tag:
 
 {% highlight html %}
 <script type="text/javascript" src="Excalibur.js"></script>
