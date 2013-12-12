@@ -32,15 +32,15 @@ game.start();
    color? : Color)</pre>
 --------------
 
-The Actor constructor takes 5 optional parameters, x position, y position,
-width, height, and color. If no parameters are specified x, y, width, and 
-height will all default to 0. Color will default to black.
+The Actor constructor takes 5 optional parameters: x position, y position,
+width, height, and color. If no parameters are specified, the default values of x, y, width, and 
+height will all be 0. Color will default to black.
 
 ## Static Methods
 <pre>actor.extend(methods : any)</pre>
 ---------------
 You may wish to extend native actor functionality. Any method on actor may be
-extended to support additional functionaliy, in the example below we create 
+extended to support additional functionaliy. In the example below we create 
 a new type called "MyActor"
 
 {% highlight javascript %}
@@ -57,7 +57,8 @@ var MyActor = Actor.extend({
 var myActor = new MyActor(100, 100, 100, 100, Color.Azure);
 {% endhighlight %}
 
-**Note** - Please use the built in inheritance mechanic if you are using TypeScript. This method is meant as a convenience for games built in JavaScript.
+**Note** - If you are using TypeScript, it is easier to use the built-in inheritance mechanic . 
+This method is meant as a convenience for games built in JavaScript.
 
 ## Properties
 <pre>actor.x</pre>
@@ -73,7 +74,7 @@ The y position of the actor in game coordinates. Defaults to 0.
 <pre>actor.rotation</pre>
 -------------------------
 
-The current rotation of an actor in radians. Defaults to 0 radians.
+The current rotation of an actor in radians. Defaults to 0.
 
 <pre>actor.scale</pre>
 ----------------------
@@ -103,8 +104,8 @@ The current scale velocity of an actor. Defaults to 0.
 <pre>actor.invisible</pre>
 -------------------
 
-Get or set the current visibility of an actor. If invisible is set to
-true then the actor will no longer be drawn, but will still receive 
+Get or set the current visibility of an actor. If 'invisible' is set to
+true, then the actor will no longer be drawn, but will still receive 
 updates.
 
 <pre>actor.fixed</pre>
@@ -112,12 +113,12 @@ updates.
 
 If 'fixed' is set to true the actor will not be pushed by other actors
 on collision. If 'fixed' is set to false then other actors will influence
-the current actors position on collision.
+the current actor's position on collision.
 
 <pre>actor.frames</pre>
 -------------------
 
-Dictionary containing all the drawable images/animations for an actor. You 
+Dictionary containing all of the drawable images/animations for an actor. You 
 *should not* be adding to this directory. Use the 'addDrawing' method below.
 
 <pre>actor.currentDrawing</pre>
@@ -129,13 +130,13 @@ set this property. Use the 'setDrawing' method below.
 <pre>actor.color</pre>
 -------------------
 
-The current color for an actor, this is only used if no drawings have been
+The current color for an actor. This is only used if no drawings have been
 specified for an actor.
 
 <pre>actor.parent</pre>
 -------------------
 
-The parent property represents the SceneNode that is this actors parent.
+The parent property represents the SceneNode that is this actor's parent.
 This property is null by default and is set when the actor is added to the
 scene graph.
 
@@ -173,14 +174,14 @@ Set the current drawing for the actor from the available drawing collection.
 <pre>actor.setCenterDrawing(isDrawingCentered : boolean)</pre>
 -------------------
 
-Centers the current drawing around the actors bounding box.
+Centers the current drawing around the actor's bounding box.
 
 <pre>actor.addEventListener(eventName : string,  
    handler: (event?: ActorEvent) => void)</pre>
 ---------------------------
 
-Add an event listener to this actor, you can listen for a variety of events 
-off of the actor, see the events section below for a complete list.
+Add an event listener to this actor. You can listen for a variety of events 
+off of the actor; see the events section below for a complete list.
 
 <pre>actor.triggerEvent(eventName : string, event? : ActorEvent)</pre>
 -------------------
@@ -195,24 +196,24 @@ Returns a vector with the x and y position of the center of the actor.
 <pre>actor.getWidth()</pre>
 -------------------
 
-Returns the width of an actor factoring in the scale.
+Returns the width of an actor, factoring in the scale.
 
 <pre>actor.setWidth(width : number)</pre>
 -------------------
 
-Sets the width of an actor factoring in the scale.
+Sets the width of an actor, factoring in the scale.
 
 
 <pre>actor.getHeight()</pre>
 -------------------
 
-Returns the height of an actor factoring in the scale.
+Returns the height of an actor, factoring in the scale.
 
 
 <pre>actor.setHeight(height : number)</pre>
 -------------------
 
-Sets the height of an actor factoring in the scale.
+Sets the height of an actor, factoring in the scale.
 
 <pre>actor.getLeft()</pre>
 -------------------
@@ -243,13 +244,13 @@ the actor's bounding box.
 <pre>actor.collides(other : Actor)</pre>
 -------------------
 
-Returns the 'Side' of the other actor, if actor collides with the other actor. 
+Returns the 'Side' of the other actor if actor collides with the other actor. 
 Otherwise it returns the 'None' side.
 
 <pre>actor.within(other : actor, distance : number)</pre>
 -------------------
 
-Returns true if the two actors are less than or equal to the distance specified.
+Returns true if the two actors are less than or equal to the distance specified from each other.
 
 <pre>actor.moveTo(x : number, y : number, speed : number</pre>
 -------------------
@@ -257,7 +258,7 @@ Returns true if the two actors are less than or equal to the distance specified.
 This method will move an actor to the specified x and y position at the speed
 specified (in pixels per second) and return back the actor.
 
-This method is part of the actor 'Action' fluent api allowing action chaining. 
+This method is part of the actor 'Action' fluent API allowing action chaining. 
 
 <pre>actor.moveBy(x : number, y : number, time : number</pre>
 -------------------
@@ -265,7 +266,7 @@ This method is part of the actor 'Action' fluent api allowing action chaining.
 This method will move an actor to the specified x and y position by a certain
 time (in milliseconds).
 
-This method is part of the actor 'Action' fluent api allowing action chaining. 
+This method is part of the actor 'Action' fluent API allowing action chaining. 
 
 <pre>actor.rotateTo(angleRadians : number, speed : number</pre>
 -------------------
@@ -273,7 +274,7 @@ This method is part of the actor 'Action' fluent api allowing action chaining.
 This method will rotate an actor to the specified angle at the speed
 specified (in radians per second) and return back the actor.
 
-This method is part of the actor 'Action' fluent api allowing action chaining. 
+This method is part of the actor 'Action' fluent API allowing action chaining. 
 
 <pre>actor.rotateBy(angleRadians : number, time : number</pre>
 -------------------
@@ -281,7 +282,7 @@ This method is part of the actor 'Action' fluent api allowing action chaining.
 This method will rotate an actor to the specified angle by a certain time 
 (in milliseconds) and return back the actor.
 
-This method is part of the actor 'Action' fluent api allowing action chaining. 
+This method is part of the actor 'Action' fluent API allowing action chaining. 
 
 <pre>actor.scaleTo(size : number, speed : number</pre>
 -------------------
@@ -289,7 +290,7 @@ This method is part of the actor 'Action' fluent api allowing action chaining.
 This method will scale an actor to the specified size at the speed
 specified (in magnitude increase per second) and return back the actor.
 
-This method is part of the actor 'Action' fluent api allowing action chaining. 
+This method is part of the actor 'Action' fluent API allowing action chaining. 
 
 <pre>actor.scaleBy(size : number, time : number</pre>
 -------------------
@@ -297,20 +298,20 @@ This method is part of the actor 'Action' fluent api allowing action chaining.
 This method will scale an actor to the specified size by a certain time
 (in milliseconds) and return back the actor.
 
-This method is part of the actor 'Action' fluent api allowing action chaining. 
+This method is part of the actor 'Action' fluent API allowing action chaining. 
 
 
 <pre>actor.blink(frequency : number, duration : number, blinkTime? number)</pre>
 -------------------
 
 This method will cause an actor to blink (become visible and and invisible) at
-a frequency (blinks per second) for a duration (in milliseconds). Optionally you
-may specify blinkTime which indicates the amount of time the actor is invisible
+a frequency (blinks per second) for a duration (in milliseconds). Optionally, you
+may specify blinkTime, which indicates the amount of time the actor is invisible
 during each blink.
 
 To have the actor blink 3 times in 1 second, call actor.blink(3, 1000).
 
-This method is part of the actor 'Action' fluent api allowing action chaining. 
+This method is part of the actor 'Action' fluent API allowing action chaining. 
 
 <pre>actor.delay(time : number)</pre>
 -------------------
@@ -318,7 +319,7 @@ This method is part of the actor 'Action' fluent api allowing action chaining.
 This method will delay the next action from executing for a certain amount of
 time (in milliseconds).
 
-This method is part of the actor 'Action' fluent api allowing action chaining. 
+This method is part of the actor 'Action' fluent API allowing action chaining. 
 
 <pre>actor.repeat(times? : number)</pre>
 -------------------
@@ -327,7 +328,7 @@ This method will cause the actor to repeat all of the previously called actions
 a certain number of times. If the number of repeats is not specified it will 
 repeat forever.
 
-This method is part of the actor 'Action' fluent api allowing action chaining. 
+This method is part of the actor 'Action' fluent API allowing action chaining. 
 
 <pre>actor.repeatForever()</pre>
 --------------------
@@ -335,7 +336,7 @@ This method is part of the actor 'Action' fluent api allowing action chaining.
 This method will cause the actor to repeat all of the previously called actions
 forever.
 
-This method is part of the actor 'Action' fluent api allowing action chaining. 
+This method is part of the actor 'Action' fluent API allowing action chaining. 
 
 <pre>actor.update(engine : Engine, delta : number)</pre>
 --------------------
