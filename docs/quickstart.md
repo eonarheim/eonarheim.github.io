@@ -6,7 +6,7 @@ next_section: engine
 permalink: docs/quickstart/
 ---
 
-Building a game is pretty simple, lets look at the "Hello World" example.
+Building a game is pretty simple. Let's look at the "Hello World" example.
 
 
 
