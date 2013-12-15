@@ -16,7 +16,7 @@ to the center of the screen.
 var game = new Engine();
 var actor = new Actor();
 
-var camera = Drawing.TopCamera(game);
+var camera = Camera.TopCamera(game);
 camera.setActorToFollow(actor);
 
 game.camera = camera;

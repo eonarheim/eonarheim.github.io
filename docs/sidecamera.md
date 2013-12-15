@@ -15,7 +15,7 @@ is useful for many side-scrolling games.
 var game = new Engine();
 var actor = new Actor();
 
-var camera = Drawing.SideCamera(game);
+var camera = Camera.SideCamera(game);
 camera.setActorToFollow(actor);
 
 game.camera = camera;
