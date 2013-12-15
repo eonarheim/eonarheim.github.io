@@ -16,7 +16,7 @@ sheet source.
 // Load image into Excalibur
 var game = new Engine();
 var loader = new Loader();
-var image = new PreloadedImage("myspritesheet.png");
+var image = new Texture("myspritesheet.png");
 loader.addResource(image);
 game.load(loader);
 
