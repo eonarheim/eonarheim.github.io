@@ -15,7 +15,7 @@ allow you to compact all of the images and animations in your game into a single
 // Load image into Excalibur
 var game = new Engine();
 var loader = new Loader();
-var image = new PreloadedImage("myspritesheet.png");
+var image = new Texture("myspritesheet.png");
 loader.addResource(image);
 game.load(loader);
 
@@ -27,7 +27,7 @@ var sprites = new Drawing.SpriteSheet(image, 10, 10, 32, 32);
 
 
 ## Constructor 
-<pre>new(public image : PreloadedImage, private columns: number, private rows: number, spWidth: number, spHeight: number)</pre>
+<pre>new(public image : Texture, private columns: number, private rows: number, spWidth: number, spHeight: number)</pre>
 --------------
 
 The SpriteSheet constructor takes a preloaded image argument, the number of 
