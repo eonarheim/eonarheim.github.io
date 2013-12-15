@@ -38,7 +38,7 @@ default displayMode will be FullScreen.
 Reference to the current HTML canvas element the game is drawing to.
 
 <pre>engine.ctx</pre>
----------------------o
+---------------------
 
 Reference to the current HTML canvas rendering context. This may be used to 
 implement custom drawing methods for extended actors.
