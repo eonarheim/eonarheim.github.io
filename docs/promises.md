@@ -15,7 +15,7 @@ callbacks. Promises **should not** be used as an eventing system.
 --------
 {% highlight javascript %}
 
-var promise = new Promise();
+var promise = new ex.Promise();
 
 promse.then(function(val){
 	console.log("Promise was resolved with some value", val);
@@ -42,7 +42,7 @@ The Promise constructor takes no arguments. Promises are created in the default
 pending state.
 
 ## Methods
-<pre>promise.then(successCallback? : (value? : any) => any, rejectCallback? : (value? : any) => any) : IPromise</pre>
+<pre>promise.then(successCallback?: (value?: any) => any, rejectCallback?: (value?: any) => any): ex.IPromise</pre>
 ------------------
 
 Registers the success callback and the reject callback with the promise. If 
@@ -50,25 +50,25 @@ the promise is resolved, then the success callback will be fired with the
 resolved value as an argument. If the promise is rejected, then the reject
 callback will be fired with the rejected value as an argument.
 
-<pre>promise.error(errorCallback? : (value? : any) => any) : IPromise</pre>
+<pre>promise.error(errorCallback?: (value?: any) => any): ex.IPromise</pre>
 ------------------
 
 If either the resolve or reject callback throw an exception during their 
 execution the error callback will be fired.
 
-<pre>promise.resolve(value? : any) : IPromise</pre>
+<pre>promise.resolve(value?: any): ex.IPromise</pre>
 ------------------
 
 When a promise is resolved with a value, all success callbacks will be fired
 in the order they were added.
 
-<pre>promise.reject(value? : any) : IPromise</pre>
+<pre>promise.reject(value?: any): ex.IPromise</pre>
 ------------------
 
 When a promise is rejected, the last rejected callback to be added will fired.
 
 
-<pre>promise.state() : PromiseState;</pre>
+<pre>promise.state(): ex.PromiseState;</pre>
 ------------------
 
 Queries the current state of a promise. Valid states for a promise are 'pending',
@@ -84,7 +84,7 @@ enum PromiseState {
 
 ## Static Methods
 
-<pre>Promise.wrap(value? : any) : IPromise</pre>
+<pre>Promise.wrap(value?: any): ex.IPromise</pre>
 ------------------
 
 Sometimes when working with promises, you want to wrap a value type inside of a

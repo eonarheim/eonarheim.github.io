@@ -13,20 +13,20 @@ can be used to add more variety to the fonts in your game.
 --------
 {% highlight javascript %}
 // Load image into Excalibur
-var game = new Engine();
-var loader = new Loader();
-var image = new Texture("spriteFont.png");
+var game = new ex.Engine();
+var loader = new ex.Loader();
+var image = new ex.Texture("spriteFont.png");
 loader.addResource(image);
 game.load(loader);
 
-var spriteFont = new new Drawing.SpriteFont(spriteFontImage, '0123456789abcdefghijklmnopqrstuvwxyz,!\'&."?- ', true, 16, 3, 16, 16);
+var spriteFont = new ex.SpriteFont(spriteFontImage, '0123456789abcdefghijklmnopqrstuvwxyz,!\'&."?- ', true, 16, 3, 16, 16);
 
-var label = Label("Some Text", spriteFont);
+var label = ex.Label("Some Text", spriteFont);
 {% endhighlight %}
 
 
 ## Constructor 
-<pre>new(public image : Texture, 
+<pre>new(public image : ex.Texture, 
    private alphabet : string, 
    private caseInsensitive : boolean, 
    columns : number, 
@@ -62,4 +62,3 @@ Sets or gets the width of the sprite in source image pixels.
 Sets or gets the height of the sprite in source image pixels.
 
 ## Methods
-<pre>sprite.draw(ctx: CanvasRenderin

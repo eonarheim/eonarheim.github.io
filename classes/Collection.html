@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Collection</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Arizonia' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/css/gridism.css" />
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/syntax.css" />
+    <link rel="icon" type="image/x-icon" href="/favicon.png" />
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-46390208-1', 'excaliburjs.com');
+    ga('send', 'pageview');
+
+    </script>
+
+    <!--<link rel="stylesheet" href="http://yui.yahooapis.com/3.8.0pr2/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <script src="http://yui.yahooapis.com/combo?3.8.0pr2/build/yui/yui-min.js"></script>-->
+</head>
+
+<body class="wrap">
+<header>
+  <div class="grid">
+    <div class="unit one-third center-on-mobiles">
+      <h1>
+        <a href="/">
+          <span>Excalibur</span>
+          <img src="/img/excalibur-title.png" width="307" height="115" alt="">
+        </a>
+      </h1>
+    </div>
+    <nav class="main-nav unit two-thirds">
+      <ul>
+  <li class="">
+    <a href="/">Overview</a>
+  </li>
+  <li class="selected">
+    <a href="/docs/home">Doc<span class="show-on-mobiles">s</span><span class="hide-on-mobiles">umentation</span></a>
+  </li>
+  <li>
+    <a href="/gallery/home">Gallery</a>
+  </li>
+  <li>
+    <a href="https://www.github.com/eonarheim/excalibur" target="_blank"><span class="hide-on-mobiles">View on </span>GitHub</a>
+  </li>
+</ul>
+    </nav>
+  </div>
+</header>
+
+<div>    
+    <section class="docs">
+ <div class="grid">
+
+   
+   <div class="unit four-fifths">
+     <article>
+      <h1>Collection</h1>
+      
+      
+      
+      <div class="intro"><p>Excaliburs dynamically resizing collection</p>
+</div>
+
+      
+    <div>
+          
+        <h2>Methods</h2>
+        
+        
+            <div id="methods">
+            
+               
+               <a name="methods_clear"></a>
+<div class="method item">
+     <pre>clear( ) </pre>
+    <hr>
+    <span class="foundat">
+    
+        
+    
+        
+    </span>
+    <p>Empties the collection</p>
+
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_count"></a>
+<div class="method item">
+    <pre>count( ): number </pre>
+    <hr>
+    <span class="foundat">
+    
+        
+    
+        
+    </span>
+    <p>Returns the count of the collection</p>
+
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_elementAt"></a>
+<div class="method item">
+    <pre>elementAt(index): T </pre>
+    <hr>
+    <span class="foundat">
+    
+        
+    
+        
+    </span>
+    <p>Returns an element at a specific index</p>
+
+    
+    <strong class="parameters">Parameters:</strong>
+    <table class="props">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+
+    
+        <tr>
+        
+            <td><code>index</code></td> <td><strong>Number</strong></td><td><p>Index of element to retreive</p>
+</td>
+        
+        
+            
+        </tr>
+    
+      </tbody>
+    </table>
+    <br/>
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_forEach"></a>
+<div class="method item">
+     <pre>forEach(func) </pre>
+    <hr>
+    <span class="foundat">
+    
+        
+    
+        
+    </span>
+    <p>Iterate over every element in the collection</p>
+
+    
+    <strong class="parameters">Parameters:</strong>
+    <table class="props">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+
+    
+        <tr>
+        
+            <td><code>func</code></td> <td><strong>(T,number)=>any</strong></td><td><p>Callback to call for each element passing a reference to the element and its index, returned values are ignored</p>
+</td>
+        
+        
+            
+        </tr>
+    
+      </tbody>
+    </table>
+    <br/>
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_insert"></a>
+<div class="method item">
+    <pre>insert(index): T </pre>
+    <hr>
+    <span class="foundat">
+    
+        
+    
+        
+    </span>
+    <p>Inserts an element at a specific index</p>
+
+    
+    <strong class="parameters">Parameters:</strong>
+    <table class="props">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+
+    
+        <tr>
+        
+            <td><code>index</code></td> <td><strong>Number</strong></td><td><p>Index to insert the element</p>
+</td>
+        
+        
+            
+        </tr>
+    
+      </tbody>
+    </table>
+    <br/>
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_internalSize"></a>
+<div class="method item">
+    <pre>internalSize( ): number </pre>
+    <hr>
+    <span class="foundat">
+    
+        
+    
+        
+    </span>
+    <p>Returns the size of the internal backing array</p>
+
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_map"></a>
+<div class="method item">
+     <pre>map(func) </pre>
+    <hr>
+    <span class="foundat">
+    
+        
+    
+        
+    </span>
+    <p>Mutate every element in the collection</p>
+
+    
+    <strong class="parameters">Parameters:</strong>
+    <table class="props">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+
+    
+        <tr>
+        
+            <td><code>func</code></td> <td><strong>(T,number)=>any</strong></td><td><p>Callback to call for each element passing a reference to the element and its index, any values returned mutate the collection</p>
+</td>
+        
+        
+            
+        </tr>
+    
+      </tbody>
+    </table>
+    <br/>
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_pop"></a>
+<div class="method item">
+    <pre>pop( ): T </pre>
+    <hr>
+    <span class="foundat">
+    
+        
+    
+        
+    </span>
+    <p>Removes elements from the end of the collection</p>
+
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_push"></a>
+<div class="method item">
+    <pre>push(element): T </pre>
+    <hr>
+    <span class="foundat">
+    
+        
+    
+        
+    </span>
+    <p>Push elements to the end of the collection</p>
+
+    
+    <strong class="parameters">Parameters:</strong>
+    <table class="props">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+
+    
+        <tr>
+        
+            <td><code>element</code></td> <td><strong>T</strong></td><td> </td>
+        
+        
+            
+        </tr>
+    
+      </tbody>
+    </table>
+    <br/>
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_remove"></a>
+<div class="method item">
+    <pre>remove(index): T </pre>
+    <hr>
+    <span class="foundat">
+    
+        
+    
+        
+    </span>
+    <p>Removes an element at a specific index</p>
+
+    
+    <strong class="parameters">Parameters:</strong>
+    <table class="props">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+
+    
+        <tr>
+        
+            <td><code>index</code></td> <td><strong>Number</strong></td><td><p>Index of element to remove</p>
+</td>
+        
+        
+            
+        </tr>
+    
+      </tbody>
+    </table>
+    <br/>
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_removeElement"></a>
+<div class="method item">
+     <pre>removeElement(element) </pre>
+    <hr>
+    <span class="foundat">
+    
+        
+    
+        
+    </span>
+    <p>Removes an element by reference</p>
+
+    
+    <strong class="parameters">Parameters:</strong>
+    <table class="props">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+
+    
+        <tr>
+        
+            <td><code>element</code></td> <td><strong>T</strong></td><td><p>Index of element to retreive</p>
+</td>
+        
+        
+            
+        </tr>
+    
+      </tbody>
+    </table>
+    <br/>
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_toArray"></a>
+<div class="method item">
+    <pre>toArray( ): T[] </pre>
+    <hr>
+    <span class="foundat">
+    
+        
+    
+        
+    </span>
+    <p>Returns a array representing the collection</p>
+
+    
+    
+</div>
+
+               
+            
+            </div>
+        
+        
+        <h2>Properties</h2>
+        
+            <div id="props">
+            
+                <a name="props_DefaultSize"></a>
+<div class="props item">
+    <pre><code>DefaultSize</code>: Number <em>(final)</em> <em>(static)</em></pre>
+    <hr>
+    <p>Default collection size</p>
+
+    
+</div>
+
+            
+            </div>
+        
+         
+        
+        
+        
+        
+    </div>
+    
+</div>
+
+  <div class="unit one-fifth hide-on-mobiles">
+  <aside>
+    <h4>Getting Started</h4>
+      <ul>
+      <li><a href="/docs/home/">Welcome</a></li>
+      <li><a href="/docs/install/">Installation</a></li>
+      <li><a href="/docs/quickstart/">Quick Start</a></li>
+      </ul>
+    <ul>
+      
+         <h4>Core</h4>
+         
+         <li><a href="/classes/Actor.html">Actor</a></li>
+         
+         <li><a href="/classes/Scene.html">Scene</a></li>
+         
+         <li><a href="/classes/Engine.html">Engine</a></li>
+         
+         <li><a href="/classes/Label.html">Label</a></li>
+         
+         <li><a href="/classes/Class.html">Class</a></li>
+         
+         <li><a href="/classes/Color.html">Color</a></li>
+         
+         <li><a href="/classes/Trigger.html">Trigger</a></li>
+         
+         <li><a href="/classes/DisplayMode.html">DisplayMode</a></li>
+         
+         <li><a href="/classes/Side.html">Side</a></li>
+         
+      
+         <h4>Media</h4>
+         
+         <li><a href="/classes/Sound.html">Sound</a></li>
+         
+         <li><a href="/classes/Texture.html">Texture</a></li>
+         
+         <li><a href="/classes/Polygon.html">Polygon</a></li>
+         
+         <li><a href="/classes/Animation.html">Animation</a></li>
+         
+         <li><a href="/classes/Sprite.html">Sprite</a></li>
+         
+         <li><a href="/classes/SpriteSheet.html">SpriteSheet</a></li>
+         
+         <li><a href="/classes/SpriteFont.html">SpriteFont</a></li>
+         
+      
+         <h4>Cameras</h4>
+         
+         <li><a href="/classes/TopCamera.html">TopCamera</a></li>
+         
+         <li><a href="/classes/SideCamera.html">SideCamera</a></li>
+         
+      
+         <h4>Effects</h4>
+         
+         <li><a href="/classes/ParticleEmitter.html">ParticleEmitter</a></li>
+         
+         <li><a href="/classes/Grayscale.html">Grayscale</a></li>
+         
+         <li><a href="/classes/Invert.html">Invert</a></li>
+         
+         <li><a href="/classes/Opacity.html">Opacity</a></li>
+         
+      
+         <h4>Utility</h4>
+         
+         <li><a href="/classes/Loader.html">Loader</a></li>
+         
+         <li><a href="/classes/Promise.html">Promise</a></li>
+         
+         <li><a href="/classes/PromiseState.html">PromiseState</a></li>
+         
+         <li><a href="/classes/Timer.html">Timer</a></li>
+         
+         <li><a href="/classes/Collection.html">Collection</a></li>
+         
+         <li><a href="/classes/EventDispatcher.html">EventDispatcher</a></li>
+         
+         <li><a href="/classes/EventType.html">EventType</a></li>
+         
+         <li><a href="/classes/Logger.html">Logger</a></li>
+         
+         <li><a href="/classes/LogLevel.html">LogLevel</a></li>
+         
+         <li><a href="/classes/ConsoleAppender.html">ConsoleAppender</a></li>
+         
+         <li><a href="/classes/ScreenAppender.html">ScreenAppender</a></li>
+         
+      
+         <h4>Math</h4>
+         
+         <li><a href="/classes/Point.html">Point</a></li>
+         
+         <li><a href="/classes/Vector.html">Vector</a></li>
+         
+      
+         <h4>Interfaces</h4>
+         
+         <li><a href="/classes/IAppender.html">IAppender</a></li>
+         
+         <li><a href="/classes/IDrawable.html">IDrawable</a></li>
+         
+         <li><a href="/classes/ILoadable.html">ILoadable</a></li>
+         
+         <li><a href="/classes/InputKey.html">InputKey</a></li>
+         
+         <li><a href="/classes/ISpriteEffect.html">ISpriteEffect</a></li>
+         
+      
+   </ul>
+  </aside>
+</div>
+
+
+<div class="clear"></div>
+
+</section>
+</div>
+
+
+
+<br clear="both">
+
+<footer>
+  <div class="grid">
+    <div class="unit whole">
+      <p>
+        Excalibur<br />
+        A simple game engine for building 2D games on the web.<br />
+      </p>
+      <p>
+        By <a href="http://erikonarheim.com">Erik Onarheim</a>, <a href="https://github.com/jedeen/">Josh Edeen</a>, and <a href="http://kamranicus.com/">Kamran Ayub</a>.
+      </p>
+    </div>
+    <div class="unit whole">
+      <p>
+        This site powered by 
+        <a href="http://jekyllrb.com/">
+          <img class="jekyll" src="/img/logo-2x.png"/>
+        </a>
+        and
+        <a href="http://yui.github.io/yuidoc/">
+          <img class="yui" src="/img/logo.png"/>
+        </a>
+      </p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
+

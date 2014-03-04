@@ -13,10 +13,10 @@ to the center of the screen.
 ## Usage
 --------
 {% highlight javascript %}
-var game = new Engine();
-var actor = new Actor();
+var game = new ex.Engine();
+var actor = new ex.Actor();
 
-var camera = Camera.TopCamera(game);
+var camera = ex.TopCamera(game);
 camera.setActorToFollow(actor);
 
 game.camera = camera;
@@ -25,13 +25,13 @@ game.start();
 
 
 ## Constructor 
-<pre>new(engine : Engine)</pre>
+<pre>new(engine: ex.Engine)</pre>
 --------------
 
 The Top Camera constructor takes the game engine as a parameter.
 
 ## Methods
-<pre>camera.getFocus() : Point</pre>
+<pre>camera.getFocus(): e.Point</pre>
 --------------
 
 Returns a point representing the center of the camera's focus.

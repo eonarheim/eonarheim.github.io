@@ -13,10 +13,10 @@ must be an actor.
 ## Usage
 --------
 {% highlight javascript %}
-var game = new Engine();
+var game = new ex.Engine();
 
 // Create new actor at x = 50, y = 50, width = 10, height = 10, and color = black
-var actor = new Actor(50, 50, 10, 10, Color.fromHex('#000000'));
+var actor = new ex.Actor(50, 50, 10, 10, Color.fromHex('#000000'));
 
 game.addChild(actor);
 
@@ -44,7 +44,7 @@ extended to support additional functionaliy. In the example below we create
 a new type called "MyActor"
 
 {% highlight javascript %}
-var MyActor = Actor.extend({
+var MyActor = ex.Actor.extend({
    update : function(engine, delta){
       // Implement custom update 
 
@@ -54,7 +54,7 @@ var MyActor = Actor.extend({
    }
 });
 
-var myActor = new MyActor(100, 100, 100, 100, Color.Azure);
+var myActor = new ex.MyActor(100, 100, 100, 100, Color.Azure);
 {% endhighlight %}
 
 **Note** - If you are using TypeScript, it is easier to use the built-in inheritance mechanic . 
@@ -148,7 +148,7 @@ scene graph.
 This is a convenience method to remove the current actor from the scene. Actors
 that are removed from the scene will no longer be drawn or updated. 
 
-<pre>actor.addChild(actor : Actor)</pre>
+<pre>actor.addChild(actor: ex.Actor)</pre>
 -------------------
 
 Adds a child actor to this actor. This allows you to move the parent actor
@@ -156,12 +156,12 @@ around and have children automatically follow.
 
 *Note* All child coordinates are relative to the parent.
 
-<pre>actor.removeChild(actor : Actor)</pre>
+<pre>actor.removeChild(actor: ex.Actor)</pre>
 -------------------
 
 Removes a child actor from this actor.
 
-<pre>actor.addDrawing(key : string, drawing : Drawing.IDrawable)</pre>
+<pre>actor.addDrawing(key: string, drawing: ex.IDrawable)</pre>
 -------------------
 
 Adds a drawing to the collection of available drawings for an actor.
@@ -171,19 +171,19 @@ Adds a drawing to the collection of available drawings for an actor.
 
 Set the current drawing for the actor from the available drawing collection.
 
-<pre>actor.setCenterDrawing(isDrawingCentered : boolean)</pre>
+<pre>actor.setCenterDrawing(isDrawingCentered: boolean)</pre>
 -------------------
 
 Centers the current drawing around the actor's bounding box.
 
-<pre>actor.addEventListener(eventName : string,  
-   handler: (event?: ActorEvent) => void)</pre>
+<pre>actor.addEventListener(eventName: string,  
+   handler: (event?: ex.ActorEvent) => void)</pre>
 ---------------------------
 
 Add an event listener to this actor. You can listen for a variety of events 
 off of the actor; see the events section below for a complete list.
 
-<pre>actor.triggerEvent(eventName : string, event? : ActorEvent)</pre>
+<pre>actor.triggerEvent(eventName: string, event?: ex.ActorEvent)</pre>
 -------------------
 
 Trigger an event to occur off of an actor.
@@ -198,7 +198,7 @@ Returns a vector with the x and y position of the center of the actor.
 
 Returns the width of an actor, factoring in the scale.
 
-<pre>actor.setWidth(width : number)</pre>
+<pre>actor.setWidth(width: number)</pre>
 -------------------
 
 Sets the width of an actor, factoring in the scale.
@@ -210,7 +210,7 @@ Sets the width of an actor, factoring in the scale.
 Returns the height of an actor, factoring in the scale.
 
 
-<pre>actor.setHeight(height : number)</pre>
+<pre>actor.setHeight(height: number)</pre>
 -------------------
 
 Sets the height of an actor, factoring in the scale.
@@ -235,24 +235,24 @@ Returns the y position of the top side of the actor's bounding box.
 
 Returns the y position of the bottom side of the actor's bounding box.
 
-<pre>actor.contains(x : number, y : number)</pre>
+<pre>actor.contains(x: number, y: number)</pre>
 -------------------
 
 Returns true if the x and y position specified are inside or on the edge of
 the actor's bounding box.
 
-<pre>actor.collides(other : Actor)</pre>
+<pre>actor.collides(other: ex.Actor)</pre>
 -------------------
 
 Returns the 'Side' of the other actor if actor collides with the other actor. 
 Otherwise it returns the 'None' side.
 
-<pre>actor.within(other : actor, distance : number)</pre>
+<pre>actor.within(other: ex.Actor, distance: number)</pre>
 -------------------
 
 Returns true if the two actors are less than or equal to the distance specified from each other.
 
-<pre>actor.moveTo(x : number, y : number, speed : number</pre>
+<pre>actor.moveTo(x: number, y: number, speed: number</pre>
 -------------------
 
 This method will move an actor to the specified x and y position at the speed
@@ -260,7 +260,7 @@ specified (in pixels per second) and return back the actor.
 
 This method is part of the actor 'Action' fluent API allowing action chaining. 
 
-<pre>actor.moveBy(x : number, y : number, time : number</pre>
+<pre>actor.moveBy(x: number, y: number, time: number</pre>
 -------------------
 
 This method will move an actor to the specified x and y position by a certain
@@ -268,7 +268,7 @@ time (in milliseconds).
 
 This method is part of the actor 'Action' fluent API allowing action chaining. 
 
-<pre>actor.rotateTo(angleRadians : number, speed : number</pre>
+<pre>actor.rotateTo(angleRadians: number, speed: number</pre>
 -------------------
 
 This method will rotate an actor to the specified angle at the speed
@@ -276,7 +276,7 @@ specified (in radians per second) and return back the actor.
 
 This method is part of the actor 'Action' fluent API allowing action chaining. 
 
-<pre>actor.rotateBy(angleRadians : number, time : number</pre>
+<pre>actor.rotateBy(angleRadians: number, time: number</pre>
 -------------------
 
 This method will rotate an actor to the specified angle by a certain time 
@@ -284,7 +284,7 @@ This method will rotate an actor to the specified angle by a certain time
 
 This method is part of the actor 'Action' fluent API allowing action chaining. 
 
-<pre>actor.scaleTo(size : number, speed : number</pre>
+<pre>actor.scaleTo(size: number, speed: number</pre>
 -------------------
 
 This method will scale an actor to the specified size at the speed
@@ -292,7 +292,7 @@ specified (in magnitude increase per second) and return back the actor.
 
 This method is part of the actor 'Action' fluent API allowing action chaining. 
 
-<pre>actor.scaleBy(size : number, time : number</pre>
+<pre>actor.scaleBy(size: number, time: number</pre>
 -------------------
 
 This method will scale an actor to the specified size by a certain time
@@ -301,7 +301,7 @@ This method will scale an actor to the specified size by a certain time
 This method is part of the actor 'Action' fluent API allowing action chaining. 
 
 
-<pre>actor.blink(frequency : number, duration : number, blinkTime? number)</pre>
+<pre>actor.blink(frequency: number, duration: number, blinkTime? number)</pre>
 -------------------
 
 This method will cause an actor to blink (become visible and and invisible) at
@@ -313,7 +313,7 @@ To have the actor blink 3 times in 1 second, call actor.blink(3, 1000).
 
 This method is part of the actor 'Action' fluent API allowing action chaining. 
 
-<pre>actor.delay(time : number)</pre>
+<pre>actor.delay(time: number)</pre>
 -------------------
 
 This method will delay the next action from executing for a certain amount of
@@ -321,7 +321,7 @@ time (in milliseconds).
 
 This method is part of the actor 'Action' fluent API allowing action chaining. 
 
-<pre>actor.repeat(times? : number)</pre>
+<pre>actor.repeat(times?: number)</pre>
 -------------------
 
 This method will cause the actor to repeat all of the previously called actions 
@@ -338,7 +338,7 @@ forever.
 
 This method is part of the actor 'Action' fluent API allowing action chaining. 
 
-<pre>actor.update(engine : Engine, delta : number)</pre>
+<pre>actor.update(engine: ex.Engine, delta: number)</pre>
 --------------------
 
 This method is called by the engine to update each actor. Delta is the amount

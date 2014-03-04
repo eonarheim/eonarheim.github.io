@@ -1,0 +1,2090 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Label</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Arizonia' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/css/gridism.css" />
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/syntax.css" />
+    <link rel="icon" type="image/x-icon" href="/favicon.png" />
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-46390208-1', 'excaliburjs.com');
+    ga('send', 'pageview');
+
+    </script>
+
+    <!--<link rel="stylesheet" href="http://yui.yahooapis.com/3.8.0pr2/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <script src="http://yui.yahooapis.com/combo?3.8.0pr2/build/yui/yui-min.js"></script>-->
+</head>
+
+<body class="wrap">
+<header>
+  <div class="grid">
+    <div class="unit one-third center-on-mobiles">
+      <h1>
+        <a href="/">
+          <span>Excalibur</span>
+          <img src="/img/excalibur-title.png" width="307" height="115" alt="">
+        </a>
+      </h1>
+    </div>
+    <nav class="main-nav unit two-thirds">
+      <ul>
+  <li class="">
+    <a href="/">Overview</a>
+  </li>
+  <li class="selected">
+    <a href="/docs/home">Doc<span class="show-on-mobiles">s</span><span class="hide-on-mobiles">umentation</span></a>
+  </li>
+  <li>
+    <a href="/gallery/home">Gallery</a>
+  </li>
+  <li>
+    <a href="https://www.github.com/eonarheim/excalibur" target="_blank"><span class="hide-on-mobiles">View on </span>GitHub</a>
+  </li>
+</ul>
+    </nav>
+  </div>
+</header>
+
+<div>    
+    <section class="docs">
+ <div class="grid">
+
+   
+   <div class="unit four-fifths">
+     <article>
+      <h1>Label</h1>
+      
+      
+      
+          Extends: <a href="..\classes\Actor.html" class="crosslink">Actor</a><br>
+      
+      <div class="intro"><p>Labels are the way to draw small amounts of text to the screen in Excalibur. They are
+actors and inherit all of the benifits and capabilities.</p>
+</div>
+
+      
+         <h2>Constructor</h2>
+          
+          <a name="methods_Label"></a>
+<div class="method item">
+     <pre>new Label([text=empty], [x=0], [y=0], [font=sans-serif], [spriteFont=undefined]) </pre>
+    <hr>
+    <span class="foundat">
+    
+        
+    
+        
+    </span>
+    
+    
+    <strong class="parameters">Parameters:</strong>
+    <table class="props">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+
+    
+        <tr>
+        
+            <td><code>[text=empty]</code></td> <td><strong>String</strong></td><td><p>The text of the label</p>
+</td>
+        
+        
+            
+        </tr>
+    
+        <tr>
+        
+            <td><code>[x=0]</code></td> <td><strong>Number</strong></td><td><p>The x position of the label</p>
+</td>
+        
+        
+            
+        </tr>
+    
+        <tr>
+        
+            <td><code>[y=0]</code></td> <td><strong>Number</strong></td><td><p>The y position of the label</p>
+</td>
+        
+        
+            
+        </tr>
+    
+        <tr>
+        
+            <td><code>[font=sans-serif]</code></td> <td><strong>String</strong></td><td><p>Use any valid css font string for the label&#39;s font. Default is "10px sans-serif".</p>
+</td>
+        
+        
+            
+        </tr>
+    
+        <tr>
+        
+            <td><code>[spriteFont=undefined]</code></td> <td><strong><a href="..\classes\SpriteFont.html" class="crosslink">SpriteFont</a></strong></td><td><p>Use an Excalibur sprite font for the label&#39;s font, if a SpriteFont is provided it will take precendence over a css font.</p>
+</td>
+        
+        
+            
+        </tr>
+    
+      </tbody>
+    </table>
+    <br/>
+    
+    
+</div>
+
+          
+      
+    <div>
+          
+        <h2>Methods</h2>
+        
+        
+            <div id="methods">
+            
+               
+               <a name="methods_addChild"></a>
+<div class="method item">
+     <pre>addChild(actor) </pre>
+    <hr>
+    <span class="foundat">
+    
+         Defined in <a href="Actor.html#method_addChild">Actor</a>: 
+    
+        
+    </span>
+    <p>Adds a child actor to this actor. All movement of the child actor will be
+relative to the parent actor. Meaning if the parent moves the child will
+move with</p>
+
+    
+    <strong class="parameters">Parameters:</strong>
+    <table class="props">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+
+    
+        <tr>
+        
+            <td><code>actor</code></td> <td><strong><a href="..\classes\Actor.html" class="crosslink">Actor</a></strong></td><td><p>The child actor to add</p>
+</td>
+        
+        
+            
+        </tr>
+    
+      </tbody>
+    </table>
+    <br/>
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_addCollisionGroup"></a>
+<div class="method item">
+     <pre>addCollisionGroup(name) </pre>
+    <hr>
+    <span class="foundat">
+    
+         Defined in <a href="Actor.html#method_addCollisionGroup">Actor</a>: 
+    
+        
+    </span>
+    <p>Adds an actor to a collision group. Actors with no named collision group are
+considered to be in every collision group.</p>
+<p>Once in a collision group(s) actors will only collide with other actors in 
+that group.</p>
+
+    
+    <strong class="parameters">Parameters:</strong>
+    <table class="props">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+
+    
+        <tr>
+        
+            <td><code>name</code></td> <td><strong>String</strong></td><td><p>The name of the collision group</p>
+</td>
+        
+        
+            
+        </tr>
+    
+      </tbody>
+    </table>
+    <br/>
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_addDrawing"></a>
+<div class="method item">
+     <pre>addDrawing(key, drawing) </pre>
+    <hr>
+    <span class="foundat">
+    
+         Defined in <a href="Actor.html#method_addDrawing">Actor</a>: 
+    
+        
+    </span>
+    <p>Adds a drawing to the list of available drawings for an actor.</p>
+
+    
+    <strong class="parameters">Parameters:</strong>
+    <table class="props">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+
+    
+        <tr>
+        
+            <td><code>key</code></td> <td><strong>String</strong></td><td><p>The key to associate with a drawing for this actor</p>
+</td>
+        
+        
+            
+        </tr>
+    
+        <tr>
+        
+            <td><code>drawing</code></td> <td><strong><a href="..\classes\IDrawable.html" class="crosslink">IDrawable</a></strong></td><td><p>this can be an <a href="..\classes\Animation.html" class="crosslink">Animation</a>, 
+<a href="..\classes\Sprite.html" class="crosslink">Sprite</a>, or <a href="..\classes\Polygon.html" class="crosslink">Polygon</a>.</p>
+</td>
+        
+        
+            
+        </tr>
+    
+      </tbody>
+    </table>
+    <br/>
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_addEventListener"></a>
+<div class="method item">
+     <pre>addEventListener(eventName, handler) </pre>
+    <hr>
+    <span class="foundat">
+    
+         Defined in <a href="Actor.html#method_addEventListener">Actor</a>: 
+    
+        
+    </span>
+    <p>Add an event listener. You can listen for a variety of
+events off of the engine; see the events section below for a complete list.</p>
+
+    
+    <strong class="parameters">Parameters:</strong>
+    <table class="props">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+
+    
+        <tr>
+        
+            <td><code>eventName</code></td> <td><strong>String</strong></td><td><p>Name of the event to listen for</p>
+</td>
+        
+        
+            
+        </tr>
+    
+        <tr>
+        
+            <td><code>handler</code></td> <td><strong>Event=>void</strong></td><td><p>Event handler for the thrown event</p>
+</td>
+        
+        
+            
+        </tr>
+    
+      </tbody>
+    </table>
+    <br/>
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_blink"></a>
+<div class="method item">
+    <pre>blink(frequency, duration, [blinkTime=200]): Actor </pre>
+    <hr>
+    <span class="foundat">
+    
+         Defined in <a href="Actor.html#method_blink">Actor</a>: 
+    
+        
+    </span>
+    <p>This method will cause an actor to blink (become visible and and 
+invisible) at a frequency (blinks per second) for a duration (in
+milliseconds). Optionally, you may specify blinkTime, which indicates
+the amount of time the actor is invisible during each blink.<br/>
+To have the actor blink 3 times in 1 second, call actor.blink(3, 1000).<br/>
+This method is part of the actor &#39;Action&#39; fluent API allowing action chaining.</p>
+
+    
+    <strong class="parameters">Parameters:</strong>
+    <table class="props">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+
+    
+        <tr>
+        
+            <td><code>frequency</code></td> <td><strong>Number</strong></td><td><p>The blinks per second</p>
+</td>
+        
+        
+            
+        </tr>
+    
+        <tr>
+        
+            <td><code>duration</code></td> <td><strong>Number</strong></td><td><p>The total duration of the blinking specified in milliseconds</p>
+</td>
+        
+        
+            
+        </tr>
+    
+        <tr>
+        
+            <td><code>[blinkTime=200]</code></td> <td><strong>Number</strong></td><td><p>The amount of time each blink that the actor is visible in milliseconds</p>
+</td>
+        
+        
+            
+        </tr>
+    
+      </tbody>
+    </table>
+    <br/>
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_clearActions"></a>
+<div class="method item">
+     <pre>clearActions( ) </pre>
+    <hr>
+    <span class="foundat">
+    
+         Defined in <a href="Actor.html#method_clearActions">Actor</a>: 
+    
+        
+    </span>
+    <p>Clears all queued actions from the Actor</p>
+
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_collides"></a>
+<div class="method item">
+    <pre>collides(actor): Side </pre>
+    <hr>
+    <span class="foundat">
+    
+         Defined in <a href="Actor.html#method_collides">Actor</a>: 
+    
+        
+    </span>
+    <p>Test whether the actor has collided with another actor, returns the side that collided.</p>
+
+    
+    <strong class="parameters">Parameters:</strong>
+    <table class="props">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+
+    
+        <tr>
+        
+            <td><code>actor</code></td> <td><strong><a href="..\classes\Actor.html" class="crosslink">Actor</a></strong></td><td><p>The other actor to test</p>
+</td>
+        
+        
+            
+        </tr>
+    
+      </tbody>
+    </table>
+    <br/>
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_contains"></a>
+<div class="method item">
+     <pre>contains(x, y) </pre>
+    <hr>
+    <span class="foundat">
+    
+         Defined in <a href="Actor.html#method_contains">Actor</a>: 
+    
+        
+    </span>
+    <p>Tests whether the x/y specified are contained in the actor</p>
+
+    
+    <strong class="parameters">Parameters:</strong>
+    <table class="props">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+
+    
+        <tr>
+        
+            <td><code>x</code></td> <td><strong>Number</strong></td><td><p>X coordinate to test (in world coordinates)</p>
+</td>
+        
+        
+            
+        </tr>
+    
+        <tr>
+        
+            <td><code>y</code></td> <td><strong>Number</strong></td><td><p>Y coordinate to test (in world coordinates)</p>
+</td>
+        
+        
+            
+        </tr>
+    
+      </tbody>
+    </table>
+    <br/>
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_debugDraw"></a>
+<div class="method item">
+     <pre>debugDraw(ctx) </pre>
+    <hr>
+    <span class="foundat">
+    
+         Defined in <a href="Actor.html#method_debugDraw">Actor</a>: 
+    
+        
+    </span>
+    <p>Called by the Engine, draws the actors debugging to the screen</p>
+
+    
+    <strong class="parameters">Parameters:</strong>
+    <table class="props">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+
+    
+        <tr>
+        
+            <td><code>ctx</code></td> <td><strong>CanvasRenderingContext2D</strong></td><td><p>The rendering context</p>
+</td>
+        
+        
+            
+        </tr>
+    
+      </tbody>
+    </table>
+    <br/>
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_delay"></a>
+<div class="method item">
+    <pre>delay(time): Actor </pre>
+    <hr>
+    <span class="foundat">
+    
+         Defined in <a href="Actor.html#method_delay">Actor</a>: 
+    
+        
+    </span>
+    <p>This method will delay the next action from executing for a certain 
+amount of time (in milliseconds). This method is part of the actor 
+&#39;Action&#39; fluent API allowing action chaining.</p>
+
+    
+    <strong class="parameters">Parameters:</strong>
+    <table class="props">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+
+    
+        <tr>
+        
+            <td><code>time</code></td> <td><strong>Number</strong></td><td><p>The amount of time to delay the next action in the queue from executing in milliseconds</p>
+</td>
+        
+        
+            
+        </tr>
+    
+      </tbody>
+    </table>
+    <br/>
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_draw"></a>
+<div class="method item">
+     <pre>draw(ctx, delta) </pre>
+    <hr>
+    <span class="foundat">
+    
+         Defined in <a href="Actor.html#method_draw">Actor</a>: 
+    
+        
+    </span>
+    <p>Called by the Engine, draws the actor to the screen</p>
+
+    
+    <strong class="parameters">Parameters:</strong>
+    <table class="props">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+
+    
+        <tr>
+        
+            <td><code>ctx</code></td> <td><strong>CanvasRenderingContext2D</strong></td><td><p>The rendering context</p>
+</td>
+        
+        
+            
+        </tr>
+    
+        <tr>
+        
+            <td><code>delta</code></td> <td><strong>Number</strong></td><td><p>The time since the last draw in milliseconds</p>
+</td>
+        
+        
+            
+        </tr>
+    
+      </tbody>
+    </table>
+    <br/>
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_follow"></a>
+<div class="method item">
+    <pre>follow(actor, [followDistance=currentDistance]): Actor </pre>
+    <hr>
+    <span class="foundat">
+    
+         Defined in <a href="Actor.html#method_follow">Actor</a>: 
+    
+        
+    </span>
+    <p>This method will cause the actor to follow another at a specified distance</p>
+
+    
+    <strong class="parameters">Parameters:</strong>
+    <table class="props">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+
+    
+        <tr>
+        
+            <td><code>actor</code></td> <td><strong><a href="..\classes\Actor.html" class="crosslink">Actor</a></strong></td><td><p>The actor to follow</p>
+</td>
+        
+        
+            
+        </tr>
+    
+        <tr>
+        
+            <td><code>[followDistance=currentDistance]</code></td> <td><strong>Number</strong></td><td><p>The distance to maintain when following, if not specified the actor will follow at the current distance.</p>
+</td>
+        
+        
+            
+        </tr>
+    
+      </tbody>
+    </table>
+    <br/>
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_getBottom"></a>
+<div class="method item">
+    <pre>getBottom( ): number </pre>
+    <hr>
+    <span class="foundat">
+    
+         Defined in <a href="Actor.html#method_getBottom">Actor</a>: 
+    
+        
+    </span>
+    <p>Gets the bottom edge of the actor</p>
+
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_getCenter"></a>
+<div class="method item">
+    <pre>getCenter( ): Vector </pre>
+    <hr>
+    <span class="foundat">
+    
+         Defined in <a href="Actor.html#method_getCenter">Actor</a>: 
+    
+        
+    </span>
+    <p>Get the center point of an actor</p>
+
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_getHeight"></a>
+<div class="method item">
+    <pre>getHeight( ): number </pre>
+    <hr>
+    <span class="foundat">
+    
+         Defined in <a href="Actor.html#method_getHeight">Actor</a>: 
+    
+        
+    </span>
+    <p>Gets the calculated height of an actor</p>
+
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_getLeft"></a>
+<div class="method item">
+    <pre>getLeft( ): number </pre>
+    <hr>
+    <span class="foundat">
+    
+         Defined in <a href="Actor.html#method_getLeft">Actor</a>: 
+    
+        
+    </span>
+    <p>Gets the left edge of the actor</p>
+
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_getRight"></a>
+<div class="method item">
+    <pre>getRight( ): number </pre>
+    <hr>
+    <span class="foundat">
+    
+         Defined in <a href="Actor.html#method_getRight">Actor</a>: 
+    
+        
+    </span>
+    <p>Gets the right edge of the actor</p>
+
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_getTop"></a>
+<div class="method item">
+    <pre>getTop( ): number </pre>
+    <hr>
+    <span class="foundat">
+    
+         Defined in <a href="Actor.html#method_getTop">Actor</a>: 
+    
+        
+    </span>
+    <p>Gets the top edge of the actor</p>
+
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_getWidth"></a>
+<div class="method item">
+    <pre>getWidth( ): number </pre>
+    <hr>
+    <span class="foundat">
+    
+         Defined in <a href="Actor.html#method_getWidth">Actor</a>: 
+    
+        
+    </span>
+    <p>Gets the calculated width of an actor</p>
+
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_kill"></a>
+<div class="method item">
+     <pre>kill( ) </pre>
+    <hr>
+    <span class="foundat">
+    
+         Defined in <a href="Actor.html#method_kill">Actor</a>: 
+    
+        
+    </span>
+    <p>If the current actors is a member of the scene. This will remove
+it from the scene graph. It will no longer be drawn or updated.</p>
+
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_meet"></a>
+<div class="method item">
+    <pre>meet(actor, [speed=0]): Actor </pre>
+    <hr>
+    <span class="foundat">
+    
+         Defined in <a href="Actor.html#method_meet">Actor</a>: 
+    
+        
+    </span>
+    <p>This method will cause the actor to move towards another until they 
+collide "meet" at a specified speed.</p>
+
+    
+    <strong class="parameters">Parameters:</strong>
+    <table class="props">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+
+    
+        <tr>
+        
+            <td><code>actor</code></td> <td><strong><a href="..\classes\Actor.html" class="crosslink">Actor</a></strong></td><td><p>The actor to meet</p>
+</td>
+        
+        
+            
+        </tr>
+    
+        <tr>
+        
+            <td><code>[speed=0]</code></td> <td><strong>Number</strong></td><td><p>The speed in pixels per second to move, if not specified it will match the speed of the other actor</p>
+</td>
+        
+        
+            
+        </tr>
+    
+      </tbody>
+    </table>
+    <br/>
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_moveBy"></a>
+<div class="method item">
+    <pre>moveBy(x, y, time): Actor </pre>
+    <hr>
+    <span class="foundat">
+    
+         Defined in <a href="Actor.html#method_moveBy">Actor</a>: 
+    
+        
+    </span>
+    <p>This method will move an actor to the specified x and y position by a 
+certain time (in milliseconds). This method is part of the actor 
+&#39;Action&#39; fluent API allowing action chaining.</p>
+
+    
+    <strong class="parameters">Parameters:</strong>
+    <table class="props">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+
+    
+        <tr>
+        
+            <td><code>x</code></td> <td><strong>Number</strong></td><td><p>The x location to move the actor to</p>
+</td>
+        
+        
+            
+        </tr>
+    
+        <tr>
+        
+            <td><code>y</code></td> <td><strong>Number</strong></td><td><p>The y location to move the actor to</p>
+</td>
+        
+        
+            
+        </tr>
+    
+        <tr>
+        
+            <td><code>time</code></td> <td><strong>Number</strong></td><td><p>The time it should take the actor to move to the new location in milliseconds</p>
+</td>
+        
+        
+            
+        </tr>
+    
+      </tbody>
+    </table>
+    <br/>
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_moveTo"></a>
+<div class="method item">
+    <pre>moveTo(x, y, speed): Actor </pre>
+    <hr>
+    <span class="foundat">
+    
+         Defined in <a href="Actor.html#method_moveTo">Actor</a>: 
+    
+        
+    </span>
+    <p>This method will move an actor to the specified x and y position at the 
+speed specified (in pixels per second) and return back the actor. This 
+method is part of the actor &#39;Action&#39; fluent API allowing action chaining.</p>
+
+    
+    <strong class="parameters">Parameters:</strong>
+    <table class="props">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+
+    
+        <tr>
+        
+            <td><code>x</code></td> <td><strong>Number</strong></td><td><p>The x location to move the actor to</p>
+</td>
+        
+        
+            
+        </tr>
+    
+        <tr>
+        
+            <td><code>y</code></td> <td><strong>Number</strong></td><td><p>The y location to move the actor to</p>
+</td>
+        
+        
+            
+        </tr>
+    
+        <tr>
+        
+            <td><code>speed</code></td> <td><strong>Number</strong></td><td><p>The speed in pixels per second to move</p>
+</td>
+        
+        
+            
+        </tr>
+    
+      </tbody>
+    </table>
+    <br/>
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_removeChild"></a>
+<div class="method item">
+     <pre>removeChild(actor) </pre>
+    <hr>
+    <span class="foundat">
+    
+         Defined in <a href="Actor.html#method_removeChild">Actor</a>: 
+    
+        
+    </span>
+    <p>Removes a child actor from this actor.</p>
+
+    
+    <strong class="parameters">Parameters:</strong>
+    <table class="props">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+
+    
+        <tr>
+        
+            <td><code>actor</code></td> <td><strong><a href="..\classes\Actor.html" class="crosslink">Actor</a></strong></td><td><p>The child actor to remove</p>
+</td>
+        
+        
+            
+        </tr>
+    
+      </tbody>
+    </table>
+    <br/>
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_removeCollisionGroup"></a>
+<div class="method item">
+     <pre>removeCollisionGroup(name) </pre>
+    <hr>
+    <span class="foundat">
+    
+         Defined in <a href="Actor.html#method_removeCollisionGroup">Actor</a>: 
+    
+        
+    </span>
+    <p>Remove an actor from a collision group.</p>
+
+    
+    <strong class="parameters">Parameters:</strong>
+    <table class="props">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+
+    
+        <tr>
+        
+            <td><code>name</code></td> <td><strong>String</strong></td><td><p>The name of the collision group</p>
+</td>
+        
+        
+            
+        </tr>
+    
+      </tbody>
+    </table>
+    <br/>
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_removeEventListener"></a>
+<div class="method item">
+     <pre>removeEventListener(eventName, [handler=undefined]) </pre>
+    <hr>
+    <span class="foundat">
+    
+         Defined in <a href="Actor.html#method_removeEventListener">Actor</a>: 
+    
+        
+    </span>
+    <p>Removes an event listener. If only the eventName is specified
+it will remove all handlers registered for that specific event. If the eventName
+and the handler instance are specified only that handler will be removed.</p>
+
+    
+    <strong class="parameters">Parameters:</strong>
+    <table class="props">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+
+    
+        <tr>
+        
+            <td><code>eventName</code></td> <td><strong>String</strong></td><td><p>Name of the event to listen for</p>
+</td>
+        
+        
+            
+        </tr>
+    
+        <tr>
+        
+            <td><code>[handler=undefined]</code></td> <td><strong>Event=>void</strong></td><td><p>Event handler for the thrown event</p>
+</td>
+        
+        
+            
+        </tr>
+    
+      </tbody>
+    </table>
+    <br/>
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_repeat"></a>
+<div class="method item">
+    <pre>repeat([times=undefined]): Actor </pre>
+    <hr>
+    <span class="foundat">
+    
+         Defined in <a href="Actor.html#method_repeat">Actor</a>: 
+    
+        
+    </span>
+    <p>This method will cause the actor to repeat all of the previously 
+called actions a certain number of times. If the number of repeats 
+is not specified it will repeat forever. This method is part of 
+the actor &#39;Action&#39; fluent API allowing action chaining</p>
+
+    
+    <strong class="parameters">Parameters:</strong>
+    <table class="props">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+
+    
+        <tr>
+        
+            <td><code>[times=undefined]</code></td> <td><strong>Number</strong></td><td><p>The number of times to repeat all the previous actions in the action queue. If nothing is specified the actions will repeat forever</p>
+</td>
+        
+        
+            
+        </tr>
+    
+      </tbody>
+    </table>
+    <br/>
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_repeatForever"></a>
+<div class="method item">
+    <pre>repeatForever( ): Actor </pre>
+    <hr>
+    <span class="foundat">
+    
+         Defined in <a href="Actor.html#method_repeatForever">Actor</a>: 
+    
+        
+    </span>
+    <p>This method will cause the actor to repeat all of the previously 
+called actions forever. This method is part of the actor &#39;Action&#39;
+fluent API allowing action chaining.</p>
+
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_rotateBy"></a>
+<div class="method item">
+    <pre>rotateBy(angleRadians, time): Actor </pre>
+    <hr>
+    <span class="foundat">
+    
+         Defined in <a href="Actor.html#method_rotateBy">Actor</a>: 
+    
+        
+    </span>
+    <p>This method will rotate an actor to the specified angle by a certain
+time (in milliseconds) and return back the actor. This method is part
+of the actor &#39;Action&#39; fluent API allowing action chaining.</p>
+
+    
+    <strong class="parameters">Parameters:</strong>
+    <table class="props">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+
+    
+        <tr>
+        
+            <td><code>angleRadians</code></td> <td><strong>Number</strong></td><td><p>The angle to rotate to in radians</p>
+</td>
+        
+        
+            
+        </tr>
+    
+        <tr>
+        
+            <td><code>time</code></td> <td><strong>Number</strong></td><td><p>The time it should take the actor to complete the rotation in milliseconds</p>
+</td>
+        
+        
+            
+        </tr>
+    
+      </tbody>
+    </table>
+    <br/>
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_rotateTo"></a>
+<div class="method item">
+    <pre>rotateTo(angleRadians, speed): Actor </pre>
+    <hr>
+    <span class="foundat">
+    
+         Defined in <a href="Actor.html#method_rotateTo">Actor</a>: 
+    
+        
+    </span>
+    <p>This method will rotate an actor to the specified angle at the speed
+specified (in radians per second) and return back the actor. This 
+method is part of the actor &#39;Action&#39; fluent API allowing action chaining.</p>
+
+    
+    <strong class="parameters">Parameters:</strong>
+    <table class="props">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+
+    
+        <tr>
+        
+            <td><code>angleRadians</code></td> <td><strong>Number</strong></td><td><p>The angle to rotate to in radians</p>
+</td>
+        
+        
+            
+        </tr>
+    
+        <tr>
+        
+            <td><code>speed</code></td> <td><strong>Number</strong></td><td><p>The angular velocity of the rotation specified in radians per second</p>
+</td>
+        
+        
+            
+        </tr>
+    
+      </tbody>
+    </table>
+    <br/>
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_scaleBy"></a>
+<div class="method item">
+    <pre>scaleBy(size, time): Actor </pre>
+    <hr>
+    <span class="foundat">
+    
+         Defined in <a href="Actor.html#method_scaleBy">Actor</a>: 
+    
+        
+    </span>
+    <p>This method will scale an actor to the specified size by a certain time
+(in milliseconds) and return back the actor. This method is part of the
+actor &#39;Action&#39; fluent API allowing action chaining.</p>
+
+    
+    <strong class="parameters">Parameters:</strong>
+    <table class="props">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+
+    
+        <tr>
+        
+            <td><code>size</code></td> <td><strong>Number</strong></td><td><p>The scaling factor to apply</p>
+</td>
+        
+        
+            
+        </tr>
+    
+        <tr>
+        
+            <td><code>time</code></td> <td><strong>Number</strong></td><td><p>The time it should take to complete the scaling in milliseconds</p>
+</td>
+        
+        
+            
+        </tr>
+    
+      </tbody>
+    </table>
+    <br/>
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_scaleTo"></a>
+<div class="method item">
+    <pre>scaleTo(size, speed): Actor </pre>
+    <hr>
+    <span class="foundat">
+    
+         Defined in <a href="Actor.html#method_scaleTo">Actor</a>: 
+    
+        
+    </span>
+    <p>This method will scale an actor to the specified size at the speed
+specified (in magnitude increase per second) and return back the 
+actor. This method is part of the actor &#39;Action&#39; fluent API allowing 
+action chaining.</p>
+
+    
+    <strong class="parameters">Parameters:</strong>
+    <table class="props">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+
+    
+        <tr>
+        
+            <td><code>size</code></td> <td><strong>Number</strong></td><td><p>The scaling factor to apply</p>
+</td>
+        
+        
+            
+        </tr>
+    
+        <tr>
+        
+            <td><code>speed</code></td> <td><strong>Number</strong></td><td><p>The speed of scaling specified in magnitude increase per second</p>
+</td>
+        
+        
+            
+        </tr>
+    
+      </tbody>
+    </table>
+    <br/>
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_setCenterDrawing"></a>
+<div class="method item">
+     <pre>setCenterDrawing(center) </pre>
+    <hr>
+    <span class="foundat">
+    
+         Defined in <a href="Actor.html#method_setCenterDrawing">Actor</a>: 
+    
+        
+    </span>
+    <p>Centers the actor&#39;s drawing around the center of the actor&#39;s bounding box</p>
+
+    
+    <strong class="parameters">Parameters:</strong>
+    <table class="props">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+
+    
+        <tr>
+        
+            <td><code>center</code></td> <td><strong>Boolean</strong></td><td><p>Indicates to center the drawing around the actor</p>
+</td>
+        
+        
+            
+        </tr>
+    
+      </tbody>
+    </table>
+    <br/>
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_setDrawing"></a>
+<div class="method item">
+     <pre>setDrawing(key) </pre>
+    <hr>
+    <span class="foundat">
+    
+         Defined in <a href="Actor.html#method_setDrawing">Actor</a>: 
+    
+        
+    </span>
+    <p>Sets the current drawing of the actor to the drawing correspoding to
+the key.</p>
+
+    
+    <strong class="parameters">Parameters:</strong>
+    <table class="props">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+
+    
+        <tr>
+        
+            <td><code>key</code></td> <td><strong>String</strong></td><td><p>The key of the drawing</p>
+</td>
+        
+        
+            
+        </tr>
+    
+      </tbody>
+    </table>
+    <br/>
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_setHeight"></a>
+<div class="method item">
+     <pre>setHeight( ) </pre>
+    <hr>
+    <span class="foundat">
+    
+         Defined in <a href="Actor.html#method_setHeight">Actor</a>: 
+    
+        
+    </span>
+    <p>Sets the height of an actor, factoring in the current scale</p>
+
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_setWidth"></a>
+<div class="method item">
+     <pre>setWidth( ) </pre>
+    <hr>
+    <span class="foundat">
+    
+         Defined in <a href="Actor.html#method_setWidth">Actor</a>: 
+    
+        
+    </span>
+    <p>Sets the width of an actor, factoring in the current scale</p>
+
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_triggerEvent"></a>
+<div class="method item">
+     <pre>triggerEvent(eventName, [event=undefined]) </pre>
+    <hr>
+    <span class="foundat">
+    
+         Defined in <a href="Actor.html#method_triggerEvent">Actor</a>: 
+    
+        
+    </span>
+    <p>Artificially trigger an event on an actor, useful when creating custom events.</p>
+
+    
+    <strong class="parameters">Parameters:</strong>
+    <table class="props">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+
+    
+        <tr>
+        
+            <td><code>eventName</code></td> <td><strong>String</strong></td><td><p>The name of the event to trigger</p>
+</td>
+        
+        
+            
+        </tr>
+    
+        <tr>
+        
+            <td><code>[event=undefined]</code></td> <td><strong>GameEvent</strong></td><td><p>The event object to pass to the callback</p>
+</td>
+        
+        
+            
+        </tr>
+    
+      </tbody>
+    </table>
+    <br/>
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_update"></a>
+<div class="method item">
+     <pre>update(engine, delta) </pre>
+    <hr>
+    <span class="foundat">
+    
+         Defined in <a href="Actor.html#method_update">Actor</a>: 
+    
+        
+    </span>
+    <p>Called by the Engine, updates the state of the actor</p>
+
+    
+    <strong class="parameters">Parameters:</strong>
+    <table class="props">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+
+    
+        <tr>
+        
+            <td><code>engine</code></td> <td><strong><a href="..\classes\Engine.html" class="crosslink">Engine</a></strong></td><td><p>The reference to the current game engine</p>
+</td>
+        
+        
+            
+        </tr>
+    
+        <tr>
+        
+            <td><code>delta</code></td> <td><strong>Number</strong></td><td><p>The time elapsed since the last update in milliseconds</p>
+</td>
+        
+        
+            
+        </tr>
+    
+      </tbody>
+    </table>
+    <br/>
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_within"></a>
+<div class="method item">
+    <pre>within(actor, distance): boolean </pre>
+    <hr>
+    <span class="foundat">
+    
+         Defined in <a href="Actor.html#method_within">Actor</a>: 
+    
+        
+    </span>
+    <p>Returns true if the two actors are less than or equal to the distance specified from each other</p>
+
+    
+    <strong class="parameters">Parameters:</strong>
+    <table class="props">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+
+    
+        <tr>
+        
+            <td><code>actor</code></td> <td><strong><a href="..\classes\Actor.html" class="crosslink">Actor</a></strong></td><td><p>Actor to test</p>
+</td>
+        
+        
+            
+        </tr>
+    
+        <tr>
+        
+            <td><code>distance</code></td> <td><strong>Number</strong></td><td><p>Distance in pixels to test</p>
+</td>
+        
+        
+            
+        </tr>
+    
+      </tbody>
+    </table>
+    <br/>
+    
+    
+</div>
+
+               
+            
+            </div>
+        
+        
+        <h2>Properties</h2>
+        
+            <div id="props">
+            
+                <a name="props_actionQueue"></a>
+<div class="props item">
+    <pre><code>actionQueue</code>: ActionQueue</pre>
+    <hr>
+    <p>Direct access to the actor&#39;s action queue. Useful if you are building custom actions.</p>
+
+    
+</div>
+
+            
+                <a name="props_color"></a>
+<div class="props item">
+    <pre><code>color</code>: <a href="..\classes\Color.html" class="crosslink">Color</a></pre>
+    <hr>
+    <p>Sets the color of the actor. A rectangle of this color will be drawn if now IDrawable is specified as the actors drawing.</p>
+
+    
+</div>
+
+            
+                <a name="props_currentDrawing"></a>
+<div class="props item">
+    <pre><code>currentDrawing</code>: <a href="..\classes\IDrawable.html" class="crosslink">IDrawable</a></pre>
+    <hr>
+    <p>Access to the current drawing on for the actor, this can be an <a href="..\classes\Animation.html" class="crosslink">Animation</a>, 
+<a href="..\classes\Sprite.html" class="crosslink">Sprite</a>, or <a href="..\classes\Polygon.html" class="crosslink">Polygon</a>. 
+Set drawings with the <a href="..\classes\Actor.html#method_setDrawing" class="crosslink">setDrawing</a>.</p>
+
+    
+</div>
+
+            
+                <a name="props_dx"></a>
+<div class="props item">
+    <pre><code>dx</code>: Number</pre>
+    <hr>
+    <p>The x velocity of the actor in pixels/second</p>
+
+    
+</div>
+
+            
+                <a name="props_eventDispatcher"></a>
+<div class="props item">
+    <pre><code>eventDispatcher</code>: <a href="..\classes\EventDispatcher.html" class="crosslink">EventDispatcher</a></pre>
+    <hr>
+    <p>Direct access to the actor&#39;s event dispatcher.</p>
+
+    
+</div>
+
+            
+                <a name="props_invisible"></a>
+<div class="props item">
+    <pre><code>invisible</code>: Boolean</pre>
+    <hr>
+    <p>The visibility of an actor</p>
+
+    
+</div>
+
+            
+                <a name="props_rotation"></a>
+<div class="props item">
+    <pre><code>rotation</code>: Number</pre>
+    <hr>
+    <p>The rotation of the actor in radians</p>
+
+    
+</div>
+
+            
+                <a name="props_rx"></a>
+<div class="props item">
+    <pre><code>rx</code>: Number</pre>
+    <hr>
+    <p>The rotational velocity of the actor in radians/second</p>
+
+    
+</div>
+
+            
+                <a name="props_scale"></a>
+<div class="props item">
+    <pre><code>scale</code>: Number</pre>
+    <hr>
+    <p>The scale of the actor</p>
+
+    
+</div>
+
+            
+                <a name="props_sx"></a>
+<div class="props item">
+    <pre><code>sx</code>: Number</pre>
+    <hr>
+    <p>The scalar velocity of the actor in scale/second</p>
+
+    
+</div>
+
+            
+                <a name="props_x"></a>
+<div class="props item">
+    <pre><code>x</code>: Number</pre>
+    <hr>
+    <p>The x coordinate of the actor (left edge)</p>
+
+    
+</div>
+
+            
+                <a name="props_y"></a>
+<div class="props item">
+    <pre><code>y</code>: Number</pre>
+    <hr>
+    <p>The y coordinate of the actor (top edge)</p>
+
+    
+</div>
+
+            
+            </div>
+        
+         
+        
+        
+        
+        
+    </div>
+    
+</div>
+
+  <div class="unit one-fifth hide-on-mobiles">
+  <aside>
+    <h4>Getting Started</h4>
+      <ul>
+      <li><a href="/docs/home/">Welcome</a></li>
+      <li><a href="/docs/install/">Installation</a></li>
+      <li><a href="/docs/quickstart/">Quick Start</a></li>
+      </ul>
+    <ul>
+      
+         <h4>Core</h4>
+         
+         <li><a href="/classes/Actor.html">Actor</a></li>
+         
+         <li><a href="/classes/Scene.html">Scene</a></li>
+         
+         <li><a href="/classes/Engine.html">Engine</a></li>
+         
+         <li><a href="/classes/Label.html">Label</a></li>
+         
+         <li><a href="/classes/Class.html">Class</a></li>
+         
+         <li><a href="/classes/Color.html">Color</a></li>
+         
+         <li><a href="/classes/Trigger.html">Trigger</a></li>
+         
+         <li><a href="/classes/DisplayMode.html">DisplayMode</a></li>
+         
+         <li><a href="/classes/Side.html">Side</a></li>
+         
+      
+         <h4>Media</h4>
+         
+         <li><a href="/classes/Sound.html">Sound</a></li>
+         
+         <li><a href="/classes/Texture.html">Texture</a></li>
+         
+         <li><a href="/classes/Polygon.html">Polygon</a></li>
+         
+         <li><a href="/classes/Animation.html">Animation</a></li>
+         
+         <li><a href="/classes/Sprite.html">Sprite</a></li>
+         
+         <li><a href="/classes/SpriteSheet.html">SpriteSheet</a></li>
+         
+         <li><a href="/classes/SpriteFont.html">SpriteFont</a></li>
+         
+      
+         <h4>Cameras</h4>
+         
+         <li><a href="/classes/TopCamera.html">TopCamera</a></li>
+         
+         <li><a href="/classes/SideCamera.html">SideCamera</a></li>
+         
+      
+         <h4>Effects</h4>
+         
+         <li><a href="/classes/ParticleEmitter.html">ParticleEmitter</a></li>
+         
+         <li><a href="/classes/Grayscale.html">Grayscale</a></li>
+         
+         <li><a href="/classes/Invert.html">Invert</a></li>
+         
+         <li><a href="/classes/Opacity.html">Opacity</a></li>
+         
+      
+         <h4>Utility</h4>
+         
+         <li><a href="/classes/Loader.html">Loader</a></li>
+         
+         <li><a href="/classes/Promise.html">Promise</a></li>
+         
+         <li><a href="/classes/PromiseState.html">PromiseState</a></li>
+         
+         <li><a href="/classes/Timer.html">Timer</a></li>
+         
+         <li><a href="/classes/Collection.html">Collection</a></li>
+         
+         <li><a href="/classes/EventDispatcher.html">EventDispatcher</a></li>
+         
+         <li><a href="/classes/EventType.html">EventType</a></li>
+         
+         <li><a href="/classes/Logger.html">Logger</a></li>
+         
+         <li><a href="/classes/LogLevel.html">LogLevel</a></li>
+         
+         <li><a href="/classes/ConsoleAppender.html">ConsoleAppender</a></li>
+         
+         <li><a href="/classes/ScreenAppender.html">ScreenAppender</a></li>
+         
+      
+         <h4>Math</h4>
+         
+         <li><a href="/classes/Point.html">Point</a></li>
+         
+         <li><a href="/classes/Vector.html">Vector</a></li>
+         
+      
+         <h4>Interfaces</h4>
+         
+         <li><a href="/classes/IAppender.html">IAppender</a></li>
+         
+         <li><a href="/classes/IDrawable.html">IDrawable</a></li>
+         
+         <li><a href="/classes/ILoadable.html">ILoadable</a></li>
+         
+         <li><a href="/classes/InputKey.html">InputKey</a></li>
+         
+         <li><a href="/classes/ISpriteEffect.html">ISpriteEffect</a></li>
+         
+      
+   </ul>
+  </aside>
+</div>
+
+
+<div class="clear"></div>
+
+</section>
+</div>
+
+
+
+<br clear="both">
+
+<footer>
+  <div class="grid">
+    <div class="unit whole">
+      <p>
+        Excalibur<br />
+        A simple game engine for building 2D games on the web.<br />
+      </p>
+      <p>
+        By <a href="http://erikonarheim.com">Erik Onarheim</a>, <a href="https://github.com/jedeen/">Josh Edeen</a>, and <a href="http://kamranicus.com/">Kamran Ayub</a>.
+      </p>
+    </div>
+    <div class="unit whole">
+      <p>
+        This site powered by 
+        <a href="http://jekyllrb.com/">
+          <img class="jekyll" src="/img/logo-2x.png"/>
+        </a>
+        and
+        <a href="http://yui.github.io/yuidoc/">
+          <img class="yui" src="/img/logo.png"/>
+        </a>
+      </p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
+

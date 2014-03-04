@@ -14,12 +14,12 @@ a game.
 --------
 {% highlight javascript %}
 // Load image into Excalibur
-var game = new Engine();
-var loader = new Loader();
-var image = new Texture("image.png");
+var game = new ex.Engine();
+var loader = new ex.Loader();
+var image = new ex.Texture("image.png");
 loader.addResource(image);
-game.load(loader).then(function(){
-   var sprite = new Sprite(image, 0, 0, 32, 32);
+game.start(loader).then(function(){
+   var sprite = new ex.Sprite(image, 0, 0, 32, 32);
 });
 
 
@@ -27,7 +27,7 @@ game.load(loader).then(function(){
 
 
 ## Constructor 
-<pre>new(image: Texture, public sx: number, public sy:number, public swidth: number, public sheight : number)</pre>
+<pre>new(image: ex.Texture, public sx: number, public sy: number, public swidth: number, public sheight: number)</pre>
 --------------
 
 The Actor constructor takes 5 optional parameters: x position, y position,
@@ -55,9 +55,40 @@ Sets or gets the width of the sprite in source image pixels.
 
 Sets or gets the height of the sprite in source image pixels.
 
+<pre>sprite.flipHorizontal</pre>
+-------------
+
+Flips the sprite horizontally.
+
+<pre>sprite.flipVertical</pre>
+-------------
+
+Flips the sprite vertically.
+
 ## Methods
 
-<pre>transformAboutPoint(point : Point)</pre>
+<pre>sprite.addEffect(effect: ex.Effects.ISpriteEffect)</pre>
+--------------
+
+<pre>sprite.clearEffects()</pre>
+--------------
+
+<pre>sprite.setRotation(radians: number)</pre>
+--------------
+
+<pre>sprite.getRotation(): number</pre>
+--------------
+
+<pre>sprite.setScale(scale: number)</pre>
+--------------
+
+<pre>sprite.getScale(): number</pre>
+--------------
+
+<pre>sprite.clone(): ex.Sprite</pre>
+--------------
+
+<pre>sprite.transformAboutPoint(point: ex.Point)</pre>
 -------------
 
 Sets the origin for any translations relative to the parent coordinates. For example, if this sprite is

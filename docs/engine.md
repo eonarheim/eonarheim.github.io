@@ -13,7 +13,7 @@ loading resources, and managing the scene.
 --------
 {% highlight javascript %}
 
-var game = new Engine(600, 400, 'my-game');
+var game = new ex.Engine(600, 400, 'my-game');
 // TODO: Build game
 game.start();
 
@@ -21,7 +21,7 @@ game.start();
 
 
 ## Constructor 
-<pre>new(width? : number, height? : number, canvasElementId? : string,  displayMode? : DisplayMode)</pre>
+<pre>new(width?: number, height?: number, canvasElementId?: string,  displayMode?: ex.DisplayMode)</pre>
 --------------
 
 The Engine constructor takes 4 optional parameters: a game width, game height, 
@@ -125,26 +125,26 @@ Scene documentation.
 
 ## Methods
 
-<pre>engine.addEventListener(eventName : string,  
+<pre>engine.addEventListener(eventName: string,  
    handler: (event?: ActorEvent) => void)</pre>
 ---------------------------
 
 Add an event listener to the engine. You can listen for a variety of events 
 off of the engine; see the events section below for a complete list.
 
-<pre>engine.setAntialiasing(isSmooth : boolean)</pre>
+<pre>engine.setAntialiasing(isSmooth: boolean)</pre>
 --------------------------
 
 If supported by the browser, this will set the antialiasing flag on the canvas. 
 Set this to false if you want a 'jagged' pixel art look to your image resources.
 
-<pre>engine.getAntialiasing() : boolean</pre>
+<pre>engine.getAntialiasing(): boolean</pre>
 --------------------------
 
 If supported by the browser, this will return the current state of the 
 antialiasing flag.
 
-<pre>engine.playAnimation(animation : Drawing.Animation, 
+<pre>engine.playAnimation(animation: ex.Animation, 
    x : number, y : number)</pre>
 --------------------------
 
@@ -153,24 +153,24 @@ coordinates, not screen pixels). These animations play independent of actors,
 and will be cleaned up internally as soon as they are complete. *Note* animations
 that loop will never be cleaned up.
 
-<pre>engine.addChild(actor : Actor)</pre>
+<pre>engine.addChild(actor: ex.Actor)</pre>
 --------------------------
 
 Adds an actor to the current scene of the game. This is synonymous to calling
-engine.currentScene.addChild(actor : Actor). 
+engine.currentScene.addChild(actor: ex.Actor). 
 
 Actors can only be drawn if they are a member of a scene, and only the 
 'currentScene' may be drawn or updated.
 
-<pre>engine.removeChild(actor : Actor)</pre>
+<pre>engine.removeChild(actor: ex.Actor)</pre>
 --------------------------
 
 Removes an actor from the currentScene of the game. This is synonymous to
-calling engine.currentScene.removeChild(actor : Actor).
+calling engine.currentScene.removeChild(actor: ex.Actor).
 
 Actors that are removed from a scene will no longer be drawn or updated.
 
-<pre>engine.pushScene(scene : SceneNode)</pre>
+<pre>engine.pushScene(scene: ex.Scene)</pre>
 --------------------------
 
 Pushes a new scene onto Excalibur's internal scene stack, and begins updating 
@@ -183,26 +183,27 @@ This pops the current scene off of Excalibur's internal scene stack, returning
 the game to the previous level or screen. The root scene can never be popped;
 there will always be at least one scene in the game.
 
-<pre>engine.isKeyUp(key : Keys) : boolean</pre>
+<pre>engine.isKeyUp(key: ex.Keys) : boolean</pre>
 ---------------------------
 
 Returns true if the 'key' parameter has received the 'keyup' event during this frame.
 
-<pre>engine.isKeyDown(key : Keys) : boolean</pre>
+<pre>engine.isKeyDown(key: ex.Keys) : boolean</pre>
 ---------------------------
 
 Returns true if the 'key' parameter has received the 'keydown' event during this frame.
 
-<pre>engine.isKeyPressed(key : Keys) : boolean</pre>
+<pre>engine.isKeyPressed(key: ex.Keys) : boolean</pre>
 ---------------------------
 
 Returns true if the 'key' parameter is currently being pressed.
 
-<pre>engine.start()</pre>
+<pre>engine.start(loader?: ex.ILoadable): ex.Promise<any></pre>
 ---------------------------
 
 This must be called to start the game. This method initiates the internal 
-mainloop.
+mainloop. You may optionally pass a loader to the engine and it will return
+a promise that resolves when it is done loading.
 
 <pre>engine.stop()</pre>
 ---------------------------
@@ -213,16 +214,16 @@ useful when building pause game functionality.
 *Note* game events will no longer be sent, because the game is now paused.
 The will be added to the queue and fired when the game is started again.
 
-<pre>engine.load(loader : ILoadable) : Promise<any></pre>
+<pre>engine.load(loader: ex.ILoadable) : ex.Promise<any></pre>
 ----------------------------
 
 Call load to prepare and image or sound assets in your game. This *must* be 
 called before attempting to use images or sounds *anywhere*. Returns a [promise](/docs/promises)
 that will be resolved when loading is complete.
 
-<pre>engine.setLoadingDrawFunction (fcn : (ctx : CanvasRenderingContext2D,
- loaded : number, 
- total : number) => void)</pre>
+<pre>engine.setLoadingDrawFunction(fcn: (ctx: CanvasRenderingContext2D,
+ loaded: number, 
+ total: number) => void)</pre>
 ----------------------------
 
 Set a custom load screen to be drawn instead of the default asset loading

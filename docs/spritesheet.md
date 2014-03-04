@@ -13,15 +13,15 @@ allow you to compact all of the images and animations in your game into a single
 --------
 {% highlight javascript %}
 // Load image into Excalibur
-var game = new Engine();
-var loader = new Loader();
-var image = new Texture("myspritesheet.png");
+var game = new ex.Engine();
+var loader = new ex.Loader();
+var image = new ex.Texture("myspritesheet.png");
 loader.addResource(image);
-game.load(loader);
 
 // Create a spritesheet with the loaded image
-var sprites = new Drawing.SpriteSheet(image, 10, 10, 32, 32);
+var sprites = new ex.SpriteSheet(image, 10, 10, 32, 32);
 
+game.start(loader);
 
 {% endhighlight %}
 
@@ -47,7 +47,7 @@ Gets the internal preloaded image.
 Gets or sets the list of individul sprites.
 
 ## Methods
-<pre>spriteSheet.getAnimationByIndices(engine: Engine, indices: number[], speed : number)</pre>
+<pre>spriteSheet.getAnimationByIndices(engine: ex.Engine, indices: number[], speed: number)</pre>
 --------------
 
 Returns an "Animation" by specifying the engine, the indices of each sprite in 
@@ -56,20 +56,20 @@ animation. Sprites in the sprite sheet are indexed in row-major order, meaning
 that each sprite is numbered starting at zero beginning at the first row, then at zero at 
 the second row, etc.
 
-<pre>spriteSheet.getAnimationBetween(engine: Engine, beginIndex : number, endIndex : number, speed : number)</pre>
+<pre>spriteSheet.getAnimationBetween(engine: ex.Engine, beginIndex: number, endIndex: number, speed: number)</pre>
 --------------
 
 Returns an "Animation" by specifying a beginning sprite index (inclusive) and 
 an end sprite index (exclusive), and a speed for each frame. Indices are 
 specified in row-major order.
 
-<pre>getAnimationForAll(engine: Engine, speed : number)</pre>
+<pre>getAnimationForAll(engine: ex.Engine, speed: number)</pre>
 ---------------
 
 Returns an "Animation", treating every sprite in the sprite sheet as members of the 
 animation.
 
-<pre>getSprite(index : number)</pre>
+<pre>getSprite(index: number)</pre>
 --------------
 
 Returns a "Sprite" at a specific index in the sprite sheet (in row-major order).

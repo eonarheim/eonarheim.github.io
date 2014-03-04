@@ -13,10 +13,10 @@ actors can be applied to a label.
 ## Usage
 --------
 {% highlight javascript %}
-var game = new Engine();
+var game = new ex.Engine();
 
 // Create new lable at x = 50, y = 50, with the text Hello World
-var label = new Label("Hello World", 100, 100);
+var label = new ex.Label("Hello World", 100, 100);
 
 game.addChild(label);
 
@@ -25,7 +25,7 @@ game.start();
 
 
 ## Constructor 
-<pre>new(text? : string, x? : number, y? : number, font? : string, spriteFont? : Drawing.SpriteFont)</pre>
+<pre>new(text?: string, x?: number, y?: number, font?: string, spriteFont?: ex.SpriteFont)</pre>
 --------------
 
 The Label constructor takes 4 optional arguments: the text to display, x 
@@ -50,7 +50,7 @@ The spriteFont associated with the text, if one has been set. Defaults to null.
 
 ## Methods
 
-<pre>label.update(engine : Engine, delta : number)</pre>
+<pre>label.update(engine: ex.Engine, delta: number)</pre>
 --------------------
 
 This method is called by the engine to update each label. Delta is the amount

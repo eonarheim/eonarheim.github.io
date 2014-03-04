@@ -12,10 +12,10 @@ is useful for many side-scrolling games.
 ## Usage
 --------
 {% highlight javascript %}
-var game = new Engine();
-var actor = new Actor();
+var game = new ex.Engine();
+var actor = new ex.Actor();
 
-var camera = Camera.SideCamera(game);
+var camera = ex.SideCamera(game);
 camera.setActorToFollow(actor);
 
 game.camera = camera;
@@ -24,13 +24,13 @@ game.start();
 
 
 ## Constructor 
-<pre>new(engine : Engine)</pre>
+<pre>new(engine: Engine)</pre>
 --------------
 
 The Side Camera constructor takes the game engine as a parameter.
 
 ## Methods
-<pre>camera.getFocus() : Point</pre>
+<pre>camera.getFocus(): ex.Point</pre>
 --------------
 
 Returns a point representing the center of the camera's focus.

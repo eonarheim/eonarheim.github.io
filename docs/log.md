@@ -12,7 +12,7 @@ tools. The logger in Excalibur is a singleton.
 ## Usage
 --------
 {% highlight javascript %}
-var logger = Logger.getInstance();
+var logger = ex.Logger.getInstance();
 
 logger.log("some message", Log.INFO);
 {% endhighlight %}
@@ -27,19 +27,19 @@ the defualt level is set to "WARN" then only warn level and above will be
 reported to the log.
 
 ## Static Methods
-<pre>Logger.getInstance</pre>
+<pre>Logger.getInstance(): ex.Log</pre>
 -------------
 
 Returns the current singleton instance of the logger.
 
 ## Methods
-<pre>logger.log(message: string, level?: Log)</pre>
+<pre>logger.log(message: string, level?: ex.Log)</pre>
 -------------
 
 Log a message to the logger. If no level is specified the message will be 
 logged at the default level.
 
-<pre>logger.addAppender(appender : IAppender)</pre>
+<pre>logger.addAppender(appender: ex.IAppender)</pre>
 ------------
 
 Add a specific appender to the logger. By default, Excalibur comes with a 

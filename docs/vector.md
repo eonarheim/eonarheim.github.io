@@ -14,7 +14,7 @@ friction, or the velocity and direction of a bullet.
 ## Usage
 --------
 {% highlight javascript %}
-var vector = new Vector(2, 4);
+var vector = new ex.Vector(2, 4);
 
 // Distance from the origin == magnitude of a vector
 var magnitude = vector.distance();
@@ -64,42 +64,42 @@ The x component of the vector.
 The y component of the vector.
 
 ## Methods
-<pre>vector.distance(v? : Vector) : number</pre>
+<pre>vector.distance(v?: ex.Vector) : number</pre>
 --------------
 
 Calculate the distance from this vector to another vector. If no other vector is specified,
 the distance from the origin will be returned.
 
-<pre>vector.normalize() : Vector</pre>
+<pre>vector.normalize(): ex.Vector</pre>
 --------------
 
 Return a new vector pointing in the same direction as the original, with a 
 magnitude of 1.
 
-<pre>vector.scale(size : number) : Vector</pre>
+<pre>vector.scale(size: number): ex.Vector</pre>
 --------------
 
 Return a new vector whose magnitude is "size" times bigger.
 
-<pre>vector.add(v : Vector) : Vector</pre>
+<pre>vector.add(v: ex.Vector): ex.Vector</pre>
 --------------
 
 Return a new vector whose x and y components are the
 sum of both vectors.
 
-<pre>vector.minus(v : Vector) : Vector</pre>
+<pre>vector.minus(v: ex.Vector): ex.Vector</pre>
 --------------
 
 Return a new vector whose x and y components are the
 difference of the original vector and the "v" vector.
 
-<pre>vector.dot(v : Vector) : number</pre>
+<pre>vector.dot(v: ex.Vector) : number</pre>
 --------------
 
 Return the dot product between these two vectors.
 
 
-<pre>vector.cross(v : Vector) : number</pre>
+<pre>vector.cross(v: Vector): number</pre>
 --------------
 
 Return the 2D scalar cross product between these vectors. Vectors that are 

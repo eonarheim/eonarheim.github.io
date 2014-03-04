@@ -14,11 +14,11 @@ sound using the "Sound" object.
 --------
 {% highlight javascript %}
 // Load sound into Excalibur
-var game = new Engine();
-var loader = new Loader();
-var sound = new Sound("awesometrack.mp3");
+var game = new ex.Engine();
+var loader = new ex.Loader();
+var sound = new ex.Sound("awesometrack.mp3", "awesometrackfallback.wav");
 loader.addResource(sound);
-game.load(loader).then(()=>{
+game.start(loader).then(()=>{
    // Play the sound after it has
    sound.play();   
 });
@@ -26,11 +26,10 @@ game.load(loader).then(()=>{
 
 
 ## Constructor 
-<pre>new(path : string, volume? : number)</pre>
+<pre>new(...paths : string[])</pre>
 --------------
 
-The Sound constructor takes a path to an audio file, and optionally a volume 
-between 0-1. If no volume is specified the default volume is 1.
+The Sound constructor takes a list of paths and will load the appropriate audio for the browser, with file paths on the left taking preference. If your browser does not support any of the file types, Excalibur will attempt to load the first audio file.
 
 ## Methods
 <pre>sound.setVolume(volume : number)</pre>

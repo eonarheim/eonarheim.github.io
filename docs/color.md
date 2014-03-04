@@ -14,11 +14,11 @@ RGB, RGBA, or HEX input.
 
 {% highlight javascript %}
 
-var color = new Color(255, 255, 0, .5);
+var color = new ex.Color(255, 255, 0, .5);
 // or
-var color1 = Color.fromRGB(255, 255, 0, .5);
+var color1 = ex.Color.fromRGB(255, 255, 0, .5);
 // or
-var color2 = Color.fromHex("#ffff007f");
+var color2 = ex.Color.fromHex("#ffff007f");
 
 // Call toString() when setting styles
 game.ctx.fillStyle = color.toString();
@@ -61,10 +61,10 @@ Excalibur comes with a number of predefined static color constants accessible of
 
 
 ## Static Methods
-<pre>Color.fromRBG(r : number, g : number, b : number, a? : number) : Color</pre>
+<pre>Color.fromRBG(r: number, g: number, b: number, a?: number): ex.Color</pre>
 ------------
 
-<pre>Color.fromHex(hex : string) : Color</pre>
+<pre>Color.fromHex(hex: string): ex.Color</pre>
 ------------
 
 ## Properties

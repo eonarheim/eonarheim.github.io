@@ -14,38 +14,38 @@ bar.
 --------
 {% highlight javascript %}
 // Load resources into Excalibur
-var game = new Engine();
-var loader = new Loader();
-var sound = new Sound("awesometrack.mp3");
-var image = new Texture("awesomeimage.png");
+var game = new ex.Engine();
+var loader = new ex.Loader();
+var sound = new ex.Sound("awesometrack.mp3", "awesometrackfallback.wav");
+var image = new ex.Texture("awesomeimage.png");
 loader.addResources([sound, image]);
 
-// Initiate load
-// You must load resources before use!
-game.load(loader);
+
+// or initiate load on game start
+game.start(loader);
 
 {% endhighlight %}
 
 
 ## Constructor 
-<pre>new(loadables? : ILoadable[])</pre>
+<pre>new(loadables?: ex.ILoadable[])</pre>
 --------------
 
 The Loader constructor takes an optional list of loadables. The loader can
 be initialized with other methods as well.
 
 ## Methods
-<pre>loader.addResource(loadable : ILoadable)</pre>
+<pre>loader.addResource(loadable: ex.ILoadable)</pre>
 --------------
 
 Add a single resource to be loaded to the loader's collection.
 
-<pre>loader.addResources(loadables : ILoadable[])</pre>
+<pre>loader.addResources(loadables: ex.ILoadable[])</pre>
 --------------
 
 Add mulitiple resources to be loaded to the loader's collection.
 
-<pre>loader.load() : Promise<any></pre>
+<pre>loader.load(): ex.Promise<any></pre>
 --------------
 
 Begins loading all of the resources that have been added to the loader. Returns

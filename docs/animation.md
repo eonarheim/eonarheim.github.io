@@ -14,17 +14,19 @@ sheet source.
 -----------
 {% highlight javascript %}
 // Load image into Excalibur
-var game = new Engine();
-var loader = new Loader();
-var image = new Texture("myspritesheet.png");
+var game = new ex.Engine();
+var loader = new ex.Loader();
+var image = new ex.Texture("myspritesheet.png");
 loader.addResource(image);
-game.load(loader);
 
 // Create a spritesheet with the loaded image
-var sprites = new Drawing.SpriteSheet(image, 10, 10, 32, 32);
+var sprites = new ex.SpriteSheet(image, 10, 10, 32, 32);
 
 // Create animation for indices 1,2, and 5 speeding 200 ms on each frame
 var anim = sprites.getAnimationByIndices(game, [1,2,5], 200);
+
+// Pass the loader to the start
+game.start(loader);
 
 {% endhighlight %}
 

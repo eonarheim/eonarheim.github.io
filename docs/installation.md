@@ -35,7 +35,7 @@ typed version of Excalibur.
 
 {% highlight javascript %}
 /// <reference path="/path/to/Excalibur.d.ts" />
-var game : Engine = new Engine();
+var game : Engine = new ex.Engine();
 // TODO: Build an awesome game in TypeScript here
 {% endhighlight %}
 

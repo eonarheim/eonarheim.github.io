@@ -11,7 +11,7 @@ A Point is a 2D representation of an x and y coordinate on the screen.
 ## Usage
 --------
 {% highlight javascript %}
-var point = new Point(2, 4);
+var point = new ex.Point(2, 4);
 
 console.log(point.x);
 // 2
@@ -23,7 +23,7 @@ console.log(point.y);
 
 
 ## Constructor 
-<pre>new(x : number, y : number)</pre>
+<pre>new(x: number, y: number)</pre>
 --------------
 
 The Point constructor takes the x and y coordinate as its arguments.

@@ -113,6 +113,26 @@ aside li.current a:before {
   left: -30px;
 }
 
+table {
+   border: solid 1px #555;
+   /*color: #ffb62a;*/
+   color: #ddd;
+   border-style: solid;
+   border-radius: 10px;
+   padding: 5px;
+   border-collapse: separate;
+   width: 90%;
+   margin: 20px
+}
+
+thead {
+   color: #ddd;
+}
+
+td {
+   padding-left: 5px;
+   padding-right: 5px;
+}
 
 /* Navigation */
 .main-nav {
@@ -201,6 +221,16 @@ nav li {
   width: 100px;
   vertical-align: middle;
 }
+.yui {
+   width: 100px;
+   vertical-align: middle;
+}
+
+/* override gridism*/
+.wrap .grid, .grid.wrap {
+   max-width: 1152px;
+   margin: 0 auto;
+}
 
 .border {
   border: solid;
@@ -208,7 +238,9 @@ nav li {
   border-color: #aaa;
 }
 
-
+.parameters {
+   margin-left: 20px;
+}
 
 
 
