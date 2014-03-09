@@ -124,6 +124,25 @@
             <div id="methods">
             
                
+               <a name="methods_getCurrentZoomScale"></a>
+<div class="method item">
+    Number <pre>getCurrentZoomScale( ): the current zoom scale </pre>
+    <hr>
+    <span class="foundat">
+    
+        
+    
+        
+    </span>
+    <p>gets the current zoom scale</p>
+
+    
+    
+</div>
+
+               
+            
+               
                <a name="methods_getFocus"></a>
 <div class="method item">
     <pre>getFocus( ): Point </pre>
@@ -187,9 +206,9 @@
                
             
                
-               <a name="methods_shake"></a>
+               <a name="methods_setFocus"></a>
 <div class="method item">
-     <pre>shake(magnitude, duration) </pre>
+     <pre>setFocus(x, y) </pre>
     <hr>
     <span class="foundat">
     
@@ -197,7 +216,7 @@
     
         
     </span>
-    <p>Sets the camera to shake at the specified magnitude for the specified duration</p>
+    <p>Sets the focal point of the camera. This value can only be set if there is no actor to be followed.</p>
 
     
     <strong class="parameters">Parameters:</strong>
@@ -214,7 +233,69 @@
     
         <tr>
         
-            <td><code>magnitude</code></td> <td><strong>Number</strong></td><td><p>the magnitude of the shake</p>
+            <td><code>x</code></td> <td><strong>Number</strong></td><td><p>The x coordinate of the focal point</p>
+</td>
+        
+        
+            
+        </tr>
+    
+        <tr>
+        
+            <td><code>y</code></td> <td><strong>Number</strong></td><td><p>The y coordinate of the focal point</p>
+</td>
+        
+        
+            
+        </tr>
+    
+      </tbody>
+    </table>
+    <br/>
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_shake"></a>
+<div class="method item">
+     <pre>shake(magnitudeX, magnitudeY, duration) </pre>
+    <hr>
+    <span class="foundat">
+    
+        
+    
+        
+    </span>
+    <p>Sets the camera to shake at the specified magnitudes for the specified duration</p>
+
+    
+    <strong class="parameters">Parameters:</strong>
+    <table class="props">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+
+    
+        <tr>
+        
+            <td><code>magnitudeX</code></td> <td><strong>Number</strong></td><td><p>the x magnitude of the shake</p>
+</td>
+        
+        
+            
+        </tr>
+    
+        <tr>
+        
+            <td><code>magnitudeY</code></td> <td><strong>Number</strong></td><td><p>the y magnitude of the shake</p>
 </td>
         
         
@@ -268,6 +349,60 @@
         <tr>
         
             <td><code>delta</code></td> <td><strong>Number</strong></td><td><p>The number of milliseconds since the last update</p>
+</td>
+        
+        
+            
+        </tr>
+    
+      </tbody>
+    </table>
+    <br/>
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_zoom"></a>
+<div class="method item">
+     <pre>zoom(scale, [duration]) </pre>
+    <hr>
+    <span class="foundat">
+    
+        
+    
+        
+    </span>
+    <p>Zooms the camera in or out by the specified scale over the specified duration. 
+If no duration is specified, it will zoom by a set amount until the scale is reached.</p>
+
+    
+    <strong class="parameters">Parameters:</strong>
+    <table class="props">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+
+    
+        <tr>
+        
+            <td><code>scale</code></td> <td><strong>Number</strong></td><td><p>the scale of the zoom</p>
+</td>
+        
+        
+            
+        </tr>
+    
+        <tr>
+        
+            <td><code>[duration]</code></td> <td><strong>Number</strong></td><td><p>the duration of the zoom</p>
 </td>
         
         
@@ -353,6 +488,8 @@
          
          <li><a href="/classes/ParticleEmitter.html">ParticleEmitter</a></li>
          
+         <li><a href="/classes/EmitterType.html">EmitterType</a></li>
+         
          <li><a href="/classes/Grayscale.html">Grayscale</a></li>
          
          <li><a href="/classes/Invert.html">Invert</a></li>
@@ -403,6 +540,41 @@
          <li><a href="/classes/InputKey.html">InputKey</a></li>
          
          <li><a href="/classes/ISpriteEffect.html">ISpriteEffect</a></li>
+         
+      
+         <h4>Events</h4>
+         
+         <li><a href="/classes/GameEvent.html">GameEvent</a></li>
+         
+         <li><a href="/classes/UpdateEvent.html">UpdateEvent</a></li>
+         
+         <li><a href="/classes/FocusEvent.html">FocusEvent</a></li>
+         
+         <li><a href="/classes/BlurEvent.html">BlurEvent</a></li>
+         
+         <li><a href="/classes/KeyEvent.html">KeyEvent</a></li>
+         
+         <li><a href="/classes/KeyUp.html">KeyUp</a></li>
+         
+         <li><a href="/classes/KeyDown.html">KeyDown</a></li>
+         
+         <li><a href="/classes/KeyPress.html">KeyPress</a></li>
+         
+         <li><a href="/classes/MouseUp.html">MouseUp</a></li>
+         
+         <li><a href="/classes/MouseDown.html">MouseDown</a></li>
+         
+         <li><a href="/classes/MouseMove.html">MouseMove</a></li>
+         
+         <li><a href="/classes/TouchEvent.html">TouchEvent</a></li>
+         
+         <li><a href="/classes/TouchStart.html">TouchStart</a></li>
+         
+         <li><a href="/classes/TouchEnd.html">TouchEnd</a></li>
+         
+         <li><a href="/classes/TouchMove.html">TouchMove</a></li>
+         
+         <li><a href="/classes/TouchCancel.html">TouchCancel</a></li>
          
       
    </ul>

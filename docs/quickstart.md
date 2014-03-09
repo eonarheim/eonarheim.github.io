@@ -24,7 +24,7 @@ It is important to call "game.start()" after you are finished building the game
 to start the game.
 
 {% highlight javascript %}
-var game = new Engine();
+var game = new ex.Engine();
 // TODO: Setup game in here
 game.start();
 {% endhighlight %}
@@ -37,10 +37,10 @@ In order for actors to take part in the game, they must be added to the game's c
 scene.
 
 {% highlight javascript %}
-var game = new Engine();
+var game = new ex.Engine();
 
 // Actor(x : number, y : number, w : number, h : number, color? : Color);
-var actor = new Actor(20, 20, 100, 100, Color.Red);
+var actor = new ex.Actor(20, 20, 100, 100, Color.Red);
 
 // Add an actor to the current scene
 game.addChild(actor);
@@ -56,10 +56,10 @@ In Excalibur, you can listen for the "keypressed" event; however, there is a sho
 for specific keys by just specifying the key in the "addEventListener" call.
 
 {% highlight javascript %}
-var game = new Engine();
+var game = new ex.Engine();
 
 // Actor(x : number, y : number, w : number, h : number, color? : Color);
-var actor = new Actor(20, 20, 100, 100, Color.Red);
+var actor = new ex.Actor(20, 20, 100, 100, Color.Red);
 
 actor.addEventListener('up', function(){
    actor.y -= 10;

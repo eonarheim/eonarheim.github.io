@@ -13,7 +13,7 @@
    },
    "Effects": {
       "name":"Effects",
-      "values": ["ParticleEmitter", "Grayscale", "Invert", "Opacity"]
+      "values": ["ParticleEmitter", "EmitterType", "Grayscale", "Invert", "Opacity"]
    },
    "Utility": {
       "name":"Utility",
@@ -26,5 +26,10 @@
    "Interfaces":{
       "name": "Interfaces",
       "values": ["IAppender", "IDrawable", "ILoadable", "InputKey", "ISpriteEffect"]
+   },
+   "Events":{
+      "name": "Events",
+      "values": ["GameEvent","UpdateEvent", "FocusEvent", "BlurEvent", "KeyEvent", "KeyUp", "KeyDown", "KeyPress", 
+               "MouseUp", "MouseDown", "MouseMove", "TouchEvent", "TouchStart", "TouchEnd", "TouchMove", "TouchCancel"]
    }
 }
