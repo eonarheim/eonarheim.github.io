@@ -181,77 +181,6 @@ a particular bitmap as a font.</p>
             <div id="methods">
             
                
-               <a name="methods_draw"></a>
-<div class="method item">
-     <pre>draw(ctx, x, y, text) </pre>
-    <hr>
-    <span class="foundat">
-    
-        
-    
-        
-    </span>
-    <p>Draw a particalur string to rendering context using this font</p>
-
-    
-    <strong class="parameters">Parameters:</strong>
-    <table class="props">
-      <thead>
-         <tr>
-            <th>Name</th>
-            <th>Type</th>
-            <th>Description</th>
-         </tr>
-      </thead>
-      <tbody>
-
-    
-        <tr>
-        
-            <td><code>ctx</code></td> <td><strong>CanvasRenderingContext2D</strong></td><td><p>The 2D rendering context</p>
-</td>
-        
-        
-            
-        </tr>
-    
-        <tr>
-        
-            <td><code>x</code></td> <td><strong>Number</strong></td><td><p>The x position on the canvas to place the text</p>
-</td>
-        
-        
-            
-        </tr>
-    
-        <tr>
-        
-            <td><code>y</code></td> <td><strong>Number</strong></td><td><p>The y position on the canvas to place the text</p>
-</td>
-        
-        
-            
-        </tr>
-    
-        <tr>
-        
-            <td><code>text</code></td> <td><strong>String</strong></td><td><p>The text to write to the screen</p>
-</td>
-        
-        
-            
-        </tr>
-    
-      </tbody>
-    </table>
-    <br/>
-    
-    
-</div>
-
-               
-            
-               
                <a name="methods_getAnimationBetween"></a>
 <div class="method item">
     <pre>getAnimationBetween(engine, beginIndex, endIndex, speed): Animation </pre>
@@ -485,6 +414,25 @@ in row major order in the SpriteSheet.</p>
 
                
             
+               
+               <a name="methods_getTextSprites"></a>
+<div class="method item">
+    Object <pre>getTextSprites( ):  </pre>
+    <hr>
+    <span class="foundat">
+    
+        
+    
+        
+    </span>
+    <p>Returns a dictionary that maps each character in the alphabet to the appropriate Sprite.</p>
+
+    
+    
+</div>
+
+               
+            
             </div>
         
         
@@ -551,6 +499,15 @@ in row major order in the SpriteSheet.</p>
          <li><a href="/classes/SideCamera.html">SideCamera</a></li>
          
       
+         <h4>Collision</h4>
+         
+         <li><a href="/classes/BoundingBox.html">BoundingBox</a></li>
+         
+         <li><a href="/classes/CollisionMap.html">CollisionMap</a></li>
+         
+         <li><a href="/classes/Cell.html">Cell</a></li>
+         
+      
          <h4>Effects</h4>
          
          <li><a href="/classes/ParticleEmitter.html">ParticleEmitter</a></li>
@@ -608,12 +565,26 @@ in row major order in the SpriteSheet.</p>
          
          <li><a href="/classes/ISpriteEffect.html">ISpriteEffect</a></li>
          
+         <li><a href="/classes/ICollidable.html">ICollidable</a></li>
+         
       
          <h4>Events</h4>
          
          <li><a href="/classes/GameEvent.html">GameEvent</a></li>
          
          <li><a href="/classes/UpdateEvent.html">UpdateEvent</a></li>
+         
+         <li><a href="/classes/ActivateEvent.html">ActivateEvent</a></li>
+         
+         <li><a href="/classes/DeactivateEvent.html">DeactivateEvent</a></li>
+         
+         <li><a href="/classes/CollisionEvent.html">CollisionEvent</a></li>
+         
+         <li><a href="/classes/InitializeEvent.html">InitializeEvent</a></li>
+         
+         <li><a href="/classes/ExitViewPortEvent.html">ExitViewPortEvent</a></li>
+         
+         <li><a href="/classes/EnterViewPortEvent.html">EnterViewPortEvent</a></li>
          
          <li><a href="/classes/FocusEvent.html">FocusEvent</a></li>
          

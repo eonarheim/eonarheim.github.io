@@ -200,60 +200,6 @@ the &#39;currentScene&#39; may be drawn or updated.</p>
                
             
                
-               <a name="methods_addEventListener"></a>
-<div class="method item">
-     <pre>addEventListener(eventName, handler) </pre>
-    <hr>
-    <span class="foundat">
-    
-        
-    
-        
-    </span>
-    <p>Add an event listener. You can listen for a variety of
-events off of the engine; see the events section below for a complete list.</p>
-
-    
-    <strong class="parameters">Parameters:</strong>
-    <table class="props">
-      <thead>
-         <tr>
-            <th>Name</th>
-            <th>Type</th>
-            <th>Description</th>
-         </tr>
-      </thead>
-      <tbody>
-
-    
-        <tr>
-        
-            <td><code>eventName</code></td> <td><strong>String</strong></td><td><p>Name of the event to listen for</p>
-</td>
-        
-        
-            
-        </tr>
-    
-        <tr>
-        
-            <td><code>handler</code></td> <td><strong>Event=>void</strong></td><td><p>Event handler for the thrown event</p>
-</td>
-        
-        
-            
-        </tr>
-    
-      </tbody>
-    </table>
-    <br/>
-    
-    
-</div>
-
-               
-            
-               
                <a name="methods_addScene"></a>
 <div class="method item">
      <pre>addScene(name, scene) </pre>
@@ -750,61 +696,6 @@ Actors that are removed from a scene will no longer be drawn or updated.</p>
                
             
                
-               <a name="methods_removeEventListener"></a>
-<div class="method item">
-     <pre>removeEventListener(eventName, [handler=undefined]) </pre>
-    <hr>
-    <span class="foundat">
-    
-        
-    
-        
-    </span>
-    <p>Removes an event listener. If only the eventName is specified
-it will remove all handlers registered for that specific event. If the eventName
-and the handler instance are specified just that handler will be removed.</p>
-
-    
-    <strong class="parameters">Parameters:</strong>
-    <table class="props">
-      <thead>
-         <tr>
-            <th>Name</th>
-            <th>Type</th>
-            <th>Description</th>
-         </tr>
-      </thead>
-      <tbody>
-
-    
-        <tr>
-        
-            <td><code>eventName</code></td> <td><strong>String</strong></td><td><p>Name of the event to listen for</p>
-</td>
-        
-        
-            
-        </tr>
-    
-        <tr>
-        
-            <td><code>[handler=undefined]</code></td> <td><strong>Event=>void</strong></td><td><p>Event handler for the thrown event</p>
-</td>
-        
-        
-            
-        </tr>
-    
-      </tbody>
-    </table>
-    <br/>
-    
-    
-</div>
-
-               
-            
-               
                <a name="methods_removeTimer"></a>
 <div class="method item">
      <pre>removeTimer(timer) </pre>
@@ -833,6 +724,50 @@ and the handler instance are specified just that handler will be removed.</p>
         <tr>
         
             <td><code>timer</code></td> <td><strong><a href="..\classes\Timer.html" class="crosslink">Timer</a></strong></td><td><p>The timer to remove to the current scene.</p>
+</td>
+        
+        
+            
+        </tr>
+    
+      </tbody>
+    </table>
+    <br/>
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_screenToWorldCoordinates"></a>
+<div class="method item">
+     <pre>screenToWorldCoordinates(point) </pre>
+    <hr>
+    <span class="foundat">
+    
+        
+    
+        
+    </span>
+    <p>Transforms the current x, y from screen coordinates to world coordinates</p>
+
+    
+    <strong class="parameters">Parameters:</strong>
+    <table class="props">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+
+    
+        <tr>
+        
+            <td><code>point</code></td> <td><strong><a href="..\classes\Point.html" class="crosslink">Point</a></strong></td><td><p>screen coordinate to convert</p>
 </td>
         
         
@@ -1008,6 +943,48 @@ starting the mainloop. Some loadable such as a Loader collection, Sound, or Text
                
             
                
+               <a name="methods_worldToScreenCoordinates"></a>
+<div class="method item">
+     <pre>worldToScreenCoordinates(point) </pre>
+    <hr>
+    <span class="foundat">
+    
+        
+    
+        
+    </span>
+    <p>Transforms a world coordinate, to a screen coordinate</p>
+
+    
+    <strong class="parameters">Parameters:</strong>
+    <table class="props">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+
+    
+        <tr>
+        
+            <td><code>point</code></td> <td><strong><a href="..\classes\Point.html" class="crosslink">Point</a></strong></td><td><p>world coordinate to convert</p>
+</td>
+        
+        
+            
+        </tr>
+    
+      </tbody>
+    </table>
+    <br/>
+    
+    
+</div>
+
+               
             
             </div>
         
@@ -1182,6 +1159,15 @@ starting the mainloop. Some loadable such as a Loader collection, Sound, or Text
          <li><a href="/classes/SideCamera.html">SideCamera</a></li>
          
       
+         <h4>Collision</h4>
+         
+         <li><a href="/classes/BoundingBox.html">BoundingBox</a></li>
+         
+         <li><a href="/classes/CollisionMap.html">CollisionMap</a></li>
+         
+         <li><a href="/classes/Cell.html">Cell</a></li>
+         
+      
          <h4>Effects</h4>
          
          <li><a href="/classes/ParticleEmitter.html">ParticleEmitter</a></li>
@@ -1239,12 +1225,26 @@ starting the mainloop. Some loadable such as a Loader collection, Sound, or Text
          
          <li><a href="/classes/ISpriteEffect.html">ISpriteEffect</a></li>
          
+         <li><a href="/classes/ICollidable.html">ICollidable</a></li>
+         
       
          <h4>Events</h4>
          
          <li><a href="/classes/GameEvent.html">GameEvent</a></li>
          
          <li><a href="/classes/UpdateEvent.html">UpdateEvent</a></li>
+         
+         <li><a href="/classes/ActivateEvent.html">ActivateEvent</a></li>
+         
+         <li><a href="/classes/DeactivateEvent.html">DeactivateEvent</a></li>
+         
+         <li><a href="/classes/CollisionEvent.html">CollisionEvent</a></li>
+         
+         <li><a href="/classes/InitializeEvent.html">InitializeEvent</a></li>
+         
+         <li><a href="/classes/ExitViewPortEvent.html">ExitViewPortEvent</a></li>
+         
+         <li><a href="/classes/EnterViewPortEvent.html">EnterViewPortEvent</a></li>
          
          <li><a href="/classes/FocusEvent.html">FocusEvent</a></li>
          

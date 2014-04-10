@@ -74,6 +74,86 @@ in row major order in the SpriteSheet.</p>
 </div>
 
       
+         <h2>Constructor</h2>
+          
+          <a name="methods_SpriteSheet"></a>
+<div class="method item">
+     <pre>new SpriteSheet(image, columns, rows, spWidth, spHeight) </pre>
+    <hr>
+    <span class="foundat">
+    
+        
+    
+        
+    </span>
+    
+    
+    <strong class="parameters">Parameters:</strong>
+    <table class="props">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+
+    
+        <tr>
+        
+            <td><code>image</code></td> <td><strong><a href="..\classes\Texture.html" class="crosslink">Texture</a></strong></td><td><p>The backing image texture to build the SpriteSheet</p>
+</td>
+        
+        
+            
+        </tr>
+    
+        <tr>
+        
+            <td><code>columns</code></td> <td><strong>Number</strong></td><td><p>The number of columns in the image texture</p>
+</td>
+        
+        
+            
+        </tr>
+    
+        <tr>
+        
+            <td><code>rows</code></td> <td><strong>Number</strong></td><td><p>The number of rows in the image texture</p>
+</td>
+        
+        
+            
+        </tr>
+    
+        <tr>
+        
+            <td><code>spWidth</code></td> <td><strong>Number</strong></td><td><p>The width of each individual sprite in pixels</p>
+</td>
+        
+        
+            
+        </tr>
+    
+        <tr>
+        
+            <td><code>spHeight</code></td> <td><strong>Number</strong></td><td><p>The height of each individual sprite in pixels</p>
+</td>
+        
+        
+            
+        </tr>
+    
+      </tbody>
+    </table>
+    <br/>
+    
+    
+</div>
+
+          
+      
     <div>
           
         <h2>Methods</h2>
@@ -381,6 +461,15 @@ in row major order in the SpriteSheet.</p>
          <li><a href="/classes/SideCamera.html">SideCamera</a></li>
          
       
+         <h4>Collision</h4>
+         
+         <li><a href="/classes/BoundingBox.html">BoundingBox</a></li>
+         
+         <li><a href="/classes/CollisionMap.html">CollisionMap</a></li>
+         
+         <li><a href="/classes/Cell.html">Cell</a></li>
+         
+      
          <h4>Effects</h4>
          
          <li><a href="/classes/ParticleEmitter.html">ParticleEmitter</a></li>
@@ -438,12 +527,26 @@ in row major order in the SpriteSheet.</p>
          
          <li><a href="/classes/ISpriteEffect.html">ISpriteEffect</a></li>
          
+         <li><a href="/classes/ICollidable.html">ICollidable</a></li>
+         
       
          <h4>Events</h4>
          
          <li><a href="/classes/GameEvent.html">GameEvent</a></li>
          
          <li><a href="/classes/UpdateEvent.html">UpdateEvent</a></li>
+         
+         <li><a href="/classes/ActivateEvent.html">ActivateEvent</a></li>
+         
+         <li><a href="/classes/DeactivateEvent.html">DeactivateEvent</a></li>
+         
+         <li><a href="/classes/CollisionEvent.html">CollisionEvent</a></li>
+         
+         <li><a href="/classes/InitializeEvent.html">InitializeEvent</a></li>
+         
+         <li><a href="/classes/ExitViewPortEvent.html">ExitViewPortEvent</a></li>
+         
+         <li><a href="/classes/EnterViewPortEvent.html">EnterViewPortEvent</a></li>
          
          <li><a href="/classes/FocusEvent.html">FocusEvent</a></li>
          

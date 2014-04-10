@@ -235,6 +235,50 @@ actors in a scene. Only actors in scenes will be updated and drawn.</p>
                
                <a name="methods_draw"></a>
 <div class="method item">
+     <pre>draw(ctx) </pre>
+    <hr>
+    <span class="foundat">
+    
+        
+    
+        
+    </span>
+    <p>Draws all the actors&#39; debug information in the Scene. Called by the Engine.</p>
+
+    
+    <strong class="parameters">Parameters:</strong>
+    <table class="props">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+
+    
+        <tr>
+        
+            <td><code>ctx</code></td> <td><strong>CanvasRenderingContext2D</strong></td><td><p>The current rendering context</p>
+</td>
+        
+        
+            
+        </tr>
+    
+      </tbody>
+    </table>
+    <br/>
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_draw"></a>
+<div class="method item">
      <pre>draw(ctx, delta) </pre>
     <hr>
     <span class="foundat">
@@ -270,50 +314,6 @@ actors in a scene. Only actors in scenes will be updated and drawn.</p>
         <tr>
         
             <td><code>delta</code></td> <td><strong>Number</strong></td><td><p>The number of milliseconds since the last draw</p>
-</td>
-        
-        
-            
-        </tr>
-    
-      </tbody>
-    </table>
-    <br/>
-    
-    
-</div>
-
-               
-            
-               
-               <a name="methods_draw"></a>
-<div class="method item">
-     <pre>draw(ctx) </pre>
-    <hr>
-    <span class="foundat">
-    
-        
-    
-        
-    </span>
-    <p>Draws all the actors&#39; debug information in the Scene. Called by the Engine.</p>
-
-    
-    <strong class="parameters">Parameters:</strong>
-    <table class="props">
-      <thead>
-         <tr>
-            <th>Name</th>
-            <th>Type</th>
-            <th>Description</th>
-         </tr>
-      </thead>
-      <tbody>
-
-    
-        <tr>
-        
-            <td><code>ctx</code></td> <td><strong>CanvasRenderingContext2D</strong></td><td><p>The current rendering context</p>
 </td>
         
         
@@ -406,6 +406,50 @@ this is where you should setup any DOM UI or event handlers needed for the scene
     <p>This is called when the scene is made transitioned away from and stopped. It is meant to be overriden,
 this is where you should cleanup any DOM UI or event handlers needed for the scene.</p>
 
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_onInitialize"></a>
+<div class="method item">
+     <pre>onInitialize(engine) </pre>
+    <hr>
+    <span class="foundat">
+    
+        
+    
+        
+    </span>
+    <p>This is called before the first update of the actor. This method is meant to be
+overridden. This is where initialization of child actors should take place.</p>
+
+    
+    <strong class="parameters">Parameters:</strong>
+    <table class="props">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+
+    
+        <tr>
+        
+            <td><code>engine</code></td> <td><strong><a href="..\classes\Engine.html" class="crosslink">Engine</a></strong></td><td> </td>
+        
+        
+            
+        </tr>
+    
+      </tbody>
+    </table>
+    <br/>
     
     
 </div>
@@ -647,6 +691,15 @@ this is where you should cleanup any DOM UI or event handlers needed for the sce
          <li><a href="/classes/SideCamera.html">SideCamera</a></li>
          
       
+         <h4>Collision</h4>
+         
+         <li><a href="/classes/BoundingBox.html">BoundingBox</a></li>
+         
+         <li><a href="/classes/CollisionMap.html">CollisionMap</a></li>
+         
+         <li><a href="/classes/Cell.html">Cell</a></li>
+         
+      
          <h4>Effects</h4>
          
          <li><a href="/classes/ParticleEmitter.html">ParticleEmitter</a></li>
@@ -704,12 +757,26 @@ this is where you should cleanup any DOM UI or event handlers needed for the sce
          
          <li><a href="/classes/ISpriteEffect.html">ISpriteEffect</a></li>
          
+         <li><a href="/classes/ICollidable.html">ICollidable</a></li>
+         
       
          <h4>Events</h4>
          
          <li><a href="/classes/GameEvent.html">GameEvent</a></li>
          
          <li><a href="/classes/UpdateEvent.html">UpdateEvent</a></li>
+         
+         <li><a href="/classes/ActivateEvent.html">ActivateEvent</a></li>
+         
+         <li><a href="/classes/DeactivateEvent.html">DeactivateEvent</a></li>
+         
+         <li><a href="/classes/CollisionEvent.html">CollisionEvent</a></li>
+         
+         <li><a href="/classes/InitializeEvent.html">InitializeEvent</a></li>
+         
+         <li><a href="/classes/ExitViewPortEvent.html">ExitViewPortEvent</a></li>
+         
+         <li><a href="/classes/EnterViewPortEvent.html">EnterViewPortEvent</a></li>
          
          <li><a href="/classes/FocusEvent.html">FocusEvent</a></li>
          

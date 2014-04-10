@@ -318,7 +318,7 @@ that group.</p>
     <hr>
     <span class="foundat">
     
-        
+         Defined in <a href="Class.html#method_addEventListener">Class</a>: 
     
         
     </span>
@@ -433,6 +433,27 @@ This method is part of the actor &#39;Action&#39; fluent API allowing action cha
                
             
                
+               <a name="methods_callMethod"></a>
+<div class="method item">
+    <pre>callMethod( ): Actor </pre>
+    <hr>
+    <span class="foundat">
+    
+        
+    
+        
+    </span>
+    <p>This method allows you to call an arbitrary method as the next action in the
+action queue. This is useful if you want to execute code in after a specific
+action, i.e An actor arrives at a destinatino after traversing a path</p>
+
+    
+    
+</div>
+
+               
+            
+               
                <a name="methods_clearActions"></a>
 <div class="method item">
      <pre>clearActions( ) </pre>
@@ -454,6 +475,51 @@ This method is part of the actor &#39;Action&#39; fluent API allowing action cha
                
                <a name="methods_collides"></a>
 <div class="method item">
+    <pre>collides(actor): Vector </pre>
+    <hr>
+    <span class="foundat">
+    
+        
+    
+        
+    </span>
+    <p>Test whether the actor has collided with another actor, returns the intersection vector on collision. Returns
+null when there is no collision;</p>
+
+    
+    <strong class="parameters">Parameters:</strong>
+    <table class="props">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+
+    
+        <tr>
+        
+            <td><code>actor</code></td> <td><strong><a href="..\classes\Actor.html" class="crosslink">Actor</a></strong></td><td><p>The other actor to test</p>
+</td>
+        
+        
+            
+        </tr>
+    
+      </tbody>
+    </table>
+    <br/>
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_collides"></a>
+<div class="method item">
     <pre>collides(actor): Side </pre>
     <hr>
     <span class="foundat">
@@ -462,7 +528,7 @@ This method is part of the actor &#39;Action&#39; fluent API allowing action cha
     
         
     </span>
-    <p>Test whether the actor has collided with another actor, returns the side that collided.</p>
+    <p>Test whether the actor has collided with another actor, returns the side of the current actor that collided.</p>
 
     
     <strong class="parameters">Parameters:</strong>
@@ -639,6 +705,27 @@ amount of time (in milliseconds). This method is part of the actor
                
             
                
+               <a name="methods_die"></a>
+<div class="method item">
+    <pre>die( ): Actor </pre>
+    <hr>
+    <span class="foundat">
+    
+        
+    
+        
+    </span>
+    <p>This method will add an action to the queue that will remove the actor from the 
+scene once it has completed its previous actions. Any actions on the
+action queue after this action will not be executed.</p>
+
+    
+    
+</div>
+
+               
+            
+               
                <a name="methods_draw"></a>
 <div class="method item">
      <pre>draw(ctx, delta) </pre>
@@ -676,6 +763,61 @@ amount of time (in milliseconds). This method is part of the actor
         <tr>
         
             <td><code>delta</code></td> <td><strong>Number</strong></td><td><p>The time since the last draw in milliseconds</p>
+</td>
+        
+        
+            
+        </tr>
+    
+      </tbody>
+    </table>
+    <br/>
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_fade"></a>
+<div class="method item">
+    <pre>fade(opacity, time): Actor </pre>
+    <hr>
+    <span class="foundat">
+    
+        
+    
+        
+    </span>
+    <p>This method will cause an actor&#39;s opacity to change from its current value
+to the provided value by a specified time (in milliseconds). This method is
+part of the actor &#39;Action&#39; fluent API allowing action chaining.</p>
+
+    
+    <strong class="parameters">Parameters:</strong>
+    <table class="props">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+
+    
+        <tr>
+        
+            <td><code>opacity</code></td> <td><strong>Number</strong></td><td><p>The ending opacity</p>
+</td>
+        
+        
+            
+        </tr>
+    
+        <tr>
+        
+            <td><code>time</code></td> <td><strong>Number</strong></td><td><p>The time it should take to fade the actor (in milliseconds)</p>
 </td>
         
         
@@ -764,6 +906,25 @@ amount of time (in milliseconds). This method is part of the actor
                
             
                
+               <a name="methods_getBounds"></a>
+<div class="method item">
+    <pre>getBounds( ): BoundingBox </pre>
+    <hr>
+    <span class="foundat">
+    
+        
+    
+        
+    </span>
+    <p>Returns the actor&#39;s bounding box calculated for this instant.</p>
+
+    
+    
+</div>
+
+               
+            
+               
                <a name="methods_getCenter"></a>
 <div class="method item">
     <pre>getCenter( ): Vector </pre>
@@ -775,6 +936,44 @@ amount of time (in milliseconds). This method is part of the actor
         
     </span>
     <p>Get the center point of an actor</p>
+
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_getGlobalX"></a>
+<div class="method item">
+    <pre>getGlobalX( ): number </pre>
+    <hr>
+    <span class="foundat">
+    
+        
+    
+        
+    </span>
+    <p>Gets the x value of the Actor in global coordinates</p>
+
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_getGlobalY"></a>
+<div class="method item">
+    <pre>getGlobalY( ): number </pre>
+    <hr>
+    <span class="foundat">
+    
+        
+    
+        
+    </span>
+    <p>Gets the y value of the Actor in global coordinates</p>
 
     
     
@@ -833,6 +1032,50 @@ amount of time (in milliseconds). This method is part of the actor
     </span>
     <p>Gets the right edge of the actor</p>
 
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_getSideFromIntersect"></a>
+<div class="method item">
+    <pre>getSideFromIntersect(intersect): Side </pre>
+    <hr>
+    <span class="foundat">
+    
+        
+    
+        
+    </span>
+    <p>Returns the side of the collision based on the intersection</p>
+
+    
+    <strong class="parameters">Parameters:</strong>
+    <table class="props">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+
+    
+        <tr>
+        
+            <td><code>intersect</code></td> <td><strong><a href="..\classes\Vector.html" class="crosslink">Vector</a></strong></td><td><p>The displacement vector returned by a collision</p>
+</td>
+        
+        
+            
+        </tr>
+    
+      </tbody>
+    </table>
+    <br/>
     
     
 </div>
@@ -1080,6 +1323,212 @@ method is part of the actor &#39;Action&#39; fluent API allowing action chaining
                
             
                
+               <a name="methods_off"></a>
+<div class="method item">
+     <pre>off(eventName, [handler=undefined]) </pre>
+    <hr>
+    <span class="foundat">
+    
+         Defined in <a href="Class.html#method_off">Class</a>: 
+    
+        
+    </span>
+    <p>Alias for "removeEventListener". If only the eventName is specified
+it will remove all handlers registered for that specific event. If the eventName
+and the handler instance are specified only that handler will be removed.</p>
+
+    
+    <strong class="parameters">Parameters:</strong>
+    <table class="props">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+
+    
+        <tr>
+        
+            <td><code>eventName</code></td> <td><strong>String</strong></td><td><p>Name of the event to listen for</p>
+</td>
+        
+        
+            
+        </tr>
+    
+        <tr>
+        
+            <td><code>[handler=undefined]</code></td> <td><strong>Event=>void</strong></td><td><p>Event handler for the thrown event</p>
+</td>
+        
+        
+            
+        </tr>
+    
+      </tbody>
+    </table>
+    <br/>
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_on"></a>
+<div class="method item">
+     <pre>on(eventName, handler) </pre>
+    <hr>
+    <span class="foundat">
+    
+         Defined in <a href="Class.html#method_on">Class</a>: 
+    
+        
+    </span>
+    <p>Alias for "addEventListener". You can listen for a variety of
+events off of the engine; see the events section below for a complete list.</p>
+
+    
+    <strong class="parameters">Parameters:</strong>
+    <table class="props">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+
+    
+        <tr>
+        
+            <td><code>eventName</code></td> <td><strong>String</strong></td><td><p>Name of the event to listen for</p>
+</td>
+        
+        
+            
+        </tr>
+    
+        <tr>
+        
+            <td><code>handler</code></td> <td><strong>Event=>void</strong></td><td><p>Event handler for the thrown event</p>
+</td>
+        
+        
+            
+        </tr>
+    
+      </tbody>
+    </table>
+    <br/>
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_onCollidesWith"></a>
+<div class="method item">
+     <pre>onCollidesWith(group, func) </pre>
+    <hr>
+    <span class="foundat">
+    
+        
+    
+        
+    </span>
+    <p>Register a handler to fire when this actor collides with another in a specified group</p>
+
+    
+    <strong class="parameters">Parameters:</strong>
+    <table class="props">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+
+    
+        <tr>
+        
+            <td><code>group</code></td> <td><strong>String</strong></td><td><p>The group name to listen for</p>
+</td>
+        
+        
+            
+        </tr>
+    
+        <tr>
+        
+            <td><code>func</code></td> <td><strong>Callback</strong></td><td><p>The callback to fire on collision with another actor from the group. The callback is passed the other actor.</p>
+</td>
+        
+        
+            
+        </tr>
+    
+      </tbody>
+    </table>
+    <br/>
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_onInitialize"></a>
+<div class="method item">
+     <pre>onInitialize(engine) </pre>
+    <hr>
+    <span class="foundat">
+    
+        
+    
+        
+    </span>
+    <p>This is called before the first update of the actor. This method is meant to be
+overridden. This is where initialization of child actors should take place.</p>
+
+    
+    <strong class="parameters">Parameters:</strong>
+    <table class="props">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+
+    
+        <tr>
+        
+            <td><code>engine</code></td> <td><strong><a href="..\classes\Engine.html" class="crosslink">Engine</a></strong></td><td> </td>
+        
+        
+            
+        </tr>
+    
+      </tbody>
+    </table>
+    <br/>
+    
+    
+</div>
+
+               
+            
+               
                <a name="methods_removeChild"></a>
 <div class="method item">
      <pre>removeChild(actor) </pre>
@@ -1108,6 +1557,50 @@ method is part of the actor &#39;Action&#39; fluent API allowing action chaining
         <tr>
         
             <td><code>actor</code></td> <td><strong><a href="..\classes\Actor.html" class="crosslink">Actor</a></strong></td><td><p>The child actor to remove</p>
+</td>
+        
+        
+            
+        </tr>
+    
+      </tbody>
+    </table>
+    <br/>
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_removeCollidesWith"></a>
+<div class="method item">
+     <pre>removeCollidesWith(group) </pre>
+    <hr>
+    <span class="foundat">
+    
+        
+    
+        
+    </span>
+    <p>Removes all collision handlers for this group on this actor</p>
+
+    
+    <strong class="parameters">Parameters:</strong>
+    <table class="props">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+
+    
+        <tr>
+        
+            <td><code>group</code></td> <td><strong>String</strong></td><td><p>Group to remove all handlers for on this actor.</p>
 </td>
         
         
@@ -1174,13 +1667,13 @@ method is part of the actor &#39;Action&#39; fluent API allowing action chaining
     <hr>
     <span class="foundat">
     
-        
+         Defined in <a href="Class.html#method_removeEventListener">Class</a>: 
     
         
     </span>
     <p>Removes an event listener. If only the eventName is specified
 it will remove all handlers registered for that specific event. If the eventName
-and the handler instance are specified only that handler will be removed.</p>
+and the handler instance are specified just that handler will be removed.</p>
 
     
     <strong class="parameters">Parameters:</strong>
@@ -1814,6 +2307,37 @@ the key.</p>
 </div>
 
             
+                <a name="props_ax"></a>
+<div class="props item">
+    <pre><code>ax</code>: Number</pre>
+    <hr>
+    <p>The x acceleration of the actor in pixels/second^2</p>
+
+    
+</div>
+
+            
+                <a name="props_ay"></a>
+<div class="props item">
+    <pre><code>ay</code>: Number</pre>
+    <hr>
+    <p>The y acceleration of the actor in pixels/second^2</p>
+
+    
+</div>
+
+            
+                <a name="props_collisionType"></a>
+<div class="props item">
+    <pre><code>collisionType</code>: <a href="..\classes\CollisionType.html" class="crosslink">CollisionType</a></pre>
+    <hr>
+    <p>Gets or sets the current collision type of this actor. By 
+default all actors participate in Active collisions.</p>
+
+    
+</div>
+
+            
                 <a name="props_color"></a>
 <div class="props item">
     <pre><code>color</code>: <a href="..\classes\Color.html" class="crosslink">Color</a></pre>
@@ -1860,7 +2384,7 @@ Set drawings with the <a href="..\classes\Actor.html#method_setDrawing" class="c
 <div class="props item">
     <pre><code>eventDispatcher</code>: <a href="..\classes\EventDispatcher.html" class="crosslink">EventDispatcher</a></pre>
     <hr>
-    <p>Direct access to the actor&#39;s event dispatcher.</p>
+    <p>Direct access to the game object event dispatcher.</p>
 
     
 </div>
@@ -1871,6 +2395,46 @@ Set drawings with the <a href="..\classes\Actor.html#method_setDrawing" class="c
     <pre><code>invisible</code>: Boolean</pre>
     <hr>
     <p>The visibility of an actor</p>
+
+    
+</div>
+
+            
+                <a name="props_isOffScreen"></a>
+<div class="props item">
+    <pre><code>isOffScreen</code>: Boolean</pre>
+    <hr>
+    <p>Indicates wether the actor is physically in the viewport</p>
+
+    
+</div>
+
+            
+                <a name="props_logger"></a>
+<div class="props item">
+    <pre><code>logger</code>: <a href="..\classes\Logger.html" class="crosslink">Logger</a></pre>
+    <hr>
+    <p>Convenience reference to the global logger</p>
+
+    
+</div>
+
+            
+                <a name="props_opacity"></a>
+<div class="props item">
+    <pre><code>opacity</code>: Number</pre>
+    <hr>
+    <p>The opacity of an actor</p>
+
+    
+</div>
+
+            
+                <a name="props_parent"></a>
+<div class="props item">
+    <pre><code>parent</code>: <a href="..\classes\Actor.html" class="crosslink">Actor</a></pre>
+    <hr>
+    <p>The parent of this actor</p>
 
     
 </div>
@@ -1901,6 +2465,16 @@ Set drawings with the <a href="..\classes\Actor.html#method_setDrawing" class="c
     <pre><code>scale</code>: Number</pre>
     <hr>
     <p>The scale of the actor</p>
+
+    
+</div>
+
+            
+                <a name="props_scene"></a>
+<div class="props item">
+    <pre><code>scene</code>: <a href="..\classes\Scene.html" class="crosslink">Scene</a></pre>
+    <hr>
+    <p>The scene that the actor is in</p>
 
     
 </div>
@@ -2002,6 +2576,15 @@ Set drawings with the <a href="..\classes\Actor.html#method_setDrawing" class="c
          <li><a href="/classes/SideCamera.html">SideCamera</a></li>
          
       
+         <h4>Collision</h4>
+         
+         <li><a href="/classes/BoundingBox.html">BoundingBox</a></li>
+         
+         <li><a href="/classes/CollisionMap.html">CollisionMap</a></li>
+         
+         <li><a href="/classes/Cell.html">Cell</a></li>
+         
+      
          <h4>Effects</h4>
          
          <li><a href="/classes/ParticleEmitter.html">ParticleEmitter</a></li>
@@ -2059,12 +2642,26 @@ Set drawings with the <a href="..\classes\Actor.html#method_setDrawing" class="c
          
          <li><a href="/classes/ISpriteEffect.html">ISpriteEffect</a></li>
          
+         <li><a href="/classes/ICollidable.html">ICollidable</a></li>
+         
       
          <h4>Events</h4>
          
          <li><a href="/classes/GameEvent.html">GameEvent</a></li>
          
          <li><a href="/classes/UpdateEvent.html">UpdateEvent</a></li>
+         
+         <li><a href="/classes/ActivateEvent.html">ActivateEvent</a></li>
+         
+         <li><a href="/classes/DeactivateEvent.html">DeactivateEvent</a></li>
+         
+         <li><a href="/classes/CollisionEvent.html">CollisionEvent</a></li>
+         
+         <li><a href="/classes/InitializeEvent.html">InitializeEvent</a></li>
+         
+         <li><a href="/classes/ExitViewPortEvent.html">ExitViewPortEvent</a></li>
+         
+         <li><a href="/classes/EnterViewPortEvent.html">EnterViewPortEvent</a></li>
          
          <li><a href="/classes/FocusEvent.html">FocusEvent</a></li>
          
