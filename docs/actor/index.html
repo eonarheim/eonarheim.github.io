@@ -1,0 +1,936 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <title>Actor</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Arizonia' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="/css/gridism.css" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="/css/syntax.css" />
+  <link rel="icon" type="image/x-icon" href="/favicon.png" />
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46390208-1', 'excaliburjs.com');
+  ga('send', 'pageview');
+
+  </script>
+</head>
+
+<body class="wrap">
+  <header>
+  <div class="grid">
+    <div class="unit one-third center-on-mobiles">
+      <h1>
+        <a href="/">
+          <span>Excalibur</span>
+          <img src="/img/excalibur-title.png" width="307" height="115" alt="">
+        </a>
+      </h1>
+    </div>
+    <nav class="main-nav unit two-thirds">
+      <ul>
+  <li class="">
+    <a href="/">Overview</a>
+  </li>
+  <li class="selected">
+    <a href="/docs/home/">Doc<span class="show-on-mobiles">s</span><span class="hide-on-mobiles">umentation</span></a>
+  </li>
+  <li class="">
+    <a href="/gallery/home/">Gallery</a>
+  </li>
+  <li class="">
+    <a href="https://github.com/eonarheim/excalibur" target="_blank"><span class="hide-on-mobiles">View on </span>GitHub</a>
+  </li>
+</ul>
+    </nav>
+  </div>
+</header>
+
+    <section class="docs">
+    <div class="grid">
+
+      
+      <div class="unit four-fifths">
+        <article>
+          <h1>Actor</h1>
+          <p>The most important primitive in Excalibur is an &quot;Actor.&quot; Anything that can move on the
+screen, collide with another Actor, respond to events, or interact with the current scene, 
+must be an actor.</p>
+
+<h2>Usage</h2>
+
+<hr>
+
+<div class="highlight"><pre><code class="javascript"><span class="kd">var</span> <span class="nx">game</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ex</span><span class="p">.</span><span class="nx">Engine</span><span class="p">();</span>
+
+<span class="c1">// Create new actor at x = 50, y = 50, width = 10, height = 10, and color = black</span>
+<span class="kd">var</span> <span class="nx">actor</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ex</span><span class="p">.</span><span class="nx">Actor</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="nx">Color</span><span class="p">.</span><span class="nx">fromHex</span><span class="p">(</span><span class="s1">&#39;#000000&#39;</span><span class="p">));</span>
+
+<span class="nx">game</span><span class="p">.</span><span class="nx">addChild</span><span class="p">(</span><span class="nx">actor</span><span class="p">);</span>
+
+<span class="nx">game</span><span class="p">.</span><span class="nx">start</span><span class="p">();</span>
+</code></pre></div>
+
+<h2>Constructor</h2>
+
+<pre>new(x? : number,  
+   y? : number,  
+   width? : number, 
+   height? : number, 
+   color? : Color)</pre>
+
+<hr>
+
+<p>The Actor constructor takes 5 optional parameters: x position, y position,
+width, height, and color. If no parameters are specified, the default values of x, y, width, and 
+height will all be 0. Color will default to black.</p>
+
+<h2>Static Methods</h2>
+
+<pre>actor.extend(methods : any)</pre>
+
+<hr>
+
+<p>You may wish to extend native actor functionality. Any method on actor may be
+extended to support additional functionaliy. In the example below we create 
+a new type called &quot;MyActor&quot;</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="kd">var</span> <span class="nx">MyActor</span> <span class="o">=</span> <span class="nx">ex</span><span class="p">.</span><span class="nx">Actor</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+   <span class="nx">update</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">engine</span><span class="p">,</span> <span class="nx">delta</span><span class="p">){</span>
+      <span class="c1">// Implement custom update </span>
+
+      <span class="c1">// Call super constructor update</span>
+      <span class="k">this</span><span class="p">.</span><span class="kr">super</span><span class="p">.</span><span class="nx">update</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">engine</span><span class="p">,</span> <span class="nx">delta</span><span class="p">);</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Something cool!&quot;</span><span class="p">);</span>
+   <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="kd">var</span> <span class="nx">myActor</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ex</span><span class="p">.</span><span class="nx">MyActor</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="nx">Color</span><span class="p">.</span><span class="nx">Azure</span><span class="p">);</span>
+</code></pre></div>
+
+<p><strong>Note</strong> - If you are using TypeScript, it is easier to use the built-in inheritance mechanic . 
+This method is meant as a convenience for games built in JavaScript.</p>
+
+<h2>Properties</h2>
+
+<pre>actor.x</pre>
+
+<hr>
+
+<p>The x position of the actor in game coordinates. Defaults to 0.</p>
+
+<pre>actor.y</pre>
+
+<hr>
+
+<p>The y position of the actor in game coordinates. Defaults to 0.</p>
+
+<pre>actor.rotation</pre>
+
+<hr>
+
+<p>The current rotation of an actor in radians. Defaults to 0.</p>
+
+<pre>actor.scale</pre>
+
+<hr>
+
+<p>The current scale of an actor. Defaults to 1.</p>
+
+<pre>actor.dx</pre>
+
+<hr>
+
+<p>The current x velocity of an actor. Defaults to 0.</p>
+
+<pre>actor.dy</pre>
+
+<hr>
+
+<p>The current y velocity of an actor. Defaults to 0.</p>
+
+<pre>actor.rx</pre>
+
+<hr>
+
+<p>The current angular velocity of an actor. Defaults to 0.</p>
+
+<pre>actor.sx</pre>
+
+<hr>
+
+<p>The current scale velocity of an actor. Defaults to 0.</p>
+
+<pre>actor.invisible</pre>
+
+<hr>
+
+<p>Get or set the current visibility of an actor. If &#39;invisible&#39; is set to
+true, then the actor will no longer be drawn, but will still receive 
+updates.</p>
+
+<pre>actor.fixed</pre>
+
+<hr>
+
+<p>If &#39;fixed&#39; is set to true the actor will not be pushed by other actors
+on collision. If &#39;fixed&#39; is set to false then other actors will influence
+the current actor&#39;s position on collision.</p>
+
+<pre>actor.frames</pre>
+
+<hr>
+
+<p>Dictionary containing all of the drawable images/animations for an actor. You 
+<em>should not</em> be adding to this directory. Use the &#39;addDrawing&#39; method below.</p>
+
+<pre>actor.currentDrawing</pre>
+
+<hr>
+
+<p>The current drawing being displayed for this actor. You <em>should not</em> ever
+set this property. Use the &#39;setDrawing&#39; method below.</p>
+
+<pre>actor.color</pre>
+
+<hr>
+
+<p>The current color for an actor. This is only used if no drawings have been
+specified for an actor.</p>
+
+<pre>actor.parent</pre>
+
+<hr>
+
+<p>The parent property represents the SceneNode that is this actor&#39;s parent.
+This property is null by default and is set when the actor is added to the
+scene graph.</p>
+
+<h2>Methods</h2>
+
+<pre>actor.kill()</pre>
+
+<hr>
+
+<p>This is a convenience method to remove the current actor from the scene. Actors
+that are removed from the scene will no longer be drawn or updated. </p>
+
+<pre>actor.addChild(actor: ex.Actor)</pre>
+
+<hr>
+
+<p>Adds a child actor to this actor. This allows you to move the parent actor
+around and have children automatically follow.</p>
+
+<p><em>Note</em> All child coordinates are relative to the parent.</p>
+
+<pre>actor.removeChild(actor: ex.Actor)</pre>
+
+<hr>
+
+<p>Removes a child actor from this actor.</p>
+
+<pre>actor.addDrawing(key: string, drawing: ex.IDrawable)</pre>
+
+<hr>
+
+<p>Adds a drawing to the collection of available drawings for an actor.</p>
+
+<pre>actor.setDrawing(key : string)</pre>
+
+<hr>
+
+<p>Set the current drawing for the actor from the available drawing collection.</p>
+
+<pre>actor.setCenterDrawing(isDrawingCentered: boolean)</pre>
+
+<hr>
+
+<p>Centers the current drawing around the actor&#39;s bounding box.</p>
+
+<pre>actor.addEventListener(eventName: string,  
+   handler: (event?: ex.ActorEvent) => void)</pre>
+
+<hr>
+
+<p>Add an event listener to this actor. You can listen for a variety of events 
+off of the actor; see the events section below for a complete list.</p>
+
+<pre>actor.triggerEvent(eventName: string, event?: ex.ActorEvent)</pre>
+
+<hr>
+
+<p>Trigger an event to occur off of an actor.</p>
+
+<pre>actor.getCenter()</pre>
+
+<hr>
+
+<p>Returns a vector with the x and y position of the center of the actor.</p>
+
+<pre>actor.getWidth()</pre>
+
+<hr>
+
+<p>Returns the width of an actor, factoring in the scale.</p>
+
+<pre>actor.setWidth(width: number)</pre>
+
+<hr>
+
+<p>Sets the width of an actor, factoring in the scale.</p>
+
+<pre>actor.getHeight()</pre>
+
+<hr>
+
+<p>Returns the height of an actor, factoring in the scale.</p>
+
+<pre>actor.setHeight(height: number)</pre>
+
+<hr>
+
+<p>Sets the height of an actor, factoring in the scale.</p>
+
+<pre>actor.getLeft()</pre>
+
+<hr>
+
+<p>Returns the x position of the left side of the actor&#39;s bounding box.</p>
+
+<pre>actor.getRight()</pre>
+
+<hr>
+
+<p>Returns the x position of the right side of the actor&#39;s bounding box.</p>
+
+<pre>actor.getTop()</pre>
+
+<hr>
+
+<p>Returns the y position of the top side of the actor&#39;s bounding box.</p>
+
+<pre>actor.getBottom()</pre>
+
+<hr>
+
+<p>Returns the y position of the bottom side of the actor&#39;s bounding box.</p>
+
+<pre>actor.contains(x: number, y: number)</pre>
+
+<hr>
+
+<p>Returns true if the x and y position specified are inside or on the edge of
+the actor&#39;s bounding box.</p>
+
+<pre>actor.collides(other: ex.Actor)</pre>
+
+<hr>
+
+<p>Returns the &#39;Side&#39; of the other actor if actor collides with the other actor. 
+Otherwise it returns the &#39;None&#39; side.</p>
+
+<pre>actor.within(other: ex.Actor, distance: number)</pre>
+
+<hr>
+
+<p>Returns true if the two actors are less than or equal to the distance specified from each other.</p>
+
+<pre>actor.moveTo(x: number, y: number, speed: number</pre>
+
+<hr>
+
+<p>This method will move an actor to the specified x and y position at the speed
+specified (in pixels per second) and return back the actor.</p>
+
+<p>This method is part of the actor &#39;Action&#39; fluent API allowing action chaining. </p>
+
+<pre>actor.moveBy(x: number, y: number, time: number</pre>
+
+<hr>
+
+<p>This method will move an actor to the specified x and y position by a certain
+time (in milliseconds).</p>
+
+<p>This method is part of the actor &#39;Action&#39; fluent API allowing action chaining. </p>
+
+<pre>actor.rotateTo(angleRadians: number, speed: number</pre>
+
+<hr>
+
+<p>This method will rotate an actor to the specified angle at the speed
+specified (in radians per second) and return back the actor.</p>
+
+<p>This method is part of the actor &#39;Action&#39; fluent API allowing action chaining. </p>
+
+<pre>actor.rotateBy(angleRadians: number, time: number</pre>
+
+<hr>
+
+<p>This method will rotate an actor to the specified angle by a certain time 
+(in milliseconds) and return back the actor.</p>
+
+<p>This method is part of the actor &#39;Action&#39; fluent API allowing action chaining. </p>
+
+<pre>actor.scaleTo(size: number, speed: number</pre>
+
+<hr>
+
+<p>This method will scale an actor to the specified size at the speed
+specified (in magnitude increase per second) and return back the actor.</p>
+
+<p>This method is part of the actor &#39;Action&#39; fluent API allowing action chaining. </p>
+
+<pre>actor.scaleBy(size: number, time: number</pre>
+
+<hr>
+
+<p>This method will scale an actor to the specified size by a certain time
+(in milliseconds) and return back the actor.</p>
+
+<p>This method is part of the actor &#39;Action&#39; fluent API allowing action chaining. </p>
+
+<pre>actor.blink(frequency: number, duration: number, blinkTime? number)</pre>
+
+<hr>
+
+<p>This method will cause an actor to blink (become visible and and invisible) at
+a frequency (blinks per second) for a duration (in milliseconds). Optionally, you
+may specify blinkTime, which indicates the amount of time the actor is invisible
+during each blink.</p>
+
+<p>To have the actor blink 3 times in 1 second, call actor.blink(3, 1000).</p>
+
+<p>This method is part of the actor &#39;Action&#39; fluent API allowing action chaining. </p>
+
+<pre>actor.delay(time: number)</pre>
+
+<hr>
+
+<p>This method will delay the next action from executing for a certain amount of
+time (in milliseconds).</p>
+
+<p>This method is part of the actor &#39;Action&#39; fluent API allowing action chaining. </p>
+
+<pre>actor.repeat(times?: number)</pre>
+
+<hr>
+
+<p>This method will cause the actor to repeat all of the previously called actions 
+a certain number of times. If the number of repeats is not specified it will 
+repeat forever.</p>
+
+<p>This method is part of the actor &#39;Action&#39; fluent API allowing action chaining. </p>
+
+<pre>actor.repeatForever()</pre>
+
+<hr>
+
+<p>This method will cause the actor to repeat all of the previously called actions
+forever.</p>
+
+<p>This method is part of the actor &#39;Action&#39; fluent API allowing action chaining. </p>
+
+<pre>actor.update(engine: ex.Engine, delta: number)</pre>
+
+<hr>
+
+<p>This method is called by the engine to update each actor. Delta is the amount
+of time elapsed since the last time update was called (in milliseconds).</p>
+
+<p>You should only be calling this method if you wish to extend actor.</p>
+
+<pre>actor.draw(ctx: CanvasRenderingContext2D, delta: number)</pre>
+
+<hr>
+
+<p>This method is called by the engine to draw each actor. Delta is the amount
+of time elapsed since the last time draw was called (in milliseconds).</p>
+
+<p>You should only be calling this method if you wish to extend actor.</p>
+
+<pre>actor.debugDraw(ctx: CanvasRenderingContext2D)</pre>
+
+<hr>
+
+<p>This method is called by the engine when in debug mode. This will add general
+debug information to the screen.</p>
+
+<h2>Events</h2>
+
+<p>Valid events to listen for off of Actor.</p>
+
+<pre>'keydown'</pre>
+
+<pre>'keyup'</pre>
+
+<pre>'keypressed'</pre>
+
+<pre>'update'</pre>
+
+<pre>'click'</pre>
+
+<pre>'mousedown'</pre>
+
+<pre>'mouseup'</pre>
+
+<p>See the events documentation for specifics about each of these events.</p>
+
+          <div class="section-nav">
+  <div class="left align-right">
+    
+      <a href="/docs/engine/" class="prev">
+        Back
+      </a>
+    
+  </div>
+  <div class="right align-left">
+    
+      <a href="/docs/label/" class="next">
+        Next
+      </a>
+    
+  </div>
+  <div class="clear"></div>
+</div>
+        </article>
+      </div>
+      
+      
+
+<div class="unit one-fifth hide-on-mobiles">
+  <aside>
+    <h4>Getting Started</h4>
+    
+
+
+<ul>
+
+  
+
+  
+    
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <li class=""><a href="/docs/home/">Welcome</a></li>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+  
+
+  
+    
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <li class=""><a href="/docs/install/">Installation</a></li>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+  
+
+  
+    
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <li class=""><a href="/docs/quickstart/">Quick Start</a></li>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+  
+</ul>
+    
+    
+
+
+<h4>Core</h4>
+<ul>
+
+ 
+   <li><a href="/classes/Actor.html">Actor</a></li>
+ 
+   <li><a href="/classes/Scene.html">Scene</a></li>
+ 
+   <li><a href="/classes/Engine.html">Engine</a></li>
+ 
+   <li><a href="/classes/Label.html">Label</a></li>
+ 
+   <li><a href="/classes/Class.html">Class</a></li>
+ 
+   <li><a href="/classes/Color.html">Color</a></li>
+ 
+   <li><a href="/classes/Trigger.html">Trigger</a></li>
+ 
+   <li><a href="/classes/DisplayMode.html">DisplayMode</a></li>
+ 
+   <li><a href="/classes/Side.html">Side</a></li>
+
+</ul>
+
+<h4>Media</h4>
+<ul>
+
+ 
+   <li><a href="/classes/Sound.html">Sound</a></li>
+ 
+   <li><a href="/classes/Texture.html">Texture</a></li>
+ 
+   <li><a href="/classes/Polygon.html">Polygon</a></li>
+ 
+   <li><a href="/classes/Animation.html">Animation</a></li>
+ 
+   <li><a href="/classes/Sprite.html">Sprite</a></li>
+ 
+   <li><a href="/classes/SpriteSheet.html">SpriteSheet</a></li>
+ 
+   <li><a href="/classes/SpriteFont.html">SpriteFont</a></li>
+
+</ul>
+
+<h4>Cameras</h4>
+<ul>
+
+ 
+   <li><a href="/classes/TopCamera.html">TopCamera</a></li>
+ 
+   <li><a href="/classes/SideCamera.html">SideCamera</a></li>
+
+</ul>
+
+<h4>Collision</h4>
+<ul>
+
+ 
+   <li><a href="/classes/BoundingBox.html">BoundingBox</a></li>
+ 
+   <li><a href="/classes/CollisionMap.html">CollisionMap</a></li>
+ 
+   <li><a href="/classes/Cell.html">Cell</a></li>
+
+</ul>
+
+<h4>Effects</h4>
+<ul>
+
+ 
+   <li><a href="/classes/ParticleEmitter.html">ParticleEmitter</a></li>
+ 
+   <li><a href="/classes/EmitterType.html">EmitterType</a></li>
+ 
+   <li><a href="/classes/Effects.Grayscale.html">Effects.Grayscale</a></li>
+ 
+   <li><a href="/classes/Effects.Invert.html">Effects.Invert</a></li>
+ 
+   <li><a href="/classes/Effects.Opacity.html">Effects.Opacity</a></li>
+ 
+   <li><a href="/classes/Effects.Colorize.html">Effects.Colorize</a></li>
+
+</ul>
+
+<h4>Utility</h4>
+<ul>
+
+ 
+   <li><a href="/classes/Loader.html">Loader</a></li>
+ 
+   <li><a href="/classes/Promise.html">Promise</a></li>
+ 
+   <li><a href="/classes/PromiseState.html">PromiseState</a></li>
+ 
+   <li><a href="/classes/Timer.html">Timer</a></li>
+ 
+   <li><a href="/classes/Collection.html">Collection</a></li>
+ 
+   <li><a href="/classes/EventDispatcher.html">EventDispatcher</a></li>
+ 
+   <li><a href="/classes/EventType.html">EventType</a></li>
+ 
+   <li><a href="/classes/Logger.html">Logger</a></li>
+ 
+   <li><a href="/classes/LogLevel.html">LogLevel</a></li>
+ 
+   <li><a href="/classes/ConsoleAppender.html">ConsoleAppender</a></li>
+ 
+   <li><a href="/classes/ScreenAppender.html">ScreenAppender</a></li>
+
+</ul>
+
+<h4>Math</h4>
+<ul>
+
+ 
+   <li><a href="/classes/Point.html">Point</a></li>
+ 
+   <li><a href="/classes/Vector.html">Vector</a></li>
+
+</ul>
+
+<h4>Interfaces</h4>
+<ul>
+
+ 
+   <li><a href="/classes/IAppender.html">IAppender</a></li>
+ 
+   <li><a href="/classes/IDrawable.html">IDrawable</a></li>
+ 
+   <li><a href="/classes/ILoadable.html">ILoadable</a></li>
+ 
+   <li><a href="/classes/InputKey.html">InputKey</a></li>
+ 
+   <li><a href="/classes/ISpriteEffect.html">ISpriteEffect</a></li>
+ 
+   <li><a href="/classes/ICollidable.html">ICollidable</a></li>
+
+</ul>
+
+<h4>Events</h4>
+<ul>
+
+ 
+   <li><a href="/classes/GameEvent.html">GameEvent</a></li>
+ 
+   <li><a href="/classes/UpdateEvent.html">UpdateEvent</a></li>
+ 
+   <li><a href="/classes/ActivateEvent.html">ActivateEvent</a></li>
+ 
+   <li><a href="/classes/DeactivateEvent.html">DeactivateEvent</a></li>
+ 
+   <li><a href="/classes/CollisionEvent.html">CollisionEvent</a></li>
+ 
+   <li><a href="/classes/InitializeEvent.html">InitializeEvent</a></li>
+ 
+   <li><a href="/classes/ExitViewPortEvent.html">ExitViewPortEvent</a></li>
+ 
+   <li><a href="/classes/EnterViewPortEvent.html">EnterViewPortEvent</a></li>
+ 
+   <li><a href="/classes/FocusEvent.html">FocusEvent</a></li>
+ 
+   <li><a href="/classes/BlurEvent.html">BlurEvent</a></li>
+ 
+   <li><a href="/classes/KeyEvent.html">KeyEvent</a></li>
+ 
+   <li><a href="/classes/KeyUp.html">KeyUp</a></li>
+ 
+   <li><a href="/classes/KeyDown.html">KeyDown</a></li>
+ 
+   <li><a href="/classes/KeyPress.html">KeyPress</a></li>
+ 
+   <li><a href="/classes/MouseUp.html">MouseUp</a></li>
+ 
+   <li><a href="/classes/MouseDown.html">MouseDown</a></li>
+ 
+   <li><a href="/classes/MouseMove.html">MouseMove</a></li>
+ 
+   <li><a href="/classes/TouchEvent.html">TouchEvent</a></li>
+ 
+   <li><a href="/classes/TouchStart.html">TouchStart</a></li>
+ 
+   <li><a href="/classes/TouchEnd.html">TouchEnd</a></li>
+ 
+   <li><a href="/classes/TouchMove.html">TouchMove</a></li>
+ 
+   <li><a href="/classes/TouchCancel.html">TouchCancel</a></li>
+
+</ul>
+
+  </aside>
+</div>
+
+      <div class="clear"></div>
+
+    </div>
+  </section>
+
+  <footer>
+  <div class="grid">
+    <div class="unit whole">
+      <p>
+        Excalibur<br />
+        A simple game engine for building 2D games on the web.<br />
+      </p>
+      <p>
+        By <a href="http://erikonarheim.com">Erik Onarheim</a>, <a href="https://github.com/jedeen/">Josh Edeen</a>, and <a href="http://kamranicus.com/">Kamran Ayub</a>.
+      </p>
+    </div>
+    <div class="unit whole">
+      <p>
+        This site powered by 
+        <a href="http://jekyllrb.com/">
+          <img class="jekyll" src="/img/logo-2x.png"/>
+        </a>
+        and
+        <a href="http://yui.github.io/yuidoc/">
+          <img class="yui" src="/img/logo.png"/>
+        </a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+
+</body>
+</html>
+          

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Effects.Invert</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Arizonia' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/css/gridism.css" />
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/syntax.css" />
+    <link rel="icon" type="image/x-icon" href="/favicon.png" />
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-46390208-1', 'excaliburjs.com');
+    ga('send', 'pageview');
+
+    </script>
+
+    <!--<link rel="stylesheet" href="http://yui.yahooapis.com/3.8.0pr2/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <script src="http://yui.yahooapis.com/combo?3.8.0pr2/build/yui/yui-min.js"></script>-->
+</head>
+
+<body class="wrap">
+<header>
+  <div class="grid">
+    <div class="unit one-third center-on-mobiles">
+      <h1>
+        <a href="/">
+          <span>Excalibur</span>
+          <img src="/img/excalibur-title.png" width="307" height="115" alt="">
+        </a>
+      </h1>
+    </div>
+    <nav class="main-nav unit two-thirds">
+      <ul>
+  <li class="">
+    <a href="/">Overview</a>
+  </li>
+  <li class="selected">
+    <a href="/docs/home">Doc<span class="show-on-mobiles">s</span><span class="hide-on-mobiles">umentation</span></a>
+  </li>
+  <li>
+    <a href="/gallery/home">Gallery</a>
+  </li>
+  <li>
+    <a href="https://www.github.com/eonarheim/excalibur" target="_blank"><span class="hide-on-mobiles">View on </span>GitHub</a>
+  </li>
+</ul>
+    </nav>
+  </div>
+</header>
+
+<div>    
+    <section class="docs">
+ <div class="grid">
+
+   
+   <div class="unit four-fifths">
+     <article>
+      <h1>ex.Effects.Invert</h1>
+      
+      
+      
+          Extends: <a href="..\classes\ISpriteEffect.html" class="crosslink">ISpriteEffect</a><br>
+      
+      <div class="intro"><p>Applies the "Invert" effect to a sprite, inverting the pixel colors.</p>
+</div>
+
+      
+         <h2>Constructor</h2>
+          
+          <a name="methods_Effects.Invert"></a>
+<div class="method item">
+     <pre>new ex.Effects.Invert( ) </pre>
+    <hr>
+    <span class="foundat">
+    
+        
+    
+        
+    </span>
+    
+    
+    
+</div>
+
+          
+      
+    <div>
+          
+        <h2>Methods</h2>
+        
+        
+            <div id="methods">
+            
+               
+               <a name="methods_updatePixel"></a>
+<div class="method item">
+     <pre>updatePixel(x, y, imageData) </pre>
+    <hr>
+    <span class="foundat">
+    
+         Defined in <a href="ISpriteEffect.html#method_updatePixel">ISpriteEffect</a>: 
+    
+        
+    </span>
+    <p>Should update individual pixels values</p>
+
+    
+    <strong class="parameters">Parameters:</strong>
+    <table class="props">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+
+    
+        <tr>
+        
+            <td><code>x</code></td> <td><strong>Number</strong></td><td><p>The pixel&#39;s x coordinate</p>
+</td>
+        
+        
+            
+        </tr>
+    
+        <tr>
+        
+            <td><code>y</code></td> <td><strong>Number</strong></td><td><p>The pixel&#39;s y coordinate</p>
+</td>
+        
+        
+            
+        </tr>
+    
+        <tr>
+        
+            <td><code>imageData</code></td> <td><strong>ImageData</strong></td><td><p>The sprites raw pixel data</p>
+</td>
+        
+        
+            
+        </tr>
+    
+      </tbody>
+    </table>
+    <br/>
+    
+    
+</div>
+
+               
+            
+            </div>
+        
+        
+        
+        
+        
+        
+    </div>
+    
+</div>
+
+  <div class="unit one-fifth hide-on-mobiles">
+  <aside>
+    <h4>Getting Started</h4>
+      <ul>
+      <li><a href="/docs/home/">Welcome</a></li>
+      <li><a href="/docs/install/">Installation</a></li>
+      <li><a href="/docs/quickstart/">Quick Start</a></li>
+      </ul>
+    <ul>
+      
+         <h4>Core</h4>
+         
+         <li><a href="/classes/Actor.html">Actor</a></li>
+         
+         <li><a href="/classes/Scene.html">Scene</a></li>
+         
+         <li><a href="/classes/Engine.html">Engine</a></li>
+         
+         <li><a href="/classes/Label.html">Label</a></li>
+         
+         <li><a href="/classes/Class.html">Class</a></li>
+         
+         <li><a href="/classes/Color.html">Color</a></li>
+         
+         <li><a href="/classes/Trigger.html">Trigger</a></li>
+         
+         <li><a href="/classes/DisplayMode.html">DisplayMode</a></li>
+         
+         <li><a href="/classes/Side.html">Side</a></li>
+         
+      
+         <h4>Media</h4>
+         
+         <li><a href="/classes/Sound.html">Sound</a></li>
+         
+         <li><a href="/classes/Texture.html">Texture</a></li>
+         
+         <li><a href="/classes/Polygon.html">Polygon</a></li>
+         
+         <li><a href="/classes/Animation.html">Animation</a></li>
+         
+         <li><a href="/classes/Sprite.html">Sprite</a></li>
+         
+         <li><a href="/classes/SpriteSheet.html">SpriteSheet</a></li>
+         
+         <li><a href="/classes/SpriteFont.html">SpriteFont</a></li>
+         
+      
+         <h4>Cameras</h4>
+         
+         <li><a href="/classes/TopCamera.html">TopCamera</a></li>
+         
+         <li><a href="/classes/SideCamera.html">SideCamera</a></li>
+         
+      
+         <h4>Collision</h4>
+         
+         <li><a href="/classes/BoundingBox.html">BoundingBox</a></li>
+         
+         <li><a href="/classes/CollisionMap.html">CollisionMap</a></li>
+         
+         <li><a href="/classes/Cell.html">Cell</a></li>
+         
+      
+         <h4>Effects</h4>
+         
+         <li><a href="/classes/ParticleEmitter.html">ParticleEmitter</a></li>
+         
+         <li><a href="/classes/EmitterType.html">EmitterType</a></li>
+         
+         <li><a href="/classes/Effects.Grayscale.html">Effects.Grayscale</a></li>
+         
+         <li><a href="/classes/Effects.Invert.html">Effects.Invert</a></li>
+         
+         <li><a href="/classes/Effects.Opacity.html">Effects.Opacity</a></li>
+         
+         <li><a href="/classes/Effects.Colorize.html">Effects.Colorize</a></li>
+         
+      
+         <h4>Utility</h4>
+         
+         <li><a href="/classes/Loader.html">Loader</a></li>
+         
+         <li><a href="/classes/Promise.html">Promise</a></li>
+         
+         <li><a href="/classes/PromiseState.html">PromiseState</a></li>
+         
+         <li><a href="/classes/Timer.html">Timer</a></li>
+         
+         <li><a href="/classes/Collection.html">Collection</a></li>
+         
+         <li><a href="/classes/EventDispatcher.html">EventDispatcher</a></li>
+         
+         <li><a href="/classes/EventType.html">EventType</a></li>
+         
+         <li><a href="/classes/Logger.html">Logger</a></li>
+         
+         <li><a href="/classes/LogLevel.html">LogLevel</a></li>
+         
+         <li><a href="/classes/ConsoleAppender.html">ConsoleAppender</a></li>
+         
+         <li><a href="/classes/ScreenAppender.html">ScreenAppender</a></li>
+         
+      
+         <h4>Math</h4>
+         
+         <li><a href="/classes/Point.html">Point</a></li>
+         
+         <li><a href="/classes/Vector.html">Vector</a></li>
+         
+      
+         <h4>Interfaces</h4>
+         
+         <li><a href="/classes/IAppender.html">IAppender</a></li>
+         
+         <li><a href="/classes/IDrawable.html">IDrawable</a></li>
+         
+         <li><a href="/classes/ILoadable.html">ILoadable</a></li>
+         
+         <li><a href="/classes/InputKey.html">InputKey</a></li>
+         
+         <li><a href="/classes/ISpriteEffect.html">ISpriteEffect</a></li>
+         
+         <li><a href="/classes/ICollidable.html">ICollidable</a></li>
+         
+      
+         <h4>Events</h4>
+         
+         <li><a href="/classes/GameEvent.html">GameEvent</a></li>
+         
+         <li><a href="/classes/UpdateEvent.html">UpdateEvent</a></li>
+         
+         <li><a href="/classes/ActivateEvent.html">ActivateEvent</a></li>
+         
+         <li><a href="/classes/DeactivateEvent.html">DeactivateEvent</a></li>
+         
+         <li><a href="/classes/CollisionEvent.html">CollisionEvent</a></li>
+         
+         <li><a href="/classes/InitializeEvent.html">InitializeEvent</a></li>
+         
+         <li><a href="/classes/ExitViewPortEvent.html">ExitViewPortEvent</a></li>
+         
+         <li><a href="/classes/EnterViewPortEvent.html">EnterViewPortEvent</a></li>
+         
+         <li><a href="/classes/FocusEvent.html">FocusEvent</a></li>
+         
+         <li><a href="/classes/BlurEvent.html">BlurEvent</a></li>
+         
+         <li><a href="/classes/KeyEvent.html">KeyEvent</a></li>
+         
+         <li><a href="/classes/KeyUp.html">KeyUp</a></li>
+         
+         <li><a href="/classes/KeyDown.html">KeyDown</a></li>
+         
+         <li><a href="/classes/KeyPress.html">KeyPress</a></li>
+         
+         <li><a href="/classes/MouseUp.html">MouseUp</a></li>
+         
+         <li><a href="/classes/MouseDown.html">MouseDown</a></li>
+         
+         <li><a href="/classes/MouseMove.html">MouseMove</a></li>
+         
+         <li><a href="/classes/TouchEvent.html">TouchEvent</a></li>
+         
+         <li><a href="/classes/TouchStart.html">TouchStart</a></li>
+         
+         <li><a href="/classes/TouchEnd.html">TouchEnd</a></li>
+         
+         <li><a href="/classes/TouchMove.html">TouchMove</a></li>
+         
+         <li><a href="/classes/TouchCancel.html">TouchCancel</a></li>
+         
+      
+   </ul>
+  </aside>
+</div>
+
+
+<div class="clear"></div>
+
+</section>
+</div>
+
+
+
+<br clear="both">
+
+<footer>
+  <div class="grid">
+    <div class="unit whole">
+      <p>
+        Excalibur<br />
+        A simple game engine for building 2D games on the web.<br />
+      </p>
+      <p>
+        By <a href="http://erikonarheim.com">Erik Onarheim</a>, <a href="https://github.com/jedeen/">Josh Edeen</a>, and <a href="http://kamranicus.com/">Kamran Ayub</a>.
+      </p>
+    </div>
+    <div class="unit whole">
+      <p>
+        This site powered by 
+        <a href="http://jekyllrb.com/">
+          <img class="jekyll" src="/img/logo-2x.png"/>
+        </a>
+        and
+        <a href="http://yui.github.io/yuidoc/">
+          <img class="yui" src="/img/logo.png"/>
+        </a>
+      </p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
+

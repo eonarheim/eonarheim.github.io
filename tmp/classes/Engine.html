@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Engine</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Arizonia' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/css/gridism.css" />
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/syntax.css" />
+    <link rel="icon" type="image/x-icon" href="/favicon.png" />
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-46390208-1', 'excaliburjs.com');
+    ga('send', 'pageview');
+
+    </script>
+
+    <!--<link rel="stylesheet" href="http://yui.yahooapis.com/3.8.0pr2/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <script src="http://yui.yahooapis.com/combo?3.8.0pr2/build/yui/yui-min.js"></script>-->
+</head>
+
+<body class="wrap">
+<header>
+  <div class="grid">
+    <div class="unit one-third center-on-mobiles">
+      <h1>
+        <a href="/">
+          <span>Excalibur</span>
+          <img src="/img/excalibur-title.png" width="307" height="115" alt="">
+        </a>
+      </h1>
+    </div>
+    <nav class="main-nav unit two-thirds">
+      <ul>
+  <li class="">
+    <a href="/">Overview</a>
+  </li>
+  <li class="selected">
+    <a href="/docs/home">Doc<span class="show-on-mobiles">s</span><span class="hide-on-mobiles">umentation</span></a>
+  </li>
+  <li>
+    <a href="/gallery/home">Gallery</a>
+  </li>
+  <li>
+    <a href="https://www.github.com/eonarheim/excalibur" target="_blank"><span class="hide-on-mobiles">View on </span>GitHub</a>
+  </li>
+</ul>
+    </nav>
+  </div>
+</header>
+
+<div>    
+    <section class="docs">
+ <div class="grid">
+
+   
+   <div class="unit four-fifths">
+     <article>
+      <h1>ex.Engine</h1>
+      
+      
+      
+      <div class="intro"><p>The &#39;Engine&#39; is the main driver for a game. It is responsible for 
+starting/stopping the game, maintaining state, transmitting events, 
+loading resources, and managing the scene.</p>
+</div>
+
+      
+         <h2>Constructor</h2>
+          
+          <a name="methods_Engine"></a>
+<div class="method item">
+     <pre>new ex.Engine([width], [height], [canvasElementId], [displayMode]) </pre>
+    <hr>
+    <span class="foundat">
+    
+        
+    
+        
+    </span>
+    
+    
+    <strong class="parameters">Parameters:</strong>
+    <table class="props">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+
+    
+        <tr>
+        
+            <td><code>[width]</code></td> <td><strong>Number</strong></td><td><p>The width in pixels of the Excalibur game viewport</p>
+</td>
+        
+        
+            
+        </tr>
+    
+        <tr>
+        
+            <td><code>[height]</code></td> <td><strong>Number</strong></td><td><p>The height in pixels of the Excalibur game viewport</p>
+</td>
+        
+        
+            
+        </tr>
+    
+        <tr>
+        
+            <td><code>[canvasElementId]</code></td> <td><strong>String</strong></td><td><p>If this is not specified, then a new canvas will be created and inserted into the body.</p>
+</td>
+        
+        
+            
+        </tr>
+    
+        <tr>
+        
+            <td><code>[displayMode]</code></td> <td><strong><a href="..\classes\DisplayMode.html" class="crosslink">DisplayMode</a></strong></td><td><p>If this is not specified, then it will fall back to fixed if a height and width are specified, else the display mode will be FullScreen.</p>
+</td>
+        
+        
+            
+        </tr>
+    
+      </tbody>
+    </table>
+    <br/>
+    
+    
+</div>
+
+          
+      
+    <div>
+          
+        <h2>Methods</h2>
+        
+        
+            <div id="methods">
+            
+               
+               <a name="methods_addChild"></a>
+<div class="method item">
+     <pre>addChild(actor) </pre>
+    <hr>
+    <span class="foundat">
+    
+        
+    
+        
+    </span>
+    <p>Adds an actor to the current scene of the game. This is synonymous
+to calling engine.currentScene.addChild(actor : Actor).</p>
+<p>Actors can only be drawn if they are a member of a scene, and only
+the &#39;currentScene&#39; may be drawn or updated.</p>
+
+    
+    <strong class="parameters">Parameters:</strong>
+    <table class="props">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+
+    
+        <tr>
+        
+            <td><code>actor</code></td> <td><strong><a href="..\classes\Actor.html" class="crosslink">Actor</a></strong></td><td><p>The actor to add to the current scene</p>
+</td>
+        
+        
+            
+        </tr>
+    
+      </tbody>
+    </table>
+    <br/>
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_addScene"></a>
+<div class="method item">
+     <pre>addScene(name, scene) </pre>
+    <hr>
+    <span class="foundat">
+    
+        
+    
+        
+    </span>
+    <p>Adds a scene to the engine, think of scenes in excalibur as you
+would scenes in a play.</p>
+
+    
+    <strong class="parameters">Parameters:</strong>
+    <table class="props">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+
+    
+        <tr>
+        
+            <td><code>name</code></td> <td><strong>String</strong></td><td><p>The name of the scene, must be unique</p>
+</td>
+        
+        
+            
+        </tr>
+    
+        <tr>
+        
+            <td><code>scene</code></td> <td><strong><a href="..\classes\Scene.html" class="crosslink">Scene</a></strong></td><td><p>The scene to add to the engine</p>
+</td>
+        
+        
+            
+        </tr>
+    
+      </tbody>
+    </table>
+    <br/>
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_addTimer"></a>
+<div class="method item">
+     <pre>addTimer(timer) </pre>
+    <hr>
+    <span class="foundat">
+    
+        
+    
+        
+    </span>
+    <p>Adds an excalibur timer to the current scene.</p>
+
+    
+    <strong class="parameters">Parameters:</strong>
+    <table class="props">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+
+    
+        <tr>
+        
+            <td><code>timer</code></td> <td><strong><a href="..\classes\Timer.html" class="crosslink">Timer</a></strong></td><td><p>The timer to add to the current scene.</p>
+</td>
+        
+        
+            
+        </tr>
+    
+      </tbody>
+    </table>
+    <br/>
+    
+    
+</div>
+
+               
+            
+               
+            
+               
+            
+               
+               <a name="methods_getAntialiasing"></a>
+<div class="method item">
+    <pre>getAntialiasing( ): boolean </pre>
+    <hr>
+    <span class="foundat">
+    
+        
+    
+        
+    </span>
+    <p>Return the current smoothing status of the canvas</p>
+
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_getHeight"></a>
+<div class="method item">
+    <pre>getHeight( ): number The height of the drawing surface in pixels. </pre>
+    <hr>
+    <span class="foundat">
+    
+        
+    
+        
+    </span>
+    <p>Returns the height of the engines drawing surface in pixels.</p>
+
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_getWidth"></a>
+<div class="method item">
+    <pre>getWidth( ): number The width of the drawing surface in pixels. </pre>
+    <hr>
+    <span class="foundat">
+    
+        
+    
+        
+    </span>
+    <p>Returns the width of the engines drawing surface in pixels.</p>
+
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_goToScene"></a>
+<div class="method item">
+     <pre>goToScene(name) </pre>
+    <hr>
+    <span class="foundat">
+    
+        
+    
+        
+    </span>
+    <p>Changes the currently updating and drawing scene to a different,
+named scene.</p>
+
+    
+    <strong class="parameters">Parameters:</strong>
+    <table class="props">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+
+    
+        <tr>
+        
+            <td><code>name</code></td> <td><strong>String</strong></td><td><p>The name of the scene to trasition to.</p>
+</td>
+        
+        
+            
+        </tr>
+    
+      </tbody>
+    </table>
+    <br/>
+    
+    
+</div>
+
+               
+            
+               
+            
+               
+               <a name="methods_isKeyDown"></a>
+<div class="method item">
+    <pre>isKeyDown(key): boolean </pre>
+    <hr>
+    <span class="foundat">
+    
+        
+    
+        
+    </span>
+    <p>Tests if a certain key is down.</p>
+
+    
+    <strong class="parameters">Parameters:</strong>
+    <table class="props">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+
+    
+        <tr>
+        
+            <td><code>key</code></td> <td><strong><a href="..\classes\InputKey.html" class="crosslink">InputKey</a></strong></td><td><p>Test wether a key is down</p>
+</td>
+        
+        
+            
+        </tr>
+    
+      </tbody>
+    </table>
+    <br/>
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_isKeyPressed"></a>
+<div class="method item">
+    <pre>isKeyPressed(key): boolean </pre>
+    <hr>
+    <span class="foundat">
+    
+        
+    
+        
+    </span>
+    <p>Tests if a certain key is pressed.</p>
+
+    
+    <strong class="parameters">Parameters:</strong>
+    <table class="props">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+
+    
+        <tr>
+        
+            <td><code>key</code></td> <td><strong><a href="..\classes\InputKey.html" class="crosslink">InputKey</a></strong></td><td><p>Test wether a key is pressed</p>
+</td>
+        
+        
+            
+        </tr>
+    
+      </tbody>
+    </table>
+    <br/>
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_isKeyUp"></a>
+<div class="method item">
+    <pre>isKeyUp(key): boolean </pre>
+    <hr>
+    <span class="foundat">
+    
+        
+    
+        
+    </span>
+    <p>Tests if a certain key is up.</p>
+
+    
+    <strong class="parameters">Parameters:</strong>
+    <table class="props">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+
+    
+        <tr>
+        
+            <td><code>key</code></td> <td><strong><a href="..\classes\InputKey.html" class="crosslink">InputKey</a></strong></td><td><p>Test wether a key is up</p>
+</td>
+        
+        
+            
+        </tr>
+    
+      </tbody>
+    </table>
+    <br/>
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_load"></a>
+<div class="method item">
+     <pre>load(loader) </pre>
+    <hr>
+    <span class="foundat">
+    
+        
+    
+        
+    </span>
+    <p>Another option available to you to load resources into the game. 
+Immediately after calling this the game will pause and the loading screen
+will appear.</p>
+
+    
+    <strong class="parameters">Parameters:</strong>
+    <table class="props">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+
+    
+        <tr>
+        
+            <td><code>loader</code></td> <td><strong><a href="..\classes\ILoadable.html" class="crosslink">ILoadable</a></strong></td><td><p>Some loadable such as a Loader collection, Sound, or Texture.</p>
+</td>
+        
+        
+            
+        </tr>
+    
+      </tbody>
+    </table>
+    <br/>
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_playAnimation"></a>
+<div class="method item">
+     <pre>playAnimation(animation, x, y) </pre>
+    <hr>
+    <span class="foundat">
+    
+        
+    
+        
+    </span>
+    <p>Plays a sprite animation on the screen at the specified x and y
+(in game coordinates, not screen pixels). These animations play
+independent of actors, and will be cleaned up internally as soon
+as they are complete. Note animations that loop will never be
+cleaned up.</p>
+
+    
+    <strong class="parameters">Parameters:</strong>
+    <table class="props">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+
+    
+        <tr>
+        
+            <td><code>animation</code></td> <td><strong><a href="..\classes\Animation.html" class="crosslink">Animation</a></strong></td><td><p>Animation to play</p>
+</td>
+        
+        
+            
+        </tr>
+    
+        <tr>
+        
+            <td><code>x</code></td> <td><strong>Number</strong></td><td><p>x game coordinate to play the animation</p>
+</td>
+        
+        
+            
+        </tr>
+    
+        <tr>
+        
+            <td><code>y</code></td> <td><strong>Number</strong></td><td><p>y game coordinate to play the animation</p>
+</td>
+        
+        
+            
+        </tr>
+    
+      </tbody>
+    </table>
+    <br/>
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_removeChild"></a>
+<div class="method item">
+     <pre>removeChild(actor) </pre>
+    <hr>
+    <span class="foundat">
+    
+        
+    
+        
+    </span>
+    <p>Removes an actor from the currentScene of the game. This is synonymous
+to calling engine.currentScene.removeChild(actor : Actor).
+Actors that are removed from a scene will no longer be drawn or updated.</p>
+
+    
+    <strong class="parameters">Parameters:</strong>
+    <table class="props">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+
+    
+        <tr>
+        
+            <td><code>actor</code></td> <td><strong><a href="..\classes\Actor.html" class="crosslink">Actor</a></strong></td><td><p>The actor to remove from the current scene.</p>
+</td>
+        
+        
+            
+        </tr>
+    
+      </tbody>
+    </table>
+    <br/>
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_removeTimer"></a>
+<div class="method item">
+     <pre>removeTimer(timer) </pre>
+    <hr>
+    <span class="foundat">
+    
+        
+    
+        
+    </span>
+    <p>Removes an excalibur timer from the current scene.</p>
+
+    
+    <strong class="parameters">Parameters:</strong>
+    <table class="props">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+
+    
+        <tr>
+        
+            <td><code>timer</code></td> <td><strong><a href="..\classes\Timer.html" class="crosslink">Timer</a></strong></td><td><p>The timer to remove to the current scene.</p>
+</td>
+        
+        
+            
+        </tr>
+    
+      </tbody>
+    </table>
+    <br/>
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_screenToWorldCoordinates"></a>
+<div class="method item">
+     <pre>screenToWorldCoordinates(point) </pre>
+    <hr>
+    <span class="foundat">
+    
+        
+    
+        
+    </span>
+    <p>Transforms the current x, y from screen coordinates to world coordinates</p>
+
+    
+    <strong class="parameters">Parameters:</strong>
+    <table class="props">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+
+    
+        <tr>
+        
+            <td><code>point</code></td> <td><strong><a href="..\classes\Point.html" class="crosslink">Point</a></strong></td><td><p>screen coordinate to convert</p>
+</td>
+        
+        
+            
+        </tr>
+    
+      </tbody>
+    </table>
+    <br/>
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_setAntialiasing"></a>
+<div class="method item">
+     <pre>setAntialiasing(isSmooth) </pre>
+    <hr>
+    <span class="foundat">
+    
+        
+    
+        
+    </span>
+    <p>If supported by the browser, this will set the antialiasing flag on the
+canvas. Set this to false if you want a &#39;jagged&#39; pixel art look to your
+image resources.</p>
+
+    
+    <strong class="parameters">Parameters:</strong>
+    <table class="props">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+
+    
+        <tr>
+        
+            <td><code>isSmooth</code></td> <td><strong>Boolean</strong></td><td><p>Set smoothing to true or false</p>
+</td>
+        
+        
+            
+        </tr>
+    
+      </tbody>
+    </table>
+    <br/>
+    
+    
+</div>
+
+               
+            
+               
+            
+               
+               <a name="methods_setLoadingDrawFunction"></a>
+<div class="method item">
+     <pre>setLoadingDrawFunction(fcn) </pre>
+    <hr>
+    <span class="foundat">
+    
+        
+    
+        
+    </span>
+    <p>Sets the loading screen draw function if you want to customize the draw</p>
+
+    
+    <strong class="parameters">Parameters:</strong>
+    <table class="props">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+
+    
+        <tr>
+        
+            <td><code>fcn</code></td> <td><strong>Ctx: CanvasRenderingContext2D, loaded: number, total: number) => void</strong></td><td><p>Callback to draw the loading screen which is passed a rendering context, the number of bytes loaded, and the total number of bytes to load.</p>
+</td>
+        
+        
+            
+        </tr>
+    
+      </tbody>
+    </table>
+    <br/>
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_start"></a>
+<div class="method item">
+    <pre>start([loader=undefined]): Promise </pre>
+    <hr>
+    <span class="foundat">
+    
+        
+    
+        
+    </span>
+    <p>Starts the internal game loop for Excalibur after loading
+any provided assets.</p>
+
+    
+    <strong class="parameters">Parameters:</strong>
+    <table class="props">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+
+    
+        <tr>
+        
+            <td><code>[loader=undefined]</code></td> <td><strong><a href="..\classes\ILoadable.html" class="crosslink">ILoadable</a></strong></td><td><p>Optional resources to load before 
+starting the mainloop. Some loadable such as a Loader collection, Sound, or Texture.</p>
+</td>
+        
+        
+            
+        </tr>
+    
+      </tbody>
+    </table>
+    <br/>
+    
+    
+</div>
+
+               
+            
+               
+               <a name="methods_stop"></a>
+<div class="method item">
+     <pre>stop( ) </pre>
+    <hr>
+    <span class="foundat">
+    
+        
+    
+        
+    </span>
+    <p>Stops Excalibur&#39;s mainloop, useful for pausing the game.</p>
+
+    
+    
+</div>
+
+               
+            
+               
+            
+               
+               <a name="methods_worldToScreenCoordinates"></a>
+<div class="method item">
+     <pre>worldToScreenCoordinates(point) </pre>
+    <hr>
+    <span class="foundat">
+    
+        
+    
+        
+    </span>
+    <p>Transforms a world coordinate, to a screen coordinate</p>
+
+    
+    <strong class="parameters">Parameters:</strong>
+    <table class="props">
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+         </tr>
+      </thead>
+      <tbody>
+
+    
+        <tr>
+        
+            <td><code>point</code></td> <td><strong><a href="..\classes\Point.html" class="crosslink">Point</a></strong></td><td><p>world coordinate to convert</p>
+</td>
+        
+        
+            
+        </tr>
+    
+      </tbody>
+    </table>
+    <br/>
+    
+    
+</div>
+
+               
+            
+            </div>
+        
+        
+        <h2>Properties</h2>
+        
+            <div id="props">
+            
+                <a name="props_[backgroundColor=new Color(0, 0, 100)]"></a>
+<div class="props item">
+    <pre><code>[backgroundColor=new Color(0, 0, 100)]</code>: <a href="..\classes\Color.html" class="crosslink">Color</a></pre>
+    <hr>
+    <p>Sets the background color for the engine.</p>
+
+    
+</div>
+
+            
+                <a name="props_[displayMode=FullScreen]"></a>
+<div class="props item">
+    <pre><code>[displayMode=FullScreen]</code>: <a href="..\classes\DisplayMode.html" class="crosslink">DisplayMode</a></pre>
+    <hr>
+    <p>Indicates the current DisplayMode of the engine.</p>
+
+    
+</div>
+
+            
+                <a name="props_[isDebug=false]"></a>
+<div class="props item">
+    <pre><code>[isDebug=false]</code>: Boolean</pre>
+    <hr>
+    <p>Indicates whether the engine should draw with debug information</p>
+
+    
+</div>
+
+            
+                <a name="props_canvas"></a>
+<div class="props item">
+    <pre><code>canvas</code>: HTMLCanvasElement</pre>
+    <hr>
+    <p>Direct access to the engine&#39;s canvas element</p>
+
+    
+</div>
+
+            
+                <a name="props_canvasElementId"></a>
+<div class="props item">
+    <pre><code>canvasElementId</code>: String</pre>
+    <hr>
+    <p>Direct access to the canvas element id, if an id exists</p>
+
+    
+</div>
+
+            
+                <a name="props_ctx"></a>
+<div class="props item">
+    <pre><code>ctx</code>: CanvasRenderingContext2D</pre>
+    <hr>
+    <p>Direct access to the engine&#39;s 2D rendering context</p>
+
+    
+</div>
+
+            
+                <a name="props_height"></a>
+<div class="props item">
+    <pre><code>height</code>: Number</pre>
+    <hr>
+    <p>The height of the game canvas in pixels</p>
+
+    
+</div>
+
+            
+                <a name="props_isFullscreen"></a>
+<div class="props item">
+    <pre><code>isFullscreen</code>: Boolean</pre>
+    <hr>
+    <p>Indicates whether the engine is set to fullscreen or not</p>
+
+    
+</div>
+
+            
+                <a name="props_rootScene"></a>
+<div class="props item">
+    <pre><code>rootScene</code>: <a href="..\classes\Scene.html" class="crosslink">Scene</a></pre>
+    <hr>
+    <p>The default scene of the game, use <a href="..\classes\Engine.html#method_goToScene" class="crosslink">goToScene</a> to transition to different scenes.</p>
+
+    
+</div>
+
+            
+                <a name="props_width"></a>
+<div class="props item">
+    <pre><code>width</code>: Number</pre>
+    <hr>
+    <p>The width of the game canvas in pixels</p>
+
+    
+</div>
+
+            
+            </div>
+        
+         
+        
+        
+        
+        
+    </div>
+    
+</div>
+
+  <div class="unit one-fifth hide-on-mobiles">
+  <aside>
+    <h4>Getting Started</h4>
+      <ul>
+      <li><a href="/docs/home/">Welcome</a></li>
+      <li><a href="/docs/install/">Installation</a></li>
+      <li><a href="/docs/quickstart/">Quick Start</a></li>
+      </ul>
+    <ul>
+      
+         <h4>Core</h4>
+         
+         <li><a href="/classes/Actor.html">Actor</a></li>
+         
+         <li><a href="/classes/Scene.html">Scene</a></li>
+         
+         <li><a href="/classes/Engine.html">Engine</a></li>
+         
+         <li><a href="/classes/Label.html">Label</a></li>
+         
+         <li><a href="/classes/Class.html">Class</a></li>
+         
+         <li><a href="/classes/Color.html">Color</a></li>
+         
+         <li><a href="/classes/Trigger.html">Trigger</a></li>
+         
+         <li><a href="/classes/DisplayMode.html">DisplayMode</a></li>
+         
+         <li><a href="/classes/Side.html">Side</a></li>
+         
+      
+         <h4>Media</h4>
+         
+         <li><a href="/classes/Sound.html">Sound</a></li>
+         
+         <li><a href="/classes/Texture.html">Texture</a></li>
+         
+         <li><a href="/classes/Polygon.html">Polygon</a></li>
+         
+         <li><a href="/classes/Animation.html">Animation</a></li>
+         
+         <li><a href="/classes/Sprite.html">Sprite</a></li>
+         
+         <li><a href="/classes/SpriteSheet.html">SpriteSheet</a></li>
+         
+         <li><a href="/classes/SpriteFont.html">SpriteFont</a></li>
+         
+      
+         <h4>Cameras</h4>
+         
+         <li><a href="/classes/TopCamera.html">TopCamera</a></li>
+         
+         <li><a href="/classes/SideCamera.html">SideCamera</a></li>
+         
+      
+         <h4>Collision</h4>
+         
+         <li><a href="/classes/BoundingBox.html">BoundingBox</a></li>
+         
+         <li><a href="/classes/CollisionMap.html">CollisionMap</a></li>
+         
+         <li><a href="/classes/Cell.html">Cell</a></li>
+         
+      
+         <h4>Effects</h4>
+         
+         <li><a href="/classes/ParticleEmitter.html">ParticleEmitter</a></li>
+         
+         <li><a href="/classes/EmitterType.html">EmitterType</a></li>
+         
+         <li><a href="/classes/Effects.Grayscale.html">Effects.Grayscale</a></li>
+         
+         <li><a href="/classes/Effects.Invert.html">Effects.Invert</a></li>
+         
+         <li><a href="/classes/Effects.Opacity.html">Effects.Opacity</a></li>
+         
+         <li><a href="/classes/Effects.Colorize.html">Effects.Colorize</a></li>
+         
+      
+         <h4>Utility</h4>
+         
+         <li><a href="/classes/Loader.html">Loader</a></li>
+         
+         <li><a href="/classes/Promise.html">Promise</a></li>
+         
+         <li><a href="/classes/PromiseState.html">PromiseState</a></li>
+         
+         <li><a href="/classes/Timer.html">Timer</a></li>
+         
+         <li><a href="/classes/Collection.html">Collection</a></li>
+         
+         <li><a href="/classes/EventDispatcher.html">EventDispatcher</a></li>
+         
+         <li><a href="/classes/EventType.html">EventType</a></li>
+         
+         <li><a href="/classes/Logger.html">Logger</a></li>
+         
+         <li><a href="/classes/LogLevel.html">LogLevel</a></li>
+         
+         <li><a href="/classes/ConsoleAppender.html">ConsoleAppender</a></li>
+         
+         <li><a href="/classes/ScreenAppender.html">ScreenAppender</a></li>
+         
+      
+         <h4>Math</h4>
+         
+         <li><a href="/classes/Point.html">Point</a></li>
+         
+         <li><a href="/classes/Vector.html">Vector</a></li>
+         
+      
+         <h4>Interfaces</h4>
+         
+         <li><a href="/classes/IAppender.html">IAppender</a></li>
+         
+         <li><a href="/classes/IDrawable.html">IDrawable</a></li>
+         
+         <li><a href="/classes/ILoadable.html">ILoadable</a></li>
+         
+         <li><a href="/classes/InputKey.html">InputKey</a></li>
+         
+         <li><a href="/classes/ISpriteEffect.html">ISpriteEffect</a></li>
+         
+         <li><a href="/classes/ICollidable.html">ICollidable</a></li>
+         
+      
+         <h4>Events</h4>
+         
+         <li><a href="/classes/GameEvent.html">GameEvent</a></li>
+         
+         <li><a href="/classes/UpdateEvent.html">UpdateEvent</a></li>
+         
+         <li><a href="/classes/ActivateEvent.html">ActivateEvent</a></li>
+         
+         <li><a href="/classes/DeactivateEvent.html">DeactivateEvent</a></li>
+         
+         <li><a href="/classes/CollisionEvent.html">CollisionEvent</a></li>
+         
+         <li><a href="/classes/InitializeEvent.html">InitializeEvent</a></li>
+         
+         <li><a href="/classes/ExitViewPortEvent.html">ExitViewPortEvent</a></li>
+         
+         <li><a href="/classes/EnterViewPortEvent.html">EnterViewPortEvent</a></li>
+         
+         <li><a href="/classes/FocusEvent.html">FocusEvent</a></li>
+         
+         <li><a href="/classes/BlurEvent.html">BlurEvent</a></li>
+         
+         <li><a href="/classes/KeyEvent.html">KeyEvent</a></li>
+         
+         <li><a href="/classes/KeyUp.html">KeyUp</a></li>
+         
+         <li><a href="/classes/KeyDown.html">KeyDown</a></li>
+         
+         <li><a href="/classes/KeyPress.html">KeyPress</a></li>
+         
+         <li><a href="/classes/MouseUp.html">MouseUp</a></li>
+         
+         <li><a href="/classes/MouseDown.html">MouseDown</a></li>
+         
+         <li><a href="/classes/MouseMove.html">MouseMove</a></li>
+         
+         <li><a href="/classes/TouchEvent.html">TouchEvent</a></li>
+         
+         <li><a href="/classes/TouchStart.html">TouchStart</a></li>
+         
+         <li><a href="/classes/TouchEnd.html">TouchEnd</a></li>
+         
+         <li><a href="/classes/TouchMove.html">TouchMove</a></li>
+         
+         <li><a href="/classes/TouchCancel.html">TouchCancel</a></li>
+         
+      
+   </ul>
+  </aside>
+</div>
+
+
+<div class="clear"></div>
+
+</section>
+</div>
+
+
+
+<br clear="both">
+
+<footer>
+  <div class="grid">
+    <div class="unit whole">
+      <p>
+        Excalibur<br />
+        A simple game engine for building 2D games on the web.<br />
+      </p>
+      <p>
+        By <a href="http://erikonarheim.com">Erik Onarheim</a>, <a href="https://github.com/jedeen/">Josh Edeen</a>, and <a href="http://kamranicus.com/">Kamran Ayub</a>.
+      </p>
+    </div>
+    <div class="unit whole">
+      <p>
+        This site powered by 
+        <a href="http://jekyllrb.com/">
+          <img class="jekyll" src="/img/logo-2x.png"/>
+        </a>
+        and
+        <a href="http://yui.github.io/yuidoc/">
+          <img class="yui" src="/img/logo.png"/>
+        </a>
+      </p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
+
