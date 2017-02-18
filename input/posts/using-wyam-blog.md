@@ -91,36 +91,37 @@ If your blog has some good SEO juice, or maybe you just don't want to break olde
 
 Wyam handles these via the Meta-refresh tag on specific pages
 
-## Setting up automatic deployment with TravisCI and GitHub Pages
+## Setting up automatic deployment with AppVeyor and GitHub Pages
 
-TravisCI is a super powerful CI/CD tool with free plans for open source. It's super easy to tie it to your GitHub account and add your repository for building.
+AppVeyor is a super powerful CI/CD tool for Windows with free plans for open source. It's pretty much TravisCI for Windows. It's super easy to tie it to your GitHub account and add your repository for building.
 
-![addtravis](images\travis.PNG)
+Wyam has a really nice `appveyor.yml` file [example](https://wyam.io/docs/deployment/appveyor) to follow.
+
+![appveyor](images\appveyorlogin.PNG)
 
 Find your GH pages repo and turn it on.
 
-![repo](images\ghrepo.PNG)
+![appveyorrepo](images\appveyoradd.PNG)
 
-I suggest only building on official pushes and not PR's because it is possible for anyone to craft a malicious PR to output secrets from travis. Also I recommend only building when `.travis.yml` files are present to prevent gratuituous error emails in your inbox before repo is ready for prime time.
+I suggest only building on official pushes and not PR's because it is possible for anyone to craft a malicious PR to output secrets from appveyor. Also I recommend only building when `.appvyor.yml` files are present to prevent gratuituous error emails in your inbox before repo is ready for prime time.
 
-![settings](images\travis-settings.PNG)
-
+![appveyorsettings](images\settings.PNG)
 
 ## Using CloudFlare CDN for HTTPS
 
 CloudFlare is super useful (and free) for setting up HTTPS for your GitHub pages, and for the free tier account it is very full featured. If you aren't too squeamish about surrendering your NS (name server) records, it is pretty simple.
 
-First, sign up for a free account on [cloudflare](https://www.cloudflare.com/)
+1. Sign up for a free account on [cloudflare](https://www.cloudflare.com/)
 
-Second, CloudFlare can scan the DNS records in your site and let you know if there will be any problems migrating.
+2. CloudFlare can scan the DNS records in your site and let you know if there will be any problems migrating.
 
 ![dnsscan](images\cloudflarescan.PNG)
 
-Third, update your name server records to point to CloudFlare's names servers so the can serve up DNS on your behalf. In my case, I use a service called DNSimple.com but you may use GoDaddy or NameCheap as your registrar.
+3. Update your name server records to point to CloudFlare's names servers so the can serve up DNS on your behalf. In my case, I use a service called DNSimple.com but you may use GoDaddy or NameCheap as your registrar.
 
 ![name server](images\dnsimplenameservers.PNG)
 
-Last, is to setup your free SSL certificate by switching the SSL drop down to "full", this can take some time so keep that in mind. The CloudFlare site says up to 24 hours (but from experience it seems to finish in about an hour or so).
+4. Setup your free SSL certificate by switching the SSL drop down to "full", this can take some time so keep that in mind. The CloudFlare site says up to 24 hours (but from experience it seems to finish in about an hour or so).
 
 ![crypto](images\cloudflare-crypto.PNG)
 

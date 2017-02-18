@@ -6,11 +6,4 @@ Settings[BlogKeys.Title] = "Erik Onarheim";
 Settings[Keys.Host] = "erikonarheim.com";
 Settings[BlogKeys.Description] = "Erik Onarheim";
 Settings[Keys.LinksUseHttps] = true;
-
-/*
-GlobalMetadata["Description"] = "Kamran Ayub";
-GlobalMetadata["Intro"] = "Hi, I'm a professional full-stack developer who also loves to write, speak at conferences, work on side projects, contribute to open source, make games, and play them.";
-GlobalMetadata["FeedUrl"] = "http://feeds.feedburner.com/Kamranicus";
-GlobalMetadata["CaseInsensitiveTags"] = true;
-GlobalMetadata["AtomPath"] = "atom.xml";
-*/
+Settings[BlogKeys.Intro] = "Hi, my name is Erik. I am a software developer and operations engineer from Minneapolis Minnesota. I primarily work in .NET and JavaScript. I keep servers and load-balancers working for big sites. I write games for fun. I play guitar, and occasionally draw things.";
