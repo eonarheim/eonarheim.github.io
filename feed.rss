@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<rss xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0">
+	<channel>
+		<title>Erik Onarheim</title>
+		<link>https://erikonarheim.com/</link>
+		<description>Erik Onarheim</description>
+		<copyright>2017</copyright>
+		<pubDate>Sat, 18 Feb 2017 16:42:41 GMT</pubDate>
+		<lastBuildDate>Sat, 18 Feb 2017 16:42:41 GMT</lastBuildDate>
+		<item>
+			<title>Migrating to Wyam in GH Pages from WordPress</title>
+			<link>https://erikonarheim.com/posts/using-wyam-blog</link>
+			<description>Erik Onarheim</description>
+			<guid>https://erikonarheim.com/posts/using-wyam-blog</guid>
+			<pubDate>Fri, 17 Feb 2017 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;Recently I needed to update my WordPress version (yet again), along with patch my server, update my HTTPS certificate, and pay my hosting bill. The amount of admin-istrivia around maintaining your own server and application platform is more than I want to do for a blog. This got me thinking there must be a better way to do this, my friends &lt;a href="https://twitter.com/kamranayub"&gt;@kamranayub&lt;/a&gt; in particular have been pushing me to move to static site generation.&lt;/p&gt;
+&lt;h2 id="intro-wyam"&gt;Intro Wyam&lt;/h2&gt;
+&lt;p&gt;This leads me to the Wyam static site generator. It is a great little static site generator built in C#/.NET. If you come from a Markdown/Razor background you'll really find this stuff really familiar and easy to use. Wyam is super configurable, fully customizable, and compatible with GitHub pages. Let's dig into it.&lt;/p&gt;
+&lt;p&gt;I've had some experience with Jekyll..&lt;/p&gt;
+&lt;h2 id="installing-wyam"&gt;Installing Wyam&lt;/h2&gt;
+&lt;p&gt;Installing Wyam is pretty easy, navigate &lt;a href="https://wyam.io/docs/usage/obtaining"&gt;here&lt;/a&gt; and follow one of the many ways to install. I used the Windows installer, unfortunately it does not automatically add itself to the path. Fortunately, it is easy to do with the following command once installed:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-powershell"&gt;%LocalAppData%\Wyam\Wyam.Windows add-path
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;In a new command window you can confirm&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-powershell"&gt;wyam --help
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="building-your-first-blog-post"&gt;Building your first blog (post)&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://wyam.io/recipes/blog/overview"&gt;Blog Recipe&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="testing-wyam-locally-with-iis-or-just-use-the-easy-way"&gt;Testing Wyam locally with IIS (or just use the easy way)&lt;/h2&gt;
+&lt;p&gt;When I started working on this I tried a number of different of local servers to test this, TLDR: just use &lt;code&gt;wyam preview&lt;/code&gt; in the root directory of our block (above the input folder).&lt;/p&gt;
+&lt;p&gt;&lt;img src="images%5Cwyam-preview2.png" class="img-fluid" alt="preview"&gt;&lt;/p&gt;
+&lt;p&gt;If you want to know the hard way and see how to use IIS in a non-standard directory to run Wyam read on, otherwise skip to the next section :)&lt;/p&gt;
+&lt;p&gt;I keep a projects directory on my machine where I do most of my development on various projects. Unfortunately IIS does not have the permission to read into directories outside of &lt;code&gt;C:\inetpub\wwwroot&lt;/code&gt; by default which is a good default for servers. But if you want to test outside of your web root in your development space it is a problem. To fix this you'll need to set some file ACLs so that IIS can read your files. Give &lt;code&gt;IIS_IUSRS&lt;/code&gt; and &lt;code&gt;Users&lt;/code&gt; on the local machine Execute, List, and Read.&lt;/p&gt;
+&lt;p&gt;&lt;img src="images%5Ciis-perms.PNG" class="img-fluid" alt="Folder ACLs"&gt;&lt;/p&gt;
+&lt;p&gt;Next you'll need to solve the problem of the extension-less &lt;code&gt;/posts/name-of-my-post&lt;/code&gt; file names that need to be served as if they contained an &lt;code&gt;index.html&lt;/code&gt; when they don't.&lt;/p&gt;
+&lt;p&gt;&lt;img src="images%5Curl-non-rewrite.PNG" class="img-fluid" alt="extensionless"&gt;&lt;/p&gt;
+&lt;p&gt;Versus&lt;/p&gt;
+&lt;p&gt;&lt;img src="images%5Curl-non-rewrite-html.PNG" class="img-fluid" alt="extension"&gt;&lt;/p&gt;
+&lt;p&gt;In order to fix this Wyam has some &lt;a href=""&gt;azure documentation&lt;/a&gt; referencing the rewrite module in azure. IIS does not come with this pre-installed so you'll need to &lt;a href="https://www.iis.net/downloads/microsoft/url-rewrite"&gt;install the module&lt;/a&gt; located at the bottom of the page.&lt;/p&gt;
+&lt;p&gt;&lt;img src="images%5Cdownload-rewrite.PNG" class="img-fluid" alt="rewrite-module"&gt;&lt;/p&gt;
+&lt;p&gt;Once that is complete you can drop in a &lt;code&gt;web.config&lt;/code&gt; in your &lt;code&gt;input&lt;/code&gt; directory with the rewrite rule referenced in the Wyam docs and voila!&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-xml"&gt;&amp;lt;?xml version="1.0"?&amp;gt;
+&amp;lt;configuration&amp;gt;
+  &amp;lt;system.webServer&amp;gt;
+    &amp;lt;rewrite&amp;gt;
+      &amp;lt;rules&amp;gt;
+        &amp;lt;rule name="html"&amp;gt;
+          &amp;lt;match url="(.*)" /&amp;gt;
+          &amp;lt;conditions&amp;gt;
+            &amp;lt;add input="{REQUEST_FILENAME}" matchType="IsFile" negate="true" /&amp;gt;
+            &amp;lt;add input="{REQUEST_FILENAME}" matchType="IsDirectory" negate="true" /&amp;gt;
+          &amp;lt;/conditions&amp;gt;
+          &amp;lt;action type="Rewrite" url="{R:1}.html" /&amp;gt;
+        &amp;lt;/rule&amp;gt;
+      &amp;lt;/rules&amp;gt;
+    &amp;lt;/rewrite&amp;gt;
+  &amp;lt;/system.webServer&amp;gt;
+&amp;lt;/configuration&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src="images%5Curl-rewrite.PNG" class="img-fluid" alt="rewrite"&gt;&lt;/p&gt;
+&lt;h2 id="preserve-you-old-links"&gt;Preserve you old links&lt;/h2&gt;
+&lt;p&gt;If your blog has some good SEO juice, or maybe you just don't want to break older links, you'll want to preserve old links or at least redirect to your new ones. Here is how it is done&lt;/p&gt;
+&lt;p&gt;Wyam handles these via the Meta-refresh tag on specific pages&lt;/p&gt;
+&lt;h2 id="setting-up-automatic-deployment-with-appveyor-and-github-pages"&gt;Setting up automatic deployment with AppVeyor and GitHub Pages&lt;/h2&gt;
+&lt;p&gt;AppVeyor is a super powerful CI/CD tool for Windows with free plans for open source. It's pretty much TravisCI for Windows. It's super easy to tie it to your GitHub account and add your repository for building.&lt;/p&gt;
+&lt;p&gt;Wyam has a really nice &lt;code&gt;appveyor.yml&lt;/code&gt; file &lt;a href="https://wyam.io/docs/deployment/appveyor"&gt;example&lt;/a&gt; to follow.&lt;/p&gt;
+&lt;p&gt;&lt;img src="images%5Cappveyorlogin.PNG" class="img-fluid" alt="appveyor"&gt;&lt;/p&gt;
+&lt;p&gt;Find your GH pages repo and turn it on.&lt;/p&gt;
+&lt;p&gt;&lt;img src="images%5Cappveyoradd.PNG" class="img-fluid" alt="appveyorrepo"&gt;&lt;/p&gt;
+&lt;p&gt;I suggest only building on official pushes and not PR's because it is possible for anyone to craft a malicious PR to output secrets from appveyor. Also I recommend only building when &lt;code&gt;.appvyor.yml&lt;/code&gt; files are present to prevent gratuituous error emails in your inbox before repo is ready for prime time.&lt;/p&gt;
+&lt;p&gt;&lt;img src="images%5Csettings.PNG" class="img-fluid" alt="appveyorsettings"&gt;&lt;/p&gt;
+&lt;h2 id="using-cloudflare-cdn-for-https"&gt;Using CloudFlare CDN for HTTPS&lt;/h2&gt;
+&lt;p&gt;CloudFlare is super useful (and free) for setting up HTTPS for your GitHub pages, and for the free tier account it is very full featured. If you aren't too squeamish about surrendering your NS (name server) records, it is pretty simple.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Sign up for a free account on &lt;a href="https://www.cloudflare.com/"&gt;cloudflare&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;CloudFlare can scan the DNS records in your site and let you know if there will be any problems migrating.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="images%5Ccloudflarescan.PNG" class="img-fluid" alt="dnsscan"&gt;&lt;/p&gt;
+&lt;ol start="3"&gt;
+&lt;li&gt;Update your name server records to point to CloudFlare's names servers so the can serve up DNS on your behalf. In my case, I use a service called DNSimple.com but you may use GoDaddy or NameCheap as your registrar.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="images%5Cdnsimplenameservers.PNG" class="img-fluid" alt="name server"&gt;&lt;/p&gt;
+&lt;ol start="4"&gt;
+&lt;li&gt;Setup your free SSL certificate by switching the SSL drop down to "full", this can take some time so keep that in mind. The CloudFlare site says up to 24 hours (but from experience it seems to finish in about an hour or so).&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src="images%5Ccloudflare-crypto.PNG" class="img-fluid" alt="crypto"&gt;&lt;/p&gt;
+&lt;p&gt;Once everything has been provisioned and propagated you'll notice that CloudFlare is serving your domain off of a SAN certificate.&lt;/p&gt;
+&lt;p&gt;&lt;img src="images%5Csan-cert.PNG" class="img-fluid" alt="san1"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="images%5Ccloudflarescan2.PNG" class="img-fluid" alt="san2"&gt;&lt;/p&gt;
+&lt;p&gt;We are done! The new Wyam blog platform is now ready for new posts and is on a more sustainable and secure set of technologies. Hopefully you find this useful, let me know what you think.&lt;/p&gt;
+&lt;p&gt;-Erik&lt;/p&gt;
+
+
+&lt;div id="disqus_thread"&gt;&lt;/div&gt;
+
+&lt;script type="text/javascript"&gt;
+    var disqus_shortname = 'erik-onarheim';
+    var disqus_identifier = 'https://erikonarheim.com/posts/using-wyam-blog/';
+    var disqus_title = 'Migrating to Wyam in GH Pages from WordPress';
+    var disqus_url = 'https://erikonarheim.com/posts/using-wyam-blog';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+&lt;/script&gt;
+&lt;noscript&gt;Please enable JavaScript to view the &lt;a href="http://disqus.com/?ref_noscript"&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt;
+&lt;a href="http://disqus.com" class="dsq-brlink"&gt;comments powered by &lt;span class="logo-disqus"&gt;Disqus&lt;/span&gt;&lt;/a&gt;</content:encoded>
+		</item>
+	</channel>
+</rss>
