@@ -131,23 +131,86 @@ Published on Friday, February 17, 2017<br>    </div>
                                 <div id="content" class="col-md-12">
                                         
 
-<p>Recently I needed to update my WordPress version (yet again), along with patch my server, update my HTTPS certificate, and pay my hosting bill. The amount of admin-istrivia around maintaining your own server and application platform is more than I want to do for a blog. This got me thinking there must be a better way to do this, my friends <a href="https://twitter.com/kamranayub">&#64;kamranayub</a> in particular have been pushing me to move to static site generation.</p>
+<p>Recently I needed to update my blog WordPress version (yet again), along with patch my server, update my HTTPS certificate, and pay my hosting bill. The amount of admin-istrivia around maintaining your own server and application platform is more than I want to do for a blog going forward. This got me thinking there must be a better way to do this. My friends, <a href="https://twitter.com/kamranayub">&#64;kamranayub</a> in particular, have been pushing me to do more blogging and to move to static site generation. So here goes!</p>
 <h2 id="intro-wyam">Intro Wyam</h2>
-<p>This leads me to the Wyam static site generator. It is a great little static site generator built in C#/.NET. If you come from a Markdown/Razor background you'll really find this stuff really familiar and easy to use. Wyam is super configurable, fully customizable, and compatible with GitHub pages. Let's dig into it.</p>
-<p>I've had some experience with Jekyll..</p>
+<p>This leads me to the Wyam static site generator. It is a great little static site generator built in C#/.NET (full framework). If you come from a Markdown/Razor background you'll really find this stuff really familiar and easy to use. Wyam is super configurable, fully customizable, and compatible with GitHub pages. Let's dig into it!</p>
 <h2 id="installing-wyam">Installing Wyam</h2>
 <p>Installing Wyam is pretty easy, navigate <a href="https://wyam.io/docs/usage/obtaining">here</a> and follow one of the many ways to install. I used the Windows installer, unfortunately it does not automatically add itself to the path. Fortunately, it is easy to do with the following command once installed:</p>
 <pre><code class="language-powershell">%LocalAppData%\Wyam\Wyam.Windows add-path
 </code></pre>
-<p>In a new command window you can confirm</p>
+<p>In a new command window you can confirm wyam is in your patch:</p>
 <pre><code class="language-powershell">wyam --help
 </code></pre>
-<h2 id="building-your-first-blog-post">Building your first blog (post)</h2>
-<p><a href="https://wyam.io/recipes/blog/overview">Blog Recipe</a></p>
+<h2 id="building-your-blog-in-wyam">Building your blog in Wyam</h2>
+<p>Check out the <a href="https://wyam.io/recipes/blog/overview">blog recipe</a> on wyam's site, but honestly it is as easy as running:</p>
+<pre><code class="language-cmd">mkdir blog
+cd blog
+wyam new -r Blog
+</code></pre>
+<p><code>wyam new -r Blog</code> will generate the blog scaffolding in the current directory.</p>
+<p>To build your static html files into the <code>output/</code> directory, run <code>wyam -r Blog -t CleanBlog</code>. This will build the Blog recipe with the CleanBlog theme. You may also just encode these parameters in your <code>config.wyam</code> created at the root then you only need to run <code>wyam</code> in the directory with the config file.</p>
+<pre><code class="language-cmd">#recipe Blog
+#n Wyam.Markdown
+#t CleanBlog
+Settings[BlogKeys.Title] = &quot;Erik Onarheim&quot;;
+
+</code></pre>
+<p>Top level files in your input directory will show up in your nav bar, notice that they can be a mix of cshtml or markdown! So really some pages that need some more power can use Razor, others just Markdown.</p>
+<p><img src="images%5Cnav.png" class="img-fluid" alt="" /></p>
+<p><img src="images%5Cnav-wyam.png" class="img-fluid" alt="" /></p>
+<p>Building a new blog post is as simple as dropping a new markdown file in your input/posts directory and adding the appropriate metadata to the file.</p>
+<p><img src="images%5Cnewpost.png" class="img-fluid" alt="" /></p>
+<pre><code class="language-markdown">
+Title: Migrating to Wyam in GH Pages from WordPress
+Published: 2/17/2017
+Tags: 
+ - Static Site
+ - Wyam
+ - Markdown
+ - Razor
+ - WordPress
+ - GitHub Pages
+disqus_identifier: https://erikonarheim.com/posts/using-wyam-blog/
+---
+Recently I needed to update my blog WordPress version (yet again)...
+
+</code></pre>
+<p>The default theme is pretty slick, <strong>but if you ever want to tweak it</strong>, it is as easy as dropping a new file with the same name as the theme. Below I've added a custom <code>_Layout.cshtml</code>, <code>_Footer.cshtml</code>, and more that I copied from <a href="https://github.com/Wyamio/Wyam/tree/develop/themes/Blog/CleanBlog">Wyam's CleanBlog github</a> and tweaked with my own google analytics and favicon. You'll also notice that you can mix and match Markdown with you Razor cshtml!</p>
+<p><img src="images%5Coverridestheme.png" class="img-fluid" alt="" /></p>
+<h3 id="customizing-wyam-with-disqus">Customizing Wyam with Disqus</h3>
+<p>Wyam comes with a bunch of built-in <a href="https://wyam.io/recipes/blog/document-metadata">document metadata</a> which can be used to give the post a title, tags, published date. Custom metadata is also supported as well! Notice the <code>disqus_identifier</code> metadata which I use to add comments into my posts. This particular tag is picked up by my  custom <code>_PostFooter.cshtml</code> here, note the <code>&#64;Model.String(&quot;disqus_identifier&quot;)</code> the rest comes from disqus's embedding documentation.</p>
+<pre><code class="language-html">
+&lt;div id=&quot;disqus_thread&quot;&gt;&lt;/div&gt;
+
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var disqus_shortname = 'erik-onarheim';
+    var disqus_identifier = '&#64;(Model.String(&quot;disqus_identifier&quot;) ?? Model.FilePath(Keys.RelativeFilePath).FileNameWithoutExtension.FullPath)';
+    var disqus_title = '&#64;Model.String(BlogKeys.Title)';
+    var disqus_url = '&#64;Context.GetLink(Model, true)';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+&lt;/script&gt;
+&lt;noscript&gt;Please enable JavaScript to view the &lt;a href=&quot;http://disqus.com/?ref_noscript&quot;&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt;
+&lt;a href=&quot;http://disqus.com&quot; class=&quot;dsq-brlink&quot;&gt;comments powered by &lt;span class=&quot;logo-disqus&quot;&gt;Disqus&lt;/span&gt;&lt;/a&gt;
+
+</code></pre>
+<p>It's pretty much that easy to make changes to the default template to make your own customizations!</p>
 <h2 id="testing-wyam-locally-with-iis-or-just-use-the-easy-way">Testing Wyam locally with IIS (or just use the easy way)</h2>
 <p>When I started working on this I tried a number of different of local servers to test this, TLDR: just use <code>wyam preview</code> in the root directory of our block (above the input folder).</p>
 <p><img src="images%5Cwyam-preview2.png" class="img-fluid" alt="preview" /></p>
-<p>If you want to know the hard way and see how to use IIS in a non-standard directory to run Wyam read on, otherwise skip to the next section :)</p>
+<p><strong>If you want to know the hard way</strong> and see how to use IIS in a non-standard directory to run Wyam read on, <strong>otherwise skip to the next section :)</strong></p>
 <p>I keep a projects directory on my machine where I do most of my development on various projects. Unfortunately IIS does not have the permission to read into directories outside of <code>C:\inetpub\wwwroot</code> by default which is a good default for servers. But if you want to test outside of your web root in your development space it is a problem. To fix this you'll need to set some file ACLs so that IIS can read your files. Give <code>IIS_IUSRS</code> and <code>Users</code> on the local machine Execute, List, and Read.</p>
 <p><img src="images%5Ciis-perms.PNG" class="img-fluid" alt="Folder ACLs" /></p>
 <p>Next you'll need to solve the problem of the extension-less <code>/posts/name-of-my-post</code> file names that need to be served as if they contained an <code>index.html</code> when they don't.</p>
@@ -176,9 +239,19 @@ Published on Friday, February 17, 2017<br>    </div>
 &lt;/configuration&gt;
 </code></pre>
 <p><img src="images%5Curl-rewrite.PNG" class="img-fluid" alt="rewrite" /></p>
-<h2 id="preserve-you-old-links">Preserve you old links</h2>
+<p>Now you can run <code>wyam -w</code> in your root blog directory and it will rebuilt the output when any input changes! The best part is this will be served by IIS that you've just stood up.</p>
+<h2 id="preserve-you-wordpress-old-links">Preserve you WordPress old links</h2>
 <p>If your blog has some good SEO juice, or maybe you just don't want to break older links, you'll want to preserve old links or at least redirect to your new ones. Here is how it is done</p>
-<p>Wyam handles these via the Meta-refresh tag on specific pages</p>
+<p>Wyam handles these via the Meta-refresh tag on specific pages using the <code>RedirectFrom</code> meta data like so</p>
+<pre><code class="language-markdown">Title: &quot;Game Development – A Year in Review 2014&quot;
+Published: 1/9/2015
+Tags:
+- News
+- Game Dev
+- Excalibur
+RedirectFrom: blog/game-development-a-year-in-review-2014/index.html
+
+</code></pre>
 <h2 id="setting-up-automatic-deployment-with-appveyor-and-github-pages">Setting up automatic deployment with AppVeyor and GitHub Pages</h2>
 <p>AppVeyor is a super powerful CI/CD tool for Windows with free plans for open source. It's pretty much TravisCI for Windows. It's super easy to tie it to your GitHub account and add your repository for building.</p>
 <p><img src="images%5Cappveyorlogin.PNG" class="img-fluid" alt="appveyor" /></p>
@@ -248,7 +321,7 @@ on_success:
 </ol>
 <p><img src="images%5Cdnsimplenameservers.PNG" class="img-fluid" alt="name server" /></p>
 <ol start="4">
-<li>Setup your free SSL certificate by switching the SSL drop down to &quot;full&quot;, this can take some time so keep that in mind. The CloudFlare site says up to 24 hours (but from experience it seems to finish in about an hour or so).</li>
+<li>Setup your free SSL certificate by switching the SSL drop down to &quot;full&quot;, <strong>this can take some time so keep that in mind</strong>. The CloudFlare site says up to 24 hours (but from experience it seems to finish in about an hour or so).</li>
 </ol>
 <p><img src="images%5Ccloudflare-crypto.PNG" class="img-fluid" alt="crypto" /></p>
 <p>Once everything has been provisioned and propagated you'll notice that CloudFlare is serving your domain off of a SAN certificate.</p>
@@ -295,13 +368,16 @@ on_success:
   
   <div class="ui basic vertical segment">
     <a class="ui circular icon button" href="https://twitter.com/erikonarheim" title="Twitter">
-  <i class="twitter icon"></i>
+  <i class="fa fa-twitter fa-fw fa-2x"></i>
 </a>
 <a class="ui circular icon button" href="https://github.com/eonarheim" title="GitHub">
-  <i class="github icon"></i>
+  <i class="fa fa-github fa-fw fa-2x"></i>
 </a>
 <a class="ui circular icon button" href="https://www.youtube.com/channel/UCpfvwJIqmxG-3DD4QMofyxg" title="YouTube">
-  <i class="youtube icon"></i>
+  <i class="fa fa-youtube fa-fw fa-2x"></i>
+</a>
+<a class="ui circular icon button" href="https://www.linkedin.com/in/erik-onarheim" title="LinkedIn">
+  <i class="fa fa-linkedin fa-fw fa-2x"></i>
 </a>
   </div>
   

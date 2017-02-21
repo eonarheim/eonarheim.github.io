@@ -4,30 +4,93 @@
 	<id>https://erikonarheim.com/</id>
 	<title>Erik Onarheim</title>
 	<rights>2017</rights>
-	<updated>2017-02-18T17:30:45Z</updated>
+	<updated>2017-02-21T03:12:36Z</updated>
 	<subtitle>Erik Onarheim</subtitle>
 	<entry>
 		<link href="https://erikonarheim.com/posts/using-wyam-blog" />
 		<id>https://erikonarheim.com/posts/using-wyam-blog</id>
 		<title>Migrating to Wyam in GH Pages from WordPress</title>
 		<updated>2017-02-17T00:00:00Z</updated>
-		<content>&lt;p&gt;Recently I needed to update my WordPress version (yet again), along with patch my server, update my HTTPS certificate, and pay my hosting bill. The amount of admin-istrivia around maintaining your own server and application platform is more than I want to do for a blog. This got me thinking there must be a better way to do this, my friends &lt;a href="https://twitter.com/kamranayub"&gt;@kamranayub&lt;/a&gt; in particular have been pushing me to move to static site generation.&lt;/p&gt;
+		<content>&lt;p&gt;Recently I needed to update my blog WordPress version (yet again), along with patch my server, update my HTTPS certificate, and pay my hosting bill. The amount of admin-istrivia around maintaining your own server and application platform is more than I want to do for a blog going forward. This got me thinking there must be a better way to do this. My friends, &lt;a href="https://twitter.com/kamranayub"&gt;@kamranayub&lt;/a&gt; in particular, have been pushing me to do more blogging and to move to static site generation. So here goes!&lt;/p&gt;
 &lt;h2 id="intro-wyam"&gt;Intro Wyam&lt;/h2&gt;
-&lt;p&gt;This leads me to the Wyam static site generator. It is a great little static site generator built in C#/.NET. If you come from a Markdown/Razor background you'll really find this stuff really familiar and easy to use. Wyam is super configurable, fully customizable, and compatible with GitHub pages. Let's dig into it.&lt;/p&gt;
-&lt;p&gt;I've had some experience with Jekyll..&lt;/p&gt;
+&lt;p&gt;This leads me to the Wyam static site generator. It is a great little static site generator built in C#/.NET (full framework). If you come from a Markdown/Razor background you'll really find this stuff really familiar and easy to use. Wyam is super configurable, fully customizable, and compatible with GitHub pages. Let's dig into it!&lt;/p&gt;
 &lt;h2 id="installing-wyam"&gt;Installing Wyam&lt;/h2&gt;
 &lt;p&gt;Installing Wyam is pretty easy, navigate &lt;a href="https://wyam.io/docs/usage/obtaining"&gt;here&lt;/a&gt; and follow one of the many ways to install. I used the Windows installer, unfortunately it does not automatically add itself to the path. Fortunately, it is easy to do with the following command once installed:&lt;/p&gt;
 &lt;pre&gt;&lt;code class="language-powershell"&gt;%LocalAppData%\Wyam\Wyam.Windows add-path
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;In a new command window you can confirm&lt;/p&gt;
+&lt;p&gt;In a new command window you can confirm wyam is in your patch:&lt;/p&gt;
 &lt;pre&gt;&lt;code class="language-powershell"&gt;wyam --help
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id="building-your-first-blog-post"&gt;Building your first blog (post)&lt;/h2&gt;
-&lt;p&gt;&lt;a href="https://wyam.io/recipes/blog/overview"&gt;Blog Recipe&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="building-your-blog-in-wyam"&gt;Building your blog in Wyam&lt;/h2&gt;
+&lt;p&gt;Check out the &lt;a href="https://wyam.io/recipes/blog/overview"&gt;blog recipe&lt;/a&gt; on wyam's site, but honestly it is as easy as running:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-cmd"&gt;mkdir blog
+cd blog
+wyam new -r Blog
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;wyam new -r Blog&lt;/code&gt; will generate the blog scaffolding in the current directory.&lt;/p&gt;
+&lt;p&gt;To build your static html files into the &lt;code&gt;output/&lt;/code&gt; directory, run &lt;code&gt;wyam -r Blog -t CleanBlog&lt;/code&gt;. This will build the Blog recipe with the CleanBlog theme. You may also just encode these parameters in your &lt;code&gt;config.wyam&lt;/code&gt; created at the root then you only need to run &lt;code&gt;wyam&lt;/code&gt; in the directory with the config file.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-cmd"&gt;#recipe Blog
+#n Wyam.Markdown
+#t CleanBlog
+Settings[BlogKeys.Title] = "Erik Onarheim";
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Top level files in your input directory will show up in your nav bar, notice that they can be a mix of cshtml or markdown! So really some pages that need some more power can use Razor, others just Markdown.&lt;/p&gt;
+&lt;p&gt;&lt;img src="images%5Cnav.png" class="img-fluid" alt=""&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="images%5Cnav-wyam.png" class="img-fluid" alt=""&gt;&lt;/p&gt;
+&lt;p&gt;Building a new blog post is as simple as dropping a new markdown file in your input/posts directory and adding the appropriate metadata to the file.&lt;/p&gt;
+&lt;p&gt;&lt;img src="images%5Cnewpost.png" class="img-fluid" alt=""&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-markdown"&gt;
+Title: Migrating to Wyam in GH Pages from WordPress
+Published: 2/17/2017
+Tags: 
+ - Static Site
+ - Wyam
+ - Markdown
+ - Razor
+ - WordPress
+ - GitHub Pages
+disqus_identifier: https://erikonarheim.com/posts/using-wyam-blog/
+---
+Recently I needed to update my blog WordPress version (yet again)...
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The default theme is pretty slick, &lt;strong&gt;but if you ever want to tweak it&lt;/strong&gt;, it is as easy as dropping a new file with the same name as the theme. Below I've added a custom &lt;code&gt;_Layout.cshtml&lt;/code&gt;, &lt;code&gt;_Footer.cshtml&lt;/code&gt;, and more that I copied from &lt;a href="https://github.com/Wyamio/Wyam/tree/develop/themes/Blog/CleanBlog"&gt;Wyam's CleanBlog github&lt;/a&gt; and tweaked with my own google analytics and favicon. You'll also notice that you can mix and match Markdown with you Razor cshtml!&lt;/p&gt;
+&lt;p&gt;&lt;img src="images%5Coverridestheme.png" class="img-fluid" alt=""&gt;&lt;/p&gt;
+&lt;h3 id="customizing-wyam-with-disqus"&gt;Customizing Wyam with Disqus&lt;/h3&gt;
+&lt;p&gt;Wyam comes with a bunch of built-in &lt;a href="https://wyam.io/recipes/blog/document-metadata"&gt;document metadata&lt;/a&gt; which can be used to give the post a title, tags, published date. Custom metadata is also supported as well! Notice the &lt;code&gt;disqus_identifier&lt;/code&gt; metadata which I use to add comments into my posts. This particular tag is picked up by my  custom &lt;code&gt;_PostFooter.cshtml&lt;/code&gt; here, note the &lt;code&gt;@Model.String("disqus_identifier")&lt;/code&gt; the rest comes from disqus's embedding documentation.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-html"&gt;
+&amp;lt;div id="disqus_thread"&amp;gt;&amp;lt;/div&amp;gt;
+
+&amp;lt;script type="text/javascript"&amp;gt;
+    var disqus_shortname = 'erik-onarheim';
+    var disqus_identifier = '@(Model.String("disqus_identifier") ?? Model.FilePath(Keys.RelativeFilePath).FileNameWithoutExtension.FullPath)';
+    var disqus_title = '@Model.String(BlogKeys.Title)';
+    var disqus_url = '@Context.GetLink(Model, true)';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+&amp;lt;/script&amp;gt;
+&amp;lt;noscript&amp;gt;Please enable JavaScript to view the &amp;lt;a href="http://disqus.com/?ref_noscript"&amp;gt;comments powered by Disqus.&amp;lt;/a&amp;gt;&amp;lt;/noscript&amp;gt;
+&amp;lt;a href="http://disqus.com" class="dsq-brlink"&amp;gt;comments powered by &amp;lt;span class="logo-disqus"&amp;gt;Disqus&amp;lt;/span&amp;gt;&amp;lt;/a&amp;gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;It's pretty much that easy to make changes to the default template to make your own customizations!&lt;/p&gt;
 &lt;h2 id="testing-wyam-locally-with-iis-or-just-use-the-easy-way"&gt;Testing Wyam locally with IIS (or just use the easy way)&lt;/h2&gt;
 &lt;p&gt;When I started working on this I tried a number of different of local servers to test this, TLDR: just use &lt;code&gt;wyam preview&lt;/code&gt; in the root directory of our block (above the input folder).&lt;/p&gt;
 &lt;p&gt;&lt;img src="images%5Cwyam-preview2.png" class="img-fluid" alt="preview"&gt;&lt;/p&gt;
-&lt;p&gt;If you want to know the hard way and see how to use IIS in a non-standard directory to run Wyam read on, otherwise skip to the next section :)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;If you want to know the hard way&lt;/strong&gt; and see how to use IIS in a non-standard directory to run Wyam read on, &lt;strong&gt;otherwise skip to the next section :)&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;I keep a projects directory on my machine where I do most of my development on various projects. Unfortunately IIS does not have the permission to read into directories outside of &lt;code&gt;C:\inetpub\wwwroot&lt;/code&gt; by default which is a good default for servers. But if you want to test outside of your web root in your development space it is a problem. To fix this you'll need to set some file ACLs so that IIS can read your files. Give &lt;code&gt;IIS_IUSRS&lt;/code&gt; and &lt;code&gt;Users&lt;/code&gt; on the local machine Execute, List, and Read.&lt;/p&gt;
 &lt;p&gt;&lt;img src="images%5Ciis-perms.PNG" class="img-fluid" alt="Folder ACLs"&gt;&lt;/p&gt;
 &lt;p&gt;Next you'll need to solve the problem of the extension-less &lt;code&gt;/posts/name-of-my-post&lt;/code&gt; file names that need to be served as if they contained an &lt;code&gt;index.html&lt;/code&gt; when they don't.&lt;/p&gt;
@@ -56,9 +119,19 @@
 &amp;lt;/configuration&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src="images%5Curl-rewrite.PNG" class="img-fluid" alt="rewrite"&gt;&lt;/p&gt;
-&lt;h2 id="preserve-you-old-links"&gt;Preserve you old links&lt;/h2&gt;
+&lt;p&gt;Now you can run &lt;code&gt;wyam -w&lt;/code&gt; in your root blog directory and it will rebuilt the output when any input changes! The best part is this will be served by IIS that you've just stood up.&lt;/p&gt;
+&lt;h2 id="preserve-you-wordpress-old-links"&gt;Preserve you WordPress old links&lt;/h2&gt;
 &lt;p&gt;If your blog has some good SEO juice, or maybe you just don't want to break older links, you'll want to preserve old links or at least redirect to your new ones. Here is how it is done&lt;/p&gt;
-&lt;p&gt;Wyam handles these via the Meta-refresh tag on specific pages&lt;/p&gt;
+&lt;p&gt;Wyam handles these via the Meta-refresh tag on specific pages using the &lt;code&gt;RedirectFrom&lt;/code&gt; meta data like so&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-markdown"&gt;Title: "Game Development – A Year in Review 2014"
+Published: 1/9/2015
+Tags:
+- News
+- Game Dev
+- Excalibur
+RedirectFrom: blog/game-development-a-year-in-review-2014/index.html
+
+&lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id="setting-up-automatic-deployment-with-appveyor-and-github-pages"&gt;Setting up automatic deployment with AppVeyor and GitHub Pages&lt;/h2&gt;
 &lt;p&gt;AppVeyor is a super powerful CI/CD tool for Windows with free plans for open source. It's pretty much TravisCI for Windows. It's super easy to tie it to your GitHub account and add your repository for building.&lt;/p&gt;
 &lt;p&gt;&lt;img src="images%5Cappveyorlogin.PNG" class="img-fluid" alt="appveyor"&gt;&lt;/p&gt;
@@ -128,7 +201,7 @@ on_success:
 &lt;/ol&gt;
 &lt;p&gt;&lt;img src="images%5Cdnsimplenameservers.PNG" class="img-fluid" alt="name server"&gt;&lt;/p&gt;
 &lt;ol start="4"&gt;
-&lt;li&gt;Setup your free SSL certificate by switching the SSL drop down to "full", this can take some time so keep that in mind. The CloudFlare site says up to 24 hours (but from experience it seems to finish in about an hour or so).&lt;/li&gt;
+&lt;li&gt;Setup your free SSL certificate by switching the SSL drop down to "full", &lt;strong&gt;this can take some time so keep that in mind&lt;/strong&gt;. The CloudFlare site says up to 24 hours (but from experience it seems to finish in about an hour or so).&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;&lt;img src="images%5Ccloudflare-crypto.PNG" class="img-fluid" alt="crypto"&gt;&lt;/p&gt;
 &lt;p&gt;Once everything has been provisioned and propagated you'll notice that CloudFlare is serving your domain off of a SAN certificate.&lt;/p&gt;
@@ -145,6 +218,338 @@ on_success:
     var disqus_identifier = 'https://erikonarheim.com/posts/using-wyam-blog/';
     var disqus_title = 'Migrating to Wyam in GH Pages from WordPress';
     var disqus_url = 'https://erikonarheim.com/posts/using-wyam-blog';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+&lt;/script&gt;
+&lt;noscript&gt;Please enable JavaScript to view the &lt;a href="http://disqus.com/?ref_noscript"&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt;
+&lt;a href="http://disqus.com" class="dsq-brlink"&gt;comments powered by &lt;span class="logo-disqus"&gt;Disqus&lt;/span&gt;&lt;/a&gt;</content>
+		<summary>Erik Onarheim</summary>
+	</entry>
+	<entry>
+		<link href="https://erikonarheim.com/posts/game-development-a-year-in-review-2014" />
+		<id>https://erikonarheim.com/posts/game-development-a-year-in-review-2014</id>
+		<title>Game Development – A Year in Review 2014</title>
+		<updated>2015-01-09T00:00:00Z</updated>
+		<content>&lt;p&gt;This year I have really been exploring my passion for game development, and I feel like I’ve learned some useful things that I would like to share. Full disclaimer: this is mostly all unsubstantiated opinions.&lt;/p&gt;
+&lt;p&gt;I attempted to do the "One Game a Month" challenge (which I recommend to anyone into games or wanting to improve their game making ability). It’s great because it forces you to build a product every month, and even if you don’t succeed you still get great practice. There are always more ideas than there is time, and this is a great way to explore many ideas in a short amount of time. It also prevents you into falling into the trap of the magnum opus idea, where you believe your idea to be more awesome than it actually is. It is so easy to wind up being more concerned about protecting your magnum opus from others than actually finding out if it’s good at all.&lt;/p&gt;
+&lt;p&gt;I participated in a number of game jams this year including Ludum Dare 29 (Jam), Public Domain Jam, and Ludum Dare 31 (Jam). I think the three biggest lessons I’ve learned from jamming have been how to manage scope, how to brainstorm properly, and prototyping.&lt;/p&gt;
+&lt;p&gt;Kraken Unchained for Ludum Dare 29&lt;/p&gt;
+&lt;p&gt;&lt;img src="images%5Ckraken-unchained.png" class="img-fluid" alt=""&gt;&lt;/p&gt;
+&lt;p&gt;Sleepy Hollow for the Public Domain Jam&lt;/p&gt;
+&lt;p&gt;&lt;img src="images%5Csleepy-hollow.png" class="img-fluid" alt=""&gt;&lt;/p&gt;
+&lt;p&gt;Sweep Stacks for Ludum Dare 31&lt;/p&gt;
+&lt;p&gt;&lt;img src="images%5Csweepstacks.png" class="img-fluid" alt=""&gt;&lt;/p&gt;
+&lt;p&gt;Managing scope, especially when you are really excited about an idea, is hard. It’s easy to want to build the biggest, coolest, and most awesome thing around, but in a game jam you have limited time, resources, and people forcing you to face reality. I think Rami Ismail of Vlambeer fame said it best, "Your scope is too damn big!". As a team working on our LD 29 game, kraken unchained, we definitely learn that we sucked at managing scope. Over the course of this year we have relearned this lesson time and time again. Lately, we have begun to use the phrase minimum viable game to get at the root of a game idea, basically what is the simplest possible version of this game that is still interesting. In Ludum Dare 31, which yielded sweep stacks, we originally had a fantasy theme where the blocks were a marching army heading towards a castle wall, and you controlled a wizard zapping orcs, goblins, and spiders as they approached. Obviously, this really didn’t make the game any more fun than it is right now and we wound up cutting the idea all together since colored blocks were just as fun.&lt;/p&gt;
+&lt;p&gt;For each of the jams, our group brainstorming process has evolved fairly organically and I feel like the results have been awesome. Basically, our method is throw out and fully explore every idea that everyone puts out until there are no more ideas and everyone agrees on one. This process generally takes approximately 4 hours of intense discussion, and a willingness to not get stuck on a particular idea just because you like it (caveat this process may not scale past a few people). There are so many ideas, and if you stop at the first "good" one, you will miss out on all of those other ideas that might actually be better. In the case of Ludum 31, there were a couple of ideas that I really wanted to do before we got to the ideas that spawned Sweep Stacks. I’d argue that because we continued to brainstorm we arrived at the best game possible, and it turned out to be really fun.&lt;/p&gt;
+&lt;p&gt;&lt;img src="images%5Csweepstacks.gif" class="img-fluid" alt=""&gt;&lt;/p&gt;
+&lt;p&gt;During our last jam, we used a physical prototype for the game that would eventually become Sweep Stacks, and I cannot stress how well it worked for us. Our prototype was basically a checker board and some colored poker chips, then we took turns playing, suggesting new ideas and mechanics, and acting as the "game engine".&lt;/p&gt;
+&lt;p&gt;&lt;img src="images%5Cchecker.png" class="img-fluid" alt=""&gt;&lt;/p&gt;
+&lt;p&gt;Using prototypes is a great way to cheaply test new ideas and mechanics to make sure they are fun, don’t break the game, or have any problems. In our case we spotted one of the biggest problems, which we named the "shaft of doom", basically it is possible to play in such a way that stacks of unclearable blocks rise to the top where the game will end abruptly. This was a huge problem...&lt;/p&gt;
+&lt;p&gt;&lt;img src="images%5Cshaft.png" class="img-fluid" alt=""&gt;&lt;/p&gt;
+&lt;p&gt;Before writing a single line of code, we were able to observe potential problems and come up with solutions, and our solution was the basic “sweep” mechanic that will either let you clear blocks of a single color or the mega "sweep" which clears the entire board at once. Boom! Problems solved before code was written all with a couple of poker chips.&lt;/p&gt;
+&lt;p&gt;After all of these experiences, I’ve learned so much and gained a lot of respect for the game development community. It is not an easy thing to build a game, let alone offer it up to the masses for criticism. The masses can be very cruel. And in general, I’ve been really impressed with the indie game development community, everyone I have meet and spoken or interacted with has been so supportive and cool. We all are here because of our passions, and that is just so cool. I wish every online community was like this one.&lt;/p&gt;
+&lt;p&gt;Do I feel like a "real" game developer after this year? yes. Did I just change my twitter bio to reflect that? yup 🙂&lt;/p&gt;
+&lt;p&gt;Cheers!
+Erik&lt;/p&gt;
+
+
+&lt;div id="disqus_thread"&gt;&lt;/div&gt;
+
+&lt;script type="text/javascript"&gt;
+    var disqus_shortname = 'erik-onarheim';
+    var disqus_identifier = 'https://erikonarheim.com/blog/game-development-a-year-in-review-2014/';
+    var disqus_title = 'Game Development &amp;#x2013; A Year in Review 2014';
+    var disqus_url = 'https://erikonarheim.com/posts/game-development-a-year-in-review-2014';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+&lt;/script&gt;
+&lt;noscript&gt;Please enable JavaScript to view the &lt;a href="http://disqus.com/?ref_noscript"&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt;
+&lt;a href="http://disqus.com" class="dsq-brlink"&gt;comments powered by &lt;span class="logo-disqus"&gt;Disqus&lt;/span&gt;&lt;/a&gt;</content>
+		<summary>Erik Onarheim</summary>
+	</entry>
+	<entry>
+		<link href="https://erikonarheim.com/posts/conways-game-of-life-in-javascript" />
+		<id>https://erikonarheim.com/posts/conways-game-of-life-in-javascript</id>
+		<title>Conway’s Game of Life in JavaScript</title>
+		<updated>2013-10-18T00:00:00Z</updated>
+		<content>&lt;p&gt;After stumbling onto a code kata &lt;a href="http://vimeo.com/18350401"&gt;video&lt;/a&gt; about Conway’s “Game of Life” I wanted to learn more about it.&lt;/p&gt;
+&lt;p&gt;TL;DR – Here is the code on &lt;a href="https://github.com/eonarheim/GameOfLife"&gt;github&lt;/a&gt;, and here is a running &lt;a href="http://erikonarheim.com/GameOfLife/"&gt;example&lt;/a&gt;, click to seed the board and any key to start the simulation.&lt;/p&gt;
+&lt;p&gt;Once I got to googling I noticed a neat little easter egg in the sides of the page:&lt;/p&gt;
+&lt;p&gt;&lt;img src="images%5Cgoogle-easter-egg.png" class="img-fluid" alt=""&gt;&lt;/p&gt;
+&lt;p&gt;Bam! I was inspired to implement the simulation for myself.&lt;/p&gt;
+&lt;p&gt;The “Game of Life” is a simulation of cellular automatons that demonstrates that complex patterns can emerge from simple rules. Evolution of the simulation is determined by the initial state of the simulation and progresses forward.&lt;/p&gt;
+&lt;p&gt;The rules that drive the simulation are as follows:&lt;/p&gt;
+&lt;blockquote class="blockquote"&gt;
+&lt;p&gt;Any live cell with fewer than two live neighbors dies, as if caused by under-population.
+Any live cell with two or three live neighbors lives on to the next generation.
+Any live cell with more than three live neighbors dies, as if by overcrowding.
+Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.
+From &lt;a href="http://en.wikipedia.org/wiki/Conway%27s_Game_of_Life"&gt;Wikipedia&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;There is a compact notation that is used to describe these rules to the simulation, fore example “B3/S23”. The way to read this is a cell is spontaneously born if it has exactly 3 neighboring cells, “stays lives on if it has 2 or 3 living neighboring cells. In all other cases, the cell dies. There are many people who tweak the rules to bring about interesting variations in the standard game.&lt;/p&gt;
+&lt;p&gt;So how would you do this in JavaScript?&lt;/p&gt;
+&lt;p&gt;The first thing to accomplish is to represent a “Cell”.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-javascript"&gt;var Cell = function(x,y, _cells){
+        var me = this;
+
+        me.isAlive = false;
+        me.x = x;
+        me.y = y;
+        me.distance = function(cell){
+                return Math.abs(cell.x - me.x) + Math.abs(cell.y - me.y);
+        };
+
+        me.neighbors = null;        
+
+        me.countNeighbors = function(){
+                return me.neighbors.filter(function(cell){
+                        return cell.isAlive;
+                }).length;
+        };
+
+        return me;
+};
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Cells have an pair of coordinates, an “isAlive” flag, and they also know about their neighbors. Having a reference to their neighbors makes it very simple to interrogate cells and find out whether or not they will survive to the next generation of the simulation.&lt;/p&gt;
+&lt;p&gt;Once we have the cells figured out, we need some way to arrange and keep track of them. I did this by creating a simple grid structure.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-JavaScript"&gt;var Grid = function(width, height){
+        var me = this;
+        var _cells = new Array(width*height);
+
+        var _living = [];
+
+        // instantiate cells
+        for(var i = 0; i &amp;lt; width; i++){
+                for(var j = 0; j &amp;lt; height; j++){
+                        (function(){
+                                _cells[i+j*width] = new Cell(i, j, _cells);
+                        })();// Self executing function necessary to capture i and j values
+                             // For-loops in JavaScript DO NOT create scope which is a bummer                       
+                }
+        }
+        // Continued below...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Here I’m applying a trick to pack a 2D grid into a 1D array. You may also notice the self executing function inside the for-loop, this is to create scope and capture the values of i and j.&lt;/p&gt;
+&lt;p&gt;Next, we need to assign neighbor references to all the cell, in this example I’m really brute forcing this. There is definitely a more elegant way to do this, but for the purposes of the example I feel this is okay.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-javascript"&gt;       // assign neighbors
+        _cells.forEach(function(cell){
+                cell.neighbors = _cells.filter(function(cell2){
+                        var dx = Math.abs(cell2.x - cell.x);
+                        var dy = Math.abs(cell2.y - cell.y);
+                        return (dx === 1 &amp;amp;&amp;amp; dy === 1 ) || (dx === 1 &amp;amp;&amp;amp; dy === 0) || (dx === 0 &amp;amp;&amp;amp; dy === 1);
+                });
+        });
+
+       // Continued below..
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The next piece is the implementation of the rules of the simulation. First the cells that die are calculated then the cells that live on and reproduce. This step is made easier by the ability to ask cells about their neighbors directly, no need for complicated array math with “.countNeighbors()”.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-javascript"&gt;        me.updateLiving = function(){
+
+                var deadOvercrowded = _cells.filter(function(cell){
+                        return cell.isAlive &amp;amp;&amp;amp; (cell.countNeighbors() &amp;gt; 3);
+                });
+
+                var deadUnderpop = _cells.filter(function(cell){
+                        return cell.isAlive &amp;amp;&amp;amp; (cell.countNeighbors() &amp;lt; 2);
+                })
+
+                var reproduction = _cells.filter(function(cell){
+                        return !cell.isAlive &amp;amp;&amp;amp; cell.countNeighbors() === 3;
+                });
+
+                var livesOn = _cells.filter(function(cell){
+                        return cell.isAlive &amp;amp;&amp;amp; (cell.countNeighbors() === 2 || cell.countNeighbors() === 3);
+                });
+
+                deadOvercrowded.concat(deadUnderpop).forEach(function(cell){
+                        cell.isAlive = false;
+                });
+
+                reproduction.forEach(function(cell){
+                        cell.isAlive = true;
+                });
+                livesOn.forEach(function(cell){
+                        cell.isAlive = true;
+                });
+
+        };
+
+        //Helpers
+        me.filter = function(fcn){
+                return _cells.filter(fcn);
+        };
+
+        me.getCell = function(x,y){
+                return _cells[x+y*width];
+        };
+
+        return me;
+};
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now with the simulation “engine” and data structures out of the way, we can work on the drawing aspect. With the HTML5 canvas we can accomplish some pretty cool stuff. Here is the basic boiler plate we need before we can get started.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var App = function(targetElementId, squaresX, squaresY){
+        var me = this;
+        // Grab the canvas and drawing context
+        me.canvas = document.getElementById(targetElementId);
+        me.ctx = me.canvas.getContext("2d");
+
+        // Grab the start button
+        me.button = document.getElementById("start");
+
+        // Initialize page styles
+        var body = document.getElementsByTagName('body')[0];
+        body.style.margin = '0px';
+        body.style.overflow = "hidden";
+
+        // Set height and width to window inner height to make the app 'fullscreen'
+        var viewWidth = me.canvas.width = window.innerWidth;
+        var viewHeight = me.canvas.height = window.innerHeight;
+
+        squaresX = squaresX || 20;
+        squaresY = squaresY || 20;
+
+        // Calculate the height and width of each cell
+        var _squareWidth = me.canvas.width/squaresX;
+        var _squareHeight = _squareWidth;
+
+        // Initialize our Grid data structure from above
+        var grid = new Grid(squaresX, squaresY);
+
+        // Continued below
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The user is going to want to setup the initial state of the simulation to they can play around, so we are going to setup event handlers for starting and stopping the simulation as well as handlers for clicking. To start and stop we will response with any keypress to make things simple, and mouse click and drag with lay down intial state.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-javascript"&gt;        // Handle Click events
+        var _mouseDown = false;
+        var handleClick = function(event){
+                var x = event.pageX - me.canvas.offsetLeft;
+                var y = event.pageY - me.canvas.offsetTop;
+
+                var i = Math.floor(x/_squareWidth);
+                var j = Math.floor(y/_squareHeight);
+
+                grid.getCell(i, j).isAlive = true;
+                return;
+        };
+
+        var _startSim = false;
+
+        window.onkeydown = function(ev){
+                _startSim = !_startSim;
+        };
+
+        window.onresize = function(ev){
+                viewWidth = me.canvas.width = window.innerWidth;//viewWidth || 600;
+                  viewHeight = me.canvas.height = window.innerHeight;//viewHeight || 600;
+        };
+
+        me.canvas.addEventListener('mousedown', function(event){
+                _mouseDown = true;
+                handleClick(event);
+                me.canvas.addEventListener('mousemove', handleClick);
+        });
+
+        me.canvas.addEventListener('mouseup', function(event){
+                _mouseDown = false;
+                me.canvas.removeEventListener('mousemove', handleClick);
+        });
+        // Continued below...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now for the fun part, drawing and updating&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-javascript"&gt;        // Here is our start responsible for kicking off our mainloop 
+        me.start = function(){
+                setInterval(function(){
+                        me.update();
+                        me.draw();
+                }, 60); // Mainloop set to refresh every ~60 milliseconds
+
+        };
+
+        // Update is responsible for updating all state in the app
+        me.update = function(){
+                if(_startSim){
+                        grid.updateLiving();        
+                }
+        };
+
+        // Draw is responsible for drawing the entire app
+        me.draw = function(){
+                // Erase previous draw by filling the entire canvas with white
+                me.ctx.fillStyle = 'white';
+                me.ctx.fillRect(0,0,me.canvas.width,me.canvas.height);
+
+                // Draw living squares first
+                grid.filter(function(cell){
+                        return cell.isAlive;
+                }).forEach(function(cell){
+                        me.ctx.fillStyle = 'black';
+                        me.ctx.fillRect(cell.x * _squareWidth, cell.y * _squareHeight, _squareWidth, _squareHeight);
+                });
+
+                // Draw grid
+
+                // First draw vertical lines
+                me.ctx.fillStyle = 'gray';
+                for(var x = 0; x &amp;lt;= viewWidth; x+=_squareWidth){
+                        me.ctx.beginPath();
+                        me.ctx.moveTo(x, 0);
+                        me.ctx.lineTo(x, viewHeight);
+                        me.ctx.stroke();
+                };
+
+                // Second draw horizontal lines
+                for(var y = 0; y &amp;lt;= viewHeight; y+= _squareHeight){
+                        me.ctx.beginPath();
+                        me.ctx.moveTo(0, y);
+                        me.ctx.lineTo(viewWidth, y);
+                        me.ctx.stroke();        
+                };
+        };
+
+        return me;
+};
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;To kick off the whole thing, all you need to do is the following&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-javascript"&gt;var app = new App("game", 100, 50);
+app.start();
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Check out the code on github, and here is a running example on the web.&lt;/p&gt;
+&lt;p&gt;Happy games!&lt;/p&gt;
+&lt;p&gt;Cheers,
+Erik&lt;/p&gt;
+
+
+&lt;div id="disqus_thread"&gt;&lt;/div&gt;
+
+&lt;script type="text/javascript"&gt;
+    var disqus_shortname = 'erik-onarheim';
+    var disqus_identifier = 'https://erikonarheim.com/blog/conways-game-of-life-in-javascript/';
+    var disqus_title = 'Conway&amp;#x2019;s Game of Life in JavaScript';
+    var disqus_url = 'https://erikonarheim.com/posts/conways-game-of-life-in-javascript';
 
     /* * * DON'T EDIT BELOW THIS LINE * * */
     (function() {
