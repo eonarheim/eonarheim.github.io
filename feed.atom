@@ -4,7 +4,7 @@
 	<id>https://erikonarheim.com/</id>
 	<title>Erik Onarheim</title>
 	<rights>2017</rights>
-	<updated>2017-02-21T03:49:50Z</updated>
+	<updated>2017-02-21T03:54:41Z</updated>
 	<subtitle>Erik Onarheim</subtitle>
 	<entry>
 		<link href="https://erikonarheim.com/posts/using-wyam-blog" />
@@ -19,7 +19,7 @@
 &lt;p&gt;Installing Wyam is pretty easy, navigate &lt;a href="https://wyam.io/docs/usage/obtaining"&gt;here&lt;/a&gt; and follow one of the many ways to install. I used the Windows installer, unfortunately it does not automatically add itself to the path. Fortunately, it is easy to do with the following command once installed:&lt;/p&gt;
 &lt;pre&gt;&lt;code class="language-powershell"&gt;%LocalAppData%\Wyam\Wyam.Windows add-path
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;In a new command window you can confirm wyam is in your patch:&lt;/p&gt;
+&lt;p&gt;In a new command window you can confirm wyam is in your path:&lt;/p&gt;
 &lt;pre&gt;&lt;code class="language-powershell"&gt;wyam --help
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id="building-your-blog-in-wyam"&gt;Building your blog in Wyam&lt;/h2&gt;
