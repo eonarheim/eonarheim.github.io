@@ -11,6 +11,8 @@ disqus_identifier: https://erikonarheim.com/posts/using-wyam-blog/
 ---
 Recently I needed to update my blog WordPress version (yet again), along with patch my server, update my HTTPS certificate, and pay my hosting bill. The amount of admin-istrivia around maintaining your own server and application platform is more than I want to do for a blog going forward. This got me thinking there must be a better way to do this. My friends, [@kamranayub](https://twitter.com/kamranayub) in particular, have been pushing me to do more blogging and to move to static site generation. So here goes!
 
+(BTW, this setup is saving me $400 per year on hosting costs!)
+
 ## Intro Wyam
 
 This leads me to the Wyam static site generator. It is a great little static site generator built in C#/.NET (full framework). If you come from a Markdown/Razor background you'll really find this stuff really familiar and easy to use. Wyam is super configurable, fully customizable, and compatible with GitHub pages. Let's dig into it!
