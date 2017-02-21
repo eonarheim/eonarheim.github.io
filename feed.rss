@@ -5,8 +5,8 @@
 		<link>https://erikonarheim.com/</link>
 		<description>Erik Onarheim</description>
 		<copyright>2017</copyright>
-		<pubDate>Tue, 21 Feb 2017 03:36:41 GMT</pubDate>
-		<lastBuildDate>Tue, 21 Feb 2017 03:36:41 GMT</lastBuildDate>
+		<pubDate>Tue, 21 Feb 2017 03:49:50 GMT</pubDate>
+		<lastBuildDate>Tue, 21 Feb 2017 03:49:50 GMT</lastBuildDate>
 		<item>
 			<title>Migrating to Wyam in GH Pages from WordPress</title>
 			<link>https://erikonarheim.com/posts/using-wyam-blog</link>
@@ -14,6 +14,7 @@
 			<guid>https://erikonarheim.com/posts/using-wyam-blog</guid>
 			<pubDate>Fri, 17 Feb 2017 00:00:00 GMT</pubDate>
 			<content:encoded>&lt;p&gt;Recently I needed to update my blog WordPress version (yet again), along with patch my server, update my HTTPS certificate, and pay my hosting bill. The amount of admin-istrivia around maintaining your own server and application platform is more than I want to do for a blog going forward. This got me thinking there must be a better way to do this. My friends, &lt;a href="https://twitter.com/kamranayub"&gt;@kamranayub&lt;/a&gt; in particular, have been pushing me to do more blogging and to move to static site generation. So here goes!&lt;/p&gt;
+&lt;p&gt;(BTW, this setup is saving me $400 per year on hosting costs!)&lt;/p&gt;
 &lt;h2 id="intro-wyam"&gt;Intro Wyam&lt;/h2&gt;
 &lt;p&gt;This leads me to the Wyam static site generator. It is a great little static site generator built in C#/.NET (full framework). If you come from a Markdown/Razor background you'll really find this stuff really familiar and easy to use. Wyam is super configurable, fully customizable, and compatible with GitHub pages. Let's dig into it!&lt;/p&gt;
 &lt;h2 id="installing-wyam"&gt;Installing Wyam&lt;/h2&gt;
