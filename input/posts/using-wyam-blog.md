@@ -26,7 +26,7 @@ Installing Wyam is pretty easy, navigate [here](https://wyam.io/docs/usage/obtai
 %LocalAppData%\Wyam\Wyam.Windows add-path
 ```
 
-In a new command window you can confirm wyam is in your patch:
+In a new command window you can confirm wyam is in your path:
 
 ```powershell
 wyam --help
