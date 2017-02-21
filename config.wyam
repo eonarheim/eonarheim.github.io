@@ -6,4 +6,4 @@ Settings[BlogKeys.Title] = "Erik Onarheim";
 Settings[Keys.Host] = "erikonarheim.com";
 Settings[BlogKeys.Description] = "Erik Onarheim";
 Settings[Keys.LinksUseHttps] = true;
-Settings[BlogKeys.Intro] = "Hi, my name is Erik. I am a software developer and operations engineer from Minneapolis Minnesota. I primarily work in .NET and JavaScript. I keep servers and load-balancers working for big sites. I write games for fun. I play guitar, and occasionally draw things.";
+Settings[BlogKeys.Intro] = "Hi, my name is Erik. I am a software developer, operations engineer, and cloud engineer working in Minneapolis Minnesota. I primarily work in .NET and JavaScript. I design infrastructure for the cloud. I write games for fun. I play guitar, and occasionally draw things.";
