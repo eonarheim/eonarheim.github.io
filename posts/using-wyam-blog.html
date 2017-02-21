@@ -156,10 +156,10 @@ Settings[BlogKeys.Title] = &quot;Erik Onarheim&quot;;
 
 </code></pre>
 <p>Top level files in your input directory will show up in your nav bar, notice that they can be a mix of cshtml or markdown! So really some pages that need some more power can use Razor, others just Markdown.</p>
-<p><img src="images%5Cnav.png" class="img-fluid" alt="" /></p>
-<p><img src="images%5Cnav-wyam.png" class="img-fluid" alt="" /></p>
+<p><img src="images/nav.png" class="img-fluid" alt="" /></p>
+<p><img src="images/nav-wyam.png" class="img-fluid" alt="" /></p>
 <p>Building a new blog post is as simple as dropping a new markdown file in your input/posts directory and adding the appropriate metadata to the file.</p>
-<p><img src="images%5Cnewpost.png" class="img-fluid" alt="" /></p>
+<p><img src="images/newpost.png" class="img-fluid" alt="" /></p>
 <pre><code class="language-markdown">
 Title: Migrating to Wyam in GH Pages from WordPress
 Published: 2/17/2017
@@ -176,7 +176,7 @@ Recently I needed to update my blog WordPress version (yet again)...
 
 </code></pre>
 <p>The default theme is pretty slick, <strong>but if you ever want to tweak it</strong>, it is as easy as dropping a new file with the same name as the theme. Below I've added a custom <code>_Layout.cshtml</code>, <code>_Footer.cshtml</code>, and more that I copied from <a href="https://github.com/Wyamio/Wyam/tree/develop/themes/Blog/CleanBlog">Wyam's CleanBlog github</a> and tweaked with my own google analytics and favicon. You'll also notice that you can mix and match Markdown with you Razor cshtml!</p>
-<p><img src="images%5Coverridestheme.png" class="img-fluid" alt="" /></p>
+<p><img src="images/overridestheme.png" class="img-fluid" alt="" /></p>
 <h3 id="customizing-wyam-with-disqus">Customizing Wyam with Disqus</h3>
 <p>Wyam comes with a bunch of built-in <a href="https://wyam.io/recipes/blog/document-metadata">document metadata</a> which can be used to give the post a title, tags, published date. Custom metadata is also supported as well! Notice the <code>disqus_identifier</code> metadata which I use to add comments into my posts. This particular tag is picked up by my  custom <code>_PostFooter.cshtml</code> here, note the <code>&#64;Model.String(&quot;disqus_identifier&quot;)</code> the rest comes from disqus's embedding documentation.</p>
 <pre><code class="language-html">
@@ -209,16 +209,16 @@ Recently I needed to update my blog WordPress version (yet again)...
 <p>It's pretty much that easy to make changes to the default template to make your own customizations!</p>
 <h2 id="testing-wyam-locally-with-iis-or-just-use-the-easy-way">Testing Wyam locally with IIS (or just use the easy way)</h2>
 <p>When I started working on this I tried a number of different of local servers to test this, TLDR: just use <code>wyam preview</code> in the root directory of our block (above the input folder).</p>
-<p><img src="images%5Cwyam-preview2.png" class="img-fluid" alt="preview" /></p>
+<p><img src="images/wyam-preview2.png" class="img-fluid" alt="preview" /></p>
 <p><strong>If you want to know the hard way</strong> and see how to use IIS in a non-standard directory to run Wyam read on, <strong>otherwise skip to the next section :)</strong></p>
 <p>I keep a projects directory on my machine where I do most of my development on various projects. Unfortunately IIS does not have the permission to read into directories outside of <code>C:\inetpub\wwwroot</code> by default which is a good default for servers. But if you want to test outside of your web root in your development space it is a problem. To fix this you'll need to set some file ACLs so that IIS can read your files. Give <code>IIS_IUSRS</code> and <code>Users</code> on the local machine Execute, List, and Read.</p>
-<p><img src="images%5Ciis-perms.PNG" class="img-fluid" alt="Folder ACLs" /></p>
+<p><img src="images/iis-perms.PNG" class="img-fluid" alt="Folder ACLs" /></p>
 <p>Next you'll need to solve the problem of the extension-less <code>/posts/name-of-my-post</code> file names that need to be served as if they contained an <code>index.html</code> when they don't.</p>
-<p><img src="images%5Curl-non-rewrite.PNG" class="img-fluid" alt="extensionless" /></p>
+<p><img src="images/url-non-rewrite.PNG" class="img-fluid" alt="extensionless" /></p>
 <p>Versus</p>
-<p><img src="images%5Curl-non-rewrite-html.PNG" class="img-fluid" alt="extension" /></p>
+<p><img src="images/url-non-rewrite-html.PNG" class="img-fluid" alt="extension" /></p>
 <p>In order to fix this Wyam has some <a href="https://wyam.io/docs/deployment/azure">azure documentation</a> referencing the rewrite module in azure. IIS does not come with this pre-installed so you'll need to <a href="https://www.iis.net/downloads/microsoft/url-rewrite">install the module</a> located at the bottom of the page.</p>
-<p><img src="images%5Cdownload-rewrite.PNG" class="img-fluid" alt="rewrite-module" /></p>
+<p><img src="images/download-rewrite.PNG" class="img-fluid" alt="rewrite-module" /></p>
 <p>Once that is complete you can drop in a <code>web.config</code> in your <code>input</code> directory with the rewrite rule referenced in the Wyam docs and voila!</p>
 <pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot;?&gt;
 &lt;configuration&gt;
@@ -238,7 +238,7 @@ Recently I needed to update my blog WordPress version (yet again)...
   &lt;/system.webServer&gt;
 &lt;/configuration&gt;
 </code></pre>
-<p><img src="images%5Curl-rewrite.PNG" class="img-fluid" alt="rewrite" /></p>
+<p><img src="images/url-rewrite.PNG" class="img-fluid" alt="rewrite" /></p>
 <p>Now you can run <code>wyam -w</code> in your root blog directory and it will rebuilt the output when any input changes! The best part is this will be served by IIS that you've just stood up.</p>
 <h2 id="preserve-you-wordpress-old-links">Preserve you WordPress old links</h2>
 <p>If your blog has some good SEO juice, or maybe you just don't want to break older links, you'll want to preserve old links or at least redirect to your new ones. Here is how it is done</p>
@@ -254,13 +254,13 @@ RedirectFrom: blog/game-development-a-year-in-review-2014/index.html
 </code></pre>
 <h2 id="setting-up-automatic-deployment-with-appveyor-and-github-pages">Setting up automatic deployment with AppVeyor and GitHub Pages</h2>
 <p>AppVeyor is a super powerful CI/CD tool for Windows with free plans for open source. It's pretty much TravisCI for Windows. It's super easy to tie it to your GitHub account and add your repository for building.</p>
-<p><img src="images%5Cappveyorlogin.PNG" class="img-fluid" alt="appveyor" /></p>
+<p><img src="images/appveyorlogin.PNG" class="img-fluid" alt="appveyor" /></p>
 <p>Find your GH pages repo and turn it on.</p>
-<p><img src="images%5Cappveyoradd.PNG" class="img-fluid" alt="appveyorrepo" /></p>
+<p><img src="images/appveyoradd.PNG" class="img-fluid" alt="appveyorrepo" /></p>
 <p>I suggest only building on official pushes and not PR's because it is possible for anyone to craft a malicious PR to output secrets from appveyor. Also I recommend only building when <code>.appvyor.yml</code> files are present to prevent gratuituous error emails in your inbox before repo is ready for prime time.</p>
-<p><img src="images%5Csettings.PNG" class="img-fluid" alt="appveyorsettings" /></p>
+<p><img src="images/settings.PNG" class="img-fluid" alt="appveyorsettings" /></p>
 <p>Wyam has a really nice <code>appveyor.yml</code> file <a href="https://wyam.io/docs/deployment/appveyor">example</a> to follow. One caveat is that GitHub pages for user pages must be built from the master branch.</p>
-<p><img src="images%5Cmust-be-built.PNG" class="img-fluid" alt="master-only" /></p>
+<p><img src="images/must-be-built.PNG" class="img-fluid" alt="master-only" /></p>
 <p>In order to accomodate this I had to tweak the provied yaml file a little. AppVeyer will only build on my source</p>
 <pre><code class="language-yml">branches:
   only:
@@ -300,13 +300,13 @@ on_success:
 
 </code></pre>
 <p>Also you'll notice my <code>env:access_token</code> this is setup in AppVeyor's encrypted environment variables.</p>
-<p><img src="images%5Caccesstokenencryption.PNG" class="img-fluid" alt="access_token" /></p>
+<p><img src="images/accesstokenencryption.PNG" class="img-fluid" alt="access_token" /></p>
 <p>This can be generated by logging into GitHub, and generating a &quot;Personal Access Token&quot;, with <code>repo</code> scope.</p>
-<p><img src="images%5Cgithubtokenscope.PNG" class="img-fluid" alt="access token scope" /></p>
+<p><img src="images/githubtokenscope.PNG" class="img-fluid" alt="access token scope" /></p>
 <p>Now AppVeyor builds commits to my origin <code>source</code> branch automagically! And Voila!
-<img src="images%5Cappveyorbuild.PNG" class="img-fluid" alt="build" /></p>
+<img src="images/appveyorbuild.PNG" class="img-fluid" alt="build" /></p>
 <p>Finished product!</p>
-<p><img src="images%5Cblogcomplete.PNG" class="img-fluid" alt="" /></p>
+<p><img src="images/blogcomplete.PNG" class="img-fluid" alt="" /></p>
 <h2 id="using-cloudflare-cdn-for-https-and-custom-domains">Using CloudFlare CDN for HTTPS and Custom Domains</h2>
 <p>CloudFlare is super useful (and free) for setting up HTTPS for your GitHub pages, and for the free tier account it is very full featured. If you aren't too squeamish about surrendering your NS (name server) records, it is pretty simple.</p>
 <ol>
@@ -315,18 +315,18 @@ on_success:
 <li><p>CloudFlare can scan the DNS records in your site and let you know if there will be any problems migrating.</p>
 </li>
 </ol>
-<p><img src="images%5Ccloudflarescan.PNG" class="img-fluid" alt="dnsscan" /></p>
+<p><img src="images/cloudflarescan.PNG" class="img-fluid" alt="dnsscan" /></p>
 <ol start="3">
 <li>Update your name server records to point to CloudFlare's names servers so the can serve up DNS on your behalf. In my case, I use a service called DNSimple.com but you may use GoDaddy or NameCheap as your registrar.</li>
 </ol>
-<p><img src="images%5Cdnsimplenameservers.PNG" class="img-fluid" alt="name server" /></p>
+<p><img src="images/dnsimplenameservers.PNG" class="img-fluid" alt="name server" /></p>
 <ol start="4">
 <li>Setup your free SSL certificate by switching the SSL drop down to &quot;full&quot;, <strong>this can take some time so keep that in mind</strong>. The CloudFlare site says up to 24 hours (but from experience it seems to finish in about an hour or so).</li>
 </ol>
-<p><img src="images%5Ccloudflare-crypto.PNG" class="img-fluid" alt="crypto" /></p>
+<p><img src="images/cloudflare-crypto.PNG" class="img-fluid" alt="crypto" /></p>
 <p>Once everything has been provisioned and propagated you'll notice that CloudFlare is serving your domain off of a SAN certificate.</p>
-<p><img src="images%5Csan-cert.PNG" class="img-fluid" alt="san1" /></p>
-<p><img src="images%5Ccloudflarescan2.PNG" class="img-fluid" alt="san2" /></p>
+<p><img src="images/san-cert.PNG" class="img-fluid" alt="san1" /></p>
+<p><img src="images/cloudflarescan2.PNG" class="img-fluid" alt="san2" /></p>
 <p>We are done! The new Wyam blog platform is now ready for new posts and is on a more sustainable and secure set of technologies. Hopefully you find this useful, let me know what you think.</p>
 <p>-Erik</p>
 
