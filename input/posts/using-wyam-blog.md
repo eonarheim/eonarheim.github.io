@@ -15,7 +15,7 @@ Recently I needed to update my blog WordPress version (yet again), along with pa
 
 ## Intro Wyam
 
-This leads me to the Wyam static site generator. It is a great little static site generator built in C#/.NET (full framework). If you come from a Markdown/Razor background you'll really find this stuff really familiar and easy to use. Wyam is super configurable, fully customizable, and compatible with GitHub pages. Let's dig into it!
+This leads me to the Wyam static site generator. It is a great little static site generator built in C#/.NET (full framework). If you come from a Markdown/Razor background you'll really find this stuff familiar and easy to use. Wyam is super configurable, fully customizable, and compatible with GitHub pages. Let's dig into it!
 
 
 ## Installing Wyam
@@ -126,7 +126,7 @@ It's pretty much that easy to make changes to the default template to make your 
 
 ## Testing Wyam locally with IIS (or just use the easy way)
 
-When I started working on this I tried a number of different of local servers to test this, TLDR: just use `wyam preview` in the root directory of our block (above the input folder). 
+When I started working on this I tried a number of different of local servers to test this, TLDR: just use `wyam preview` in the root directory of our blog (above the input folder). 
 
 ![preview](images/wyam-preview2.png)
 
