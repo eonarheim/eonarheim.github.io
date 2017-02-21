@@ -13,7 +13,7 @@ TL;DR – Here is the code on [github](https://github.com/eonarheim/GameOfLife),
 
 Once I got to googling I noticed a neat little easter egg in the sides of the page:
 
-![](images\google-easter-egg.png)
+![](images/google-easter-egg.png)
 
 Bam! I was inspired to implement the simulation for myself.
 
