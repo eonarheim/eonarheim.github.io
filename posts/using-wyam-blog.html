@@ -134,7 +134,7 @@ Published on Friday, February 17, 2017<br>    </div>
 <p>Recently I needed to update my blog WordPress version (yet again), along with patch my server, update my HTTPS certificate, and pay my hosting bill. The amount of admin-istrivia around maintaining your own server and application platform is more than I want to do for a blog going forward. This got me thinking there must be a better way to do this. My friends, <a href="https://twitter.com/kamranayub">&#64;kamranayub</a> in particular, have been pushing me to do more blogging and to move to static site generation. So here goes!</p>
 <p>(BTW, this setup is saving me $400 per year on hosting costs!)</p>
 <h2 id="intro-wyam">Intro Wyam</h2>
-<p>This leads me to the Wyam static site generator. It is a great little static site generator built in C#/.NET (full framework). If you come from a Markdown/Razor background you'll really find this stuff really familiar and easy to use. Wyam is super configurable, fully customizable, and compatible with GitHub pages. Let's dig into it!</p>
+<p>This leads me to the Wyam static site generator. It is a great little static site generator built in C#/.NET (full framework). If you come from a Markdown/Razor background you'll really find this stuff familiar and easy to use. Wyam is super configurable, fully customizable, and compatible with GitHub pages. Let's dig into it!</p>
 <h2 id="installing-wyam">Installing Wyam</h2>
 <p>Installing Wyam is pretty easy, navigate <a href="https://wyam.io/docs/usage/obtaining">here</a> and follow one of the many ways to install. I used the Windows installer, unfortunately it does not automatically add itself to the path. Fortunately, it is easy to do with the following command once installed:</p>
 <pre><code class="language-powershell">%LocalAppData%\Wyam\Wyam.Windows add-path
@@ -209,7 +209,7 @@ Recently I needed to update my blog WordPress version (yet again)...
 </code></pre>
 <p>It's pretty much that easy to make changes to the default template to make your own customizations!</p>
 <h2 id="testing-wyam-locally-with-iis-or-just-use-the-easy-way">Testing Wyam locally with IIS (or just use the easy way)</h2>
-<p>When I started working on this I tried a number of different of local servers to test this, TLDR: just use <code>wyam preview</code> in the root directory of our block (above the input folder).</p>
+<p>When I started working on this I tried a number of different of local servers to test this, TLDR: just use <code>wyam preview</code> in the root directory of our blog (above the input folder).</p>
 <p><img src="images/wyam-preview2.png" class="img-fluid" alt="preview" /></p>
 <p><strong>If you want to know the hard way</strong> and see how to use IIS in a non-standard directory to run Wyam read on, <strong>otherwise skip to the next section :)</strong></p>
 <p>I keep a projects directory on my machine where I do most of my development on various projects. Unfortunately IIS does not have the permission to read into directories outside of <code>C:\inetpub\wwwroot</code> by default which is a good default for servers. But if you want to test outside of your web root in your development space it is a problem. To fix this you'll need to set some file ACLs so that IIS can read your files. Give <code>IIS_IUSRS</code> and <code>Users</code> on the local machine Execute, List, and Read.</p>
