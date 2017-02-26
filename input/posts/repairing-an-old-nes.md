@@ -77,7 +77,7 @@ At this point I had assembled and disassembled the NES like 6 times, so I just p
 
 ### Wrapping it up
 
-After all this work, the NES still has about a 50% success rate of booting the cartridge, which is much better than the 0% success rate before I started. You can make this better doing the wiggle trick. While the cart is loaded in the NES wiggle the top of it and repeatedly hit reset until the) game boots. I suspect even with the bent pins on the 72-pin connector the corrosion is significant enough to prevent good contact. 
+After all this work, the NES still has about a 50% success rate of booting the cartridge. This is much better than the 0% success rate before I started. You can make it load better doing the "wiggle trick." While the cart is loaded in the NES, wiggle the top of it and repeatedly hit reset until the game boots. I suspect even with the bent pins on the 72-pin connector the corrosion is significant enough to prevent good contact. 
 
 Since I don't want to try boiling electronics in my cookware, I purchased a [replacement 72-pin connector on Amazon](https://www.amazon.com/gp/product/B00EUT0BQU) for $10 which I thought was reasonable. Hopefully, this will increase the success rate to 100% of the time it works 100% of the time 😎 I'll post an update to this as soon as I recieve the part.
 
