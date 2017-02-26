@@ -1,10 +1,10 @@
-Title: Restoring an old broken NES
+Title: Repairing an old broken NES
 Published: 2/26/2017
 Tags: 
  - Hardware
  - NES
  - Games
-disqus_identifier: https://erikonarheim.com/posts/restoring-old-nes/
+disqus_identifier: https://erikonarheim.com/posts/repairing-an-old-nes/
 ---
 
 I recently acquired an original Nintendo Entertainment System for an upcoming talk where I show how to develop real NES games in 6502. There was only one problem, the NES was not working and flashing the infamous "Red Blink of Death." In this post I'll walk through the steps I used to restore and repair my NES.
