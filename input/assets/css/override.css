@@ -95,3 +95,6 @@ e-card {
     margin-left: auto;
     text-align: center;
 }
+img {
+    max-width: 100%;
+}
