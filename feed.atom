@@ -4,12 +4,12 @@
 	<id>https://erikonarheim.com/</id>
 	<title>Erik Onarheim</title>
 	<rights>2017</rights>
-	<updated>2017-02-26T18:59:06Z</updated>
+	<updated>2017-02-26T19:08:21Z</updated>
 	<subtitle>Erik Onarheim</subtitle>
 	<entry>
-		<link href="https://erikonarheim.com/posts/restoring-old-nes" />
-		<id>https://erikonarheim.com/posts/restoring-old-nes</id>
-		<title>Restoring an old broken NES</title>
+		<link href="https://erikonarheim.com/posts/repairing-an-old-nes" />
+		<id>https://erikonarheim.com/posts/repairing-an-old-nes</id>
+		<title>Repairing an old broken NES</title>
 		<updated>2017-02-26T00:00:00Z</updated>
 		<content>&lt;p&gt;I recently acquired an original Nintendo Entertainment System for an upcoming talk where I show how to develop real NES games in 6502. There was only one problem, the NES was not working and flashing the infamous "Red Blink of Death." In this post I'll walk through the steps I used to restore and repair my NES.&lt;/p&gt;
 &lt;h3 id="spelunking-inside-the-nes"&gt;Spelunking inside the NES&lt;/h3&gt;
@@ -54,9 +54,9 @@
 
 &lt;script type="text/javascript"&gt;
     var disqus_shortname = 'erik-onarheim';
-    var disqus_identifier = 'https://erikonarheim.com/posts/restoring-old-nes/';
-    var disqus_title = 'Restoring an old broken NES';
-    var disqus_url = 'https://erikonarheim.com/posts/restoring-old-nes';
+    var disqus_identifier = 'https://erikonarheim.com/posts/repairing-an-old-nes/';
+    var disqus_title = 'Repairing an old broken NES';
+    var disqus_url = 'https://erikonarheim.com/posts/repairing-an-old-nes';
 
     /* * * DON'T EDIT BELOW THIS LINE * * */
     (function() {
