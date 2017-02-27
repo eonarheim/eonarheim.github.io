@@ -4,7 +4,7 @@
 	<id>https://erikonarheim.com/</id>
 	<title>Erik Onarheim</title>
 	<rights>2017</rights>
-	<updated>2017-02-26T19:26:49Z</updated>
+	<updated>2017-02-27T22:34:41Z</updated>
 	<subtitle>Erik Onarheim</subtitle>
 	<entry>
 		<link href="https://erikonarheim.com/posts/repairing-an-old-nes" />
@@ -45,8 +45,11 @@
 &lt;p&gt;&lt;img src="images/loadednes.png" class="img-fluid" alt=""&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src="images/nesscreen.png" class="img-fluid" alt=""&gt;&lt;/p&gt;
 &lt;h3 id="wrapping-it-up"&gt;Wrapping it up&lt;/h3&gt;
-&lt;p&gt;After all this work, the NES still has about a 50% success rate of booting the cartridge. This is much better than the 0% success rate before I started. You can make it load better doing the "wiggle trick." While the cart is loaded in the NES, wiggle the top of it and repeatedly hit reset until the game boots. I suspect even with the bent pins on the 72-pin connector the corrosion is significant enough to prevent good contact.&lt;/p&gt;
-&lt;p&gt;Since I don't want to try boiling electronics in my cookware, I purchased a &lt;a href="https://www.amazon.com/gp/product/B00EUT0BQU"&gt;replacement 72-pin connector on Amazon&lt;/a&gt; for $10 which I thought was reasonable. Hopefully, this will increase the success rate to 100% of the time it works 100% of the time 😎 I'll post an update to this as soon as I recieve the part.&lt;/p&gt;
+&lt;p&gt;After all this work, the NES still has about a 50% success rate of booting the cartridge. This is much better than the 0% success rate before I started. You can make it load better doing the "wiggle trick." While the cart is loaded in the NES, wiggle the top of it and repeatedly hit reset until the game boots. I suspect even with the bent pins on the 72-pin connector the corrosion is significant enough to prevent good contact. (If there isn't good contact to the lock-out chip the NES will do the "red blink of death" thinking it's a non-licensed Nintendo cart).&lt;/p&gt;
+&lt;p&gt;Since I don't want to try boiling electronics in my cookware, I purchased a &lt;a href="https://www.amazon.com/gp/product/B00EUT0BQU"&gt;replacement 72-pin connector on Amazon&lt;/a&gt; for $10 which I thought was reasonable. Hopefully, this will increase the success rate to 100% of the time it works 100% of the time 😎 I'll post an update to this as soon as I receive the part.&lt;/p&gt;
+&lt;h4 id="update"&gt;Update&lt;/h4&gt;
+&lt;p&gt;After installing the replacement connector everything works 100% of the time! The replacement connector grabs more tightly, so it does take a little effort to push carts into the NES. If anyone tries the boiling method let me know!&lt;/p&gt;
+&lt;p&gt;&lt;img src="images/castlevania.png" class="img-fluid" alt="castlevania"&gt;&lt;/p&gt;
 &lt;p&gt;-Erik&lt;/p&gt;
 
 
