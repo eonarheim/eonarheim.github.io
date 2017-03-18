@@ -3,7 +3,9 @@ Title: Talks
 
 ## General Mills Code Camp - Building real NES Games - March 2017
 
-An upcoming talk about building games for the Nintendo Entertainment System. 
+This talk was about building games for the Nintendo Entertainment System. 
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/mnUXYl5B9Qs" frameborder="0" allowfullscreen></iframe>
 
 In this talk you'll learn how to build your very own nintendo games! If you've ever been curious about what console developement was like in the early days of Nintendo join me for this talk
 
