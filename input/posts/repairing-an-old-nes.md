@@ -13,44 +13,44 @@ I recently acquired an original Nintendo Entertainment System for an upcoming ta
 
 First I wanted to see what was wrong, so I opened up the NES for visual inspection to check for any obvious problems. The original NES is surprisingly easy to take apart with a standard Philips head screwdriver (compared to later Nintendo devices with bizarre screws that no one has the wrench for). There are only 6 screws to undo and the top of the Nintendo will come right off.
 
-![](images/buttomnes.png)
+![](images/repairing-an-old-nes/buttomnes.png)
 
 I wonder if they'll still help me... 😉
 
-![](images/newwarrantee.png)
+![](images/repairing-an-old-nes/newwarrantee.png)
 
 Looking inside you'll see the RF shielding which is fairly easy to remove, it's just held on with a couple screws.
 
-![](images/rfsheilding.png)
+![](images/repairing-an-old-nes/rfsheilding.png)
 
 I just went through all the other parts and unscrewed everything. Once I did that, you can pull the loader mechanism off fairly easy. The loader mount has the only special long screws in the NES, the rest are interchangeable, remember where they go.
 
-![](images/loadermechanismgone.png)
+![](images/repairing-an-old-nes/loadermechanismgone.png)
 
 The top side of the PCB board looks pretty good, there is some slight visible corrosion on some of the PPU and CPU pins. For the most part the traces look okay on this side, no burns, no dead capacitors, etc.
 
-![nes pcb](images/nespcb.png)
+![nes pcb](images/repairing-an-old-nes/nespcb.png)
 
 The bottom of the PCB (which faces towards to top of the console when it's mounted) is a different story. It looks like there was some sort of liquid spilled into the console, possibly soda, or juice. It looks like it also caused some corrosion as well.
 
-![](images/bottompcb.png)
+![](images/repairing-an-old-nes/bottompcb.png)
 
 After this discovery, I spent around an hour our so with isopropyl alcohol ~90% (don't worry it's perfectly safe for electronics) and some Q-tips cleaning up the sticky residue on the bottom of the PCB. I went through a lot of Q-tips to get this clean. One downside of this is that the Q-tips began to leave cotton fuzz everywhere that I needed to pull off later, I don't think cotton on the PCB is good for the NES 😉
 
-![](images/qtipswabs.png)
+![](images/repairing-an-old-nes/qtipswabs.png)
 
 
 While I was at it I also cleaned up the PCB 72-pin connector contact as well 
 
-![](images/72pincontact.png)
+![](images/repairing-an-old-nes/72pincontact.png)
 
 TA-DA! A much cleaner PCB, you'll want to let this dry for a bit. (Photo was taken the next day, marked improvement from before)
 
-![](images/cleanpcb.png)
+![](images/repairing-an-old-nes/cleanpcb.png)
 
 But after all that cleaning, things still didn't work 😭
 
-![](images/nesblinkofdeath.gif)
+![](images/repairing-an-old-nes/nesblinkofdeath.gif)
 
 ### Enter the 72-pin connector
 
@@ -58,22 +58,22 @@ Another common thing that can wear out over time is the 72-pin connector that co
 
 I cleaned the connections as best I could with rubbing alcohol but that had no effect. There is some definite corrosion on the pins highlighted that doesn't show up in the photo. It is difficult to clean this small space, and if I had a science pot I'd be boiling it for 30 minutes.
 
-![](images/72pingconnector.png)
+![](images/repairing-an-old-nes/72pingconnector.png)
 
 Let the bending of the pins commence! I used a safety pin and an overhead desk lamp to bend the pins up slightly, this will have the side effect of making the cartridge harder to insert into the mechanism but hopefully that means better contact.
 
-![](images/safetypin.png)
+![](images/repairing-an-old-nes/safetypin.png)
 
 
 Here you can see the first 6 pins bent upwards, I proceeded to bend the rest of the pins and remounted everything in the NES.
 
-![](images/pinsbent.png)
+![](images/repairing-an-old-nes/pinsbent.png)
 
 At this point I had assembled and disassembled the NES like 6 times, so I just put things together without screws to see if things worked... and booyah!
 
-![](images/loadednes.png)
+![](images/repairing-an-old-nes/loadednes.png)
 
-![](images/nesscreen.png)
+![](images/repairing-an-old-nes/nesscreen.png)
 
 ### Wrapping it up
 
@@ -85,6 +85,6 @@ Since I don't want to try boiling electronics in my cookware, I purchased a [rep
 
 After installing the replacement connector everything works 100% of the time! The replacement connector grabs more tightly, so it does take a little effort to push carts into the NES. If anyone tries the boiling method let me know!
 
-![castlevania](images/castlevania.png)
+![castlevania](images/repairing-an-old-nes/castlevania.png)
 
 -Erik
