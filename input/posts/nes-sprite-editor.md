@@ -8,7 +8,7 @@ Tags:
 disqus_identifier: https://erikonarheim.com/posts/nes-sprite-editor/
 ---
 
-I [did a talk](https://www.youtube.com/watch?v=mnUXYl5B9Qs) about building nintendo games using the NESASM3 assembler. For this talk I wanted to be able to build my own sprites rather than use existing game rom files. The unfortunate thing was I couldn't find any in-depth documentation online about how sprites worked on the Nintendo, other than they are 8x8 pixels large, take up 16-bytes, and can only define 4 possible colors (1 of which needs to be the background). 
+I [did a talk](https://www.youtube.com/watch?v=mnUXYl5B9Qs) about building nintendo games using the [NESASM3](http://www.nespowerpak.com/nesasm/) assembler. For this talk I wanted to be able to build my own sprites rather than use existing game rom files. The unfortunate thing was I couldn't find any in-depth documentation online about how sprites worked on the Nintendo, other than they are 8x8 pixels large, take up 16-bytes, and can only define 4 possible colors (1 of which needs to be the background). 
 
 ![](images/nes-sprite-editor/playersprite.png)
 ![](images/nes-sprite-editor/colorpalette.png)
