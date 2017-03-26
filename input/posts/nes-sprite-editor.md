@@ -8,12 +8,12 @@ Tags:
 disqus_identifier: https://erikonarheim.com/posts/nes-sprite-editor/
 ---
 
-I [did a talk](https://www.youtube.com/watch?v=mnUXYl5B9Qs) about building nintendo games using the NESASM3 assembler. For this talk I wanted to be able to build my own sprites rather than use existing game rom files. The unfortunate thing was I couldn't find any in-depth documentation online about how sprites worked on the Nintendo, other than they are 8x8 pixels large, take up 16-bytes, and can only define 4 possible colors. 
+I [did a talk](https://www.youtube.com/watch?v=mnUXYl5B9Qs) about building nintendo games using the NESASM3 assembler. For this talk I wanted to be able to build my own sprites rather than use existing game rom files. The unfortunate thing was I couldn't find any in-depth documentation online about how sprites worked on the Nintendo, other than they are 8x8 pixels large, take up 16-bytes, and can only define 4 possible colors (1 of which needs to be the background). 
 
 ![](images/nes-sprite-editor/playersprite.png)
 ![](images/nes-sprite-editor/colorpalette.png)
 
-This lead me down a path to reverse engineer they byte format of NES sprites using the emulator [FCEUXD](http://www.fceux.com/web/version.html) and then build a [simple editor](https://erikonarheim.com/NES-Sprite-Editor/) that could produce sprite files format for my game. Check it out, the source is up on [github!](https://github.com/eonarheim/NES-Sprite-Editor)
+This lead me down a path to reverse engineer they byte format of NES sprites using the emulator [FCEUX](http://www.fceux.com/web/version.html) and then build a [simple editor](https://erikonarheim.com/NES-Sprite-Editor/) that could produce sprite files format for my game. Check it out, the source is up on [github!](https://github.com/eonarheim/NES-Sprite-Editor)
 
 ![](images/nes-sprite-editor/simplespriteeditor.png)
 
@@ -37,9 +37,9 @@ Think about these two pairs of bytes as separate channels, where the second chan
 
 ### Reverse engineering the format
 
-Using FCEUEXD's PPU Viewer and PPU memory viewing feature I was able to reverse engineer the format by poking at bytes individually. It took a while to discover the scheme above but this is roughly the trial and error process I followed to determine the colors of each pixel.
+Using FCEUX's PPU Viewer and PPU memory viewing feature I was able to reverse engineer the format by poking at bytes individually. It took a while to discover the scheme above but this is roughly the trial and error process I followed to determine the colors of each pixel.
 
-Each row of the the FCEUEXD hex editor is 16 bytes wide by default, which makes it convenient for testing out sprite behavior. Each byte is represented by 2 hexidecimal digits where are grouped together in the editor.
+Each row of the the FCEUX hex editor is 16 bytes wide by default, which makes it convenient for testing out sprite behavior. Each byte is represented by 2 hexidecimal digits where are grouped together in the editor.
 
 ![](images/nes-sprite-editor/hexeditor.png)
 
