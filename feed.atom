@@ -4,14 +4,14 @@
 	<id>https://erikonarheim.com/</id>
 	<title>Erik Onarheim</title>
 	<rights>2017</rights>
-	<updated>2017-03-26T18:56:38Z</updated>
+	<updated>2017-03-26T19:13:37Z</updated>
 	<subtitle>Erik Onarheim</subtitle>
 	<entry>
 		<link href="https://erikonarheim.com/posts/nes-sprite-editor" />
 		<id>https://erikonarheim.com/posts/nes-sprite-editor</id>
 		<title>Building a Sprite Editor for the NES</title>
 		<updated>2017-03-26T00:00:00Z</updated>
-		<content>&lt;p&gt;I &lt;a href="https://www.youtube.com/watch?v=mnUXYl5B9Qs"&gt;did a talk&lt;/a&gt; about building nintendo games using the NESASM3 assembler. For this talk I wanted to be able to build my own sprites rather than use existing game rom files. The unfortunate thing was I couldn't find any in-depth documentation online about how sprites worked on the Nintendo, other than they are 8x8 pixels large, take up 16-bytes, and can only define 4 possible colors (1 of which needs to be the background).&lt;/p&gt;
+		<content>&lt;p&gt;I &lt;a href="https://www.youtube.com/watch?v=mnUXYl5B9Qs"&gt;did a talk&lt;/a&gt; about building nintendo games using the &lt;a href="http://www.nespowerpak.com/nesasm/"&gt;NESASM3&lt;/a&gt; assembler. For this talk I wanted to be able to build my own sprites rather than use existing game rom files. The unfortunate thing was I couldn't find any in-depth documentation online about how sprites worked on the Nintendo, other than they are 8x8 pixels large, take up 16-bytes, and can only define 4 possible colors (1 of which needs to be the background).&lt;/p&gt;
 &lt;p&gt;&lt;img src="images/nes-sprite-editor/playersprite.png" class="img-fluid" alt=""&gt;
 &lt;img src="images/nes-sprite-editor/colorpalette.png" class="img-fluid" alt=""&gt;&lt;/p&gt;
 &lt;p&gt;This lead me down a path to reverse engineer the byte format of NES sprites using the emulator &lt;a href="http://www.fceux.com/web/version.html"&gt;FCEUX&lt;/a&gt; and then build a &lt;a href="https://erikonarheim.com/NES-Sprite-Editor/"&gt;simple editor&lt;/a&gt; that could produce sprite files format for my game. Check it out, the source is up on &lt;a href="https://github.com/eonarheim/NES-Sprite-Editor"&gt;github!&lt;/a&gt;&lt;/p&gt;
