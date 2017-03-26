@@ -133,7 +133,7 @@ Published on Sunday, March 26, 2017<br>    </div>
 <p><img src="images/nes-sprite-editor/playersprite.png" class="img-fluid" alt="" />
 <img src="images/nes-sprite-editor/colorpalette.png" class="img-fluid" alt="" /></p>
 <p>This lead me down a path to reverse engineer the byte format of NES sprites using the emulator <a href="http://www.fceux.com/web/version.html">FCEUX</a> and then build a <a href="https://erikonarheim.com/NES-Sprite-Editor/">simple editor</a> that could produce sprite files format for my game. Check it out, the source is up on <a href="https://github.com/eonarheim/NES-Sprite-Editor">github!</a></p>
-<p><img src="images/nes-sprite-editor/simplespriteeditor.png" class="img-fluid" alt="" /></p>
+<p><img src="images/nes-sprite-editor/simplespriteeditor.PNG" class="img-fluid" alt="" /></p>
 <h3 id="nes-sprite-format">NES Sprite Format</h3>
 <p>Originally, I thought that each sequential 2-bit chuck of the 16-bytes allocated per sprite encoded the color 1-4 of the sprite. Since 2-bits can represent all four possible colors (00, 01, 10, and 10), seems pretty reasonable right? Wrong!</p>
 <p>Actually the format is much trickier than that, still not 100% sure why Nintendo did things this way, but I can only guess that there is a performance reason behind it.</p>

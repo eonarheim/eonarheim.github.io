@@ -4,7 +4,7 @@
 	<id>https://erikonarheim.com/</id>
 	<title>Erik Onarheim</title>
 	<rights>2017</rights>
-	<updated>2017-03-26T18:51:51Z</updated>
+	<updated>2017-03-26T18:56:38Z</updated>
 	<subtitle>Erik Onarheim</subtitle>
 	<entry>
 		<link href="https://erikonarheim.com/posts/nes-sprite-editor" />
@@ -15,7 +15,7 @@
 &lt;p&gt;&lt;img src="images/nes-sprite-editor/playersprite.png" class="img-fluid" alt=""&gt;
 &lt;img src="images/nes-sprite-editor/colorpalette.png" class="img-fluid" alt=""&gt;&lt;/p&gt;
 &lt;p&gt;This lead me down a path to reverse engineer the byte format of NES sprites using the emulator &lt;a href="http://www.fceux.com/web/version.html"&gt;FCEUX&lt;/a&gt; and then build a &lt;a href="https://erikonarheim.com/NES-Sprite-Editor/"&gt;simple editor&lt;/a&gt; that could produce sprite files format for my game. Check it out, the source is up on &lt;a href="https://github.com/eonarheim/NES-Sprite-Editor"&gt;github!&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src="images/nes-sprite-editor/simplespriteeditor.png" class="img-fluid" alt=""&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="images/nes-sprite-editor/simplespriteeditor.PNG" class="img-fluid" alt=""&gt;&lt;/p&gt;
 &lt;h3 id="nes-sprite-format"&gt;NES Sprite Format&lt;/h3&gt;
 &lt;p&gt;Originally, I thought that each sequential 2-bit chuck of the 16-bytes allocated per sprite encoded the color 1-4 of the sprite. Since 2-bits can represent all four possible colors (00, 01, 10, and 10), seems pretty reasonable right? Wrong!&lt;/p&gt;
 &lt;p&gt;Actually the format is much trickier than that, still not 100% sure why Nintendo did things this way, but I can only guess that there is a performance reason behind it.&lt;/p&gt;
