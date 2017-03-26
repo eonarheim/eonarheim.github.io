@@ -15,7 +15,7 @@ I [did a talk](https://www.youtube.com/watch?v=mnUXYl5B9Qs) about building ninte
 
 This lead me down a path to reverse engineer the byte format of NES sprites using the emulator [FCEUX](http://www.fceux.com/web/version.html) and then build a [simple editor](https://erikonarheim.com/NES-Sprite-Editor/) that could produce sprite files format for my game. Check it out, the source is up on [github!](https://github.com/eonarheim/NES-Sprite-Editor)
 
-![](images/nes-sprite-editor/simplespriteeditor.png)
+![](images/nes-sprite-editor/simplespriteeditor.PNG)
 
 
 ### NES Sprite Format
