@@ -280,7 +280,7 @@ function download(filename, byteArray, type) {
 
 ### Putting it togeter
 
-Once the binary file was downloaded, it can be included in NESASM with the .incbin NESASM3 directive. Check out the full source of my NES game [here](https://github.com/eonarheim/nesgame). I'll have a post coming soon about more in-depth NES programming until then please watch my [talk](https://www.youtube.com/watch?v=mnUXYl5B9Qs).
+Once the binary file is downloaded, it can be included in NESASM3 with the `.incbin` directive. Check out the full source of my NES game [here](https://github.com/eonarheim/nesgame). I'll have a post coming soon about more in-depth NES programming until then please watch my [talk](https://www.youtube.com/watch?v=mnUXYl5B9Qs).
 
 ```assembly
 
