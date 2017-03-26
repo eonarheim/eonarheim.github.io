@@ -4,7 +4,7 @@
 	<id>https://erikonarheim.com/</id>
 	<title>Erik Onarheim</title>
 	<rights>2017</rights>
-	<updated>2017-03-26T19:13:37Z</updated>
+	<updated>2017-03-26T23:13:17Z</updated>
 	<subtitle>Erik Onarheim</subtitle>
 	<entry>
 		<link href="https://erikonarheim.com/posts/nes-sprite-editor" />
@@ -237,7 +237,7 @@ function download(filename, byteArray, type) {
 }
 
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id="putting-it-togeter"&gt;Putting it togeter&lt;/h3&gt;
+&lt;h3 id="putting-it-together"&gt;Putting it together&lt;/h3&gt;
 &lt;p&gt;Once the binary file is downloaded, it can be included in NESASM3 with the &lt;code&gt;.incbin&lt;/code&gt; directive. Check out the full source of my NES game &lt;a href="https://github.com/eonarheim/nesgame"&gt;here&lt;/a&gt;. I'll have a post coming soon about more in-depth NES programming until then please watch my &lt;a href="https://www.youtube.com/watch?v=mnUXYl5B9Qs"&gt;talk&lt;/a&gt;.&lt;/p&gt;
 &lt;pre&gt;&lt;code class="language-assembly"&gt;
 ;;;;;;;;;;;;;;  
