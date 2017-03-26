@@ -13,22 +13,22 @@ I [did a talk](https://www.youtube.com/watch?v=mnUXYl5B9Qs) about building ninte
 ![](images/nes-sprite-editor/playersprite.png)
 ![](images/nes-sprite-editor/colorpalette.png)
 
-This lead me down a path to reverse engineer they byte format of NES sprites using the emulator [FCEUX](http://www.fceux.com/web/version.html) and then build a [simple editor](https://erikonarheim.com/NES-Sprite-Editor/) that could produce sprite files format for my game. Check it out, the source is up on [github!](https://github.com/eonarheim/NES-Sprite-Editor)
+This lead me down a path to reverse engineer the byte format of NES sprites using the emulator [FCEUX](http://www.fceux.com/web/version.html) and then build a [simple editor](https://erikonarheim.com/NES-Sprite-Editor/) that could produce sprite files format for my game. Check it out, the source is up on [github!](https://github.com/eonarheim/NES-Sprite-Editor)
 
 ![](images/nes-sprite-editor/simplespriteeditor.png)
 
 
 ### NES Sprite Format
 
-Originally, I thought that each sequential 2-bit chuck of the 16-bytes allocated per sprite encode the color 1-4 of the sprite. Since 2-bits can represent 00, 01, 10, and 10 seems pretty reasonable. Wrong!
+Originally, I thought that each sequential 2-bit chuck of the 16-bytes allocated per sprite encoded the color 1-4 of the sprite. Since 2-bits can represent all four possible colors (00, 01, 10, and 10), seems pretty reasonable right? Wrong!
 
-Actually the format is much trickier, still not 100% sure why Nintendo did things this way, but I can only guess that there is a performance reason behind it.
+Actually the format is much trickier than that, still not 100% sure why Nintendo did things this way, but I can only guess that there is a performance reason behind it.
 
-Byte n and byte n+8 control the color of the first row of pixels in the 8x8 sprite. This means that the 1st byte and the 9th byte control the first row of pixels, and the 8th byte and the 16th byte control the last row of pixels for a sprite.
+Sprites are definited by `byte n` and `byte n+8` to control the color of the first row of pixels in the 8x8 sprite. This means that the 1st byte and the 9th byte control the first row of pixels, and the 8th byte and the 16th byte control the last row of pixels for a sprite. The layout in memory to the corresponding 8x8 pixel looks like this:
 
 ![](images/nes-sprite-editor/nesspritescheme.png)
 
-Think about these two pairs of bytes as separate channels, where the second channel's binary digits are weighted by 2 and the resulting color is the some of channel 1 and channel 2. For example look at this sprite
+Think about these two pairs of bytes (`byte n` and `byte n+8`) as separate channels, where the second channel's binary digits are weighted by 2 and the resulting color is the sum of channel 1 and channel 2 together. For example look at the sprite in the top left corner and the calculation of its colors. 
 
 ![](images/nes-sprite-editor/playersprite.png)
 ![](images/nes-sprite-editor/colorpalette.png)
@@ -37,18 +37,18 @@ Think about these two pairs of bytes as separate channels, where the second chan
 
 ### Reverse engineering the format
 
-Using FCEUX's PPU Viewer and PPU memory viewing feature I was able to reverse engineer the format by poking at bytes individually. It took a while to discover the scheme above but this is roughly the trial and error process I followed to determine the colors of each pixel.
+Using FCEUX's PPU Viewer and PPU memory viewing feature I was able to reverse engineer the format by poking at bytes individually. It took a while to discover the scheme above, but this is roughly the trial and error process I followed to determine the colors of each pixel.
 
-Each row of the the FCEUX hex editor is 16 bytes wide by default, which makes it convenient for testing out sprite behavior. Each byte is represented by 2 hexidecimal digits where are grouped together in the editor.
+Each row of the the FCEUX hex editor is 16 bytes wide by default, which makes it convenient for testing out sprite behavior since we already know that 16 bytes are allocated per sprite. Each byte in the editor is represented by 2 hexidecimal digits where are grouped together for easy reading.
 
 ![](images/nes-sprite-editor/hexeditor.png)
 
-By setting the first byte to all 1's (hexidecimal FF) the first color in the palette was selected for the first row of the first sprite.
+First, by setting the first byte to all 1's (hexidecimal FF) the first color in the palette was selected for the first row of the first sprite.
 
 ![](images/nes-sprite-editor/hexfirstones.png)
 ![](images/nes-sprite-editor/firstrowgreen.png)
 
-Filling out the next 7 bytes with 1's produces a solid 8x8 block. This produces color 1 in the palette.
+Next, filling out the next 7 bytes with 1's produces a solid 8x8 block. This produces color 1 in the palette.
 
 ![](images/nes-sprite-editor/16byteones.png)
 ![](images/nes-sprite-editor/spritegreen.png)
@@ -65,9 +65,9 @@ To produce color 2 we need to set the corresponding bit in the channel 1 byte to
 
 ### Reading binary files in JavaScript
 
-Now that I knew how the byte format was laid out for each pixel, I set to building a simple web app to help edit and make binary NES sprite files. It's not the most beautiful app ever built but it got the job done. I plan on updating it in the future and adding common image editing features like flood fill, selections, layers, etc.
+Now that we know byte format for each sprite's pixel, we can build a simple web app to help edit and make binary NES sprite files. The app I built isn't the most beautiful app ever, but it got the job done. Hopefully I'll be able to update it in the future and adding common image editing features like flood fill, selections, layers, etc.
 
-To deal with binary data, JavaScript has a useful type called the `ArrayBuffer`. With this we can load up bytes directly from a source files using the `XHR` method and the `FileReader` method.
+To deal with binary data, JavaScript has a useful type called the `ArrayBuffer`. With this type we can load up bytes directly from a source files using the `XHR` method and the `FileReader` method.
 
 ```javascript
 /// Upload utilities
@@ -115,7 +115,7 @@ xhr.send();
 
 ```
 
-In order to see the native NES sprite files, I needed to output it to an HTML5 canvas. The idea is to hop through the binary file 16 bytes (1 sprite) at a time and calculate the 8x8 pixels to place on the canvas. The `putPixel` method handled the mapping for the current palette from color b, 1, 2, 3 to the appropriate RGB.
+In order to see the native NES sprite files, we need to output it to an HTML5 canvas. The idea is to hop through the binary file 16 bytes (1 sprite) at a time and calculate the 8x8 pixels to place on the canvas. The `putPixel` method handled the mapping for the current palette from color b, 1, 2, 3 to the appropriate RGB.
 
 ```javascript
 function NEStoCanvas(byteArray){
@@ -152,7 +152,7 @@ function NEStoCanvas(byteArray){
 
 ```
 
-The `paintCanvas` method is pretty simple using the `putImageData` [api](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/putImageData) to write color bytes directly tot he canvas context
+The `paintCanvas` method is pretty simple, it uses the `putImageData` [api](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/putImageData) to write color bytes directly to the canvas context.
 
 ```javascript
 // On-screen canvas set to be scaled
@@ -248,7 +248,7 @@ function canvasToNES(imageData){
 
 ```
 
-The binary content can be downloaded with the neat little trick where you dynamically create an anchor tag and manufacture a click event to trigger a download (which seems a little spooky 👻, feels like a way to engineer a drive-by-download type attack 😨).
+The binary content can be downloaded with the neat little trick by dynamically creating an anchor tag and manufacturing a click event to trigger a download (which seems a little spooky 👻, feels like a way to engineer a drive-by-download type attack 😨).
 
 ```javascript
 /// Download utilities
