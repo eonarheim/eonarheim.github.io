@@ -5,8 +5,167 @@
 		<link>https://erikonarheim.com/</link>
 		<description>Erik Onarheim</description>
 		<copyright>2017</copyright>
-		<pubDate>Sun, 26 Mar 2017 23:13:17 GMT</pubDate>
-		<lastBuildDate>Sun, 26 Mar 2017 23:13:17 GMT</lastBuildDate>
+		<pubDate>Fri, 28 Apr 2017 04:33:32 GMT</pubDate>
+		<lastBuildDate>Fri, 28 Apr 2017 04:33:32 GMT</lastBuildDate>
+		<item>
+			<title>Building Custom Analytics with Azure Functions</title>
+			<link>https://erikonarheim.com/posts/custom-analytics-azure-functions</link>
+			<description>Erik Onarheim</description>
+			<guid>https://erikonarheim.com/posts/custom-analytics-azure-functions</guid>
+			<pubDate>Thu, 27 Apr 2017 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;Recently we did a &lt;a href="https://excaliburjs.com/ludum-38/"&gt;game jam&lt;/a&gt; for Ludum Dare 38, and we were not satisfied with the level of customization in analytics providers out there, so we decided to build our own with &lt;a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-first-azure-function"&gt;Azure Functions&lt;/a&gt; with &lt;a href="https://docs.microsoft.com/en-us/azure/storage/storage-dotnet-how-to-use-tables"&gt;Azure Table Storage&lt;/a&gt; as a semi-unstructured data store. We were up and running quickly and the process was fairly easy.&lt;/p&gt;
+&lt;h2 id="setting-up-the-function"&gt;Setting up the function&lt;/h2&gt;
+&lt;p&gt;For pennies on the dollar, you can setup Azure functions easily on in an azure account (currently forcasted to spend ~20 cents this billing period!). All that's required is an existing Azure account, which can be created &lt;a href="https://portal.azure.com"&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Next navigate to the new plus icon in the top left of your screen, search for function, and click the item labeled &lt;strong&gt;Function App&lt;/strong&gt; published by Microsoft. After clickig create you'll have a few options. You'll notice that azure fuctions live inside of the &lt;code&gt;*.azurewebsites.net&lt;/code&gt; subdomain, this is because technically they live in the Azure web apps ecosystem.&lt;/p&gt;
+&lt;p&gt;&lt;img src="images/custom-analytics-azure-functions/azure-dashboard.png" class="img-fluid" alt=""&gt;&lt;/p&gt;
+&lt;p&gt;You'll need to pick a name, location (I recommend a place near-ish where people will be calling the function), hosting plan, and a storage account.&lt;/p&gt;
+&lt;p&gt;&lt;img src="images/custom-analytics-azure-functions/azure-function-create.png" class="img-fluid" alt=""&gt;&lt;/p&gt;
+&lt;h2 id="writing-a-function"&gt;Writing a function&lt;/h2&gt;
+&lt;p&gt;In this example I'm using the Node.js support in Azure functions to write a function. It is pretty easy to test and setup output to Azure table storage. It can even be wired up with source control so that code checked into github or another source code hosting provider is automatically deployed (Under &lt;strong&gt;Platform Features&lt;/strong&gt; -&amp;gt; &lt;strong&gt;Deployment Options&lt;/strong&gt;).&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-javascript"&gt;var uuid = require('node-uuid');
+
+module.exports = function (context, req) {
+    context.log('JavaScript HTTP trigger function processed a request.');
+
+    if (req.body &amp;amp;&amp;amp; req.body.started) {
+
+        // Add the required properties for Azure Table Storage
+        var payload = {
+            // Records in a single partition are fast to retrieve together, since I don't really have many records I used this scheme to force a convenient sorting in Storage Explorer, probably not ideal for a production scenario.
+            PartitionKey: (Number.MAX_SAFE_INTEGER - Date.now()).toString(),
+            // RowKey is the unique identifier in a partition, using GUIDs to solve this.
+            RowKey: uuid.v4()
+        }
+
+        // Since table storage is NoSQL-ish you can drop whatever columns you want into it dynamically
+        for(var prop in req.body){
+            // exclude private _ members
+            if(prop[0] !== '_'){
+                payload[prop] = JSON.stringify(req.body[prop])
+            }
+        }
+
+        // These bindings need to be added to the contex and are magically added 
+        context.bindings.ludum38data = []
+        context.bindings.ludum38data.push(payload);
+        
+        // Return value to echo back data stored
+        context.res = {
+            // Store analytics payload in table storage
+            
+            body: "Stored analytics: " + JSON.stringify(payload, null, 3)
+        };
+    }
+    else {
+        context.res = {
+            status: 400,
+            body: "Please pass a valid analytics body"
+        };
+    }
+    context.done();
+};
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The one &lt;strong&gt;hiccup&lt;/strong&gt; is that in order to use node modules like &lt;code&gt;node-uuid&lt;/code&gt; you need to navigate to your functions scm (Kudu) site, create a &lt;code&gt;package.json&lt;/code&gt; file, and run &lt;code&gt;npm install&lt;/code&gt; manually. This can be found in the function's &lt;strong&gt;Platform features&lt;/strong&gt; tab labeled &lt;strong&gt;Advanced tools (Kudu)&lt;/strong&gt; or if you go to &lt;code&gt;&amp;lt;nameofyourapp&amp;gt;.scm.azurewebsiets.net&lt;/code&gt;. Navigate to the directory containging the &lt;code&gt;package.json&lt;/code&gt; and run &lt;code&gt;npm install&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-json"&gt;{
+  "name": "ludum38stats",
+  "dependencies" : {
+      "node-uuid": "~1.4.8"
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src="images/custom-analytics-azure-functions/scmnpm.png" class="img-fluid" alt=""&gt;&lt;/p&gt;
+&lt;h2 id="integrating-with-azure-table-storage"&gt;Integrating with Azure Table Storage&lt;/h2&gt;
+&lt;p&gt;Remember that storage account we created when we set up the Azure function? We'll use that to store our semi-unstructured data from analytics.&lt;/p&gt;
+&lt;p&gt;In the &lt;strong&gt;Integrate&lt;/strong&gt; section of your specific function you can attack different data outputs to your function. In this case we want to persist it to Azure table storge.&lt;/p&gt;
+&lt;p&gt;&lt;img src="images/custom-analytics-azure-functions/function-tree.png" class="img-fluid" alt=""&gt;&lt;/p&gt;
+&lt;p&gt;Once we select the &lt;strong&gt;Azure Table Storage&lt;/strong&gt; preset in the 'New Output' wizard, it is pretty easy to add things to it.&lt;/p&gt;
+&lt;p&gt;&lt;img src="images/custom-analytics-azure-functions/output-data.png" class="img-fluid" alt=""&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="images/custom-analytics-azure-functions/ouput-data-connection.png" class="img-fluid" alt=""&gt;&lt;/p&gt;
+&lt;p&gt;In your function you'll need to reference the &lt;code&gt;outputTable&lt;/code&gt; that you've created in order to store things. Unfortunately it is a little unintuitive but you'll need to create your own array off of the &lt;code&gt;Azure function context&lt;/code&gt; to submit your values.&lt;/p&gt;
+&lt;p&gt;So this would be an example of using the table parameter name above:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-javascript"&gt;
+var payload = {
+    PartitionKey: (Number.MAX_SAFE_INTEGER - Date.now()).toString(),
+    RowKey: uuid.v4()
+}
+...
+context.bindings.outputTable = []
+context.bindings.outputTable.push(payload);
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;In order to insert into Azure table storage there are 2 required properites &lt;code&gt;PartitionKey&lt;/code&gt; and &lt;code&gt;RowKey&lt;/code&gt;. &lt;code&gt;PartitionKey&lt;/code&gt; allows you to partition data to enhance data clustering, things with the same &lt;code&gt;PartitionKey&lt;/code&gt; can be queried more quickly. &lt;code&gt;RowKey&lt;/code&gt; is meant to be the unique itentifier for a row witin a partition. The rest of the properties are up to you, there are some limitations to be aware of, but they are pretty generous.&lt;/p&gt;
+&lt;p&gt;To test if things are working, Azure has a convenient test window to send fiddler like requests to your function.&lt;/p&gt;
+&lt;p&gt;&lt;img src="images/custom-analytics-azure-functions/function-test.png" class="img-fluid" alt=""&gt;&lt;/p&gt;
+&lt;p&gt;Once you've pushed data into Azure Table Storage there is a convenient cross platform client from Microsoft to view the data located at &lt;a href="http://storageexplorer.com/"&gt;http://storageexplorer.com/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="images/custom-analytics-azure-functions/storage-explorer.png" class="img-fluid" alt=""&gt;&lt;/p&gt;
+&lt;h2 id="cors-cross-origin-resource-sharing-in-azure-functions"&gt;CORS (Cross-Origin Resource Sharing) in Azure Functions&lt;/h2&gt;
+&lt;p&gt;This setting is a pretty well hidden, but if you click on the &lt;strong&gt;Platform Features&lt;/strong&gt; tab inside of the Azure function you'll find &lt;code&gt;CORS&lt;/code&gt; under the &lt;code&gt;API&lt;/code&gt; heading. Enter your domains to whitelist, &lt;strong&gt;IF YOU WANT TO ALLOW ALL&lt;/strong&gt; you'll need to delete all entries and put a &lt;code&gt;*&lt;/code&gt;, this does mean that &lt;strong&gt;ANYONE IN THE WORLD&lt;/strong&gt; can call your function from any web page. Generally speaking this is a bad idea, but for our game analytics for LD38 it doesn't really matter.&lt;/p&gt;
+&lt;p&gt;&lt;img src="images/custom-analytics-azure-functions/cors.png" class="img-fluid" alt=""&gt;&lt;/p&gt;
+&lt;p&gt;With CORs implemented all we needed to do on to build our custom client-side logger was the following. &lt;code&gt;Config.analyticsEndpoint&lt;/code&gt; is just the obscured function url that can be accessed in Azure with a click of the &lt;strong&gt;Get function URL&lt;/strong&gt; button.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-typescript"&gt;interface IPosition {
+   x: number,
+   y: number
+}
+
+interface IPayload {
+   date: string, // date
+   commit: string,
+   seed: number, // seeded value
+   started: number, // time
+   timePlayed: number, // amount of time played
+   won: boolean, // won or lost
+   enemiesOnScreen: number, 
+   foodCollected: string[],
+   playerPositions: IPosition[]
+   enemyPositions: IPosition[],
+}
+
+class Analytics {
+
+
+   public static publish(payload: IPayload){
+      return fetch(Config.analyticsEndpoint, {
+         method: 'POST',
+         headers: {
+            'Content-Type': 'application/json'
+         },
+         body: JSON.stringify(payload)
+      });
+   }   
+   
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="putting-it-all-together"&gt;Putting it all together&lt;/h2&gt;
+&lt;p&gt;Once that was complete we were able to build a heat map for player analytics for our game to see where people go in order to help better design the game.&lt;/p&gt;
+&lt;p&gt;Check out the cool heat map with our custom data (pun intended) 😎&lt;/p&gt;
+&lt;p&gt;&lt;img src="images/custom-analytics-azure-functions/heat-map.png" class="img-fluid" alt=""&gt;&lt;/p&gt;
+
+
+&lt;div id="disqus_thread"&gt;&lt;/div&gt;
+
+&lt;script type="text/javascript"&gt;
+    var disqus_shortname = 'erik-onarheim';
+    var disqus_identifier = 'https://erikonarheim.com/posts/custom-analytics-azure-functions/';
+    var disqus_title = 'Building Custom Analytics with Azure Functions';
+    var disqus_url = 'https://erikonarheim.com/posts/custom-analytics-azure-functions';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+&lt;/script&gt;
+&lt;noscript&gt;Please enable JavaScript to view the &lt;a href="http://disqus.com/?ref_noscript"&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt;
+&lt;a href="http://disqus.com" class="dsq-brlink"&gt;comments powered by &lt;span class="logo-disqus"&gt;Disqus&lt;/span&gt;&lt;/a&gt;</content:encoded>
+		</item>
 		<item>
 			<title>Building a Sprite Editor for the NES</title>
 			<link>https://erikonarheim.com/posts/nes-sprite-editor</link>
