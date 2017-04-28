@@ -72,7 +72,7 @@ module.exports = function (context, req) {
 };
 ```
 
-The one **hiccup** is that in order to use node modules like `node-uuid` you need to navigate to your functions scm (Kudu) site, create a `package.json` file, and run `npm install` manually. This can be found in the function's **Platform features** tab labeled **Advanced tools (Kudu)** or if you go to `<nameofyourapp>.scm.azurewebsiets.net`. Navigate to the directory containging the `package.json` and run `npm install`
+The one **hiccup** is that in order to use node modules like `node-uuid` you need to navigate to your functions scm (Kudu) site, create a `package.json` file, and run `npm install` manually. This can be found in the function's **Platform features** tab labeled **Advanced tools (Kudu)** or if you go to `<nameofyourapp>.scm.azurewebsites.net`. Navigate to the directory containing the `package.json` and run `npm install`
 
 ```json
 {
