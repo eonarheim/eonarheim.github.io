@@ -182,7 +182,7 @@ module.exports = function (context, req) {
     context.done();
 };
 </code></pre>
-<p>The one <strong>hiccup</strong> is that in order to use node modules like <code>node-uuid</code> you need to navigate to your functions scm (Kudu) site, create a <code>package.json</code> file, and run <code>npm install</code> manually. This can be found in the function's <strong>Platform features</strong> tab labeled <strong>Advanced tools (Kudu)</strong> or if you go to <code>&lt;nameofyourapp&gt;.scm.azurewebsiets.net</code>. Navigate to the directory containging the <code>package.json</code> and run <code>npm install</code></p>
+<p>The one <strong>hiccup</strong> is that in order to use node modules like <code>node-uuid</code> you need to navigate to your functions scm (Kudu) site, create a <code>package.json</code> file, and run <code>npm install</code> manually. This can be found in the function's <strong>Platform features</strong> tab labeled <strong>Advanced tools (Kudu)</strong> or if you go to <code>&lt;nameofyourapp&gt;.scm.azurewebsites.net</code>. Navigate to the directory containing the <code>package.json</code> and run <code>npm install</code></p>
 <pre><code class="language-json">{
   &quot;name&quot;: &quot;ludum38stats&quot;,
   &quot;dependencies&quot; : {

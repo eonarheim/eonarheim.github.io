@@ -5,8 +5,8 @@
 		<link>https://erikonarheim.com/</link>
 		<description>Erik Onarheim</description>
 		<copyright>2017</copyright>
-		<pubDate>Fri, 28 Apr 2017 04:33:32 GMT</pubDate>
-		<lastBuildDate>Fri, 28 Apr 2017 04:33:32 GMT</lastBuildDate>
+		<pubDate>Fri, 28 Apr 2017 15:19:00 GMT</pubDate>
+		<lastBuildDate>Fri, 28 Apr 2017 15:19:00 GMT</lastBuildDate>
 		<item>
 			<title>Building Custom Analytics with Azure Functions</title>
 			<link>https://erikonarheim.com/posts/custom-analytics-azure-functions</link>
@@ -65,7 +65,7 @@ module.exports = function (context, req) {
     context.done();
 };
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;The one &lt;strong&gt;hiccup&lt;/strong&gt; is that in order to use node modules like &lt;code&gt;node-uuid&lt;/code&gt; you need to navigate to your functions scm (Kudu) site, create a &lt;code&gt;package.json&lt;/code&gt; file, and run &lt;code&gt;npm install&lt;/code&gt; manually. This can be found in the function's &lt;strong&gt;Platform features&lt;/strong&gt; tab labeled &lt;strong&gt;Advanced tools (Kudu)&lt;/strong&gt; or if you go to &lt;code&gt;&amp;lt;nameofyourapp&amp;gt;.scm.azurewebsiets.net&lt;/code&gt;. Navigate to the directory containging the &lt;code&gt;package.json&lt;/code&gt; and run &lt;code&gt;npm install&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;The one &lt;strong&gt;hiccup&lt;/strong&gt; is that in order to use node modules like &lt;code&gt;node-uuid&lt;/code&gt; you need to navigate to your functions scm (Kudu) site, create a &lt;code&gt;package.json&lt;/code&gt; file, and run &lt;code&gt;npm install&lt;/code&gt; manually. This can be found in the function's &lt;strong&gt;Platform features&lt;/strong&gt; tab labeled &lt;strong&gt;Advanced tools (Kudu)&lt;/strong&gt; or if you go to &lt;code&gt;&amp;lt;nameofyourapp&amp;gt;.scm.azurewebsites.net&lt;/code&gt;. Navigate to the directory containing the &lt;code&gt;package.json&lt;/code&gt; and run &lt;code&gt;npm install&lt;/code&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code class="language-json"&gt;{
   "name": "ludum38stats",
   "dependencies" : {
