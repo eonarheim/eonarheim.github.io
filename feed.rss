@@ -5,8 +5,192 @@
 		<link>https://erikonarheim.com/</link>
 		<description>Erik Onarheim</description>
 		<copyright>2017</copyright>
-		<pubDate>Fri, 28 Apr 2017 15:19:00 GMT</pubDate>
-		<lastBuildDate>Fri, 28 Apr 2017 15:19:00 GMT</lastBuildDate>
+		<pubDate>Sat, 17 Jun 2017 15:04:36 GMT</pubDate>
+		<lastBuildDate>Sat, 17 Jun 2017 15:04:36 GMT</lastBuildDate>
+		<item>
+			<title>IIS Administration REST API with PowerShell DSC in Azure</title>
+			<link>https://erikonarheim.com/posts/iis-admin-rest-api-with-dsc</link>
+			<description>Erik Onarheim</description>
+			<guid>https://erikonarheim.com/posts/iis-admin-rest-api-with-dsc</guid>
+			<pubDate>Sat, 17 Jun 2017 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;For a long time I have been using the good ol'fashioned DCOM based ServerManager client from Microsoft.Web.Administration.dll to configure IIS web servers. Now there is a nifty new &lt;a href="https://github.com/Microsoft/IIS.Administration"&gt;open source administration REST api&lt;/a&gt; from Microsoft! OMGWTFBACON! This a great boon to your "DevOps" play because any language that speaks HTTP can be used to manage IIS cluster no matter how large or small! In this post I'll introduce you to PowerShell Desired State Configuration to install this powerful management tool in your environment. Like a boss 😎&lt;/p&gt;
+&lt;p&gt;&lt;img src="images/iis-admin-rest-api-with-dsc/yeaaaah.gif" class="img-fluid" alt="boss hoss"&gt;&lt;/p&gt;
+&lt;h3 id="what-is-dsc"&gt;What is DSC?&lt;/h3&gt;
+&lt;p&gt;PowerShell DSC is a super power desired state configuration tool that comes with your windows server as a part of WMF (it is similar in concept to Puppet or Chef which can also work with windows servers). DSC can be setup in multiple ways: "Pull" or "Push". In my environment we've setup things in a Pull configuration, where enrolled nodes check into the central Pull server every thirty minutes for configuration. Push is an on demand process that pushes config to target nodes with an admin credential. Optionally, you could use azure automation as a pull server in the cloud to manage your on-prem or cloud windows machines.&lt;/p&gt;
+&lt;h3 id="constructing-the-dsc"&gt;Constructing the DSC&lt;/h3&gt;
+&lt;p&gt;This is actually pretty easy to setup manually following the steps outlined on the Microsoft &lt;a href="https://github.com/Microsoft/IIS.Administration"&gt;github project&lt;/a&gt;, but if you have an environment with hundreds or thousands of servers that spin up and down, this isn't super sustainable.&lt;/p&gt;
+&lt;p&gt;First we need to setup our configuration, all configuration in DSC needs to be in a &lt;code&gt;configuration&lt;/code&gt; block.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-powershell"&gt;configuration Install-IIS-Admin-Rest-Api {
+
+    &amp;lt;# Todo awesome config for these righteous web servers #&amp;gt;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;There are TONS of prebuilt &lt;a href="https://github.com/PowerShell/PSDscResources"&gt;open source DSC resources&lt;/a&gt;, along with some &lt;a href="https://github.com/PowerShell/xPSDesiredStateConfiguration"&gt;experimental resources&lt;/a&gt; from Microsoft. Their github has tons of examples. In PowerShell 5, we can source these resources from the internet using &lt;code&gt;Install-Module -Name xPSDesiredStateConfiguration&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;In order for the rest api to work there are a few requirements:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;IIS installed&lt;/li&gt;
+&lt;li&gt;Windows authentication enabled&lt;/li&gt;
+&lt;li&gt;URL authorization enabled&lt;/li&gt;
+&lt;li&gt;Hostable web core enabled&lt;/li&gt;
+&lt;li&gt;ASP.NET Core hosting bundle&lt;/li&gt;
+&lt;li&gt;Local in-bound firewall opened on management port 55539 (or whatever port you want)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The windows features are pretty simple, you just need to find the string for the feature you are looking for. The &lt;code&gt;Get-WindowsFeature *web*&lt;/code&gt; command will get you far. Notice the &lt;code&gt;DependsOn = "[ResourceType]ResourceName"&lt;/code&gt; strings, these are how you can make one resource depend on another. Unfortunately they are "stringly" typed and easy to mistype by mistake so I tend to copy paste these values.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-powershell"&gt;WindowsFeature InstallIIS {
+    Name = "Web-Server"
+    Ensure = "Present"
+}
+
+WindowsFeature EnableWinAuth {
+    Name = "Web-Windows-Auth"
+    Ensure = "Present"
+    DependsOn = "[WindowsFeature]InstallIIS"
+}
+
+WindowsFeature EnableURLAuth {
+    Name = "Web-Url-Auth"
+    Ensure = "Present"
+    DependsOn = "[WindowsFeature]InstallIIS"
+}
+
+WindowsFeature HostableWebCore {
+    Name = "Web-WHC"
+    Ensure = "Present"
+    DependsOn = "[WindowsFeature]InstallIIS"
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;For installers available online you can download them on the fly with the &lt;code&gt;xRemoteFile&lt;/code&gt; resource, one method of sourcing such dependencies is to check them into your git repo using git lfs. Check out my friends &lt;a href="https://kamranicus.com/posts/2017-06-14-downloading-git-lfs-files-from-tfs-vsts"&gt;post on that.&lt;/a&gt;. Otherwise you can source the direct download links like I did for this demo. Note that if you are in a corporate environment you may work behind a proxy which this resource takes into account.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-powershell"&gt;xRemoteFile DownloadDotNetCoreHostingBundle {
+    Uri = "https://go.microsoft.com/fwlink/?linkid=844461" #https://docs.microsoft.com/en-us/aspnet/core/publishing/iis
+    DestinationPath = "C:\temp\dnhosting.exe"
+    MatchSource = $false # Match source false wont re-download if the files change
+    #Proxy = "optional, your corporate proxy here"
+    #ProxyCredential = "optional, your corporate proxy credential here"
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The built in &lt;code&gt;Package&lt;/code&gt; resource is pretty simple, it does require some hard to find metadata. I find most consistent way to discover the metadata necessary for DSC is to install it once and run &lt;code&gt;Get-WmiObject Win32_product | ft IdentifyingNumber,Name&lt;/code&gt; to find it's ID and Product Name. Note that IIS &lt;code&gt;WindowsFeature&lt;/code&gt; and the &lt;code&gt;xRemoteFile&lt;/code&gt; installer resource dependency before we can install the hosting bundle. Then I cheat by temporarily adding &lt;code&gt;dotnet.exe&lt;/code&gt; to the path to avoid a reboot.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-powershell"&gt;# Discover your product name and id with Get-WmiObject Win32_product | ft IdentifyingNumber,Name after installing it once
+xPackage InstallDotNetCoreHostingBundle {
+    Name = "Microsoft ASP.NET Core Module"
+    ProductId = "B1B05FBB-1255-4F5B-9BAF-43B971A92613"
+    Arguments = "/quiet /norestart /log C:\temp\dnhosting_install.log"
+    Path = "C:\temp\dnhosting.exe"
+    DependsOn = @("[WindowsFeature]InstallIIS",
+                  "[xRemoteFile]DownloadDotNetCoreHostingBundle")
+}
+
+# Cheating and adding the dotnet.exe to the path to avoid reboot
+Script PutDotNetOnPath {
+    SetScript = {
+        $env:Path = $env:Path + "C:\Program Files\dotnet\;"
+    }
+    TestScript = {
+        return $env:Path.Contains("C:\Program Files\dotnet\;")
+    }
+    GetScript = {
+        return @{
+            SetScript = $SetScript
+            TestScript = $TestScript
+            GetScript = $GetSCript
+            Result = "Set dotnet path"
+        }
+    }
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Finally, lets download the Admin Rest API from Microsoft's GitHub &lt;a href="https://github.com/Microsoft/IIS.Administration/releases/"&gt;release page&lt;/a&gt; and run the script installer. Note that in this case I use the &lt;code&gt;Archive&lt;/code&gt; resource to unpzip the downloaded package into a directory for me to call later with a &lt;code&gt;Script&lt;/code&gt; resource. For things that don't exist by default or in an external module, you can use &lt;code&gt;Script&lt;/code&gt; resources to write vanilla powershell. The script resource has a few parts, the &lt;code&gt;SetScript&lt;/code&gt; which does the work if the resource is not in compliance, &lt;code&gt;TestScript&lt;/code&gt; which returns &lt;code&gt;$true&lt;/code&gt; if in compliance and &lt;code&gt;$false&lt;/code&gt; if not, and the &lt;code&gt;GetScript&lt;/code&gt; which can be used to return the status of the node with the &lt;code&gt;@{ Result = "status"}&lt;/code&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-powershell"&gt;xRemoteFile DownloadAdminRestApi {
+    Uri = "https://github.com/Microsoft/IIS.Administration/releases/download/v1.1.1/IIS.Administration.zip"
+    DestinationPath = "C:\temp\IISAdministration.zip"
+    MatchSource = $false
+}
+
+Archive UnzipAdminRestApi {
+    Path = "C:\temp\IISAdministration.zip"
+    Destination = "C:\temp\Admin\IISAdministration"
+    Ensure = "Present"
+    DependsOn = "[xRemoteFile]DownloadAdminRestApi"
+}
+
+Script InstallAdminRestApi {
+    DependsOn = @("[Archive]UnzipAdminRestApi",
+                    "[WindowsFeature]InstallIIS",
+                    "[WindowsFeature]EnableURLAuth",
+                    "[WindowsFeature]EnableWinAuth"
+                    "[xPackage]InstallDotNetCoreHostingBundle",
+                    "[Script]PutDotNetOnPath")
+    SetScript = {
+        # Run the IIS Administration installer
+        &amp;amp; C:\temp\Admin\IISAdministration\setup\setup.ps1 Install -Verbose                
+    }
+    TestScript = {
+        $svc = $null
+        try {
+            $svc = Get-Service "Microsoft IIS Administration" -ErrorAction SilentlyContinue
+        } catch {}
+
+        return !!$svc
+    }
+    GetScript = {
+        return @{
+            SetScript = $SetScript
+            TestScript = $TestScript
+            GetScript = $GetScript
+            Result = "Install Admin Rest Api"
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Let's see how it's all put together with the final configuration script! Checkout my &lt;a href="https://gist.github.com/eonarheim/703e0f1807b26066d6a2ff5acf4f662d"&gt;gist&lt;/a&gt; with the code.&lt;/p&gt;
+&lt;script src="https://gist.github.com/eonarheim/703e0f1807b26066d6a2ff5acf4f662d.js"&gt;&lt;/script&gt;
+&lt;h3 id="azure-dsc-pull-server"&gt;Azure DSC Pull Server&lt;/h3&gt;
+&lt;p&gt;Now let's deploy this to some servers to build our web farm using &lt;a href="https://docs.microsoft.com/en-us/azure/automation/automation-dsc-overview"&gt;Azure Automation DSC&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;If you don't already have an Azure Automation account they are easy to create and by far the easiest way to setup a DSC pull server. But if paying for a pull server isn't your speed checkout the OSS project &lt;a href="https://github.com/PowerShellOrg/tug"&gt;Tug&lt;/a&gt; or try &lt;a href="https://msdn.microsoft.com/en-us/powershell/dsc/pullserver"&gt;standing up your own&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src="images/iis-admin-rest-api-with-dsc/azureautomation.png" class="img-fluid" alt="Azure Automation"&gt;&lt;/p&gt;
+&lt;p&gt;All you need to do now is install the modules you need in your DSC environment, upload your completed configuration, and compile! In our case we need the &lt;code&gt;xNetworking&lt;/code&gt; and the &lt;code&gt;xPSDesiredStateConfiguration&lt;/code&gt; modules.&lt;/p&gt;
+&lt;p&gt;&lt;img src="images/iis-admin-rest-api-with-dsc/modules.png" class="img-fluid" alt="Azure Automation"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="images/iis-admin-rest-api-with-dsc/compilingconfig.png" class="img-fluid" alt="Azure Automation"&gt;&lt;/p&gt;
+&lt;h3 id="deploying-to-azure-vms"&gt;Deploying to Azure VMs&lt;/h3&gt;
+&lt;p&gt;Here I show the UI way to enroll, but if automation is your goal the Azure RM PowerShell SDK has a cmdlet for enrolling VM's automagically &lt;a href="https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/register-azurermautomationdscnode?view=azurermps-4.1.0"&gt;&lt;code&gt;Register-AzureRmAutomationDscNode&lt;/code&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="images/iis-admin-rest-api-with-dsc/addnode.png" class="img-fluid" alt="Enroll server"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="images/iis-admin-rest-api-with-dsc/addvm.png" class="img-fluid" alt="Enroll server"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="images/iis-admin-rest-api-with-dsc/setconfig.png" class="img-fluid" alt="Enroll server"&gt;&lt;/p&gt;
+&lt;p&gt;You can test it manually by running &lt;code&gt;Update-DscConfiguration -Wait -Verbose&lt;/code&gt; this is helpful when spotting any potential errors in your DSC. If there is already a configuration running you can stop it with &lt;code&gt;Stop-DscConfiguration -Force&lt;/code&gt; and start it on demand with &lt;code&gt;Start-DscConfiguration –UseExisting –Verbose –Wait&lt;/code&gt;. In production it may be useful to checkout the &lt;a href="https://blogs.msdn.microsoft.com/powershell/2014/01/03/using-event-logs-to-diagnose-errors-in-desired-state-configuration/"&gt;event log&lt;/a&gt; if you need to debug configuration errors.&lt;/p&gt;
+&lt;p&gt;&lt;img src="images/iis-admin-rest-api-with-dsc/applyingconfig.png" class="img-fluid" alt="apply dsc config"&gt;&lt;/p&gt;
+&lt;h3 id="final-product"&gt;Final product&lt;/h3&gt;
+&lt;p&gt;And voila, you can login to the admin api with your admin credentials and generate an API token to do work (don't worry this IP is long gone 😎). You can get a single pane of glass view of your VMs using this REST Api with the Microsoft tool &lt;a href="https://manage.iis.net/"&gt;https://manage.iis.net/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="images/iis-admin-rest-api-with-dsc/adminprompt.png" class="img-fluid" alt="admin login"&gt;
+&lt;img src="images/iis-admin-rest-api-with-dsc/adminscreen.png" class="img-fluid" alt="admin screen"&gt;&lt;/p&gt;
+&lt;p&gt;Manage your cloud web farm with REST Apis!!!&lt;/p&gt;
+&lt;p&gt;&lt;img src="images/iis-admin-rest-api-with-dsc/adminapi.png" class="img-fluid" alt="admin login"&gt;&lt;/p&gt;
+&lt;p&gt;So cool!&lt;/p&gt;
+
+
+&lt;div id="disqus_thread"&gt;&lt;/div&gt;
+
+&lt;script type="text/javascript"&gt;
+    var disqus_shortname = 'erik-onarheim';
+    var disqus_identifier = 'https://erikonarheim.com/blog/iis-admin-rest-api-with-dsc/';
+    var disqus_title = 'IIS Administration REST API with PowerShell DSC in Azure';
+    var disqus_url = 'https://erikonarheim.com/posts/iis-admin-rest-api-with-dsc';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+&lt;/script&gt;
+&lt;noscript&gt;Please enable JavaScript to view the &lt;a href="http://disqus.com/?ref_noscript"&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt;
+&lt;a href="http://disqus.com" class="dsq-brlink"&gt;comments powered by &lt;span class="logo-disqus"&gt;Disqus&lt;/span&gt;&lt;/a&gt;</content:encoded>
+		</item>
 		<item>
 			<title>Building Custom Analytics with Azure Functions</title>
 			<link>https://erikonarheim.com/posts/custom-analytics-azure-functions</link>
