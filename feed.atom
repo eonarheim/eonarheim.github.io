@@ -4,7 +4,7 @@
 	<id>https://erikonarheim.com/</id>
 	<title>Erik Onarheim</title>
 	<rights>2017</rights>
-	<updated>2017-06-17T15:04:36Z</updated>
+	<updated>2017-06-19T14:42:32Z</updated>
 	<subtitle>Erik Onarheim</subtitle>
 	<entry>
 		<link href="https://erikonarheim.com/posts/iis-admin-rest-api-with-dsc" />
@@ -14,7 +14,7 @@
 		<content>&lt;p&gt;For a long time I have been using the good ol'fashioned DCOM based ServerManager client from Microsoft.Web.Administration.dll to configure IIS web servers. Now there is a nifty new &lt;a href="https://github.com/Microsoft/IIS.Administration"&gt;open source administration REST api&lt;/a&gt; from Microsoft! OMGWTFBACON! This a great boon to your "DevOps" play because any language that speaks HTTP can be used to manage IIS cluster no matter how large or small! In this post I'll introduce you to PowerShell Desired State Configuration to install this powerful management tool in your environment. Like a boss 😎&lt;/p&gt;
 &lt;p&gt;&lt;img src="images/iis-admin-rest-api-with-dsc/yeaaaah.gif" class="img-fluid" alt="boss hoss"&gt;&lt;/p&gt;
 &lt;h3 id="what-is-dsc"&gt;What is DSC?&lt;/h3&gt;
-&lt;p&gt;PowerShell DSC is a super power desired state configuration tool that comes with your windows server as a part of WMF (it is similar in concept to Puppet or Chef which can also work with windows servers). DSC can be setup in multiple ways: "Pull" or "Push". In my environment we've setup things in a Pull configuration, where enrolled nodes check into the central Pull server every thirty minutes for configuration. Push is an on demand process that pushes config to target nodes with an admin credential. Optionally, you could use azure automation as a pull server in the cloud to manage your on-prem or cloud windows machines.&lt;/p&gt;
+&lt;p&gt;PowerShell DSC is a super powerful desired state configuration tool that comes with your windows server as a part of WMF (it is similar in concept to Puppet or Chef which can also work with windows servers). DSC can be setup in multiple ways: "Pull" or "Push". In my environment we've setup things in a Pull configuration, where enrolled nodes check into the central Pull server every thirty minutes for configuration. Push is an on demand process that pushes config to target nodes with an admin credential. Optionally, you could use azure automation as a pull server in the cloud to manage your on-prem or cloud windows machines.&lt;/p&gt;
 &lt;h3 id="constructing-the-dsc"&gt;Constructing the DSC&lt;/h3&gt;
 &lt;p&gt;This is actually pretty easy to setup manually following the steps outlined on the Microsoft &lt;a href="https://github.com/Microsoft/IIS.Administration"&gt;github project&lt;/a&gt;, but if you have an environment with hundreds or thousands of servers that spin up and down, this isn't super sustainable.&lt;/p&gt;
 &lt;p&gt;First we need to setup our configuration, all configuration in DSC needs to be in a &lt;code&gt;configuration&lt;/code&gt; block.&lt;/p&gt;
