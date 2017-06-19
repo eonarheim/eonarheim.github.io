@@ -14,7 +14,7 @@ For a long time I have been using the good ol'fashioned DCOM based ServerManager
 
 ### What is DSC?
 
-PowerShell DSC is a super power desired state configuration tool that comes with your windows server as a part of WMF (it is similar in concept to Puppet or Chef which can also work with windows servers). DSC can be setup in multiple ways: "Pull" or "Push". In my environment we've setup things in a Pull configuration, where enrolled nodes check into the central Pull server every thirty minutes for configuration. Push is an on demand process that pushes config to target nodes with an admin credential. Optionally, you could use azure automation as a pull server in the cloud to manage your on-prem or cloud windows machines.
+PowerShell DSC is a super powerful desired state configuration tool that comes with your windows server as a part of WMF (it is similar in concept to Puppet or Chef which can also work with windows servers). DSC can be setup in multiple ways: "Pull" or "Push". In my environment we've setup things in a Pull configuration, where enrolled nodes check into the central Pull server every thirty minutes for configuration. Push is an on demand process that pushes config to target nodes with an admin credential. Optionally, you could use azure automation as a pull server in the cloud to manage your on-prem or cloud windows machines.
 
 
 ### Constructing the DSC
