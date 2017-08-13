@@ -4,8 +4,166 @@
 	<id>https://erikonarheim.com/</id>
 	<title>Erik Onarheim</title>
 	<rights>2017</rights>
-	<updated>2017-06-19T14:42:32Z</updated>
+	<updated>2017-08-13T16:22:55Z</updated>
 	<subtitle>Erik Onarheim</subtitle>
+	<entry>
+		<link href="https://erikonarheim.com/posts/csharp-httpclient-and-bom-in-json" />
+		<id>https://erikonarheim.com/posts/csharp-httpclient-and-bom-in-json</id>
+		<title>HttpClient and BOM sadness with JSON serialization</title>
+		<updated>2017-08-13T00:00:00Z</updated>
+		<content>&lt;p&gt;This week I ran across a problem when building a custom extension method to format a &lt;code&gt;PATCH&lt;/code&gt; request to an api endpoint. Basically I wanted to create a &lt;code&gt;PatchAsync&lt;/code&gt; method that matched the same semantics as &lt;code&gt;PostAsync&lt;/code&gt; and &lt;code&gt;GetAsync&lt;/code&gt; in &lt;code&gt;HttpClient&lt;/code&gt;. I had some more unique JSON serialization requirements working with the &lt;a href="https://erikonarheim.com/posts/iis-admin-rest-api-with-dsc"&gt;IIS Admin rest api&lt;/a&gt; like &lt;code&gt;snake_casing&lt;/code&gt; and booleans and numbers serialized at string literals like "124" or "true", so I needed to be able to pass my own JSON.NET configuration to the serialization.&lt;/p&gt;
+&lt;p&gt;Borrowing from this &lt;a href="https://stackoverflow.com/questions/26218764/patch-async-requests-with-windows-web-http-httpclient-class"&gt;SO post&lt;/a&gt; I crafted this extension method:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;public static async Task&amp;lt;HttpResponseMessage&amp;gt; PatchAsync&amp;lt;T&amp;gt;(this HttpClient client, string requestUri, T value, MediaTypeFormatter formatter)
+{
+    var method = new HttpMethod("PATCH");
+
+    HttpRequestMessage request;
+
+    using (var ms = new MemoryStream()) {
+        var jsonFormatter = formatter as JsonMediaTypeFormatter;
+        
+        jsonFormatter?.WriteToStream(typeof(T), value, ms, Encoding.UTF8);
+
+        var content = Encoding.UTF8.GetString(ms.GetBuffer(), 0, (int)ms.Length);
+        request = new HttpRequestMessage(method, requestUri)
+        {                    
+            Content = new StringContent(content, Encoding.UTF8, jsonFormatter?.SupportedMediaTypes.First()?.MediaType)
+        };
+    }
+
+    HttpResponseMessage response;
+    try
+    {
+        response = await client.SendAsync(request);
+    }
+    catch (TaskCanceledException e)
+    {
+        throw e;
+    }
+
+    return response;
+}
+    
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;As far as I could tell from human eyeballs everything looked good, but when I ran this code from code it would bomb with "Unsupported Media Type: Invalid JSON". I could craft the same request by hand in &lt;a href="http://www.telerik.com/fiddler"&gt;fiddler&lt;/a&gt; or &lt;a href="https://www.getpostman.com/"&gt;postman&lt;/a&gt; and it would work!&lt;/p&gt;
+&lt;p&gt;I did notice one odd artifact in the requests, the &lt;code&gt;Content-Length&lt;/code&gt; didn't match up between the failing and succeeding requests even with what looked like the same payload...&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-http"&gt;
+PATCH https://mycoolserver:55539/api/webserver/logging/JpcOekeNc7uR-m9y8_uE9Q HTTP/1.1
+Access-Token: Bearer abcdefghijklmnopqrstuvwxyz
+Content-Type: application/json; charset=utf-8
+Host: mycoolserver:55539
+Content-Length: 76
+Expect: 100-continue
+
+{"id":"JpcOekeNc7uR-m9y8_uE9Q","directory":"D:\\inetpub\\logs\\coolsite160"}
+
+
+HTTP/1.1 200 OK
+Cache-Control: public, max-age=0
+Transfer-Encoding: chunked
+Content-Type: application/vnd.Microsoft.WebServer.Logging.2.0.0+json; charset=utf-8
+Server: Microsoft-HTTPAPI/2.0
+Date: Tue, 08 Aug 2017 20:08:59 GMT
+
+// Success Response
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code class="language-http"&gt;PATCH https://mycoolserver:55539/api/webserver/logging/JpcOekeNc7uR-m9y8_uE9Q HTTP/1.1
+Access-Token: Bearer abcdefghijklmnopqrstuvwxyz
+Content-Type: application/json; charset=utf-8
+Host: mycoolserver:55539
+Content-Length: 79
+Expect: 100-continue
+
+{"id":"JpcOekeNc7uR-m9y8_uE9Q","directory":"D:\\inetpub\\logs\\coolsite160"}
+
+
+HTTP/1.1 415 Unsupported Media Type
+Cache-Control: public, max-age=0
+Transfer-Encoding: chunked
+Content-Type: application/problem+json
+Content-Language: en
+Server: Microsoft-HTTPAPI/2.0
+Accept-Patch: application/json;charset=utf-8
+Date: Tue, 08 Aug 2017 20:09:10 GMT
+
+34
+{"title":"Invalid JSON request object","status":415}
+0
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Aaaah HAAAA! There must be some invisible characters my dear Watson!&lt;/p&gt;
+&lt;p&gt;&lt;img src="images/csharp-httpclient-and-bom-in-json/watson.gif" class="img-fluid" alt=""&gt;&lt;/p&gt;
+&lt;p&gt;So I cracked open the trusty HEX editor and lo and behold! A BOM (literally) aka a byte order mark has snuck it's way inbetween my request headers and JSON payload! This 3-byte mark is included in UTF encoded stuff to help readers decode correctly. Ironically it breaks some deserializers, like the one in the IIS Rest Admin API!&lt;/p&gt;
+&lt;p&gt;Successful request:
+&lt;img src="images/csharp-httpclient-and-bom-in-json/successreq.png" class="img-fluid" alt=""&gt;&lt;/p&gt;
+&lt;p&gt;Failed request:
+&lt;img src="images/csharp-httpclient-and-bom-in-json/failedreq.png" class="img-fluid" alt=""&gt;&lt;/p&gt;
+&lt;p&gt;After I discovered this the fix was pretty easy, &lt;a href="https://msdn.microsoft.com/en-us/library/s064f8w2.aspx"&gt;.NET provides&lt;/a&gt; a new &lt;code&gt;UTF8Encoding&lt;/code&gt; type that can be passed true or false to its constructor to indicated whether a BOM is wanted.&lt;/p&gt;
+&lt;p&gt;So the fixed extension method:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;public static async Task&amp;lt;HttpResponseMessage&amp;gt; PatchAsync&amp;lt;T&amp;gt;(this HttpClient client, string requestUri, T value, MediaTypeFormatter formatter)
+{
+    var method = new HttpMethod("PATCH");
+
+    HttpRequestMessage request;
+
+    // No BOM now
+    var utf8 = new UTF8Encoding(false);
+
+    using (var ms = new MemoryStream()) {
+        var jsonFormatter = formatter as JsonMediaTypeFormatter;
+        
+        jsonFormatter?.WriteToStream(typeof(T), value, ms, utf8);
+
+        var content = utf8.GetString(ms.GetBuffer(), 0, (int)ms.Length);
+        request = new HttpRequestMessage(method, requestUri)
+        {                    
+            Content = new StringContent(content, utf8, jsonFormatter?.SupportedMediaTypes.First()?.MediaType)
+        };
+    }
+
+    HttpResponseMessage response;
+    try
+    {
+        response = await client.SendAsync(request);
+    }
+    catch (TaskCanceledException e)
+    {
+        throw e;
+    }
+
+    return response;
+}
+    
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Hopefully this helps out any of you JSON payload peeps trying to customize HttpClient. Somebody set us up the 💣!&lt;/p&gt;
+
+
+&lt;div id="disqus_thread"&gt;&lt;/div&gt;
+
+&lt;script type="text/javascript"&gt;
+    var disqus_shortname = 'erik-onarheim';
+    var disqus_identifier = 'https://erikonarheim.com/posts/csharp-httpclient-and-bom-in-json/';
+    var disqus_title = 'HttpClient and BOM sadness with JSON serialization';
+    var disqus_url = 'https://erikonarheim.com/posts/csharp-httpclient-and-bom-in-json';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+&lt;/script&gt;
+&lt;noscript&gt;Please enable JavaScript to view the &lt;a href="http://disqus.com/?ref_noscript"&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt;
+&lt;a href="http://disqus.com" class="dsq-brlink"&gt;comments powered by &lt;span class="logo-disqus"&gt;Disqus&lt;/span&gt;&lt;/a&gt;</content>
+		<summary>Erik Onarheim</summary>
+	</entry>
 	<entry>
 		<link href="https://erikonarheim.com/posts/iis-admin-rest-api-with-dsc" />
 		<id>https://erikonarheim.com/posts/iis-admin-rest-api-with-dsc</id>

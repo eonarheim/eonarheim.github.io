@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
 
-        <title>Erik Onarheim</title>
+        <title>Erik Onarheim - JSON</title>
         <meta name="description" content="Erik Onarheim" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">        
 
@@ -29,9 +29,9 @@
         <meta name="msapplication-tooltip" content="Erik Onarheim" />
         <meta name="msapplication-starturl" content="/" />
 
-        <meta property="og:title" content="Erik Onarheim" />
+        <meta property="og:title" content="Erik Onarheim - JSON" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://erikonarheim.com/" />
+        <meta property="og:url" content="https://erikonarheim.com/tags/json" />
         <!-- TODO: More social graph meta tags -->
 
         <script src="/assets/js/jquery.min.js"></script>
@@ -105,34 +105,9 @@
                         <div class="container">
                                 <div class="row">
                                         <div class="col-md-12">
-
-    <div class="site-heading">
-        <h1 style="font-weight: normal">Erik Onarheim</h1>
-                <img style="width:150px" src="/assets/images/me.png" title="Erik Onarheim">
-        <span class="subheading">Hi, my name is Erik. I am a software developer, operations engineer, and cloud engineer working in Minneapolis Minnesota. I primarily work in .NET and JavaScript. I design infrastructure for the cloud. I write games for fun. I play guitar, and occasionally draw things.</span>
-        <div class="social links">
-            <a class="ui circular icon button" href="https://twitter.com/erikonarheim" title="Twitter">
-  <i class="fa fa-twitter fa-fw fa-2x"></i>
-</a>
-<a class="ui circular icon button" href="https://github.com/eonarheim" title="GitHub">
-  <i class="fa fa-github fa-fw fa-2x"></i>
-</a>
-<a class="ui circular icon button" href="https://www.youtube.com/channel/UCpfvwJIqmxG-3DD4QMofyxg" title="YouTube">
-  <i class="fa fa-youtube fa-fw fa-2x"></i>
-</a>
-<a class="ui circular icon button" href="https://www.linkedin.com/in/erik-onarheim" title="LinkedIn">
-  <i class="fa fa-linkedin fa-fw fa-2x"></i>
-</a>
-<a class="ui circular icon button" href="https://feeds.feedburner.com/erikonarheim" title="RSS">
-  <i class="fa fa-rss fa-fw fa-2x"></i>
-</a>
-
-        </div>
-</div>
-
-
-
-                                        </div>
+<div class="site-heading">
+    <h1>JSON</h1>
+</div>                                            </div>
                                 </div>
                         </div>
                 </header>
@@ -141,69 +116,46 @@
                 <div class="container">
                         <div class="row">
                                 <div id="content" class="col-md-12">
-                                        
-<div class="row">
-    <div class="col-sm-8 right-border">
-                <div class="post-preview">
-                    <a href="/posts/csharp-httpclient-and-bom-in-json">
-                        <h2 class="post-title">HttpClient and BOM sadness with JSON serialization</h2>
-                    </a>
-                    <p class="post-meta">Posted on Sunday, August 13, 2017</p>
-                    <p>This week I ran across a problem when building a custom extension method to format a <code>PATCH</code> request to an api endpoint. Basically I wanted to create a <code>PatchAsync</code> method that matched the same semantics as <code>PostAsync</code> and <code>GetAsync</code> in <code>HttpClient</code>. I had some more unique JSON serialization requirements working with the <a href="https://erikonarheim.com/posts/iis-admin-rest-api-with-dsc">IIS Admin rest api</a> like <code>snake_casing</code> and booleans and numbers serialized at string literals like "124" or "true", so I needed to be able to pass my own JSON.NET configuration to the serialization.</p>             
-                </div>       
-                    <hr /> 
-                <div class="post-preview">
-                    <a href="/posts/iis-admin-rest-api-with-dsc">
-                        <h2 class="post-title">IIS Administration REST API with PowerShell DSC in Azure</h2>
-                    </a>
-                    <p class="post-meta">Posted on Saturday, June 17, 2017</p>
-                    <p>For a long time I have been using the good ol'fashioned DCOM based ServerManager client from Microsoft.Web.Administration.dll to configure IIS web servers. Now there is a nifty new <a href="https://github.com/Microsoft/IIS.Administration">open source administration REST api</a> from Microsoft! OMGWTFBACON! This a great boon to your "DevOps" play because any language that speaks HTTP can be used to manage IIS cluster no matter how large or small! In this post I'll introduce you to PowerShell Desired State Configuration to install this powerful management tool in your environment. Like a boss 😎</p>             
-                </div>       
-                    <hr /> 
-                <div class="post-preview">
-                    <a href="/posts/custom-analytics-azure-functions">
-                        <h2 class="post-title">Building Custom Analytics with Azure Functions</h2>
-                    </a>
-                    <p class="post-meta">Posted on Thursday, April 27, 2017</p>
-                    <p>Recently we did a <a href="https://excaliburjs.com/ludum-38/">game jam</a> for Ludum Dare 38, and we were not satisfied with the level of customization in analytics providers out there, so we decided to build our own with <a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-first-azure-function">Azure Functions</a> with <a href="https://docs.microsoft.com/en-us/azure/storage/storage-dotnet-how-to-use-tables">Azure Table Storage</a> as a semi-unstructured data store. We were up and running quickly and the process was fairly easy.</p>             
-                </div>       
-    </div>
-    <div class="col-sm-4 sidebar">
-        <hr class="visible-xs-block" />
-        <h5>Tags</h5>
-        <div>
-                <a role="button" href="/tags/games" class="btn btn-default btn-sm"> Games (3)</a>
-                <a role="button" href="/tags/azure" class="btn btn-default btn-sm"> Azure (2)</a>
-                <a role="button" href="/tags/nes" class="btn btn-default btn-sm"> NES (2)</a>
-                <a role="button" href="/tags/canvas" class="btn btn-default btn-sm"> Canvas (2)</a>
-                <a role="button" href="/tags/javascript" class="btn btn-default btn-sm"> JavaScript (2)</a>
-                <a role="button" href="/tags/wyam" class="btn btn-default btn-sm"> Wyam (1)</a>
-                <a role="button" href="/tags/markdown" class="btn btn-default btn-sm"> Markdown (1)</a>
-                <a role="button" href="/tags/razor" class="btn btn-default btn-sm"> Razor (1)</a>
-                <a role="button" href="/tags/ludum-dare" class="btn btn-default btn-sm"> Ludum Dare (1)</a>
-                <a role="button" href="/tags/wordpress" class="btn btn-default btn-sm"> WordPress (1)</a>
-        </div>
-        <ul class="pager">
-            <li class="next">
-                <a href="/tags">View All Tags &rarr;</a>
-            </li>
-        </ul>
-        <hr />
-        <h5>Older Posts</h5>
-        <ul class="list-unstyled">
-                <li><a href="/posts/nes-sprite-editor">Building a Sprite Editor for the NES</a></li>
-                <li><a href="/posts/repairing-an-old-nes">Repairing an old broken NES</a></li>
-                <li><a href="/posts/using-wyam-blog">Migrating to Wyam in GH Pages from WordPress</a></li>
-                <li><a href="/posts/game-development-a-year-in-review-2014">Game Development &#x2013; A Year in Review 2014</a></li>
-        </ul>
-        <ul class="pager">
-            <li class="next">
-                <a href="/posts">Archive &rarr;</a>
-            </li>
-        </ul>
+                                        <div class="container-sm-height">
+    <div class="row row-sm-height">
+        <div class="col-sm-8 right-border col-sm-height">
+                    <div class="post-list">
+            <a href="/posts/csharp-httpclient-and-bom-in-json">
+                <h3 class="post-title">HttpClient and BOM sadness with JSON serialization</h3>
+            </a>
+            <p class="post-meta">Posted on Sunday, August 13, 2017</p>            
+        </div>   
 
-        
-    </div> 
+            <hr class="visible-xs-block" />
+        </div>
+		
+        <div class="col-sm-4 col-sm-height">
+                <a role="button" href="/tags/azure" class="btn btn-default btn-xs"> Azure (2)</a>
+                <a role="button" href="/tags/azure-functions" class="btn btn-default btn-xs"> Azure Functions (1)</a>
+                <a role="button" href="/tags/azure-table-storage" class="btn btn-default btn-xs"> Azure Table Storage (1)</a>
+                <a role="button" href="/tags/c%23" class="btn btn-default btn-xs"> C# (1)</a>
+                <a role="button" href="/tags/canvas" class="btn btn-default btn-xs"> Canvas (2)</a>
+                <a role="button" href="/tags/devops" class="btn btn-default btn-xs"> DevOps (1)</a>
+                <a role="button" href="/tags/excalibur" class="btn btn-default btn-xs"> Excalibur (1)</a>
+                <a role="button" href="/tags/game-dev" class="btn btn-default btn-xs"> Game Dev (1)</a>
+                <a role="button" href="/tags/games" class="btn btn-default btn-xs"> Games (3)</a>
+                <a role="button" href="/tags/github-pages" class="btn btn-default btn-xs"> GitHub Pages (1)</a>
+                <a role="button" href="/tags/hardware" class="btn btn-default btn-xs"> Hardware (1)</a>
+                <a role="button" href="/tags/http" class="btn btn-default btn-xs"> HTTP (1)</a>
+                <a role="button" href="/tags/iis" class="btn btn-default btn-xs"> IIS (1)</a>
+                <a role="button" href="/tags/javascript" class="btn btn-default btn-xs"> JavaScript (2)</a>
+                <a role="button" href="/tags/json" class="btn btn-primary btn-xs"> JSON (1)</a>
+                <a role="button" href="/tags/ludum-dare" class="btn btn-default btn-xs"> Ludum Dare (1)</a>
+                <a role="button" href="/tags/markdown" class="btn btn-default btn-xs"> Markdown (1)</a>
+                <a role="button" href="/tags/nes" class="btn btn-default btn-xs"> NES (2)</a>
+                <a role="button" href="/tags/news" class="btn btn-default btn-xs"> News (1)</a>
+                <a role="button" href="/tags/powershell-dsc" class="btn btn-default btn-xs"> PowerShell DSC (1)</a>
+                <a role="button" href="/tags/razor" class="btn btn-default btn-xs"> Razor (1)</a>
+                <a role="button" href="/tags/static-site" class="btn btn-default btn-xs"> Static Site (1)</a>
+                <a role="button" href="/tags/wordpress" class="btn btn-default btn-xs"> WordPress (1)</a>
+                <a role="button" href="/tags/wyam" class="btn btn-default btn-xs"> Wyam (1)</a>
+        </div>
+    </div>
 </div>
                                 </div>
                         </div>
